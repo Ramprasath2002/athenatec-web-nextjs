@@ -14,7 +14,7 @@ export default function Leadership() {
     {
       name: "Senthil Ranganathan",
       role: "Founder & CEO",
-      image: "/assets/images/image.webp",
+      image: "/assets/images/CEO.webp",
       bio: "Visionary leader with over two decades of experience driving digital manufacturing and MES transformations globally.",
     },
     {

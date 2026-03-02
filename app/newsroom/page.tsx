@@ -14,7 +14,7 @@ type WPPost = {
 async function getPosts(): Promise<WPPost[]> {
   const res = await fetch(
     "https://www.athenatec.com/wp-json/wp/v2/posts?_embed&slug=athena-and-tech-mahindra-announce-partnership,authorised-reseller-partnership-with-twinzo",
-    { cache: "no-store" }
+    { next: { revalidate: 60 } }
   );
 
   if (!res.ok) {
@@ -32,7 +32,7 @@ export default async function NewsRoom() {
       <HeroSection
         title="News Room"
         description="Leave us a little info, and we’ll be in touch."
-        image="/assets/images/ERP.webp"
+        image="/assets/images/newsroom.webp"
         align="center"
         buttonText="Contact Us"
         buttonLink="/contact"
@@ -82,7 +82,7 @@ export default async function NewsRoom() {
                     </p>
 
                     <Link
-                      href={`/newsroom/${post.slug}`}
+                      href={`/blog/${post.slug}`}
                       className="text-[#1c4584] font-medium hover:underline"
                     >
                       Read More →

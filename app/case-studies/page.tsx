@@ -13,7 +13,7 @@ const caseStudies: CaseStudy[] = [
   {
     slug: "medical-device-mes-modernization",
     title: "Enabling Continuous Innovation in Medical Device",
-    image: "/assets/images/doctor-performing-medical-research-lab-scaled.webp",
+    image: "/assets/images/form-img.webp",
     desc: "A U.S.-based global leader in CGM has been pioneering real-time health insights for over 25 years.",
   },
   {

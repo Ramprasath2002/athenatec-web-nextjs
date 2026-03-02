@@ -322,7 +322,7 @@ export default function HeaderMenu({ variant = "desktop", onNavigate }: Props) {
             <Link className="block py-2 hover:text-[rgb(52,170,220)]" href="/case-studies">
               Case Studies
             </Link>
-            <Link className="block py-2 hover:text-[rgb(52,170,220)]" href="/news-room">
+            <Link className="block py-2 hover:text-[rgb(52,170,220)]" href="/newsroom">
               News Room
             </Link>
             <Link className="block py-2 hover:text-[rgb(52,170,220)]" href="/webinars">
