@@ -27,7 +27,7 @@ export default function Leadership() {
     {
       name: "Jason Adams",
       role: "Global Vice President, Industry",
-      image: "/assets/images/image.webp",
+      image: "/assets/images/GV.webp",
       bio: "Industry expert helping manufacturers adopt smart factory and Industry 4.0 practices at scale.",
     },
     {
