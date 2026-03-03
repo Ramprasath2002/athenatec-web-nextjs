@@ -1,8 +1,39 @@
-"use client";
+
 import HeroSection from "../components/HeroSection";
 import "./accelerator.scss";
 import Image from "next/image";
 import CTASection from "../components/CTASection";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Athena ECO Accelerators | MES Engineering Change Automation",
+
+  description:
+    "Accelerate engineering change management in MES platforms with Athena ECO Accelerators. Automate redlining, validation, and master data migration with full traceability.",
+
+  openGraph: {
+    locale: "en_US",
+    type: "website",
+    url: "https://athenatec.com/accelerators",
+    title: "Athena ECO Accelerators | MES Engineering Change Automation",
+    description:
+      "Accelerate engineering change management in MES platforms with Athena ECO Accelerators. Automate redlining, validation, and master data migration with full traceability.",
+    images: [
+      {
+        url: "https://athenatec.com/assets/images/eco-accelerators.webp",
+        width: 1200,
+        height: 630,
+        alt: "Athena ECO Accelerators",
+      },
+    ],
+  },
+
+  alternates: {
+    canonical: "https://athenatec.com/accelerators",
+  },
+};
+
+
 const accelerators = [
   {
     title: "ECO Redliner",

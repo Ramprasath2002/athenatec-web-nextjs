@@ -6,6 +6,34 @@ import HeroSection from "@/app/components/HeroSection";
 import CaseStudiesSection from "@/app/components/CaseStudiesSection";
 import GallerySection from "@/app/components/GallerySection";
 import PracticeSection from "@/app/components/PracticeSection";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Siemens Opcenter MES Implementation Partner",
+
+  description:
+    "Expert Siemens Opcenter MES implementation, upgrades, and Smart Factory integration for semiconductor, electronics, and medical device manufacturing.",
+
+  alternates: {
+    canonical: "https://athenatec.com/partners/siemens-opcenter",
+  },
+
+  openGraph: {
+    title: "Siemens Opcenter MES Implementation Partner",
+    description:
+      "Specialized Siemens Opcenter MES solutions including Semiconductor, Electronics, Medical Devices, APS, and Smart Factory integration.",
+    url: "https://athenatec.com/partners/siemens-opcenter",
+    type: "website",
+    images: [
+      {
+        url: "https://athenatec.com/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Siemens Opcenter MES by Athenatec",
+      },
+    ],
+  },
+};
 
 const practiceData = [
   {
@@ -45,7 +73,6 @@ const practiceData = [
     ],
   },
 ];
-
 
 const services = [
   {
@@ -183,8 +210,7 @@ const caseStudies = [
     tag: "Case Study #1",
     description:
       "Our Medical device customer had an external system to get approval for Surgical Plans from the surgeon which had to be integrated to Opcenter in several Operations.",
-    image:
-      "/assets/images/freepik-export-202412191322302WRy-1920x1280.webp",
+    image: "/assets/images/freepik-export-202412191322302WRy-1920x1280.webp",
     link: "/downloads/case1.pdf",
   },
   {
@@ -193,8 +219,7 @@ const caseStudies = [
     tag: "Case Study #2",
     description:
       "Customer has Multiple Factories where they manufacture different devices. Required to Display Modeling and WIP Data based on the Employee Role and Factory.",
-    image:
-      "/assets/images/FS.png",
+    image: "/assets/images/FS.png",
     link: "/downloads/case2.pdf",
   },
   {
@@ -203,8 +228,7 @@ const caseStudies = [
     tag: "Case Study #3",
     description:
       "Customer had a requirement to implement Shipper case association to the Container during Packaging Process​.",
-    image:
-      "/assets/images/freepik-export-20241219133957E1bW-1920x1280.webp",
+    image: "/assets/images/freepik-export-20241219133957E1bW-1920x1280.webp",
     link: "/downloads/case3.pdf",
   },
   {
@@ -213,8 +237,7 @@ const caseStudies = [
     tag: "Case Study #4",
     description:
       "Production Client which is a main UI for Operator in Electronics Suite was Optimized to cover maximum WIP transactions​.",
-    image:
-      "/assets/images/close-up-computer-keyboard-1920x1280.webp",
+    image: "/assets/images/close-up-computer-keyboard-1920x1280.webp",
     link: "/downloads/case4.pdf",
   },
   {
@@ -241,38 +264,52 @@ const caseStudies = [
 const galleryItems = [
   {
     title: "Realize Live Americas 2025",
-    image:
-      "/assets/images/Media-9-768x576.webp",
+    image: "/assets/images/Media-9-768x576.webp",
     slug: "/gallery/realize-live-americas-2025",
   },
   {
     title: "Americas Partner Conference 2025",
-    image:
-      "/assets/images/Media-2-768x576.webp",
+    image: "/assets/images/Media-2-768x576.webp",
     slug: "/gallery/americas-partner-conference-2025",
   },
   {
     title: "Realize Live Americas 2024",
-    image:
-      "/assets/images/Media-26-768x576.webp",
+    image: "/assets/images/Media-26-768x576.webp",
     slug: "/gallery/realize-live-americas-2024",
   },
   {
     title: "Realize Live Europe 2024",
-    image:
-      "/assets/images/Media-17-768x1024.webp",
+    image: "/assets/images/Media-17-768x1024.webp",
     slug: "/gallery/realize-live-europe-2024",
   },
   {
     title: "Realize Live Americas 2023",
-    image:
-      "/assets/images/shared-image-8-1-768x576.webp",
+    image: "/assets/images/shared-image-8-1-768x576.webp",
     slug: "/gallery/realize-live-americas-2023",
   },
 ];
 export default function SiemensOpcenter() {
   return (
     <main>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Service",
+            name: "Siemens Opcenter MES Implementation",
+            provider: {
+              "@type": "Organization",
+              name: "Athenatec",
+              url: "https://athenatec.com",
+            },
+            areaServed: "Worldwide",
+            description:
+              "Expert Siemens Opcenter MES implementation, upgrades, and Smart Factory integration for semiconductor, electronics, and medical device manufacturing.",
+          }),
+        }}
+      />
+
       <HeroSection
         title="Siemens Opcenter MES"
         description="Experienced in implementing and upgrading Opcenter MES across versions."
@@ -414,24 +451,22 @@ export default function SiemensOpcenter() {
                   Factory’.
                 </strong>
               </p>
-             
             </div>
-             <div className="mt-8 flex justify-center">
-                <Image
-                  src="/assets/images/02-8.webp"
-                  alt="Factory System Integration Diagram"
-                  width={1000}
-                  height={600}
-                  className="rounded-lg  "
-                />
-              </div>
+            <div className="mt-8 flex justify-center">
+              <Image
+                src="/assets/images/02-8.webp"
+                alt="Factory System Integration Diagram"
+                width={1000}
+                height={600}
+                className="rounded-lg  "
+              />
+            </div>
           </div>
         </div>
       </section>
       <PracticeSection
         title="Enterprise Systems Practice MES and Factory Systems"
         cards={practiceData}
-        
       />
       <section className="siemens-analytics">
         <div className="container">
@@ -552,7 +587,8 @@ export default function SiemensOpcenter() {
       <CTASection
         title={
           <>
-           Let’s talk <br />Got an enquiry?
+            Let’s talk <br />
+            Got an enquiry?
           </>
         }
         description="At Athena, our team guides your Industry 4.0 journey with deep expertise in digital transformation and manufacturing solutions. "

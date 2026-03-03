@@ -4,7 +4,31 @@ import "./critical.scss";
 import CaseStudiesSection from "@/app/components/CaseStudiesSection";
 import GallerySection from "@/app/components/GallerySection";
 import CTASection from "@/app/components/CTASection";
+import type { Metadata } from "next";
 
+export const metadata: Metadata = {
+  title: "Critical Manufacturing MES Implementation",
+  description:
+    "Premier Critical Manufacturing MES implementation partner delivering upgrades, customization, and system integration for semiconductor and discrete industries.",
+  alternates: {
+    canonical: "https://athenatec.com/critical-manufacturing",
+  },
+  openGraph: {
+    title: "Critical Manufacturing MES Implementation",
+    description:
+      "Premier Critical Manufacturing MES implementation partner delivering upgrades, customization, and system integration for semiconductor and discrete industries.",
+    url: "https://athenatec.com/partners/critical-manufacturing",
+    type: "website",
+    images: [
+      {
+        url: "https://athenatec.com/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Critical Manufacturing MES Services",
+      },
+    ],
+  },
+};
 const caseStudies = [
   {
     id: 1,
@@ -95,6 +119,24 @@ const ListItem = ({ icon, text }: ListItemProps) => {
 export default function CriticalManufacturingPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Service",
+            name: "Critical Manufacturing MES Implementation",
+            provider: {
+              "@type": "Organization",
+              name: "Athenatec",
+              url: "https://athenatec.com",
+            },
+            description:
+              "Critical Manufacturing MES implementation, upgrades, customization, and enterprise system integration.",
+            areaServed: "Worldwide",
+          }),
+        }}
+      />
       <HeroSection
         title="Critical Manufacturing"
         description="Athena specializes in the implementation, upgrade, and customization of CM MES, along with seamless integrations with external systems such as PLM, ERP, LIMS and Camline."
@@ -288,14 +330,26 @@ export default function CriticalManufacturingPage() {
               </div>
 
               <ul className="icon-list">
-                <ListItem icon="/assets/icons/Partner-Profile/OneFab.svg" text="OneFab" />
-                <ListItem icon="/assets/icons/Partner-Profile/CIOT.svg" text="Connect IoT" />
-                <ListItem icon="/assets/icons/Partner-Profile/Fab-live.svg" text="Fab Live" />
+                <ListItem
+                  icon="/assets/icons/Partner-Profile/OneFab.svg"
+                  text="OneFab"
+                />
+                <ListItem
+                  icon="/assets/icons/Partner-Profile/CIOT.svg"
+                  text="Connect IoT"
+                />
+                <ListItem
+                  icon="/assets/icons/Partner-Profile/Fab-live.svg"
+                  text="Fab Live"
+                />
                 <ListItem
                   icon="/assets/icons/Partner-Profile/AR.svg"
                   text="Augmented Reality"
                 />
-                <ListItem icon="/assets/icons/Partner-Profile/SPC.svg" text="SPC" />
+                <ListItem
+                  icon="/assets/icons/Partner-Profile/SPC.svg"
+                  text="SPC"
+                />
                 <ListItem
                   icon="/assets/icons/Partner-Profile/Maintenance-Management.svg"
                   text="Maintenance Management"

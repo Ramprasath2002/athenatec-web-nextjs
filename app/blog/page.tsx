@@ -50,7 +50,7 @@ export default async function BlogPage() {
         buttonLink="/contact"
       />
       <div className="blog-container">
-        <h1 className="blog-title">Latest Insights</h1>
+        <h1 className="blog-title">Latest Blogs</h1>
 
         <div className="blog-grid">
           {posts.map((post) => {

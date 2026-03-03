@@ -14,7 +14,7 @@ export default async function PostPage({ params }) {
 
   const currentIndex = allPosts.findIndex(p => p.slug === slug);
 
-  const nextPost = allPosts[currentIndex - 1]; // newer post
+  const nextPost = allPosts[currentIndex - 1];
 
   const relatedPosts = allPosts
     .filter(p => p.slug !== slug)

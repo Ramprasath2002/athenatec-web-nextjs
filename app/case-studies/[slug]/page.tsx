@@ -17,6 +17,7 @@ export default async function CaseStudyPage({ params }: Props) {
 
   return (
     <>
+    
       <HeroSection 
         title={study.fullTitle}
         description={"Leave us a little info, and we’ll be in touch."}

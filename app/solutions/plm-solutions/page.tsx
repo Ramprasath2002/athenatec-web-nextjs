@@ -3,7 +3,31 @@ import Image from "next/image";
 import "./plm.scss";
 import PracticeSection from "@/app/components/PracticeSection";
 import CTASection from "@/app/components/CTASection";
+import type { Metadata } from "next";
 
+export const metadata: Metadata = {
+  title: "Agile PLM Implementation Services ",
+  description:
+    "Expert Agile PLM implementation and integration services connecting ERP and MES systems to streamline product lifecycle management and change control.",
+  alternates: {
+    canonical: "https://athenatec.com/solutions/plm-solutions",
+  },
+  openGraph: {
+    title: "Agile PLM Implementation Services",
+    description:
+      "Oracle Agile PLM implementation, migration, upgrades, and ERP/MES integration services for manufacturing enterprises.",
+    url: "https://athenatec.com/solutions/plm-solutions",
+    type: "website",
+    images: [
+      {
+        url: "https://athenatec.com/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Agile PLM Implementation Services",
+      },
+    ],
+  },
+};
 const practiceData = [
   {
     title: "Solutions / Modules",
@@ -47,6 +71,25 @@ const practiceData = [
 export default function PlmSolution() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Service",
+            name: "Agile PLM Implementation Services",
+            provider: {
+              "@type": "Organization",
+              name: "Athenatec",
+              url: "https://athenatec.com",
+            },
+            description:
+              "Oracle Agile PLM implementation, migration, upgrades, and ERP/MES system integration services.",
+            serviceType: "Product Lifecycle Management Implementation",
+            areaServed: "Worldwide",
+          }),
+        }}
+      />
       <HeroSection
         title="PLM Solutions"
         description="Leave us a little info, and we’ll be in touch."
@@ -77,17 +120,13 @@ export default function PlmSolution() {
           <h2 className="plm-team__title">Agile PLM Close Loop System</h2>
 
           <div className="plm-team__image">
-            <img
-              src="/assets/images/05-6.webp"
-              alt="Athena Opcenter Team"
-            />
+            <img src="/assets/images/05-6.webp" alt="Athena Opcenter Team" />
           </div>
         </div>
       </section>
       <PracticeSection
         title="Professional Agile PLM Solutions"
         cards={practiceData}
-     
       />
       <CTASection
         title={

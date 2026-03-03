@@ -3,7 +3,31 @@ import Image from "next/image";
 import "./erp.scss";
 import PracticeSection from "@/app/components/PracticeSection";
 import CTASection from "@/app/components/CTASection";
+import type { Metadata } from "next";
 
+export const metadata: Metadata = {
+  title: "ERP Implementation & Integration Services",
+  description:
+    "Expert ERP implementation and integration services connecting Oracle EBS with MES, PLM, CRM, and SCM to enable digital transformation in manufacturing.",
+  alternates: {
+    canonical: "https://athenatec.com/solutions/enterprise-erp",
+  },
+  openGraph: {
+    title: "ERP Implementation & Integration Services",
+    description:
+      "Oracle ERP and enterprise system integration services for manufacturing digital transformation.",
+    url: "https://athenatec.com/solutions/enterprise-erp",
+    type: "website",
+    images: [
+      {
+        url: "https://athenatec.com/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "ERP Implementation & Integration Services",
+      },
+    ],
+  },
+};
 const practiceData = [
   {
     title: "Process / Modules",
@@ -47,6 +71,25 @@ const practiceData = [
 export default function EnterpriseErp() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Service",
+            name: "ERP Implementation Services",
+            provider: {
+              "@type": "Organization",
+              name: "Athenatec",
+              url: "https://athenatec.com",
+            },
+            description:
+              "Oracle ERP implementation, integration with MES and PLM, and digital transformation services for manufacturing enterprises.",
+            serviceType: "Enterprise Resource Planning Implementation",
+            areaServed: "Worldwide",
+          }),
+        }}
+      />
       <HeroSection
         title="Enterprise ERP"
         description="Leave us a little info, and we’ll be in touch."
@@ -71,7 +114,7 @@ export default function EnterpriseErp() {
           </p>
         </div>
       </section>
-     
+
       <PracticeSection
         title="Enterprise Systems Practice MES and Factory Systems"
         cards={practiceData}

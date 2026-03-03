@@ -3,6 +3,31 @@ import Image from "next/image";
 import "./mes.scss";
 import CTASection from "@/app/components/CTASection";
 import PracticeSection from "@/app/components/PracticeSection";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Manufacturing Execution Systems Implementation",
+  description:
+    "Expert MES implementation and integration services connecting ERP, PLM, and factory systems to enable Industry 4.0 and Smart Manufacturing.",
+  alternates: {
+    canonical: "https://athenatec.com/solutions/mes",
+  },
+  openGraph: {
+    title: "Manufacturing Execution Systems Implementation",
+    description:
+      "Manufacturing Execution Systems implementation and factory system integration for advanced manufacturing enterprises.",
+    url: "https://athenatec.com/mes-solutions",
+    type: "website",
+    images: [
+      {
+        url: "https://athenatec.com/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "MES Implementation Services",
+      },
+    ],
+  },
+};
 
 const practiceData = [
   {
@@ -45,6 +70,28 @@ const practiceData = [
 export default function MESPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Service",
+            name: "MES Implementation Services",
+            description:
+              "Manufacturing Execution Systems (MES) implementation and integration services connecting ERP, PLM, and factory systems for Industry 4.0 transformation.",
+            provider: {
+              "@type": "Organization",
+              name: "Athenatec",
+              url: "https://athenatec.com",
+            },
+            areaServed: {
+              "@type": "Place",
+              name: "Worldwide",
+            },
+            serviceType: "Manufacturing Execution Systems Implementation",
+          }),
+        }}
+      />
       <HeroSection
         title="MES Solutions"
         description="Leave us a little info, and we’ll be in touch."

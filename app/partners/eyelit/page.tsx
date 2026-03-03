@@ -3,9 +3,52 @@ import Link from "next/link";
 import "./eyelit.scss";
 import HeroSection from "@/app/components/HeroSection";
 import CTASection from "@/app/components/CTASection";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Eyelit MES Implementation Partner | Athenatec",
+  description:
+    "Certified Eyelit MES implementation partner delivering Equipment Connect integration, real-time visibility, and advanced manufacturing optimization.",
+  alternates: {
+    canonical: "https://athenatec.com/eyelit",
+  },
+  openGraph: {
+    title: "Eyelit MES Implementation Partner | Athenatec",
+    description:
+      "Expert Eyelit MES and Equipment Connect implementation services for advanced manufacturing operations.",
+    url: "https://athenatec.com/eyelit",
+    type: "website",
+    images: [
+      {
+        url: "https://athenatec.com/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Eyelit MES Implementation Services",
+      },
+    ],
+  },
+};
 export default function EyelitPage() {
   return (
     <main className="eyelit-page">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Service",
+            name: "Eyelit MES Implementation",
+            provider: {
+              "@type": "Organization",
+              name: "Athenatec",
+              url: "https://athenatec.com",
+            },
+            description:
+              "Eyelit MES and Equipment Connect implementation, integration, and optimization services.",
+            areaServed: "Worldwide",
+          }),
+        }}
+      />
       <HeroSection
         title="Eyelit"
         description="Advanced manufacturing execution systems built for scale."
@@ -77,10 +120,7 @@ export default function EyelitPage() {
 
             {/* Right Image */}
             <div className="expertise-image">
-              <img
-                src="/assets/images/1722014978283.webp"
-                alt="Expertise"
-              />
+              <img src="/assets/images/1722014978283.webp" alt="Expertise" />
             </div>
           </div>
         </div>

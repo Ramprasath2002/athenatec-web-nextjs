@@ -17,7 +17,7 @@ const webinarPages: Record<string, any> = {
 
   "medtech-mes-accelerator": {
     title: "Accelerate MedTech Manufacturing with a Modern MES Accelerator",
-    heroImage: "/assets/images/Accelerate-Medtech.webp",
+    heroImage: "/assets/images/Medtech.webp",
     heading: "Accelerate Production with Smart MES",
     description:
       "Discover how digital transformation streamlines production systems.",
@@ -432,7 +432,7 @@ function MedtechMESLayout() {
 
       <div className="solution-image">
         <Image
-          src="/assets/images/Accelerate-Medtech.webp"
+          src="/assets/images/Medtech.webp"
           alt="Modern MES Solution"
           width={700}
           height={550}

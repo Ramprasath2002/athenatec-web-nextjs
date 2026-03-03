@@ -4,7 +4,28 @@ import { logos } from "../components/ClientLogos";
 import ScrollReveal from "@/app/components/ScrollReveal";
 import CTASection from "@/app/components/CTASection";
 import HeroSection from "@/app/components/HeroSection";
- 
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+    title: "About - Best MES Solution Provider | Athenatec",
+
+    description:
+        "Learn about Athenatec, a trusted MES implementation and manufacturing digital transformation partner serving semiconductor and advanced industries",
+    openGraph: {
+        locale: "en_US",
+        type: "website",
+        url: "https://athenatec.com/about/",
+        images: "https://athenatec.com/assets/img/favicon.png",
+        title: "About - Best MES Solution Provider | Athenatec",
+        description: "Learn about Athenatec, a trusted MES implementation and manufacturing digital transformation partner serving semiconductor and advanced industries"
+    },
+    alternates: {
+        canonical: "https://athenatec.com/about/",
+    },
+};
+
+
+
 export default function AboutPage() {
   const journey = [
     {

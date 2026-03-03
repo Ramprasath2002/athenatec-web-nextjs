@@ -1,6 +1,23 @@
 import Image from "next/image";
 import Link from "next/link";
 import HeroSection from "@/app/components/HeroSection";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Manufacturing & Industry 4.0 News",
+  description:
+    "Latest news, announcements and partnership updates from Athenatec across MES, ERP, and digital manufacturing solutions.",
+  alternates: {
+    canonical: "https://athenatec.com/newsroom",
+  },
+  openGraph: {
+    title: "Manufacturing & Industry 4.0 News",
+    description:
+      "Company announcements, MES partnerships and Industry 4.0 updates from Athenatec.",
+    url: "https://athenatec.com/newsroom",
+    type: "website",
+  },
+};
 
 type WPPost = {
   id: number;
@@ -14,7 +31,7 @@ type WPPost = {
 async function getPosts(): Promise<WPPost[]> {
   const res = await fetch(
     "https://www.athenatec.com/wp-json/wp/v2/posts?_embed&slug=athena-and-tech-mahindra-announce-partnership,authorised-reseller-partnership-with-twinzo",
-    { next: { revalidate: 60 } }
+    { next: { revalidate: 60 } },
   );
 
   if (!res.ok) {
@@ -29,9 +46,30 @@ export default async function NewsRoom() {
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "CollectionPage",
+            name: "Newsroom",
+            description:
+              "Latest company news, partnerships and digital manufacturing updates from Athenatec.",
+            url: "https://athenatec.com/newsroom",
+            publisher: {
+              "@type": "Organization",
+              name: "Athenatec",
+              logo: {
+                "@type": "ImageObject",
+                url: "https://athenatec.com/logo.png",
+              },
+            },
+          }),
+        }}
+      />
       <HeroSection
         title="News Room"
-        description="Leave us a little info, and we’ll be in touch."
+        description="Latest announcements, partnerships and digital manufacturing updates from Athenatec"
         image="/assets/images/newsroom.webp"
         align="center"
         buttonText="Contact Us"
@@ -39,7 +77,7 @@ export default async function NewsRoom() {
       />
       <section className="py-20">
         <div className="container mx-auto px-6">
-          <h1 className="text-4xl font-bold mb-12">Newsroom</h1>
+          <h2 className="text-4xl font-bold mb-12">Newsroom</h2>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
             {posts.map((post: any) => {
