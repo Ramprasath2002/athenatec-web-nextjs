@@ -1,0 +1,221 @@
+$primary: #1d6fe8;
+$primary-dark: #1558c0;
+$navy: #1f3b73;
+$text-mid: #4a5e74;
+$text-light: #8a9db5;
+$white: #ffffff;
+$bg-light: #f0f5fb;
+$radius-card: 18px;
+$transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+ 
+.gallery-section {
+  position: relative;
+  padding: 85px 24px 110px;
+  overflow: hidden;
+
+  &--light { background: $bg-light; }
+  &--white { background: $white; }
+
+  &__orb {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    filter: blur(90px);
+    z-index: 0;
+
+    &--1 {
+      width: 480px;
+      height: 480px;
+      background: rgba(29, 111, 232, 0.07);
+      top: -100px;
+      right: -80px;
+    }
+
+    &--2 {
+      width: 360px;
+      height: 360px;
+      background: rgba(31, 59, 115, 0.05);
+      bottom: -60px;
+      left: -60px;
+    }
+  }
+}
+
+ 
+.gallery-section__container {
+  position: relative;
+  z-index: 1;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.gallery-section__heading {
+  text-align: center;
+  margin-bottom: 64px;
+}
+
+.gallery-section__label {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: $primary;
+  background: rgba(29, 111, 232, 0.1);
+  padding: 5px 14px;
+  border-radius: 100px;
+  margin-bottom: 16px;
+}
+
+.gallery-section__title {
+  font-size: clamp(30px, 4vw, 52px);
+  font-weight: 900;
+  color: $navy;
+  letter-spacing: -0.025em;
+  line-height: 1.15;
+  margin: 10px 0 14px;
+}
+
+.gallery-section__subtitle {
+  font-size: 16px;
+  color: $text-mid;
+  max-width: 480px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+// ── Grid ──────────────────────────────────────────────────────────────
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+
+  @media (max-width: 1100px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  @media (max-width: 480px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.gallery-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border-radius: $radius-card;
+  overflow: hidden;
+  text-decoration: none;
+  background: $white;
+  box-shadow: 0 4px 20px rgba(15, 47, 79, 0.07);
+  transition: transform $transition, box-shadow $transition;
+
+  &:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 48px rgba(15, 47, 79, 0.14);
+
+    .gallery-card__image {
+      transform: scale(1.07);
+    }
+
+    .gallery-card__overlay {
+      opacity: 1;
+    }
+
+    .gallery-card__arrow {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
+    }
+
+    .gallery-card__cta {
+      color: $primary;
+      gap: 8px;
+    }
+  }
+
+  &__image-wrap {
+    position: relative;
+    width: 100%;
+    height: 220px;
+    overflow: hidden;
+
+    @media (max-width: 768px) {
+      height: 180px;
+    }
+  }
+
+  &__image {
+    object-fit: cover;
+    transition: transform $transition;
+  }
+
+  &__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      160deg,
+      rgba(29, 111, 232, 0.15) 0%,
+      rgba(15, 30, 58, 0.55) 100%
+    );
+    opacity: 0;
+    transition: opacity $transition;
+  }
+
+  &__arrow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.7);
+    opacity: 0;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $primary;
+    transition: opacity $transition, transform $transition;
+    backdrop-filter: blur(4px);
+  }
+
+
+  &__footer {
+    padding: 18px 20px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    flex: 1;
+  }
+
+  &__index {
+    font-size: 11px;
+    font-weight: 700;
+    color: $primary;
+    letter-spacing: 0.08em;
+    opacity: 0.7;
+  }
+
+  &__title {
+    font-size: 15px;
+    font-weight: 700;
+    color: $navy;
+    line-height: 1.4;
+    margin: 0;
+  }
+
+  &__cta {
+    font-size: 12px;
+    font-weight: 600;
+    color: $text-light;
+    margin-top: 6px;
+    transition: color 0.25s, gap 0.25s;
+    display: inline-block;
+  }
+}

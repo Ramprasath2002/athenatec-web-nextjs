@@ -1,0 +1,518 @@
+// ── Variables ─────────────────────────────────────────────────────────
+$primary: #1d6fe8;
+$primary-dark: #1558c0;
+$navy: #1f3b73;
+$text-mid: #4a5e74;
+$text-light: #8a9db5;
+$white: #ffffff;
+$bg: #f0f5fb;
+$radius: 14px;
+$trans: 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+// ── Hero ──────────────────────────────────────────────────────────────
+.egp {
+  min-height: 100vh;
+  background: $bg;
+}
+
+.egp-hero {
+  position: relative;
+  height: clamp(280px, 38vw, 480px);
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+
+  &__bg {
+    object-fit: cover;
+    object-position: center top;
+    transition: transform 8s ease;
+
+    .egp:hover & {
+      transform: scale(1.03);
+    }
+  }
+
+  &__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(10, 22, 46, 0.25) 0%,
+      rgba(10, 22, 46, 0.82) 100%
+    );
+  }
+
+  &__content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 32px 40px;
+
+    @media (max-width: 640px) {
+      padding: 0 20px 28px;
+    }
+  }
+
+  &__back {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    margin-bottom: 16px;
+    transition: color 0.2s;
+
+    &:hover {
+      color: $white;
+    }
+  }
+
+  &__title {
+    font-size: clamp(26px, 4vw, 52px);
+    font-weight: 900;
+    color: $white;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+    margin: 0 0 10px;
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+  }
+
+  &__date {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0 0 14px;
+  }
+
+  &__meta {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  &__count {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.85);
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(8px);
+    padding: 5px 12px;
+    border-radius: 100px;
+  }
+}
+
+// ── Body ──────────────────────────────────────────────────────────────
+.egp-body {
+  padding: 40px 0 80px;
+}
+
+.egp-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 28px;
+
+  @media (max-width: 640px) {
+    padding: 0 16px;
+  }
+}
+
+// ── Page Info ─────────────────────────────────────────────────────────
+.egp-page-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 13px;
+  color: $text-light;
+  margin-bottom: 24px;
+  font-weight: 500;
+
+  @media (max-width: 480px) {
+    flex-direction: column;
+    gap: 4px;
+    align-items: flex-start;
+  }
+}
+
+// ── Photo Grid ────────────────────────────────────────────────────────
+.egp-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+
+  @media (max-width: 1100px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media (max-width: 700px) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  @media (max-width: 380px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+// ── Photo Tile ────────────────────────────────────────────────────────
+.egp-photo {
+  padding: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  border-radius: $radius;
+  overflow: hidden;
+  display: block;
+
+  &__inner {
+    position: relative;
+    width: 100%;
+    padding-bottom: 75%; // 4:3 aspect ratio
+    overflow: hidden;
+    border-radius: $radius;
+    background: #dce6f0;
+    box-shadow: 0 2px 12px rgba(15, 47, 79, 0.06);
+    transition: box-shadow $trans, transform $trans;
+  }
+
+  &:hover &__inner {
+    box-shadow: 0 16px 40px rgba(15, 47, 79, 0.16);
+    transform: translateY(-4px);
+  }
+
+  &__img {
+    object-fit: cover;
+    transition: transform $trans;
+    border-radius: $radius;
+  }
+
+  &:hover &__img {
+    transform: scale(1.06);
+  }
+
+  &__hover {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      135deg,
+      rgba(29, 111, 232, 0.12) 0%,
+      rgba(15, 30, 58, 0.55) 100%
+    );
+    opacity: 0;
+    transition: opacity $trans;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: $radius;
+  }
+
+  &:hover &__hover {
+    opacity: 1;
+  }
+
+  &__zoom {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.92);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $primary;
+    transform: scale(0.7);
+    transition: transform $trans;
+    backdrop-filter: blur(4px);
+  }
+
+  &:hover &__zoom {
+    transform: scale(1);
+  }
+
+  &__num {
+    position: absolute;
+    bottom: 10px;
+    right: 12px;
+    font-size: 11px;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.75);
+    letter-spacing: 0.04em;
+  }
+}
+
+// ── Pagination ────────────────────────────────────────────────────────
+.egp-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 52px;
+
+  &__pages {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  &__btn {
+    min-width: 42px;
+    height: 42px;
+    padding: 0 8px;
+    border-radius: 10px;
+    border: 1.5px solid #dce6f0;
+    background: $white;
+    font-size: 14px;
+    font-weight: 600;
+    color: $text-mid;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover:not(:disabled) {
+      border-color: $primary;
+      color: $primary;
+      background: rgba(29, 111, 232, 0.06);
+    }
+
+    &:disabled {
+      opacity: 0.38;
+      cursor: not-allowed;
+    }
+
+    &--active {
+      background: $primary !important;
+      border-color: $primary !important;
+      color: $white !important;
+      box-shadow: 0 4px 14px rgba(29, 111, 232, 0.35);
+    }
+
+    &--nav {
+      color: $navy;
+    }
+  }
+
+  &__ellipsis {
+    font-size: 16px;
+    color: $text-light;
+    display: flex;
+    align-items: center;
+    padding: 0 2px;
+    letter-spacing: 0.06em;
+  }
+
+  @media (max-width: 480px) {
+    gap: 4px;
+
+    &__btn {
+      min-width: 36px;
+      height: 36px;
+      font-size: 13px;
+    }
+  }
+}
+
+// ── Lightbox ──────────────────────────────────────────────────────────
+.egp-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(6, 12, 26, 0.96);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(6px);
+  animation: lbFadeIn 0.2s ease;
+
+  // ── Close ──
+  &__close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1.5px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.08);
+    color: $white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+    transition: background 0.2s, transform 0.2s;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.18);
+      transform: rotate(90deg);
+    }
+  }
+
+  // ── Counter ──
+  &__counter {
+    position: absolute;
+    top: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 13px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.7);
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 5px 14px;
+    border-radius: 100px;
+    backdrop-filter: blur(6px);
+    z-index: 10;
+  }
+
+  // ── Nav Arrows ──
+  &__nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    border: 1.5px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.08);
+    color: $white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+    transition: background 0.2s, transform 0.2s;
+
+    &:hover:not(:disabled) {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    &:disabled {
+      opacity: 0.25;
+      cursor: not-allowed;
+    }
+
+    &--prev {
+      left: 20px;
+
+      &:hover:not(:disabled) {
+        transform: translateY(-50%) translateX(-3px);
+      }
+    }
+
+    &--next {
+      right: 20px;
+
+      &:hover:not(:disabled) {
+        transform: translateY(-50%) translateX(3px);
+      }
+    }
+
+    @media (max-width: 640px) {
+      width: 40px;
+      height: 40px;
+
+      &--prev { left: 10px; }
+      &--next { right: 10px; }
+    }
+  }
+
+  // ── Main Image ──
+  &__image-wrap {
+    position: relative;
+    width: min(88vw, 1100px);
+    height: min(70vh, 700px);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
+    animation: lbImageIn 0.25s ease;
+
+    @media (max-width: 640px) {
+      width: 90vw;
+      height: 55vw;
+      min-height: 220px;
+    }
+  }
+
+  &__image {
+    object-fit: contain !important;
+  }
+
+  // ── Thumbnail Strip ──
+  &__strip {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+    padding: 8px 14px;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 100px;
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    max-width: calc(100vw - 40px);
+    overflow-x: auto;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar { display: none; }
+
+    @media (max-width: 640px) {
+      bottom: 12px;
+      gap: 6px;
+      padding: 6px 10px;
+    }
+  }
+
+  &__thumb {
+    position: relative;
+    flex-shrink: 0;
+    width: 52px;
+    height: 38px;
+    border-radius: 6px;
+    overflow: hidden;
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: border-color 0.2s, opacity 0.2s;
+    opacity: 0.55;
+    background: none;
+    padding: 0;
+
+    &--active {
+      border-color: $primary !important;
+      opacity: 1 !important;
+    }
+
+    &:hover {
+      opacity: 0.85;
+    }
+
+    @media (max-width: 640px) {
+      width: 40px;
+      height: 30px;
+    }
+  }
+
+  &__thumb-img {
+    object-fit: cover;
+  }
+}
+
+// ── Animations ────────────────────────────────────────────────────────
+@keyframes lbFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes lbImageIn {
+  from { opacity: 0; transform: scale(0.96); }
+  to   { opacity: 1; transform: scale(1); }
+}

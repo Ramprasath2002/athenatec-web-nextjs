@@ -5,7 +5,7 @@ import HeroSection from "@/app/components/HeroSection";
 import "./studies.scss";
 
 type Props = {
-  params: Promise<{ slug: string }>;
+  params: { slug: string };
 };
 
 export default async function CaseStudyPage({ params }: Props) {

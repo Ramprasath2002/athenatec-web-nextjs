@@ -5,21 +5,23 @@ const sharp = require("sharp");
 const fse = require("fs-extra");
 
 const IMAGE_LIST_FILE = "image-urls.txt";
-const OUTPUT_DIR = "public/assets/images";
-const MAX_WIDTH = 1200; // Resize width
-const QUALITY = 80; // WebP quality
+const OUTPUT_DIR = "public/assets/images/events/i4is23";
+const MAX_WIDTH = 1200;
+const QUALITY = 80;
 
-async function downloadAndConvert(url) {
+async function downloadAndConvert(url, index) {
   try {
-    const filename = path.basename(url).split("?")[0];
-    const nameWithoutExt = filename.substring(0, filename.lastIndexOf(".")) || filename;
-    const outputFile = path.join(OUTPUT_DIR, `${nameWithoutExt}.webp`);
+    const outputFile = path.join(
+      OUTPUT_DIR,
+      `event-${String(index + 1).padStart(2, "0")}.webp`
+    );
 
-    console.log("Downloading:", url);
+    console.log(`Downloading [${index + 1}]`, url);
 
     const response = await axios({
       url,
       responseType: "arraybuffer",
+      timeout: 15000,
     });
 
     await sharp(response.data)
@@ -28,24 +30,29 @@ async function downloadAndConvert(url) {
       .toFile(outputFile);
 
     console.log("Saved:", outputFile);
+
   } catch (error) {
-    console.error("Failed:", url);
+    console.error("❌ Failed:", url);
+    console.error(error.message);
   }
 }
 
 async function run() {
   await fse.ensureDir(OUTPUT_DIR);
 
-  const urls = fs.readFileSync(IMAGE_LIST_FILE, "utf-8")
+  const urls = fs
+    .readFileSync(IMAGE_LIST_FILE, "utf-8")
     .split("\n")
     .map((u) => u.trim())
     .filter(Boolean);
 
-  for (const url of urls) {
-    await downloadAndConvert(url);
+  console.log(`Total images found: ${urls.length}\n`);
+
+  for (let i = 0; i < urls.length; i++) {
+    await downloadAndConvert(urls[i], i);
   }
 
-  console.log("✅ All images processed.");
+  console.log("\n✅ All images processed.");
 }
 
 run();

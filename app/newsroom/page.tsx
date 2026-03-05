@@ -121,6 +121,7 @@ export default async function NewsRoom() {
 
                     <Link
                       href={`/blog/${post.slug}`}
+                      target="_blank"
                       className="text-[#1c4584] font-medium hover:underline"
                     >
                       Read More →

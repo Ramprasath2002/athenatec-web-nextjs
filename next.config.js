@@ -17,18 +17,18 @@ const nextConfig = {
   async redirects() {
     return [
       {
-        source: "/mes/siemens-opcenter",
-        destination: "/partners/siemens-opcenter",
+        source: "/mes/siemens-opcenter-mes",
+        destination: "/siemens-opcenter-mes",
         permanent: true,
       },
       {
-        source: "/solutions/mes/siemens-opcenter-mes",
-        destination: "/partners/siemens-opcenter",
+        source: "/solutions/mes/siemens-opcenter-mes-mes",
+        destination: "/siemens-opcenter-mes",
         permanent: true,
       },
       {
         source: "/mes/critical-manufacturing",
-        destination: "/partners/critical-manufacturing",
+        destination: "/critical-manufacturing",
         permanent: true,
       },
       {

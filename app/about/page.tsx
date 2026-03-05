@@ -5,26 +5,26 @@ import ScrollReveal from "@/app/components/ScrollReveal";
 import CTASection from "@/app/components/CTASection";
 import HeroSection from "@/app/components/HeroSection";
 import type { Metadata } from "next";
+import Link from "next/link";
 
 export const metadata: Metadata = {
+  title: "About - Best MES Solution Provider | Athenatec",
+
+  description:
+    "Learn about Athenatec, a trusted MES implementation and manufacturing digital transformation partner serving semiconductor and advanced industries",
+  openGraph: {
+    locale: "en_US",
+    type: "website",
+    url: "https://athenatec.com/about/",
+    images: "https://athenatec.com/assets/img/favicon.png",
     title: "About - Best MES Solution Provider | Athenatec",
-
     description:
-        "Learn about Athenatec, a trusted MES implementation and manufacturing digital transformation partner serving semiconductor and advanced industries",
-    openGraph: {
-        locale: "en_US",
-        type: "website",
-        url: "https://athenatec.com/about/",
-        images: "https://athenatec.com/assets/img/favicon.png",
-        title: "About - Best MES Solution Provider | Athenatec",
-        description: "Learn about Athenatec, a trusted MES implementation and manufacturing digital transformation partner serving semiconductor and advanced industries"
-    },
-    alternates: {
-        canonical: "https://athenatec.com/about/",
-    },
+      "Learn about Athenatec, a trusted MES implementation and manufacturing digital transformation partner serving semiconductor and advanced industries",
+  },
+  alternates: {
+    canonical: "https://athenatec.com/about/",
+  },
 };
-
-
 
 export default function AboutPage() {
   const journey = [
@@ -53,34 +53,38 @@ export default function AboutPage() {
         "/assets/images/global-business-adventures-expanding-horizons-with-international-connections-diverse-professional-500x500.webp",
     },
   ];
-
   const services = [
     {
       title: "Semiconductor",
-      image:
-        "/assets/images/Chip-Hand-Cropped.webp",
+      slug: "semiconductor",
+      image: "/assets/images/Chip-Hand-Cropped.webp",
       desc: "Athena offers comprehensive PLM, MES, CMMS, and analytics services for the semiconductor industry, partnering with clients to deliver top solutions.",
     },
     {
       title: "Electronics",
+      slug: "electronics",
       image:
         "/assets/images/neon-motherboard-background-scaled-e1724922449899.webp",
       desc: "Athena's MES Solutions for the Electronics Industry streamline high-volume production, ensuring product quality and high yield through efficient PCB, PCBA, Mechanical Assembly, box-build, and testing processes.",
     },
     {
       title: "MED Devices",
+      slug: "medical-devices",
       image:
         "/assets/images/close-up-medical-orthodontist-equipment-modern-bright-office-scaled-e1724922792409.webp",
       desc: "Athena's proven expertise in medical device manufacturing and rapid implementations helps customers innovate, cut costs, and achieve high-quality products",
     },
     {
       title: "LED / Battery Manufacturing",
+      slug: "led-battery-manufacturing",
+
       image:
         "/assets/images/futuristic-time-machine-scaled-e1724923036586.webp",
       desc: "Athena excels in addressing complex manufacturing challenges with rapid implementation, delivering a robust, integrated, and scalable data-centric enterprise.",
     },
     {
       title: "Solar",
+      slug: "solar",
       image:
         "/assets/images/beautiful-alternative-energy-plant-with-solar-panels-scaled-e1724923416271.webp",
       desc: "Solar manufacturing's complexities, such as Applied Materials and SPC, demand advanced analytics and continuous experimentation. Athena's expertise and passion position us to effectively tackle these challenges.",
@@ -276,10 +280,13 @@ We will continue to work together with Athena to carry out continuous process im
             Factory Analytics, as well as Managed Services tailored to fit
             Customer needs.
           </p>
-
           <div className="services-grid">
-            {services.map((item, i) => (
-              <div key={i} className="service-card">
+            {services.map((item) => (
+              <Link
+                key={item.slug}
+                href={`/siemens-opcenter-mes/${item.slug}`}
+                className="service-card"
+              >
                 <div
                   className="card-top"
                   style={{
@@ -287,19 +294,17 @@ We will continue to work together with Athena to carry out continuous process im
                   }}
                 >
                   <div className="overlay" />
-
                   <div className="card-content">
                     <h3 className="card-title">{item.title}</h3>
                     <p className="card-desc">{item.desc}</p>
+
                     <div className="see-more">
                       <span>See More</span>
-
                       <svg
                         width="18"
                         height="18"
                         viewBox="0 0 24 24"
                         fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
                       >
                         <path
                           d="M5 12H19M19 12L13 6M19 12L13 18"
@@ -312,7 +317,7 @@ We will continue to work together with Athena to carry out continuous process im
                     </div>
                   </div>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>
