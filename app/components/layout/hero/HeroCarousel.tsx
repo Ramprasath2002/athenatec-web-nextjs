@@ -40,7 +40,7 @@ const slides = [
     title: "Siemens Alliance Partner",
     desc: "Experienced in implementing and upgrading Opcenter MES across versions, from Camstar 3.2 to Opcenter 2410, ensuring seamless transitions and optimized performance.",
     cta: "Siemens Alliance Partner",
-    link: "/partners/siemens-opcenter",
+    link: "/siemens-opcenter-mes",
     image: "/assets/images/siemens.webp",
   },
 
@@ -48,7 +48,7 @@ const slides = [
     title: "Critical Manufacturing Premier Implementation Partner",
     desc: "Athena specializes in the implementation, upgrade, and customization of CM MES, along with seamless integrations with PLM, ERP, LIMS, and Camline.",
     cta: "CM",
-    link: "/partners/critical-manufacturing",
+    link: "/critical-manufacturing",
     image: "/assets/images/CMC.webp",
   },
 
@@ -57,7 +57,7 @@ const slides = [
       "Athena Announces Strategic Authorised Reseller Partnership with twinzo",
     desc: "Strengthening smart manufacturing visibility and operational intelligence through Twinzo’s digital twin platform.",
     cta: "twinzo",
-    link: "/partners/critical-manufacturing",
+    link: "/critical-manufacturing",
     image: "/assets/images/twinzobanners.webp",
   },
 
@@ -65,7 +65,7 @@ const slides = [
     title: "Eyelit Implementation Partner",
     desc: "As an official Eyelit Technologies partner, Athena delivers expertise in deploying Eyelit MES and Equipment Connect across semiconductor, solar, LED/laser diode, and medical device industries.",
     cta: "Eyelit",
-    link: "/partners/eyelit",
+    link: "/eyelit",
     image: "/assets/images/eyelitsbanner.webp",
   },
 

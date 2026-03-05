@@ -4,6 +4,7 @@ import "./mes.scss";
 import CTASection from "@/app/components/CTASection";
 import PracticeSection from "@/app/components/PracticeSection";
 import type { Metadata } from "next";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Manufacturing Execution Systems Implementation",
@@ -117,8 +118,9 @@ export default function MESPage() {
               program execution, enabling greater visibility and control at
               every stage of implementation.
             </p>
-
-            <button className="who-button">Explore Us</button>
+            <Link href="/about">
+              <button className="who-button">Explore Us</button>
+            </Link>
           </div>
 
           {/* RIGHT IMAGE */}

@@ -62,6 +62,7 @@ export default function CaseStudies() {
             {caseStudies.map((item) => (
               <Link
                 href={`/case-studies/${item.slug}`}
+                target="_blank"
                 key={item.slug}
                 className="case-card"
               >

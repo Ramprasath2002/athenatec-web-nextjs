@@ -510,10 +510,7 @@
     }
   }
 }
-
-/* ===============================
-   TABLET
-================================= */
+ 
 
 @media (max-width: 1024px) {
   .audience-container {
@@ -538,6 +535,7 @@
 .mes-hero {
   background: #eef3f8;
   padding: clamp(50px, 8vw, 25px) 5%;
+  padding-bottom: 0;
 }
 
 .mes-hero-container {

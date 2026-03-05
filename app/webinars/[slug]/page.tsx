@@ -379,141 +379,141 @@ function MedtechMESLayout() {
               <li>Painfully slow time-to-market</li>
               <li>The constant threat of human error in documentation.</li>
               <li>A compliance tracking nightmare.</li>
-
             </ul>
             <p>....then our recently concluded webinar is for you.</p>
           </div>
         </div>
       </section>
       <section className="mes-discovery-section">
-  <div className="mes-container">
+        <div className="mes-container">
+          {/* TOP INTRO BLOCK */}
+          <div className="discovery-intro">
+            <h2>You Will Discover</h2>
 
-    {/* TOP INTRO BLOCK */}
-    <div className="discovery-intro">
-      <h2>You Will Discover</h2>
+            <div className="intro-grid">
+              <div>
+                <h4>The True Cost of Inefficiency</h4>
+                <p>
+                  Understand how manual processes create delays, increase human
+                  error, and make compliance tracking a nightmare—costing
+                  millions and slowing your time-to-market.
+                </p>
+              </div>
 
-      <div className="intro-grid">
-        <div>
-          <h4>The True Cost of Inefficiency</h4>
-          <p>
-            Understand how manual processes create delays, increase human error,
-            and make compliance tracking a nightmare—costing millions and slowing
-            your time-to-market.
-          </p>
+              <div>
+                <h4>The Industry Reality</h4>
+                <p>
+                  See why MedTech needs speed without compromising compliance,
+                  and how disconnected systems are holding manufacturers back.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* BOTTOM SPLIT BLOCK */}
+          <div className="solution-split">
+            <div className="solution-content">
+              <h2>The Modern Solution: A Path to Digital Control</h2>
+
+              <p>
+                Get a live introduction to the Modern MES Accelerator for
+                MedTech— a plug-and-play solution designed to:
+              </p>
+
+              <ul>
+                <li>1. Automate testing and traceability</li>
+                <li>2. Simplify compliance documentation</li>
+                <li>3. Integrate seamlessly with existing systems</li>
+                <li>4. Accelerate new device introduction</li>
+              </ul>
+            </div>
+
+            <div className="solution-image">
+              <Image
+                src="/assets/images/Medtech-img.webp"
+                alt="Modern MES Solution"
+                width={700}
+                height={550}
+              />
+            </div>
+          </div>
         </div>
+      </section>
+      <section className="webinar-form-split">
+        <div className="split-container">
+          {/* LEFT IMAGE */}
+          <div className="split-image">
+            <Image
+              src="/assets/images/form-img.webp"
+              alt="MedTech"
+              fill
+              className="split-img"
+            />
+          </div>
 
-        <div>
-          <h4>The Industry Reality</h4>
-          <p>
-            See why MedTech needs speed without compromising compliance,
-            and how disconnected systems are holding manufacturers back.
-          </p>
+          {/* RIGHT FORM */}
+          <div className="split-form">
+            <div className="form-inner">
+              <h2>Fill out the form below to view the webinar</h2>
+
+              <form className="webinar-form">
+                <div className="form-group">
+                  <label>Name*</label>
+                  <input type="text" />
+                </div>
+
+                <div className="form-group">
+                  <label>Email*</label>
+                  <input type="email" />
+                </div>
+
+                <div className="form-group">
+                  <label>Company Name*</label>
+                  <input type="text" />
+                </div>
+
+                <div className="form-group">
+                  <label>Job Title*</label>
+                  <input type="text" />
+                </div>
+
+                <div className="form-group">
+                  <label>Industry*</label>
+                  <select>
+                    <option>Semiconductor</option>
+                    <option>Electronics</option>
+                    <option>Medical Devices</option>
+                    <option>Discrete Manufacturing</option>
+                    <option>Solar</option>
+                  </select>
+                </div>
+
+                <div className="form-checkbox">
+                  <input type="checkbox" />
+                  <span>
+                    I would like to receive relevant updates and resources from
+                    Athena Technology Solutions.
+                  </span>
+                </div>
+
+                <p className="form-note">
+                  By registering, you agree to our Privacy Policy and consent to
+                  receive communications about this event and related content.
+                </p>
+
+                <div className="form-checkbox">
+                  <input type="checkbox" />
+                  <span>I agree*</span>
+                </div>
+
+                <button className="submit-btn">
+                  Click here to view the Webinar
+                </button>
+              </form>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
-
-    {/* BOTTOM SPLIT BLOCK */}
-    <div className="solution-split">
-      <div className="solution-content">
-        <h2>The Modern Solution: A Path to Digital Control</h2>
-
-        <p>
-          Get a live introduction to the Modern MES Accelerator for MedTech—
-          a plug-and-play solution designed to:
-        </p>
-
-        <ul>
-          <li>1. Automate testing and traceability</li>
-          <li>2. Simplify compliance documentation</li>
-          <li>3. Integrate seamlessly with existing systems</li>
-          <li>4. Accelerate new device introduction</li>
-        </ul>
-      </div>
-
-      <div className="solution-image">
-        <Image
-          src="/assets/images/Medtech.webp"
-          alt="Modern MES Solution"
-          width={700}
-          height={550}
-        />
-      </div>
-    </div>
-
-  </div>
-</section>
-<section className="webinar-form-split">
-  <div className="split-container">
-
-    {/* LEFT IMAGE */}
-    <div className="split-image">
-      <Image
-        src="/assets/images/form-img.webp"
-        alt="MedTech"
-        fill
-        className="split-img"
-      />
-    </div>
-
-    {/* RIGHT FORM */}
-    <div className="split-form">
-      <div className="form-inner">
-        <h2>Fill out the form below to view the webinar</h2>
-
-        <form className="webinar-form">
-          <div className="form-group">
-            <label>Name*</label>
-            <input type="text" />
-          </div>
-
-          <div className="form-group">
-            <label>Email*</label>
-            <input type="email" />
-          </div>
-
-          <div className="form-group">
-            <label>Company Name*</label>
-            <input type="text" />
-          </div>
-
-          <div className="form-group">
-            <label>Job Title*</label>
-            <input type="text" />
-          </div>
-
-          <div className="form-group">
-            <label>Industry*</label>
-            <select>
-              <option>Medical Devices</option>
-            </select>
-          </div>
-
-          <div className="form-checkbox">
-            <input type="checkbox" />
-            <span>
-              I would like to receive relevant updates and resources from Athena Technology Solutions.
-            </span>
-          </div>
-
-          <p className="form-note">
-            By registering, you agree to our Privacy Policy and consent to receive
-            communications about this event and related content.
-          </p>
-
-          <div className="form-checkbox">
-            <input type="checkbox" />
-            <span>I agree*</span>
-          </div>
-
-          <button className="submit-btn">
-            Click here to view the Webinar
-          </button>
-        </form>
-      </div>
-    </div>
-
-  </div>
-</section>
+      </section>
     </>
   );
 }

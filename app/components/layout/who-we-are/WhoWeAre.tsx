@@ -69,7 +69,7 @@ export default function WhoWeAre() {
                 Electronics, Medical Devices, Discrete Manufacturing, and Clean
                 Energy.
               </p>
-              <Link href="/partners/siemens-opcenter" className="partner-btn">
+              <Link href="/siemens-opcenter-mes" className="partner-btn">
                 Know More
               </Link>
             </div>
@@ -94,7 +94,7 @@ export default function WhoWeAre() {
 
           
 
-               <Link href="/partners/critical-manufacturing" className="partner-btn">
+               <Link href="/critical-manufacturing" className="partner-btn">
                 Know More
               </Link>
             </div>
@@ -117,7 +117,7 @@ export default function WhoWeAre() {
                 devices.
               </p>
 
-              <Link href="/partners/eyelit" className="partner-btn">
+              <Link href="/eyelit" className="partner-btn">
                 Know More
               </Link>
             </div>
@@ -137,7 +137,7 @@ export default function WhoWeAre() {
                 monitoring, and data-driven operations across sectors.
               </p>
 
-             <Link href="/partners/twinzo" className="partner-btn">
+             <Link href="/twinzo" className="partner-btn">
                 Know More
               </Link>
             </div>
