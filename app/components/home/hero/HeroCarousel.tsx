@@ -102,7 +102,7 @@ export default function HeroCarousel() {
   }, [index]);
 
   return (
-    <section className="relative w-full min-h-[55vh] sm:min-h-[60vh] md:min-h-[65vh] lg:min-h-[70vh] flex items-center overflow-hidden">
+    <section className="relative w-full min-h-[55vh] sm:min-h-[60vh] md:min-h-[65vh] lg:min-h-[60vh] flex items-center overflow-hidden">
 
       {/* ── BACKGROUND IMAGES ── */}
       <div className="absolute inset-0">
