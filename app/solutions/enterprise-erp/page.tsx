@@ -130,7 +130,7 @@ export default function EnterpriseErp() {
         buttonText="Contact Us"
         buttonLink="/contact"
         note="We typically respond within 24 hours."
-        backgroundImage="/assets/images/new-req.jpg"
+        backgroundImage="/assets/images/new-req.webp"
       />
     </>
   );

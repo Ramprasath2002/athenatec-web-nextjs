@@ -175,7 +175,7 @@ We will continue to work together with Athena to carry out continuous process im
        <HeroSection
         title="About Us"
         description="Delivering innovative solutions that drive measurable business growth."
-        image="/assets/images/aboutus.png"
+        image="/assets/images/aboutus.webp"
         align="center"
         buttonText="Contact Us"
         buttonLink="/contact"
@@ -382,7 +382,7 @@ We will continue to work together with Athena to carry out continuous process im
         buttonText="Contact Us"
         buttonLink="/contact"
         note="We typically respond within 24 hours."
-        backgroundImage="/assets/images/new-req.jpg"
+        backgroundImage="/assets/images/new-req.webp"
       />
     </div>
   );

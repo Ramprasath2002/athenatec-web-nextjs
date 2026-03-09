@@ -24,7 +24,7 @@ const slides = [
     desc: "Athena is an Industry 4.0 Enterprise Manufacturing Solutions provider, assisting companies and driving their Industry 4.0 roadmap, centered on Digital Transformation.",
     cta: "About Us",
     link: "/about",
-    image: "/assets/images/aboutus.png",
+    image: "/assets/images/aboutus.webp",
   },
   {
     title: "Expertise in MES, PLM, ERP & More",
@@ -112,6 +112,7 @@ export default function HeroCarousel() {
             alt="Hero background"
             fill
             priority={i === 0}
+            loading="lazy"
             className={`object-cover transition-opacity duration-700 ease-in-out ${
               i === index ? "opacity-100 z-10" : "opacity-0 z-0"
             }`}
