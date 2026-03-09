@@ -32,25 +32,22 @@ export default function PracticeSection({
               key={index}
               className="relative bg-[#f7f9fc] p-10 rounded-[10px] overflow-hidden group transition-all duration-300 hover:shadow-xl"
             >
-              {/* Top Hover Bar */}
-              <div className="absolute top-0 left-0 h-1 w-0 bg-[#1f4b8f] transition-all duration-300 group-hover:w-full" />
+               <div className="absolute top-0 left-0 h-1 w-0 bg-[#1f4b8f] transition-all duration-300 group-hover:w-full" />
 
-              {/* Icon */}
-              <div className="w-[70px] h-[70px] rounded-lg flex items-center justify-center mb-6">
+               <div className="w-[70px] h-[70px] rounded-lg flex items-center justify-center mb-6">
                 <img
                   src={card.icon}
                   alt={card.title}
                   className="w-[80px] h-[80px]"
+                  loading="lazy"
                 />
               </div>
 
-              {/* Title */}
-              <h3 className="text-[18px] mb-5 text-[#1f4b8f] font-semibold">
+               <h3 className="text-[18px] mb-5 text-[#1f4b8f] font-semibold">
                 {card.title}
               </h3>
 
-              {/* List */}
-              <ul className="space-y-3">
+               <ul className="space-y-3">
                 {card.items.map((item, i) => (
                   <li
                     key={i}

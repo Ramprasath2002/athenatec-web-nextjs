@@ -118,8 +118,7 @@ export default function ContactForm({
       className="space-y-4"
       noValidate
     >
-      {/* Full Name */}
-      <div>
+       <div>
         <label className="block text-sm font-semibold text-gray-600 mb-1.5 tracking-wide uppercase text-[11px]">
           Full Name <span className="text-red-500">*</span>
         </label>
@@ -132,8 +131,7 @@ export default function ContactForm({
         </InputWrapper>
       </div>
 
-      {/* Email */}
-      <div>
+       <div>
         <label className="block text-sm font-semibold text-gray-600 mb-1.5 tracking-wide uppercase text-[11px]">
           Email Address <span className="text-red-500">*</span>
         </label>
@@ -147,8 +145,7 @@ export default function ContactForm({
         </InputWrapper>
       </div>
 
-      {/* Phone */}
-      <div>
+       <div>
         <label className="block text-sm font-semibold text-gray-600 mb-1.5 tracking-wide uppercase text-[11px]">
           Phone Number <span className="text-red-500">*</span>
         </label>
@@ -162,8 +159,7 @@ export default function ContactForm({
         </InputWrapper>
       </div>
 
-      {/* Inquiry Type Dropdown */}
-      <div>
+       <div>
         <label className="block text-sm font-semibold text-gray-600 mb-1.5 tracking-wide uppercase text-[11px]">
           Inquiry Type <span className="text-red-500">*</span>
         </label>
@@ -218,8 +214,7 @@ export default function ContactForm({
         )}
       </div>
 
-      {/* Message */}
-      <div>
+       <div>
         <label className="block text-sm font-semibold text-gray-600 mb-1.5 tracking-wide uppercase text-[11px]">
           Message <span className="text-red-500">*</span>
         </label>
@@ -233,16 +228,14 @@ export default function ContactForm({
         </InputWrapper>
       </div>
 
-      {/* Global error */}
-      {submitError && (
+       {submitError && (
         <div className="flex items-center gap-2 p-3 bg-red-50 border border-red-200 rounded-xl text-sm text-red-600">
           <AlertCircle size={16} className="flex-shrink-0" />
           {submitError}
         </div>
       )}
 
-      {/* Submit Button */}
-      <button
+       <button
         type="submit"
         disabled={isSubmitting}
         className={`

@@ -6,15 +6,12 @@ import { logos } from "@/app/components/ClientLogos";
 export default function HeroSection() {
   return (
     <>
-      {/* HERO + STATS WRAPPER */}
-   <section className="relative flex flex-col overflow-hidden pt-[62px]">
-        {/* HERO */}
-        <div className="relative flex-1">
+    <section className="relative flex flex-col overflow-hidden pt-[62px]">
+         <div className="relative flex-1">
           <HeroCarousel />
         </div>
 
-        {/* STATS */}
-        <div className="bg-[#F5FAFD] py-5">
+         <div className="bg-[#F5FAFD] py-5">
           <div className="container mx-auto px-6">
             <h2 className="text-center text-xl md:text-2xl font-semibold mb-8 text-black">
               A Decade of Delivering Manufacturing Excellence
@@ -45,8 +42,7 @@ export default function HeroSection() {
         </div>
       </section>
 
-      {/* LOGO MARQUEE */}
-      <section className="relative bg-white py-16 overflow-hidden">
+       <section className="relative bg-white py-16 overflow-hidden">
         <div className="mx-auto px-6 mb-8">
           <h3 className="text-center text-lg text-gray-600 font-bold">
             Trusted by Global Manufacturing Leaders
@@ -61,6 +57,7 @@ export default function HeroSection() {
                 src={logo}
                 alt="Client logo"
                 className="h-22 w-auto object-contain opacity-80"
+                loading="lazy"
               />
             ))}
           </div>

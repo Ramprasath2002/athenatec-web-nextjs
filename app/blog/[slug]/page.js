@@ -36,8 +36,7 @@ export default async function PostPage({ params }) {
 
   return (
     <div className="post-wrapper">
-      {/* ── Hero ─────────────────────────────────────── */}
-      <header className="post-hero">
+       <header className="post-hero">
         {heroImage && (
           <div className="post-hero__bg">
             <Image
@@ -79,15 +78,14 @@ export default async function PostPage({ params }) {
         </div>
       </header>
 
-      {/* ── Article ──────────────────────────────────── */}
-      <div className="post-layout">
+       <div className="post-layout">
         <article className="post-article">
           <div
             className="post-content"
             dangerouslySetInnerHTML={{ __html: post.content.rendered }}
           />
 
-          {/* Prev / Next Nav */}
+         
           <nav className="post-nav">
             {prevPost && (
               <Link href={`/blog/${prevPost.slug}`} className="post-nav__item post-nav__item--prev">
@@ -121,8 +119,7 @@ export default async function PostPage({ params }) {
         </article>
       </div>
 
-      {/* ── Related Posts ────────────────────────────── */}
-      {relatedPosts.length > 0 && (
+       {relatedPosts.length > 0 && (
         <section className="related-section">
           <div className="related-header">
             <span className="related-eyebrow">

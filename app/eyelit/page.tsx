@@ -91,7 +91,6 @@ export default function EyelitPage() {
       <section className="expertise-section">
         <div className="container">
           <div className="expertise-grid">
-            {/* Left Content */}
             <div className="expertise-content">
               <h2 className="expertise-title">Our Expertise</h2>
 
@@ -123,9 +122,12 @@ export default function EyelitPage() {
               </ul>
             </div>
 
-            {/* Right Image */}
             <div className="expertise-image">
-              <img src="/assets/images/1722014978283.webp" alt="Expertise" />
+              <img
+                src="/assets/images/1722014978283.webp"
+                alt="Expertise"
+                loading="lazy"
+              />
             </div>
           </div>
         </div>
@@ -143,7 +145,11 @@ export default function EyelitPage() {
           <div className="features-grid">
             <div className="feature-card">
               <div className="feature-head">
-                <img src="/assets/icons/dashboard.svg" alt="Real Time" />
+                <img
+                  src="/assets/icons/dashboard.svg"
+                  alt="Real Time"
+                  loading="lazy"
+                />
                 <h3>Real-Time Data Visibility</h3>
               </div>
               <p>
@@ -155,7 +161,11 @@ export default function EyelitPage() {
 
             <div className="feature-card">
               <div className="feature-head">
-                <img src="/assets/icons/scheduling.svg" alt="Planning" />
+                <img
+                  src="/assets/icons/scheduling.svg"
+                  alt="Planning"
+                  loading="lazy"
+                />
                 <h3>Advanced Planning and Scheduling (APS)</h3>
               </div>
               <p>
@@ -170,6 +180,7 @@ export default function EyelitPage() {
                 <img
                   src="/assets/icons/data-visualization.svg"
                   alt="Planning"
+                  loading="lazy"
                 />
                 <h3>Production Process Monitoring</h3>
               </div>
@@ -185,6 +196,7 @@ export default function EyelitPage() {
                 <img
                   src="/assets/icons/regulatory-compliance.svg"
                   alt="Planning"
+                  loading="lazy"
                 />
                 <h3>Regulatory Compliance</h3>
               </div>
@@ -200,15 +212,14 @@ export default function EyelitPage() {
       <section className="equipment-connect">
         <div className="container">
           <div className="equipment-grid">
-            {/* Left Image */}
             <div className="equipment-image">
               <img
                 src="/assets/images/Eyelit-Equipment.jpg"
                 alt="Equipment Connect"
+                loading="lazy"
               />
             </div>
 
-            {/* Right Content */}
             <div className="equipment-content">
               <h2>
                 Eyelit Equipment Connect:
@@ -223,7 +234,7 @@ export default function EyelitPage() {
 
               <div className="benefits-list">
                 <div className="benefit-item">
-                  <img src="/assets/icons/check-mark.svg" alt="icon" />
+                  <img src="/assets/icons/check-mark.svg" alt="icon" loading="lazy" />
                   <div>
                     <h4>Real-Time Monitoring and Diagnostics</h4>
                     <p>
@@ -235,7 +246,7 @@ export default function EyelitPage() {
                 </div>
 
                 <div className="benefit-item">
-                  <img src="/assets/icons/check-mark.svg" alt="icon" />
+                  <img src="/assets/icons/check-mark.svg" alt="icon" loading="lazy" />
                   <div>
                     <h4>Predictive Maintenance</h4>
                     <p>
@@ -247,7 +258,7 @@ export default function EyelitPage() {
                 </div>
 
                 <div className="benefit-item">
-                  <img src="/assets/icons/check-mark.svg" alt="icon" />
+                  <img src="/assets/icons/check-mark.svg" alt="icon" loading="lazy" />
                   <div>
                     <h4>Enhanced Operational Efficiency</h4>
                     <p>

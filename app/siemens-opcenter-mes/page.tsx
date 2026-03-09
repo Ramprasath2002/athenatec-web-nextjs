@@ -322,8 +322,7 @@ export default function SiemensOpcenter() {
         buttonLink="/contact"
       />
 
-      {/* DESCRIPTION SECTION */}
-      <section className="soc-description">
+       <section className="soc-description">
         <div className="soc-description__card">
           <p>
             Siemens Opcenter (formally known as Siemens Camstar) is a
@@ -379,8 +378,7 @@ export default function SiemensOpcenter() {
           </div>
         </div>
       </section>
-      {/* EXPERTISE SECTION */}
-      <section className="soc-expertise">
+       <section className="soc-expertise">
         <div className="soc-expertise__container">
           <div className="soc-expertise__content">
             <h2>Athena Opcenter Siemens Expertise</h2>
@@ -397,19 +395,18 @@ export default function SiemensOpcenter() {
               Our team possesses specialized skills in Designer, Portal Studio,
               APS, and Mendix.
             </p>
-            {/*  */}
-          </div>
+           </div>
 
           <div className="soc-expertise__timeline">
             <img
               src="/assets/images/Seimens-Roadmap.png"
               alt="Opcenter Timeline"
+              loading="lazy"
             />
           </div>
         </div>
       </section>
-      {/* TEAM SECTION */}
-      <section className="soc-team">
+       <section className="soc-team">
         <div className="soc-team__container">
           <h2 className="soc-team__title">
             Athena Opcenter Siemens Expertise Team
@@ -419,13 +416,13 @@ export default function SiemensOpcenter() {
             <img
               src="/assets/images/siemens-img.webp"
               alt="Athena Opcenter Team"
+              loading="lazy"
             />
           </div>
         </div>
       </section>
 
-      {/* FACTORY OVERVIEW SECTION */}
-      <section className="soc-factory">
+       <section className="soc-factory">
         <div className="soc-factory__container">
           <h2 className="soc-factory__title">
             Factory System Overview and Integration
@@ -484,8 +481,7 @@ export default function SiemensOpcenter() {
       />
       <section className="siemens-analytics">
         <div className="container">
-          {/* Top Process Flow Image */}
-          <div className="analytics-diagram">
+             <div className="analytics-diagram">
             <Image
               src="/assets/images/07-4.webp"
               alt="Manufacturing Process Flow"
@@ -495,8 +491,7 @@ export default function SiemensOpcenter() {
             />
           </div>
 
-          {/* Title */}
-          <div className="analytics-content">
+           <div className="analytics-content">
             <h2 className="analytics-title">Analytics</h2>
 
             <p>
@@ -519,11 +514,9 @@ export default function SiemensOpcenter() {
             </p>
           </div>
 
-          {/* Title */}
-          <h2 className="analytics-title">Smart Factory Analytics</h2>
+           <h2 className="analytics-title">Smart Factory Analytics</h2>
 
-          {/* Top Infographic */}
-          <div className="analytics-block">
+           <div className="analytics-block">
             <Image
               src="/assets/images/10-1.webp"
               alt="Smart Factory Analytics"
@@ -532,8 +525,7 @@ export default function SiemensOpcenter() {
             />
           </div>
 
-          {/* DMAIC Section */}
-          <div className="analytics-block dmaic-section">
+           <div className="analytics-block dmaic-section">
             <Image
               src="/assets/images/04-6.webp"
               alt="DMAIC Process"
@@ -577,6 +569,7 @@ export default function SiemensOpcenter() {
                         src={item.image}
                         alt={item.company}
                         className="testimonial-logo"
+                        loading="lazy"
                       />
                     )}
                   </div>

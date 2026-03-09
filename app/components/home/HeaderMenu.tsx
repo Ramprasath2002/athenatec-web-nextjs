@@ -15,7 +15,7 @@ const partnerLinks = [
   { label: "Siemens Opcenter", href: "/siemens-opcenter-mes" },
   { label: "Critical Manufacturing", href: "/critical-manufacturing" },
   { label: "Eyelit", href: "/eyelit" },
-  { label: "Twinzo", href: "/twinzo" },
+  { label: "Twinzo", href: "/blog/authorised-reseller-partnership-with-twinzo" },
 ];
 
 const mesSolutionLinks = [
@@ -75,8 +75,7 @@ export default function HeaderMenu({ variant = "desktop", onNavigate }: Props) {
     return (
       <div className="flex flex-col w-full">
 
-        {/* PARTNERS */}
-        <MobileAccordion
+         <MobileAccordion
           label="Partners"
           isOpen={open === "partners"}
           onToggle={() => toggle("partners")}
@@ -88,14 +87,12 @@ export default function HeaderMenu({ variant = "desktop", onNavigate }: Props) {
           ))}
         </MobileAccordion>
 
-        {/* SOLUTIONS */}
-        <MobileAccordion
+         <MobileAccordion
           label="Solutions & Services"
           isOpen={open === "solutions"}
           onToggle={() => toggle("solutions")}
         >
-          {/* MES nested */}
-          <MobileAccordion
+           <MobileAccordion
             label="MES Solutions"
             isOpen={openMES}
             onToggle={() => setOpenMES((v) => !v)}
@@ -115,8 +112,7 @@ export default function HeaderMenu({ variant = "desktop", onNavigate }: Props) {
           ))}
         </MobileAccordion>
 
-        {/* RESOURCES */}
-        <MobileAccordion
+         <MobileAccordion
           label="Resources"
           isOpen={open === "resources"}
           onToggle={() => toggle("resources")}
@@ -131,11 +127,9 @@ export default function HeaderMenu({ variant = "desktop", onNavigate }: Props) {
     );
   }
 
-  // ═══════════ DESKTOP ═══════════
-  return (
+   return (
     <>
-      {/* PARTNERS */}
-      <DesktopDropdownWrapper
+       <DesktopDropdownWrapper
         label="Partners"
         isOpen={open === "partners"}
         onEnter={() => openMenu("partners")}
@@ -151,8 +145,7 @@ export default function HeaderMenu({ variant = "desktop", onNavigate }: Props) {
         </DropdownPanel>
       </DesktopDropdownWrapper>
 
-      {/* SOLUTIONS */}
-      <DesktopDropdownWrapper
+       <DesktopDropdownWrapper
         label="Solutions & Services"
         isOpen={open === "solutions"}
         onEnter={() => openMenu("solutions")}
@@ -163,8 +156,7 @@ export default function HeaderMenu({ variant = "desktop", onNavigate }: Props) {
           onMouseEnter={cancelClose}
           onMouseLeave={scheduleClose}
         >
-          {/* MES flyout row */}
-          <div
+           <div
             className="relative"
             onMouseEnter={() => setOpenMES(true)}
             onMouseLeave={() => setOpenMES(false)}
@@ -185,8 +177,7 @@ export default function HeaderMenu({ variant = "desktop", onNavigate }: Props) {
               />
             </Link>
 
-            {/* Flyout */}
-            {openMES && (
+             {openMES && (
               <div
                 className="absolute left-full top-0 z-10 w-56 rounded-xl bg-white
                             shadow-[0_8px_30px_rgba(0,0,0,0.12)] border border-gray-100
@@ -202,8 +193,7 @@ export default function HeaderMenu({ variant = "desktop", onNavigate }: Props) {
             )}
           </div>
 
-          {/* Divider */}
-          <div className="my-1.5 h-px bg-gray-100 mx-2" />
+           <div className="my-1.5 h-px bg-gray-100 mx-2" />
 
           {otherSolutionLinks.map((l) => (
             <Link key={l.href} href={l.href} className={itemCls}>
@@ -214,8 +204,7 @@ export default function HeaderMenu({ variant = "desktop", onNavigate }: Props) {
         </DropdownPanel>
       </DesktopDropdownWrapper>
 
-      {/* RESOURCES */}
-      <DesktopDropdownWrapper
+       <DesktopDropdownWrapper
         label="Resources"
         isOpen={open === "resources"}
         onEnter={() => openMenu("resources")}
@@ -231,8 +220,7 @@ export default function HeaderMenu({ variant = "desktop", onNavigate }: Props) {
         </DropdownPanel>
       </DesktopDropdownWrapper>
 
-      {/* Keyframe for panel fade-in */}
-      <style>{`
+       <style>{`
         @keyframes fadeIn {
           from { opacity: 0; transform: translateY(6px); }
           to   { opacity: 1; transform: translateY(0); }

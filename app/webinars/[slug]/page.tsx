@@ -149,8 +149,7 @@ function WebinarForm({ webinarTitle = "MedTech MES Accelerator" }: { webinarTitl
   return (
     <form className="wf-form" onSubmit={handleSubmit} noValidate>
 
-      {/* Full Name */}
-      <div className={`wf-field ${errors.name ? "wf-field--error" : ""}`}>
+       <div className={`wf-field ${errors.name ? "wf-field--error" : ""}`}>
         <label htmlFor="wf-name">
           Full Name <span className="wf-required">*</span>
         </label>
@@ -164,8 +163,7 @@ function WebinarForm({ webinarTitle = "MedTech MES Accelerator" }: { webinarTitl
         {errors.name && <span className="wf-error-msg">{errors.name}</span>}
       </div>
 
-      {/* Work Email */}
-      <div className={`wf-field ${errors.email ? "wf-field--error" : ""}`}>
+       <div className={`wf-field ${errors.email ? "wf-field--error" : ""}`}>
         <label htmlFor="wf-email">
           Work Email <span className="wf-required">*</span>
         </label>
@@ -179,8 +177,7 @@ function WebinarForm({ webinarTitle = "MedTech MES Accelerator" }: { webinarTitl
         {errors.email && <span className="wf-error-msg">{errors.email}</span>}
       </div>
 
-      {/* Company + Job Title — two columns */}
-      <div className="wf-row">
+       <div className="wf-row">
         <div className={`wf-field ${errors.companyName ? "wf-field--error" : ""}`}>
           <label htmlFor="wf-company">
             Company <span className="wf-required">*</span>
@@ -210,8 +207,7 @@ function WebinarForm({ webinarTitle = "MedTech MES Accelerator" }: { webinarTitl
         </div>
       </div>
 
-      {/* Industry */}
-      <div className={`wf-field ${errors.industry ? "wf-field--error" : ""}`}>
+       <div className={`wf-field ${errors.industry ? "wf-field--error" : ""}`}>
         <label htmlFor="wf-industry">
           Industry <span className="wf-required">*</span>
         </label>
@@ -232,8 +228,7 @@ function WebinarForm({ webinarTitle = "MedTech MES Accelerator" }: { webinarTitl
         {errors.industry && <span className="wf-error-msg">{errors.industry}</span>}
       </div>
 
-      {/* Updates opt-in */}
-      <label className="wf-checkbox">
+       <label className="wf-checkbox">
         <input type="checkbox" name="receiveUpdates"
           checked={formData.receiveUpdates} onChange={handleChange} />
         <span className="wf-checkbox__box" />
@@ -242,14 +237,12 @@ function WebinarForm({ webinarTitle = "MedTech MES Accelerator" }: { webinarTitl
         </span>
       </label>
 
-      {/* Privacy note */}
-      <p className="wf-privacy-note">
+       <p className="wf-privacy-note">
         By registering, you agree to our Privacy Policy and consent to receive
         communications about this event and related content.
       </p>
 
-      {/* Agree */}
-      <label className={`wf-checkbox ${errors.agreePolicy ? "wf-checkbox--error" : ""}`}>
+       <label className={`wf-checkbox ${errors.agreePolicy ? "wf-checkbox--error" : ""}`}>
         <input type="checkbox" name="agreePolicy"
           checked={formData.agreePolicy} onChange={handleChange} />
         <span className="wf-checkbox__box" />
@@ -259,8 +252,7 @@ function WebinarForm({ webinarTitle = "MedTech MES Accelerator" }: { webinarTitl
       </label>
       {errors.agreePolicy && <span className="wf-error-msg">{errors.agreePolicy}</span>}
 
-      {/* Global error banner */}
-      {submitError && (
+       {submitError && (
         <div className="wf-submit-error">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
             <circle cx="12" cy="12" r="10" />
@@ -271,8 +263,7 @@ function WebinarForm({ webinarTitle = "MedTech MES Accelerator" }: { webinarTitl
         </div>
       )}
 
-      {/* Submit button */}
-      <button type="submit" className="wf-submit" disabled={isSubmitting}>
+       <button type="submit" className="wf-submit" disabled={isSubmitting}>
         {isSubmitting ? (
           <><span className="wf-spinner" /> Submitting…</>
         ) : (
@@ -553,16 +544,13 @@ function MedtechMESLayout() {
         </div>
       </section>
 
-      {/* ── Form Section ──────────────────────────────────────────────────── */}
-      <section className="webinar-form-split">
+       <section className="webinar-form-split">
         <div className="split-container">
-          {/* Left image */}
-          <div className="split-image">
+           <div className="split-image">
             <Image src="/assets/images/form-img.webp" alt="MedTech" fill className="split-img" />
           </div>
 
-          {/* Right form panel */}
-          <div className="split-form">
+           <div className="split-form">
             <div className="form-inner">
               <div className="form-badge">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">

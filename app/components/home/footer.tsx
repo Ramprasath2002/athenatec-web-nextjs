@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { Facebook, Instagram, Linkedin, Youtube } from "lucide-react";
 
-// ── NAV DATA ──────────────────────────────────────────────────────────────
 
 const mesSolutions = [
   { name: "Siemens Opcenter MES", href: "/siemens-opcenter-mes" },
@@ -20,7 +19,7 @@ const partners = [
   { name: "Siemens", href: "/siemens-opcenter-mes" },
   { name: "Critical Manufacturing", href: "/critical-manufacturing" },
   { name: "Eyelit Technologies", href: "/eyelit" },
-  { name: "Twinzo", href: "/twinzo" },
+  { name: "Twinzo", href: "/blog/authorised-reseller-partnership-with-twinzo" },
 ];
 
 const resources = [
@@ -30,7 +29,6 @@ const resources = [
   { name: "Contact Us", href: "/contact" },
 ];
 
-// X (Twitter) custom SVG — lucide doesn't include the new X logo
 const XIcon = () => (
   <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
     <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.737-8.835L2.2 2.25h6.963l4.259 5.635 4.822-5.635Zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
@@ -40,43 +38,41 @@ const XIcon = () => (
 const socials = [
   {
     label: "Facebook",
-    href: "#",
+    href: "https://www.facebook.com/athenatecindia/",
     icon: <Facebook size={16} strokeWidth={1.8} />,
     style: "hover:bg-[#1877F2] hover:border-[#1877F2] hover:shadow-[0_0_18px_rgba(24,119,242,0.5)]",
   },
   {
     label: "Instagram",
-    href: "#",
+    href: "https://www.instagram.com/athenatecofficial?igsh=MTN6eXFwYmdhNjdvNw==",
     icon: <Instagram size={16} strokeWidth={1.8} />,
     // Instagram uses a gradient — we fake it with a pseudo-element trick via inline style
     style: "hover:border-transparent hover:shadow-[0_0_18px_rgba(225,48,108,0.5)] instagram-hover",
   },
   {
     label: "X",
-    href: "#",
+    href: "https://x.com/athena_tec",
     icon: <XIcon />,
     style: "hover:bg-[#0f0f0f] hover:border-[#0f0f0f] hover:shadow-[0_0_18px_rgba(0,0,0,0.5)]",
   },
   {
     label: "LinkedIn",
-    href: "#",
+    href: "https://www.linkedin.com/company/athena-technology-solutions/",
     icon: <Linkedin size={16} strokeWidth={1.8} />,
     style: "hover:bg-[#0A66C2] hover:border-[#0A66C2] hover:shadow-[0_0_18px_rgba(10,102,194,0.5)]",
   },
   {
     label: "YouTube",
-    href: "#",
+    href: "https://www.youtube.com/@AthenaTechnologySolutions/",
     icon: <Youtube size={16} strokeWidth={1.8} />,
     style: "hover:bg-[#FF0000] hover:border-[#FF0000] hover:shadow-[0_0_18px_rgba(255,0,0,0.5)]",
   },
 ];
 
-// ── FOOTER ────────────────────────────────────────────────────────────────
 export default function Footer() {
   return (
     <footer className="bg-[#1c4584] text-white">
 
-      {/* Instagram gradient applied via a global <style> tag to avoid Tailwind purge issues */}
       <style>{`
         .instagram-hover:hover {
           background: linear-gradient(135deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
@@ -85,15 +81,14 @@ export default function Footer() {
 
       <div className="mx-auto max-w-7xl px-6 py-16">
 
-        {/* ── TOP GRID ── */}
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-6">
 
-          {/* BRAND — spans 2 cols on lg */}
           <div className="space-y-6 lg:col-span-2">
             <img
               src="/assets/logo/footer-logo.png"
               alt="Athena"
               className="h-12 w-auto"
+              loading="lazy"
             />
             <p className="max-w-sm text-sm leading-relaxed text-[#c7d4f1]">
               Athena Technology Solutions delivers enterprise-grade digital
@@ -101,8 +96,7 @@ export default function Footer() {
               ecosystems.
             </p>
 
-            {/* Address */}
-            <div className="space-y-1 text-sm">
+             <div className="space-y-1 text-sm">
               <p className="font-semibold text-white mb-3">United States</p>
               <p className="font-medium text-white">Headquarters:</p>
               <Link
@@ -115,8 +109,7 @@ export default function Footer() {
               </Link>
             </div>
 
-            {/* ── SOCIAL ICONS ── */}
-            <div className="flex flex-wrap gap-2.5">
+             <div className="flex flex-wrap gap-2.5">
               {socials.map((s) => (
                 <Link
                   key={s.label}
@@ -131,11 +124,9 @@ export default function Footer() {
                     s.style,
                   ].join(" ")}
                 >
-                  {/* Icon */}
-                  {s.icon}
+                   {s.icon}
 
-                  {/* Tooltip */}
-                  <span
+                   <span
                     className={[
                       "pointer-events-none absolute -top-9 left-1/2 -translate-x-1/2",
                       "whitespace-nowrap rounded-md bg-[#071428] px-2.5 py-1",
@@ -144,16 +135,14 @@ export default function Footer() {
                     ].join(" ")}
                   >
                     {s.label}
-                    {/* Caret */}
-                    <span className="absolute left-1/2 top-full -translate-x-1/2 border-4 border-transparent border-t-[#071428]" />
+                     <span className="absolute left-1/2 top-full -translate-x-1/2 border-4 border-transparent border-t-[#071428]" />
                   </span>
                 </Link>
               ))}
             </div>
           </div>
 
-          {/* MES SOLUTIONS */}
-          <div className="space-y-4 text-sm">
+           <div className="space-y-4 text-sm">
             <h4 className="border-b border-[#5172b0]/40 pb-2 text-base font-semibold text-white">
               MES Solutions
             </h4>
@@ -183,8 +172,7 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* PARTNERS */}
-          <div className="space-y-4 text-sm">
+           <div className="space-y-4 text-sm">
             <h4 className="border-b border-[#5172b0]/40 pb-2 text-base font-semibold text-white">
               Partners
             </h4>
@@ -199,8 +187,7 @@ export default function Footer() {
             ))}
           </div>
 
-          {/* COMPANY */}
-          <div className="space-y-4 text-sm">
+           <div className="space-y-4 text-sm">
             <h4 className="border-b border-[#5172b0]/40 pb-2 text-base font-semibold text-white">
               Company
             </h4>
@@ -215,8 +202,7 @@ export default function Footer() {
             ))}
           </div>
 
-          {/* CONTACT */}
-          <div className="space-y-6 text-sm">
+           <div className="space-y-6 text-sm">
             <h4 className="border-b border-[#5172b0]/40 pb-2 text-base font-semibold text-white">
               Get In Touch
             </h4>
@@ -250,8 +236,7 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* ── BOTTOM BAR ── */}
-        <div className="mt-14 flex flex-col gap-4 border-t border-[#5172b0]/40 pt-6 text-sm sm:flex-row sm:items-center sm:justify-between">
+         <div className="mt-14 flex flex-col gap-4 border-t border-[#5172b0]/40 pt-6 text-sm sm:flex-row sm:items-center sm:justify-between">
           <p className="text-[#c7d4f1]">
             © 2026 Athena Technologies. All rights reserved.
           </p>

@@ -146,24 +146,20 @@ export default function CaseStudy({ study }: Props) {
 
   return (
     <section className="case-study">
-      {/* Background decoration */}
-      <div className="cs-bg-orb cs-bg-orb--1" />
+       <div className="cs-bg-orb cs-bg-orb--1" />
       <div className="cs-bg-orb cs-bg-orb--2" />
 
       <div className="case-container">
-        {/* Intro */}
-        <div className="case-intro">
+         <div className="case-intro">
           <h2>{study.fullTitle}</h2>
           <p>{study.description}</p>
         </div>
 
-        {/* Download Card */}
-        <div className="download-wrapper">
+         <div className="download-wrapper">
           <div className="download-card">
-            {/* Left: Image Panel */}
-            <div className="download-image">
+             <div className="download-image">
               <img
-                src={study.image || "/assets/images/download-preview.jpg"}
+                src={study.image || "/assets/images/download-preview.jpg"} loading="lazy"
                 alt={study.fullTitle}
               />
               <div className="download-image__overlay">
@@ -177,8 +173,7 @@ export default function CaseStudy({ study }: Props) {
               </div>
             </div>
 
-            {/* Right: Form Panel */}
-            <div className="download-content">
+             <div className="download-content">
               {submitted ? (
                 <div className="success-state">
                   <div className="success-icon">
@@ -204,8 +199,7 @@ export default function CaseStudy({ study }: Props) {
                   </div>
 
                   <form className="download-form" onSubmit={handleSubmit} noValidate>
-                    {/* Full Name */}
-                    <div className={`form-field ${errors.fullName ? "form-field--error" : formData.fullName ? "form-field--valid" : ""}`}>
+                     <div className={`form-field ${errors.fullName ? "form-field--error" : formData.fullName ? "form-field--valid" : ""}`}>
                       <label htmlFor="fullName">Full Name <span className="required">*</span></label>
                       <div className="input-wrapper">
                         <input
@@ -224,8 +218,7 @@ export default function CaseStudy({ study }: Props) {
                       {errors.fullName && <p className="error-msg">{errors.fullName}</p>}
                     </div>
 
-                    {/* Email */}
-                    <div className={`form-field ${errors.email ? "form-field--error" : formData.email && !errors.email ? "form-field--valid" : ""}`}>
+                     <div className={`form-field ${errors.email ? "form-field--error" : formData.email && !errors.email ? "form-field--valid" : ""}`}>
                       <label htmlFor="email">Work Email <span className="required">*</span></label>
                       <div className="input-wrapper">
                         <input
@@ -244,8 +237,7 @@ export default function CaseStudy({ study }: Props) {
                       {errors.email && <p className="error-msg">{errors.email}</p>}
                     </div>
 
-                    {/* Company */}
-                    <div className={`form-field ${errors.companyName ? "form-field--error" : formData.companyName ? "form-field--valid" : ""}`}>
+                     <div className={`form-field ${errors.companyName ? "form-field--error" : formData.companyName ? "form-field--valid" : ""}`}>
                       <label htmlFor="companyName">Company Name <span className="required">*</span></label>
                       <div className="input-wrapper">
                         <input
@@ -264,8 +256,7 @@ export default function CaseStudy({ study }: Props) {
                       {errors.companyName && <p className="error-msg">{errors.companyName}</p>}
                     </div>
 
-                    {/* Two-column row: Industry + Country */}
-                    <div className="form-row-2col">
+                     <div className="form-row-2col">
                       <div className={`form-field ${errors.industry ? "form-field--error" : formData.industry ? "form-field--valid" : ""}`}>
                         <label htmlFor="industry">Industry <span className="required">*</span></label>
                         <div className="input-wrapper select-wrapper">
@@ -305,8 +296,7 @@ export default function CaseStudy({ study }: Props) {
                       </div>
                     </div>
 
-                    {/* Checkbox */}
-                    <div className={`form-checkbox ${errors.agree ? "form-checkbox--error" : ""}`}>
+                     <div className={`form-checkbox ${errors.agree ? "form-checkbox--error" : ""}`}>
                       <label className="checkbox-label">
                         <input
                           type="checkbox"
@@ -322,8 +312,7 @@ export default function CaseStudy({ study }: Props) {
                       {errors.agree && <p className="error-msg">{errors.agree}</p>}
                     </div>
 
-                    {/* API-level error message */}
-                    {submitError && (
+                     {submitError && (
                       <p className="error-msg" style={{ fontSize: "13px", padding: "10px 12px", background: "#fff5f5", borderRadius: "8px" }}>
                         {submitError}
                       </p>

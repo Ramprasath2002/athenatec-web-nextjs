@@ -18,8 +18,7 @@ export default async function JobDetailsPage({
   return (
     <div className="job-details-page">
       <div className="container job-layout">
-        {/* LEFT SIDE - JOB DETAILS */}
-        <div className="job-info">
+         <div className="job-info">
           <h1>{job.title}</h1>
 
           <div className="meta">

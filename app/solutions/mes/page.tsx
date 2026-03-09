@@ -103,8 +103,7 @@ export default function MESPage() {
       />
       <section className="who-we-are">
         <div className="container">
-          {/* LEFT CONTENT */}
-          <div className="who-content">
+           <div className="who-content">
             <h2 className="who-title">
               Seamless Support from Prototyping to Delivery
             </h2>
@@ -123,8 +122,7 @@ export default function MESPage() {
             </Link>
           </div>
 
-          {/* RIGHT IMAGE */}
-          <div className="who-image">
+           <div className="who-image">
             <Image
               src="/assets/images/Prototyping-to-Delivery.jpg"
               alt="Prototyping to Delivery"

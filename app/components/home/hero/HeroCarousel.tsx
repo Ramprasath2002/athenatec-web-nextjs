@@ -17,7 +17,7 @@ const slides = [
     desc: "Leveraging deep expertise to enhance partnerships and drive long-term manufacturing success.",
     cta: "Connect Us",
     link: "/contact",
-    image: "/assets/images/DME.png",
+    image: "/assets/images/DME.webp",
   },
   {
     title: "About Us",
@@ -31,14 +31,14 @@ const slides = [
     desc: "Specialized in MES, PLM, ERP, CMMS, and smart factory analytics.",
     cta: "MES, PLM & More",
     link: "/solutions/mes",
-    image: "/assets/images/mlsandpls.png",
+    image: "/assets/images/mlsandpls.webp",
   },
   {
     title: "Siemens Alliance Partner",
     desc: "Experienced in implementing and upgrading Opcenter MES across versions, from Camstar 3.2 to Opcenter 2410, ensuring seamless transitions and optimized performance.",
     cta: "Siemens Alliance Partner",
     link: "/siemens-opcenter-mes",
-    image: "/assets/images/siemens1.webp",
+    image: "/assets/images/siemens.webp",
   },
   {
     title: "Critical Manufacturing Premier Implementation Partner",
@@ -104,8 +104,7 @@ export default function HeroCarousel() {
   return (
     <section className="relative w-full min-h-[55vh] sm:min-h-[60vh] md:min-h-[65vh] lg:min-h-[60vh] flex items-center overflow-hidden">
 
-      {/* ── BACKGROUND IMAGES ── */}
-      <div className="absolute inset-0">
+       <div className="absolute inset-0">
         {slides.map((slide, i) => (
           <Image
             key={i}
@@ -118,12 +117,10 @@ export default function HeroCarousel() {
             }`}
           />
         ))}
-        {/* Persistent dark overlay so content + buttons always readable */}
-        <div className="absolute inset-0 z-20 via-black/30 to-transparent" />
+         <div className="absolute inset-0 z-20 via-black/30 to-transparent" />
       </div>
 
-      {/* ── SLIDE CONTENT ── */}
-      <div
+       <div
         className={`relative z-30 w-full px-4 sm:px-10 md:px-16 lg:px-28 transition-opacity duration-500 ${
           fade ? "opacity-100" : "opacity-0"
         }`}
@@ -155,8 +152,7 @@ export default function HeroCarousel() {
         </div>
       </div>
 
-      {/* ── LEFT ARROW ── */}
-      <button
+       <button
         onClick={prev}
         aria-label="Previous slide"
         className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-40
@@ -172,8 +168,7 @@ export default function HeroCarousel() {
         <ChevronLeft size={20} strokeWidth={2.2} />
       </button>
 
-      {/* ── RIGHT ARROW ── */}
-      <button
+       <button
         onClick={next}
         aria-label="Next slide"
         className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-40
@@ -189,8 +184,7 @@ export default function HeroCarousel() {
         <ChevronRight size={20} strokeWidth={2.2} />
       </button>
 
-      {/* ── DOTS ── */}
-      <div className="absolute bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 z-40 flex gap-2 sm:gap-3">
+       <div className="absolute bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 z-40 flex gap-2 sm:gap-3">
         {slides.map((_, i) => (
           <button
             key={i}

@@ -172,8 +172,7 @@ We will continue to work together with Athena to carry out continuous process im
 
   return (
     <div className="about-page">
-      {/* HERO */}
-      <HeroSection
+       <HeroSection
         title="About Us"
         description="Delivering innovative solutions that drive measurable business growth."
         image="/assets/images/aboutus.png"
@@ -181,8 +180,7 @@ We will continue to work together with Athena to carry out continuous process im
         buttonText="Contact Us"
         buttonLink="/contact"
       />
-      {/* ACHIEVEMENTS & ABOUT */}
-      <section className="achievements">
+       <section className="achievements">
         <div className="container">
           <h2 className="section-title">Achievements and Success</h2>
 
@@ -235,8 +233,7 @@ We will continue to work together with Athena to carry out continuous process im
           </div>
         </div>
       </section>
-      {/* VISION & MISSION */}
-      <section className="vision-section">
+       <section className="vision-section">
         <div className="container vision-grid">
           <div className="vision-image">
             <Image
@@ -267,8 +264,7 @@ We will continue to work together with Athena to carry out continuous process im
           </div>
         </div>
       </section>
-      {/* WHAT WE DO */}
-      <section className="services-section">
+       <section className="services-section">
         <div className="container">
           <h4 className="small-heading">What we do</h4>
           <h2 className="big-heading">
@@ -322,8 +318,7 @@ We will continue to work together with Athena to carry out continuous process im
           </div>
         </div>
       </section>
-      {/* OUR CUSTOMERS */}
-      <section className="customers-section">
+       <section className="customers-section">
         <div className="container">
           <h2 className="customers-title">Our Customers</h2>
 
@@ -337,8 +332,7 @@ We will continue to work together with Athena to carry out continuous process im
         </div>
       </section>
 
-      {/* TESTIMONIAL SECTION */}
-      <section className="about-testimonial-section">
+       <section className="about-testimonial-section">
         <div className="container">
           <ScrollReveal>
             <h2 className="testimonial-title">Testimonial</h2>
@@ -358,6 +352,7 @@ We will continue to work together with Athena to carry out continuous process im
                         src={item.image}
                         alt={item.company}
                         className="testimonial-logo"
+                        loading="lazy"
                       />
                     )}
                   </div>

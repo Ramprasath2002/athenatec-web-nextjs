@@ -519,8 +519,7 @@ export default function GetADemoPage() {
 
   return (
     <div className="demo-page">
-      {/* ══════════ HERO ══════════ */}
-      <section className="hero">
+       <section className="hero">
         <div className="hero__bg" />
         <div className="hero__teal-wash" />
 
@@ -552,23 +551,19 @@ export default function GetADemoPage() {
         <Speedometer />
       </section>
 
-      {/* ══════════ FORM SECTION ══════════ */}
-      <section className="fs" ref={formRef}>
+       <section className="fs" ref={formRef}>
         <div className="fs__inner">
           <div className="fs__heading">
             <h2>Fill out the form below to get a demo</h2>
           </div>
 
-          {/* ── Combined Card: image left + form right ── */}
-          <div className="fs__combined-card">
+           <div className="fs__combined-card">
 
-            {/* LEFT — warp speed animation panel */}
-            <div className="fip">
+             <div className="fip">
               <WarpCanvas />
             </div>
 
-            {/* RIGHT — form */}
-            <div className="fs__form-side">
+             <div className="fs__form-side">
               {submitted ? (
                 <div className="form-success">
                   <div className="form-success__ico">
@@ -659,8 +654,7 @@ export default function GetADemoPage() {
                     {errors.agreeToPolicy && <span className="ferr"><ErrIco />{errors.agreeToPolicy}</span>}
                   </div>
 
-                  {/* API-level error banner */}
-                  {submitStatus === "error" && (
+                   {submitStatus === "error" && (
                     <div className="api-error" role="alert">
                       <ErrIco />
                       <span>{apiError}</span>
@@ -693,8 +687,7 @@ export default function GetADemoPage() {
   );
 }
 
-// ── SMALL COMPONENTS ──────────────────────────────────────────────────────
-function ChevDown() {
+ function ChevDown() {
   return (
     <svg className="sel-arrow" viewBox="0 0 20 20" fill="currentColor">
       <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />

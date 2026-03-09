@@ -159,8 +159,7 @@ export default function ApplyForm({ jobTitle = "this position" }: { jobTitle?: s
       </div>
 
       <form onSubmit={handleSubmit} noValidate>
-        {/* Full Name */}
-        <div className={`form-group ${errors.fullName ? "has-error" : ""}`}>
+         <div className={`form-group ${errors.fullName ? "has-error" : ""}`}>
           <label htmlFor="fullName">
             Full Name <span>*</span>
           </label>
@@ -181,8 +180,7 @@ export default function ApplyForm({ jobTitle = "this position" }: { jobTitle?: s
           {errors.fullName && <span className="field-error">{errors.fullName}</span>}
         </div>
 
-        {/* Two-column row: Email + Phone */}
-        <div className="form-row">
+         <div className="form-row">
           <div className={`form-group ${errors.email ? "has-error" : ""}`}>
             <label htmlFor="email">
               Email <span>*</span>
@@ -226,8 +224,7 @@ export default function ApplyForm({ jobTitle = "this position" }: { jobTitle?: s
           </div>
         </div>
 
-        {/* Cover Letter */}
-        <div className={`form-group ${errors.coverLetter ? "has-error" : ""}`}>
+         <div className={`form-group ${errors.coverLetter ? "has-error" : ""}`}>
           <label htmlFor="coverLetter">
             Cover Letter <span>*</span>
           </label>
@@ -244,8 +241,7 @@ export default function ApplyForm({ jobTitle = "this position" }: { jobTitle?: s
           {errors.coverLetter && <span className="field-error">{errors.coverLetter}</span>}
         </div>
 
-        {/* Resume Upload */}
-        <div className={`form-group ${errors.resume ? "has-error" : ""}`}>
+         <div className={`form-group ${errors.resume ? "has-error" : ""}`}>
           <label className="upload-label">
             Resume <span className="upload-formats">.pdf, .doc, .docx</span>
           </label>
@@ -285,8 +281,7 @@ export default function ApplyForm({ jobTitle = "this position" }: { jobTitle?: s
           {errors.resume && <span className="field-error">{errors.resume}</span>}
         </div>
 
-        {/* Global error */}
-        {submitError && (
+         {submitError && (
           <div className="submit-error">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
               <circle cx="12" cy="12" r="10" /><line x1="12" y1="8" x2="12" y2="12" /><line x1="12" y1="16" x2="12.01" y2="16" />

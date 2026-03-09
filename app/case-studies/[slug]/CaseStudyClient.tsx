@@ -29,8 +29,7 @@ export default function CaseStudyClient({ study }: { study: Study }) {
   return (
     <section className="case-detail py-20">
       <div className="container grid lg:grid-cols-3 gap-12">
-        {/* LEFT CONTENT */}
-        <div className="lg:col-span-2">
+         <div className="lg:col-span-2">
           <h1 className="text-3xl font-bold mb-6">{study.fullTitle}</h1>
 
           {!isUnlocked &&
@@ -80,8 +79,7 @@ export default function CaseStudyClient({ study }: { study: Study }) {
             ))}
         </div>
 
-        {/* RIGHT SIDE FORM */}
-        <div>
+         <div>
           {!isUnlocked ? (
             <DownloadForm onSuccess={() => setIsUnlocked(true)} />
           ) : (

@@ -8,8 +8,7 @@ export default function WhoWeAre() {
     <>
       <section className="who-we-are">
         <div className="container">
-          {/* LEFT CONTENT */}
-          <div className="who-content">
+           <div className="who-content">
             <span className="section-eyebrow">Who We Are</span>
 
             <h2 className="who-title">
@@ -30,8 +29,7 @@ export default function WhoWeAre() {
             </Link>
           </div>
 
-          {/* RIGHT IMAGE */}
-          <div className="who-image">
+           <div className="who-image">
             <Image
               src="/assets/images/Prototyping-to-Delivery.jpg"
               alt="Prototyping to Delivery"
@@ -43,20 +41,19 @@ export default function WhoWeAre() {
         </div>
       </section>
 
-      {/* PARTNERS SECTION */}
-      <section className="partners">
+       <section className="partners">
         <div className="container">
           <h3 className="partners-title">
             Our Strategic Technology Partnerships
           </h3>
 
           <div className="partners-grid">
-            {/* Siemens */}
-            <div className="partner-card">
+             <div className="partner-card">
               <img
                 src="/assets/images/images-3.webp"
                 alt="Siemens"
                 className="partner-logo"
+                loading="lazy"
               />
 
               <h4>Siemens Alliance Partner</h4>
@@ -74,12 +71,12 @@ export default function WhoWeAre() {
               </Link>
             </div>
 
-            {/* Critical Manufacturing */}
-            <div className="partner-card">
+             <div className="partner-card">
               <img
                 src="/assets/images/critical_manufacturing_logo-e1727901256634-1.webp"
                 alt="Critical Manufacturing"
                 className="partner-logo"
+                loading="lazy"
               />
 
               <h4>Critical Manufacturing Premier Partner</h4>
@@ -99,12 +96,12 @@ export default function WhoWeAre() {
               </Link>
             </div>
 
-            {/* Eyelit */}
-            <div className="partner-card">
+             <div className="partner-card">
               <img
                 src="/assets/images/00.webp"
                 alt="Eyelit"
                 className="partner-logo"
+                loading="lazy"
               />
 
               <h4>Eyelit Implementation Partner</h4>
@@ -126,6 +123,7 @@ export default function WhoWeAre() {
                 src="/assets/Clients/twinzo-img.png"
                 alt="Eyelit"
                 className="partner-logo"
+                loading="lazy"
               />
 
               <h4>Twinzo Authorized Reseller Partner</h4>
@@ -137,7 +135,7 @@ export default function WhoWeAre() {
                 monitoring, and data-driven operations across sectors.
               </p>
 
-             <Link href="/twinzo" className="partner-btn">
+             <Link href="/blog/authorised-reseller-partnership-with-twinzo" className="partner-btn">
                 Know More
               </Link>
             </div>
@@ -146,8 +144,7 @@ export default function WhoWeAre() {
       </section>
       <section className="what-we-do">
         <div className="what-container">
-          {/* IMAGE SIDE */}
-          <div className="what-media">
+           <div className="what-media">
             <div className="what-image-wrapper">
               <video
                 autoPlay
@@ -157,7 +154,7 @@ export default function WhoWeAre() {
                 className="w-full h-full object-cover rounded-md"
               >
                 <source
-                  src="https://athenatec.com/wp-content/uploads/2024/07/aps.mp4"
+                  src="/assets/videos/aps.mp4"
                   type="video/mp4"
                 />
                 Your browser does not support the video tag.
@@ -165,8 +162,7 @@ export default function WhoWeAre() {
             </div>
           </div>
 
-          {/* CONTENT SIDE */}
-          <div className="what-content">
+           <div className="what-content">
             <span className="section-eyebrow">WHAT WE DO</span>
 
             <h2 className="what-title">
@@ -205,7 +201,7 @@ function PartnerCard({
 }) {
   return (
     <div className="partner-card">
-      <img src={logo} alt={title} className="partner-logo" />
+      <img src={logo} alt={title} className="partner-logo" loading="lazy" />
       <h4>{title}</h4>
       <p>{text}</p>
       <button className="partner-btn">Know More</button>
@@ -219,6 +215,7 @@ function ImageBlock() {
       <img
         src="\assets\images\who-we-do.jpg"
         alt="MES analytics and smart manufacturing"
+        loading="lazy"
       />
       <div className="image-overlay" />
     </div>

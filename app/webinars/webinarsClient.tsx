@@ -61,8 +61,7 @@ export default function Webinars() {
       />
 
       <div className="webinars-page">
-        {/* FILTER */}
-        <section className="webinars-filter">
+         <section className="webinars-filter">
           <div className="filter-inner">
             <p className="filter-label">Browse by:</p>
             <div className="filter-tabs">
@@ -80,13 +79,11 @@ export default function Webinars() {
           </div>
         </section>
 
-        {/* RESULTS COUNT */}
-        <div className="webinars-count">
+         <div className="webinars-count">
           <span>{filtered.length} session{filtered.length !== 1 ? "s" : ""} found</span>
         </div>
 
-        {/* GRID */}
-        <section className="webinars-grid">
+         <section className="webinars-grid">
           {filtered.map((webinar, i) => (
             <article
               key={webinar.slug}

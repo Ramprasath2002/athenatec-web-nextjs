@@ -31,20 +31,17 @@ export default function CaseStudiesSection({
       }`}
     >
       <div className="max-w-[1400px] mx-auto px-5">
-        {/* Section Title */}
-        <h2 className="text-[clamp(26px,4vw,48px)] font-extrabold text-center text-[#1f3b73] mb-[clamp(40px,6vw,70px)]">
+         <h2 className="text-[clamp(26px,4vw,48px)] font-extrabold text-center text-[#1f3b73] mb-[clamp(40px,6vw,70px)]">
           {title}
         </h2>
 
-        {/* Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {data.map((item) => (
             <div
               key={item.id}
               className="flex flex-col lg:flex-row bg-white rounded-xl overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl"
             >
-              {/* Image */}
-              <div className="w-full lg:w-1/2 aspect-[16/9] lg:aspect-auto overflow-hidden">
+               <div className="w-full lg:w-1/2 aspect-[16/9] lg:aspect-auto overflow-hidden">
                 <Image
                   src={item.image}
                   alt={item.title}
@@ -54,8 +51,7 @@ export default function CaseStudiesSection({
                 />
               </div>
 
-              {/* Content */}
-              <div className="w-full lg:w-1/2 p-[clamp(20px,3vw,30px)] flex flex-col">
+               <div className="w-full lg:w-1/2 p-[clamp(20px,3vw,30px)] flex flex-col">
                 <h3 className="text-[clamp(18px,2.2vw,24px)] font-bold text-[#0f2f4f] mb-3 leading-snug">
                   {item.title}
                 </h3>

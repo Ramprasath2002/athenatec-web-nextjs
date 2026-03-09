@@ -24,19 +24,16 @@ export default function CTASection({
  <section className="py-20 bg-gray-100">
   <div className="relative mx-auto max-w-[1200px] h-[300px] rounded-3xl overflow-hidden">
 
-    {/* Background Image */}
-    <Image
+     <Image
       src={backgroundImage}
       alt="CTA Background"
       fill
       className="object-cover"
     />
 
-    {/* Overlay */}
-    <div className="absolute inset-0 bg-black/55" />
+     <div className="absolute inset-0 bg-black/55" />
 
-    {/* Content */}
-    <div className="relative z-10 flex h-full items-center justify-center text-center px-6">
+     <div className="relative z-10 flex h-full items-center justify-center text-center px-6">
       <div className="max-w-2xl text-white">
 
         <h2 className="text-3xl md:text-4xl font-bold mb-4 leading-tight">

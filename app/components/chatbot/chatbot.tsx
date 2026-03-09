@@ -123,7 +123,7 @@ export default function AIChatbot() {
     <>
 <div className="chat-button" onClick={() => setOpen(!open)}>
   <div className="chat-icon-wrapper">
-    <img src="/assets/icons/chatai.png" alt="AI Chat" className="chat-icon" />
+    <img src="/assets/icons/chatai.png" alt="AI Chat" loading="lazy" className="chat-icon" />
   </div>
   <span className="pulse-ring"></span>
 </div>

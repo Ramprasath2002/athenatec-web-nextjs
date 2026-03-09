@@ -328,8 +328,7 @@ export default function Services() {
           <h2 className="managed-title">Athena Managed Services</h2>
 
           <div className="managed-layout">
-            {/* LEFT / TOP – TABS */}
-            <div className="managed-tabs-wrapper">
+             <div className="managed-tabs-wrapper">
               <div className="managed-tabs">
                 {managedServices.map((item, i) => (
                   <button
@@ -343,12 +342,11 @@ export default function Services() {
               </div>
             </div>
 
-            {/* RIGHT / BOTTOM – CONTENT */}
-            <div
+             <div
               className={`managed-content ${isTransitioning ? "fade-out" : ""}`}
             >
               <div className="managed-image">
-                <img src={service.image} alt={service.title} />
+                <img src={service.image} alt={service.title} loading="lazy"/>
               </div>
 
               <div className="managed-text">
@@ -367,8 +365,7 @@ export default function Services() {
       </section>
       <section className="why-us">
         <div className="container why-us-grid">
-          {/* LEFT CONTENT */}
-          <div className="why-us-content">
+           <div className="why-us-content">
             <span className="why-us-label">WHY US</span>
             <h2>Expertise, Innovation, and Global Excellence</h2>
             <p>
@@ -398,7 +395,7 @@ export default function Services() {
                 onClick={() => router.push("/about")}
               >
                 <div className="testimonial-card">
-                  <img src={item.image} alt={item.name} className="avatar" />
+                  <img src={item.image} alt={item.name} className="avatar" loading="lazy" />
                   <h3>{item.name}</h3>
                   <div className="role">{item.role}</div>
                   <p className="testimonial-text">{item.text}</p>

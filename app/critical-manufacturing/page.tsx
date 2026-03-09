@@ -232,11 +232,9 @@ export default function CriticalManufacturingPage() {
       </section>
       <section className="templatization-section">
         <div className="container">
-          {/* TITLE 1 */}
-          <h2 className="section-title">Athena Templatization Solution</h2>
+           <h2 className="section-title">Athena Templatization Solution</h2>
 
-          {/* TOP DIAGRAM */}
-          <div className="templatization-diagram">
+           <div className="templatization-diagram">
             <Image
               src="/assets/images/16-02-1.webp"
               alt="Templatization Solution"
@@ -245,13 +243,11 @@ export default function CriticalManufacturingPage() {
             />
           </div>
 
-          {/* TITLE 2 */}
-          <h2 className="section-title benefits-title">
+           <h2 className="section-title benefits-title">
             Templatization: Benefits
           </h2>
 
-          {/* BENEFITS IMAGE */}
-          <div className="benefits-diagram">
+           <div className="benefits-diagram">
             <Image
               src="/assets/images/16-1.webp"
               alt="Templatization Benefits"
@@ -260,8 +256,7 @@ export default function CriticalManufacturingPage() {
             />
           </div>
 
-          {/* TITLE 3 */}
-          <h2 className="section-title modules-title">
+           <h2 className="section-title modules-title">
             CM: MES Modules - One FAB solution
           </h2>
 
@@ -285,8 +280,7 @@ export default function CriticalManufacturingPage() {
           <h2 className="section-title">Partner Profile</h2>
 
           <div className="profile-grid">
-            {/* Industries */}
-            <div className="profile-card">
+             <div className="profile-card">
               <div className="card-header">
                 <Image
                   src="/assets/icons/manufacturer.svg"
@@ -317,8 +311,7 @@ export default function CriticalManufacturingPage() {
               </ul>
             </div>
 
-            {/* Solution Platform */}
-            <div className="profile-card">
+             <div className="profile-card">
               <div className="card-header">
                 <Image
                   src="/assets/icons/cloud-computing.svg"
@@ -365,8 +358,7 @@ export default function CriticalManufacturingPage() {
               </ul>
             </div>
 
-            {/* Athena Practice */}
-            <div className="profile-card">
+             <div className="profile-card">
               <div className="card-header">
                 <Image
                   src="/assets/icons/practice.png"
@@ -409,8 +401,7 @@ export default function CriticalManufacturingPage() {
               </ul>
             </div>
 
-            {/* Customer Locations */}
-            <div className="profile-card">
+             <div className="profile-card">
               <div className="card-header">
                 <Image
                   src="/assets/icons/job.svg"
@@ -438,8 +429,7 @@ export default function CriticalManufacturingPage() {
             </div>
           </div>
 
-          {/* Capability Section */}
-          <div className="capability-section">
+           <div className="capability-section">
             <div className="capability-content">
               <h2>Our CM MES Capability</h2>
               <p>

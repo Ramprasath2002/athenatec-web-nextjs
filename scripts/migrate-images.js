@@ -5,7 +5,7 @@ const sharp = require("sharp");
 const fse = require("fs-extra");
 
 const IMAGE_LIST_FILE = "image-urls.txt";
-const OUTPUT_DIR = "public/assets/images/events/i4is23";
+const OUTPUT_DIR = "public/assets/images/";
 const MAX_WIDTH = 1200;
 const QUALITY = 80;
 
@@ -13,7 +13,7 @@ async function downloadAndConvert(url, index) {
   try {
     const outputFile = path.join(
       OUTPUT_DIR,
-      `event-${String(index + 1).padStart(2, "0")}.webp`
+      `let-connect${String(index + 1).padStart(2, "0")}.webp`
     );
 
     console.log(`Downloading [${index + 1}]`, url);

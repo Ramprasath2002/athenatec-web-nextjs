@@ -17,8 +17,7 @@ export default async function IndustryPage({
 
   return (
     <div className="industry-page">
-      {/* Hero */}
-      <section className="hero">
+       <section className="hero">
         <Image src={data.heroImage} alt={data.title} fill priority />
 
         <div className="overlay">
@@ -32,13 +31,11 @@ export default async function IndustryPage({
         </div>
       </section>
 
-      {/* Intro */}
-      <section className="intro container">
+       <section className="intro container">
         <p>{data.intro}</p>
       </section>
 
-      {/* Video */}
-      {data.videoUrl && (
+       {data.videoUrl && (
         <section className="video container">
           <div className="video-wrapper">
             <video autoPlay loop muted playsInline>
@@ -52,8 +49,7 @@ export default async function IndustryPage({
         </section>
       )}
 
-      {/* Content Sections */}
-      <section className="content container">
+       <section className="content container">
         {data.sections.map((sec, i) => (
           <div key={i} className="section-block">
             {/* <h2>{sec.heading}</h2> */}

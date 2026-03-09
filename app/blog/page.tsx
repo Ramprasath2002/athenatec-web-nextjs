@@ -66,8 +66,7 @@ export default async function BlogPage() {
       />
 
       <div className="blog-wrapper">
-        {/* Section Header */}
-        <div className="blog-header">
+         <div className="blog-header">
           <div className="blog-header__eyebrow">
             <span className="eyebrow-line" />
             <span className="eyebrow-text">Our Journal</span>
@@ -79,8 +78,7 @@ export default async function BlogPage() {
           </p>
         </div>
 
-        {/* Featured Post */}
-        {featuredPost && (
+         {featuredPost && (
           <Link
             href={`/blog/${featuredPost.slug}`}
             className="featured-post"
@@ -125,8 +123,7 @@ export default async function BlogPage() {
           </Link>
         )}
 
-        {/* Grid */}
-        <div className="blog-grid">
+         <div className="blog-grid">
           {remainingPosts.map((post, i) => {
             const image = getImage(post);
             const excerpt = getExcerpt(post, 120);

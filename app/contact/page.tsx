@@ -19,8 +19,7 @@ export default function ContactPage() {
 
       <section className="bg-gray-50 py-20 px-6">
         <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16">
-          {/* LEFT SIDE */}
-          <div className="space-y-10">
+           <div className="space-y-10">
             <div>
               <h1 className="text-4xl font-bold text-gray-900 mb-4">
                 Get in Touch
@@ -104,8 +103,7 @@ export default function ContactPage() {
             </div>
           </div>
 
-          {/* RIGHT SIDE – REUSABLE FORM */}
-          <div className="bg-white p-10 rounded-3xl shadow-xl">
+           <div className="bg-white p-10 rounded-3xl shadow-xl">
             <h2 className="text-2xl font-semibold text-gray-900 mb-6">
               Send Us a Message
             </h2>
@@ -126,8 +124,7 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* OTHER LOCATIONS SECTION (unchanged) */}
-      <section className="bg-gray-100 py-20 px-6">
+       <section className="bg-gray-100 py-20 px-6">
         <div className="max-w-7xl mx-auto">
           <div className="mb-12">
             <h2 className="text-3xl font-bold text-gray-900">
@@ -137,7 +134,7 @@ export default function ContactPage() {
 
           <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
             {" "}
-            {/* Card 1 */}{" "}
+             {" "}
             <div className="bg-white rounded-2xl p-6 shadow-sm hover:shadow-md transition flex flex-col">
               {" "}
               <h3 className="font-semibold text-lg text-gray-900 mb-4">
@@ -159,7 +156,7 @@ export default function ContactPage() {
                 → View Map{" "}
               </a>{" "}
             </div>{" "}
-            {/* Card 2 */}{" "}
+    
             <div className="bg-white rounded-2xl p-6 shadow-sm hover:shadow-md transition flex flex-col">
               {" "}
               <h3 className="font-semibold text-lg text-gray-900 mb-4">
@@ -180,8 +177,7 @@ export default function ContactPage() {
                 → View Map{" "}
               </a>{" "}
             </div>{" "}
-            {/* Card 3 */}{" "}
-            <div className="bg-white rounded-2xl p-6 shadow-sm hover:shadow-md transition flex flex-col">
+             <div className="bg-white rounded-2xl p-6 shadow-sm hover:shadow-md transition flex flex-col">
               {" "}
               <h3 className="font-semibold text-lg text-gray-900 mb-4">
                 {" "}
@@ -202,8 +198,7 @@ export default function ContactPage() {
                 → View Map{" "}
               </a>{" "}
             </div>{" "}
-            {/* Card 4 */}{" "}
-            <div className="bg-white rounded-2xl p-6 shadow-sm hover:shadow-md transition flex flex-col">
+             <div className="bg-white rounded-2xl p-6 shadow-sm hover:shadow-md transition flex flex-col">
               {" "}
               <h3 className="font-semibold text-lg text-gray-900 mb-4">
                 {" "}

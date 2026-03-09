@@ -61,8 +61,7 @@ export default function CaseStudies() {
       />
 
       <section className="case-study-section">
-        {/* Decorative background grid */}
-        <div className="bg-grid" aria-hidden="true" />
+         <div className="bg-grid" aria-hidden="true" />
 
         <div className="container">
           <div className="section-header">
@@ -82,8 +81,7 @@ export default function CaseStudies() {
                 className="case-card"
                 style={{ "--index": index } as React.CSSProperties}
               >
-                {/* Image block */}
-                <div className="case-image">
+                 <div className="case-image">
                   <Image
                     src={item.image}
                     alt={item.title}
@@ -94,8 +92,7 @@ export default function CaseStudies() {
                   <span className="case-tag">{item.tag}</span>
                 </div>
 
-                {/* Content block */}
-                <div className="case-content">
+                 <div className="case-content">
                   <div className="case-content-inner">
                     <h3>{item.title}</h3>
                     <p>{item.desc}</p>

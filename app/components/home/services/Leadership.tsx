@@ -75,7 +75,7 @@ export default function Leadership() {
         <div className="flip-card" key={i}>
           <div className="flip-inner">
             <div className="flip-front">
-              <img src={leader.image} alt={leader.name} />
+              <img src={leader.image} alt={leader.name} loading="lazy" />
               <div className="overlay">
                 <h4>{leader.name}</h4>
                 <span>{leader.role}</span>
@@ -95,8 +95,7 @@ export default function Leadership() {
   return (
     <section className="leadership">
       <div className="container">
-        {/* LEADERSHIP */}
-        <div className="header">
+         <div className="header">
           <h2>Meet Our Leadership Team</h2>
           <p>
             Meet the visionaries behind our success. Our leadership team brings
@@ -107,8 +106,7 @@ export default function Leadership() {
 
         {renderGrid(leadershipTeam)}
 
-        {/* ADVISORY BOARD */}
-        <div className="header advisory-header">
+         <div className="header advisory-header">
           <h2>Advisory Board</h2>
           <p>
             Our advisory board provides strategic guidance, industry insight,
@@ -119,13 +117,11 @@ export default function Leadership() {
         <div className="advisory-list">
           {advisoryBoard.map((advisor, i) => (
             <div className="advisory-card" key={i}>
-              {/* LEFT IMAGE */}
-              <div className="advisory-image">
-                <img src={advisor.image} alt={advisor.name} />
+               <div className="advisory-image">
+                <img src={advisor.image} alt={advisor.name} loading="lazy" />
               </div>
 
-              {/* RIGHT CONTENT */}
-              <div className="advisory-content">
+               <div className="advisory-content">
                 <h3>{advisor.name}</h3>
                 <h4>{advisor.role}</h4>
                 <p>{advisor.bio}</p>

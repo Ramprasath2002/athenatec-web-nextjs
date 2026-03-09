@@ -113,12 +113,10 @@ export default function EventGalleryPage({
         </div>
       </div>
 
-      {/* ── Gallery Body ──────────────────────── */}
-      <div className="egp-body">
+       <div className="egp-body">
         <div className="egp-container">
 
-          {/* Page info */}
-          <div className="egp-page-info">
+           <div className="egp-page-info">
             <span>
               Showing {startIndex + 1}–{Math.min(startIndex + PHOTOS_PER_PAGE, photos.length)} of {photos.length} photos
             </span>
@@ -127,8 +125,7 @@ export default function EventGalleryPage({
             )}
           </div>
 
-          {/* Photo Grid */}
-          <div className="egp-grid">
+           <div className="egp-grid">
             {currentPhotos.map((photo, idx) => (
               <button
                 key={idx}
@@ -161,11 +158,9 @@ export default function EventGalleryPage({
             ))}
           </div>
 
-          {/* ── Pagination ───────────── */}
-          {totalPages > 1 && (
+           {totalPages > 1 && (
             <nav className="egp-pagination" aria-label="Gallery pagination">
-              {/* Prev */}
-              <button
+               <button
                 className="egp-pagination__btn egp-pagination__btn--nav"
                 onClick={() => goToPage(currentPage - 1)}
                 disabled={currentPage === 1}
@@ -177,8 +172,7 @@ export default function EventGalleryPage({
                 </svg>
               </button>
 
-              {/* Page numbers */}
-              <div className="egp-pagination__pages">
+               <div className="egp-pagination__pages">
                 {getPageNumbers().map((page, i) =>
                   page === "..." ? (
                     <span key={`ellipsis-${i}`} className="egp-pagination__ellipsis">
@@ -198,8 +192,7 @@ export default function EventGalleryPage({
                 )}
               </div>
 
-              {/* Next */}
-              <button
+               <button
                 className="egp-pagination__btn egp-pagination__btn--nav"
                 onClick={() => goToPage(currentPage + 1)}
                 disabled={currentPage === totalPages}
@@ -216,8 +209,7 @@ export default function EventGalleryPage({
         </div>
       </div>
 
-      {/* ── Lightbox ──────────────────────────── */}
-      {lightboxIndex !== null && (
+       {lightboxIndex !== null && (
         <div
           className="egp-lightbox"
           role="dialog"
@@ -227,21 +219,18 @@ export default function EventGalleryPage({
           tabIndex={-1}
           onClick={closeLightbox}
         >
-          {/* Close */}
-          <button className="egp-lightbox__close" onClick={closeLightbox} aria-label="Close">
+           <button className="egp-lightbox__close" onClick={closeLightbox} aria-label="Close">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none"
               stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
               <path d="M18 6L6 18M6 6l12 12" />
             </svg>
           </button>
 
-          {/* Counter */}
-          <div className="egp-lightbox__counter">
+           <div className="egp-lightbox__counter">
             {lightboxIndex + 1} / {photos.length}
           </div>
 
-          {/* Prev arrow */}
-          <button
+           <button
             className="egp-lightbox__nav egp-lightbox__nav--prev"
             onClick={(e) => { e.stopPropagation(); prevPhoto(); }}
             disabled={lightboxIndex === 0}
@@ -253,8 +242,7 @@ export default function EventGalleryPage({
             </svg>
           </button>
 
-          {/* Image */}
-          <div
+           <div
             className="egp-lightbox__image-wrap"
             onClick={(e) => e.stopPropagation()}
           >
@@ -268,8 +256,7 @@ export default function EventGalleryPage({
             />
           </div>
 
-          {/* Next arrow */}
-          <button
+           <button
             className="egp-lightbox__nav egp-lightbox__nav--next"
             onClick={(e) => { e.stopPropagation(); nextPhoto(); }}
             disabled={lightboxIndex === photos.length - 1}
@@ -281,8 +268,7 @@ export default function EventGalleryPage({
             </svg>
           </button>
 
-          {/* Thumbnail strip */}
-          <div className="egp-lightbox__strip" onClick={(e) => e.stopPropagation()}>
+           <div className="egp-lightbox__strip" onClick={(e) => e.stopPropagation()}>
             {photos.map((photo, i) => (
               <button
                 key={i}

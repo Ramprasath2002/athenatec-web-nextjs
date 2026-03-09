@@ -44,7 +44,7 @@ export default function ClientLogos() {
     <div className="client-logos">
       {logos.map((logo, index) => (
         <div key={index} className="logo-item">
-          <img src={logo} alt="client-logo" />
+          <img src={logo} alt="client-logo" loading="lazy"/>
         </div>
       ))}
     </div>

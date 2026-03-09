@@ -74,8 +74,7 @@ export default function CareersPage() {
   </div>
 </section>
 
-      {/* JOB LIST */}
-      <section className="careers-jobs">
+       <section className="careers-jobs">
         <div className="container jobs-grid">
           {filteredJobs.length === 0 ? (
             <p className="no-jobs">No openings available for this location.</p>
@@ -100,8 +99,7 @@ export default function CareersPage() {
         </div>
       </section>
 
-      {/* CULTURE */}
-      <section className="careers-culture">
+       <section className="careers-culture">
         <div className="container">
           <h2>Our Culture</h2>
           <p>

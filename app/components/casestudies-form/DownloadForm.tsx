@@ -241,8 +241,7 @@ export default function DownloadForm({
   // ── Form ────────────────────────────────────────────────────────────────────
   return (
     <div className="df-card">
-      {/* Header */}
-      <div className="df-header">
+       <div className="df-header">
         <h3 className="df-title">
           Fill out the form below to download the document.
         </h3>
@@ -252,8 +251,7 @@ export default function DownloadForm({
 
       <form onSubmit={handleSubmit(onSubmit)} className="df-form" noValidate>
 
-        {/* Row 1: Name + Email */}
-        <div className="df-row">
+         <div className="df-row">
           <FloatingInput
             id="df-name"
             label="Full Name *"
@@ -293,8 +291,7 @@ export default function DownloadForm({
           />
         </div>
 
-        {/* Row 2: Company (full-width) */}
-        <FloatingInput
+         <FloatingInput
           id="df-company"
           label="Company Name *"
           register={register("company", {
@@ -314,10 +311,8 @@ export default function DownloadForm({
           }
         />
 
-        {/* Row 3: Industry + Country */}
-        <div className="df-row">
-          {/* Industry dropdown */}
-          <div className="df-field" ref={dropdownRef}>
+         <div className="df-row">
+           <div className="df-field" ref={dropdownRef}>
             <input
               type="hidden"
               {...register("industry", { required: true })}
@@ -393,8 +388,7 @@ export default function DownloadForm({
             )}
           </div>
 
-          {/* Country */}
-          <FloatingInput
+           <FloatingInput
             id="df-country"
             label="Country *"
             register={register("country", { required: "Country is required." })}
@@ -409,8 +403,7 @@ export default function DownloadForm({
           />
         </div>
 
-        {/* Consent */}
-        <div className={`df-consent ${errors.consent ? "df-consent--error" : ""}`}>
+         <div className={`df-consent ${errors.consent ? "df-consent--error" : ""}`}>
           <p className="df-consent-text">
             By submitting this form, you agree to receive communications with
             related content and can unsubscribe at any time. For more
@@ -445,8 +438,7 @@ export default function DownloadForm({
           )}
         </div>
 
-        {/* Global submit error */}
-        {submitError && (
+         {submitError && (
           <div className="df-submit-error" role="alert">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
               <circle cx="12" cy="12" r="10" />
@@ -457,8 +449,7 @@ export default function DownloadForm({
           </div>
         )}
 
-        {/* Submit */}
-        <button
+         <button
           type="submit"
           className="df-submit"
           disabled={isSubmitting}
