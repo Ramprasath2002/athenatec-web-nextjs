@@ -2,6 +2,7 @@ import HeroSection from "@/app/components/HeroSection";
 import PracticeSection from "@/app/components/PracticeSection";
 import CTASection from "@/app/components/CTASection";
 import type { Metadata } from "next";
+import Image from "next/image";
 import "./prem.scss";
 
 export const metadata: Metadata = {
@@ -19,7 +20,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "https://athenatec.com/og-image.jpg",
+        url: "https://athenatec.com/og-image.webp",
         width: 1200,
         height: 630,
         alt: "Oracle On-Premise Solutions",
@@ -31,7 +32,7 @@ export const metadata: Metadata = {
 const implementationData = [
   {
     title: "Implementation & Roll-out",
-    icon: "/assets/icons/process.png",
+    icon: "/assets/icons/process.webp",
     items: [
       "Strategic Planning & Roadmap",
       "Pre-Implementation Assessments",
@@ -43,7 +44,7 @@ const implementationData = [
   },
   {
     title: "Data & Technical Execution",
-    icon: "/assets/icons/Implementation.png",
+    icon: "/assets/icons/Implementation.webp",
     items: [
       "Data Migration Strategies",
       "Precise Data Mapping",
@@ -55,7 +56,7 @@ const implementationData = [
   },
   {
     title: "Support & Maintenance",
-    icon: "/assets/icons/Application-Support.png",
+    icon: "/assets/icons/Application-Support.webp",
     items: [
       "L1, L2, L3 Functional Support",
       "24/7 Production Support",
@@ -94,7 +95,7 @@ export default function OracleOnPrem() {
       <HeroSection
         title="Oracle On-Premise"
         description="Delivering Oracle E-Business Suite excellence since 2012 — end-to-end implementation, support, and managed services."
-        image="/assets/images/PLM.jpg"
+        image="/assets/images/oracle.webp"
         align="center"
         buttonText="Contact Us"
         buttonLink="/contact"
@@ -110,9 +111,10 @@ export default function OracleOnPrem() {
             applications ensures our customers extract maximum value from their
             digital infrastructure. Athenatec offers end-to-end implementation
             for on-premise applications, including Oracle E-Business Suite and
-            Agile PLM — from managing complex new installations to tailoring
-            existing applications through custom development to meet specific
-            business needs of customers.
+            Agile PLM. Since 2012, we have specialized in the full lifecycle of
+            on-premise solutions—from managing complex new installations to
+            tailoring existing applications through custom development to meet
+            specific business needs of customers.
           </p>
         </div>
       </section>
@@ -127,7 +129,9 @@ export default function OracleOnPrem() {
           <div className="onprem-stats__divider" />
           <div className="onprem-stats__item">
             <span className="onprem-stats__number">10+</span>
-            <span className="onprem-stats__label">Years of Oracle Expertise</span>
+            <span className="onprem-stats__label">
+              Years of Oracle Expertise
+            </span>
           </div>
           <div className="onprem-stats__divider" />
           <div className="onprem-stats__item">
@@ -142,14 +146,11 @@ export default function OracleOnPrem() {
         </div>
       </section>
 
-      {/* ── Practice Cards ── */}
-      <PracticeSection
+       <PracticeSection
         title="Our Oracle On-Premise Services"
         cards={implementationData}
       />
-
-      {/* ── Support Detail ── */}
-      <section className="onprem-support">
+       <section className="onprem-support">
         <div className="onprem-support__container">
           <h2 className="onprem-support__title">
             Oracle Support &amp; Maintenance
@@ -163,29 +164,38 @@ export default function OracleOnPrem() {
           <div className="onprem-support__grid">
             {[
               {
-                icon: "🎯",
+                icon: "/assets/icons/product-management.svg",
                 title: "Production Support",
                 desc: "Level 1, Level 2, and Level 3 functional and technical support for day-to-day operations.",
               },
               {
-                icon: "🩺",
+                icon: "/assets/icons/diagnostic.svg",
                 title: "System Health Checks",
                 desc: "Periodic audits, performance tuning, and preventative maintenance to identify and resolve bottlenecks.",
               },
               {
-                icon: "🔧",
+                icon: "/assets/icons/patch-management.svg",
                 title: "Patch Management",
                 desc: "Evaluation, testing, and application of Oracle security patches and functional updates.",
               },
               {
-                icon: "🔄",
+                icon: "/assets/icons/change-management.svg",
                 title: "Change Management",
                 desc: "Managed services for minor enhancements, report developments, and system configuration updates.",
               },
             ].map((item) => (
               <div className="onprem-support__card" key={item.title}>
-                <div className="onprem-support__card-icon">{item.icon}</div>
-                <h3>{item.title}</h3>
+                <div className="onprem-support__card-header">
+                  {/* ✅ Fixed: src={item.icon} instead of {item.icon} as children */}
+                  <Image
+                    src={item.icon}
+                    alt={item.title}
+                    width={33}
+                    height={33}
+                    className="onprem-support__card-icon"
+                  />
+                  <h3>{item.title}</h3>
+                </div>
                 <p>{item.desc}</p>
               </div>
             ))}
@@ -193,12 +203,11 @@ export default function OracleOnPrem() {
         </div>
       </section>
 
-      {/* ── CTA ── */}
-      <CTASection
+       <CTASection
         title={
           <>
             Let's Build
-            <br /> Something Exceptional
+             Something Exceptional
           </>
         }
         description="Our Oracle Certified Consultants are ready to guide your journey from implementation to long-term success."

@@ -121,13 +121,6 @@
       box-shadow: 0 12px 32px rgba(28, 69, 132, 0.25);
     }
 
-    h3 {
-      font-size: 19px;
-      font-weight: 700;
-      margin-bottom: 12px;
-      color: #17ace4;
-    }
-
     p {
       font-size: 15px;
       line-height: 1.8;
@@ -136,8 +129,24 @@
     }
   }
 
+  // ✅ Icon + Title on same line
+  &__card-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+
+    h3 {
+      font-size: 19px;
+      font-weight: 700;
+      color: #ffffff;
+      margin: 0;
+    }
+  }
+
   &__card-icon {
-    font-size: 2rem;
-    margin-bottom: 14px;
+    font-size: 1.6rem;
+    line-height: 1;
+    flex-shrink: 0;
   }
 }

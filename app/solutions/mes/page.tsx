@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "https://athenatec.com/og-image.jpg",
+        url: "https://athenatec.com/og-image.webp",
         width: 1200,
         height: 630,
         alt: "MES Implementation Services",
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
 const practiceData = [
   {
     title: "Process / Modules",
-    icon: "/assets/icons/process.png",
+    icon: "/assets/icons/process.webp",
     items: [
       "WIP Workflow Management",
       "Asset and Durables",
@@ -45,7 +45,7 @@ const practiceData = [
   },
   {
     title: "Implementation",
-    icon: "/assets/icons/Implementation.png",
+    icon: "/assets/icons/Implementation.webp",
     active: true,
     items: [
       "Project Management",
@@ -59,7 +59,7 @@ const practiceData = [
   },
   {
     title: "Application Support",
-    icon: "/assets/icons/Application-Support.png",
+    icon: "/assets/icons/Application-Support.webp",
     items: [
       "Support all MES Modules",
       "Ticket based Tracking",
@@ -96,7 +96,7 @@ export default function MESPage() {
       <HeroSection
         title="MES Solutions"
         description="Leave us a little info, and we’ll be in touch."
-        image="/assets/images/MES.jpg"
+        image="/assets/images/MES.webp"
         align="center"
         buttonText="Contact Us"
         buttonLink="/contact"
@@ -124,7 +124,7 @@ export default function MESPage() {
 
            <div className="who-image">
             <Image
-              src="/assets/images/Prototyping-to-Delivery.jpg"
+              src="/assets/images/Prototyping-to-Delivery.webp"
               alt="Prototyping to Delivery"
               width={600}
               height={400}

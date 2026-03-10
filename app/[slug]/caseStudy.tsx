@@ -159,7 +159,7 @@ export default function CaseStudy({ study }: Props) {
           <div className="download-card">
              <div className="download-image">
               <img
-                src={study.image || "/assets/images/download-preview.jpg"} loading="lazy"
+                src={study.image || "/assets/images/download-preview.webp"} loading="lazy"
                 alt={study.fullTitle}
               />
               <div className="download-image__overlay">

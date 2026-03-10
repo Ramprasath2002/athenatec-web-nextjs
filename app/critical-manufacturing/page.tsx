@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "https://athenatec.com/og-image.jpg",
+        url: "https://athenatec.com/og-image.webp",
         width: 1200,
         height: 630,
         alt: "Critical Manufacturing MES Services",
@@ -152,7 +152,7 @@ export default function CriticalManufacturingPage() {
 
           <div className="partner-badge">
             <Image
-              src="/assets/images/CMC2.png"
+              src="/assets/images/CMC2.webp"
               alt="Critical Manufacturing Premier Partner"
               width={500}
               height={300}
@@ -361,7 +361,7 @@ export default function CriticalManufacturingPage() {
              <div className="profile-card">
               <div className="card-header">
                 <Image
-                  src="/assets/icons/practice.png"
+                  src="/assets/icons/practice.webp"
                   alt="Athena Practice"
                   width={60}
                   height={60}

@@ -31,7 +31,7 @@ export default function WhoWeAre() {
 
            <div className="who-image">
             <Image
-              src="/assets/images/Prototyping-to-Delivery.jpg"
+              src="/assets/images/Prototyping-to-Delivery.webp"
               alt="Prototyping to Delivery"
               width={600}
               height={400}
@@ -120,7 +120,7 @@ export default function WhoWeAre() {
             </div>
             <div className="partner-card">
               <img
-                src="/assets/Clients/twinzo-img.png"
+                src="/assets/Clients/twinzo-img.webp"
                 alt="Eyelit"
                 className="partner-logo"
                 loading="lazy"
@@ -190,37 +190,7 @@ export default function WhoWeAre() {
     </>
   );
 }
-function PartnerCard({
-  logo,
-  title,
-  text,
-}: {
-  logo: string;
-  title: string;
-  text: string;
-}) {
-  return (
-    <div className="partner-card">
-      <img src={logo} alt={title} className="partner-logo" loading="lazy" />
-      <h4>{title}</h4>
-      <p>{text}</p>
-      <button className="partner-btn">Know More</button>
-    </div>
-  );
-}
-
-function ImageBlock() {
-  return (
-    <div className="what-image">
-      <img
-        src="\assets\images\who-we-do.jpg"
-        alt="MES analytics and smart manufacturing"
-        loading="lazy"
-      />
-      <div className="image-overlay" />
-    </div>
-  );
-}
+ 
 
  
 function Counter({ end, label }: { end: number; label: string }) {

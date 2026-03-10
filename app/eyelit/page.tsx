@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "https://athenatec.com/og-image.jpg",
+        url: "https://athenatec.com/og-image.webp",
         width: 1200,
         height: 630,
         alt: "Eyelit MES Implementation Services",
@@ -52,7 +52,7 @@ export default function EyelitPage() {
       <HeroSection
         title="Eyelit"
         description="Advanced manufacturing execution systems built for scale."
-        image="/assets/images/eyelitsbanner1.png"
+        image="/assets/images/eyelitsbanner1.webp"
         buttonText="Contact Us"
         buttonLink="/contact"
       />
@@ -214,7 +214,7 @@ export default function EyelitPage() {
           <div className="equipment-grid">
             <div className="equipment-image">
               <img
-                src="/assets/images/Eyelit-Equipment.jpg"
+                src="/assets/images/Eyelit-Equipment.webp"
                 alt="Equipment Connect"
                 loading="lazy"
               />

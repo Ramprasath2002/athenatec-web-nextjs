@@ -61,7 +61,7 @@ export default async function NewsRoom() {
               name: "Athenatec",
               logo: {
                 "@type": "ImageObject",
-                url: "https://athenatec.com/logo.png",
+                url: "https://athenatec.com/logo.webp",
               },
             },
           }),
