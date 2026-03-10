@@ -7,7 +7,7 @@ export default function ThankYouPage() {
       <div className=" max-w-xl w-full text-center p-12">
         
         <Image
-          src="/assets/images/logo.png"
+          src="/assets/images/logo.webp"
           alt="Athena Logo"
           width={180}
           height={180}

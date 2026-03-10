@@ -62,7 +62,7 @@ export const metadata: Metadata = {
       "Expert MES implementation and integration services for semiconductor, electronics, and advanced manufacturing industries.",
     images: [
       {
-        url: "https://athenatec.com/og-image.jpg",
+        url: "https://athenatec.com/og-image.webp",
         width: 1200,
         height: 630,
         alt: "Athenatec MES Solutions",
@@ -111,7 +111,7 @@ export default function RootLayout({
               "@type": "Organization",
               name: "Athenatec",
               url: "https://athenatec.com",
-              logo: "https://athenatec.com/logo.png",
+              logo: "https://athenatec.com/logo.webp",
               sameAs: [
                 "https://www.linkedin.com/company/athena-technology-solutions/",
               ],

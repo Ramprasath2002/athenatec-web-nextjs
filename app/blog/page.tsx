@@ -64,116 +64,123 @@ export default async function BlogPage() {
         buttonText="Contact Us"
         buttonLink="/contact"
       />
-
-      <div className="blog-wrapper">
-         <div className="blog-header">
-          <div className="blog-header__eyebrow">
-            <span className="eyebrow-line" />
-            <span className="eyebrow-text">Our Journal</span>
-            <span className="eyebrow-line" />
+      <section className="blogs">
+        <div className="blog-wrapper">
+          <div className="blog-header">
+            <div className="blog-header__eyebrow">
+              <span className="eyebrow-line" />
+              <span className="eyebrow-text">Our Journal</span>
+              <span className="eyebrow-line" />
+            </div>
+            <h1 className="blog-header__title">Latest Insights</h1>
+            <p className="blog-header__subtitle">
+              Perspectives, ideas, and stories worth reading
+            </p>
           </div>
-          <h1 className="blog-header__title">Latest Insights</h1>
-          <p className="blog-header__subtitle">
-            Perspectives, ideas, and stories worth reading
-          </p>
-        </div>
 
-         {featuredPost && (
-          <Link
-            href={`/blog/${featuredPost.slug}`}
-            className="featured-post"
-          >
-            <div className="featured-post__image-wrap">
-              {getImage(featuredPost) && (
-                <Image
-                  src={getImage(featuredPost)!}
-                  alt={featuredPost.title.rendered.replace(/<[^>]+>/g, "")}
-                  fill
-                  sizes="(max-width: 768px) 100vw, 60vw"
-                  className="featured-post__image"
-                  priority
+          {featuredPost && (
+            <Link href={`/blog/${featuredPost.slug}`} className="featured-post">
+              <div className="featured-post__image-wrap">
+                {getImage(featuredPost) && (
+                  <Image
+                    src={getImage(featuredPost)!}
+                    alt={featuredPost.title.rendered.replace(/<[^>]+>/g, "")}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 60vw"
+                    className="featured-post__image"
+                    priority
+                  />
+                )}
+                <div className="featured-post__overlay" />
+              </div>
+
+              <div className="featured-post__content">
+                <span className="featured-badge">Featured</span>
+                <time className="post-date">
+                  {formatDate(featuredPost.date)}
+                </time>
+                <h2
+                  className="featured-post__title"
+                  dangerouslySetInnerHTML={{
+                    __html: featuredPost.title.rendered,
+                  }}
                 />
-              )}
-              <div className="featured-post__overlay" />
-            </div>
-
-            <div className="featured-post__content">
-              <span className="featured-badge">Featured</span>
-              <time className="post-date">{formatDate(featuredPost.date)}</time>
-              <h2
-                className="featured-post__title"
-                dangerouslySetInnerHTML={{ __html: featuredPost.title.rendered }}
-              />
-              <p className="featured-post__excerpt">
-                {getExcerpt(featuredPost, 200)}
-              </p>
-              <span className="cta-link">
-                Read Article
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                  <path
-                    d="M3 8h10M9 4l4 4-4 4"
-                    stroke="currentColor"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </span>
-            </div>
-          </Link>
-        )}
-
-         <div className="blog-grid">
-          {remainingPosts.map((post, i) => {
-            const image = getImage(post);
-            const excerpt = getExcerpt(post, 120);
-
-            return (
-              <Link
-                key={post.id}
-                href={`/blog/${post.slug}`}
-                className="blog-card"
-                style={{ "--delay": `${i * 0.07}s` } as React.CSSProperties}
-              >
-                <div className="blog-card__image-wrap">
-                  {image && (
-                    <Image
-                      src={image}
-                      alt={post.title.rendered.replace(/<[^>]+>/g, "")}
-                      fill
-                      sizes="(max-width: 768px) 100vw, 33vw"
-                      className="blog-card__image"
+                <p className="featured-post__excerpt">
+                  {getExcerpt(featuredPost, 200)}
+                </p>
+                <span className="cta-link">
+                  Read Article
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <path
+                      d="M3 8h10M9 4l4 4-4 4"
+                      stroke="currentColor"
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
                     />
-                  )}
-                  <div className="blog-card__shimmer" />
-                </div>
+                  </svg>
+                </span>
+              </div>
+            </Link>
+          )}
 
-                <div className="blog-card__body">
-                  <time className="post-date">{formatDate(post.date)}</time>
-                  <h3
-                    className="blog-card__title"
-                    dangerouslySetInnerHTML={{ __html: post.title.rendered }}
-                  />
-                  <p className="blog-card__excerpt">{excerpt}</p>
+          <div className="blog-grid">
+            {remainingPosts.map((post, i) => {
+              const image = getImage(post);
+              const excerpt = getExcerpt(post, 120);
 
-                  <span className="cta-link cta-link--sm">
-                    Read More
-                    <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
-                      <path
-                        d="M3 8h10M9 4l4 4-4 4"
-                        stroke="currentColor"
-                        strokeWidth="1.5"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
+              return (
+                <Link
+                  key={post.id}
+                  href={`/blog/${post.slug}`}
+                  className="blog-card"
+                  style={{ "--delay": `${i * 0.07}s` } as React.CSSProperties}
+                >
+                  <div className="blog-card__image-wrap">
+                    {image && (
+                      <Image
+                        src={image}
+                        alt={post.title.rendered.replace(/<[^>]+>/g, "")}
+                        fill
+                        sizes="(max-width: 768px) 100vw, 33vw"
+                        className="blog-card__image"
                       />
-                    </svg>
-                  </span>
-                </div>
-              </Link>
-            );
-          })}
+                    )}
+                    <div className="blog-card__shimmer" />
+                  </div>
+
+                  <div className="blog-card__body">
+                    <time className="post-date">{formatDate(post.date)}</time>
+                    <h3
+                      className="blog-card__title"
+                      dangerouslySetInnerHTML={{ __html: post.title.rendered }}
+                    />
+                    <p className="blog-card__excerpt">{excerpt}</p>
+
+                    <span className="cta-link cta-link--sm">
+                      Read More
+                      <svg
+                        width="14"
+                        height="14"
+                        viewBox="0 0 16 16"
+                        fill="none"
+                      >
+                        <path
+                          d="M3 8h10M9 4l4 4-4 4"
+                          stroke="currentColor"
+                          strokeWidth="1.5"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
+                    </span>
+                  </div>
+                </Link>
+              );
+            })}
+          </div>
         </div>
-      </div>
+      </section>
     </>
   );
 }

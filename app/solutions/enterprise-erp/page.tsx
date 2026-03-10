@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "https://athenatec.com/og-image.jpg",
+        url: "https://athenatec.com/og-image.webp",
         width: 1200,
         height: 630,
         alt: "ERP Implementation & Integration Services",
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
 const practiceData = [
   {
     title: "Process / Modules",
-    icon: "/assets/icons/process.png",
+    icon: "/assets/icons/process.webp",
     items: [
       "Order-to-Cash (O2C)",
       "Procure-to-Pay (P2P)",
@@ -45,7 +45,7 @@ const practiceData = [
   },
   {
     title: "Implementation",
-    icon: "/assets/icons/Implementation.png",
+    icon: "/assets/icons/Implementation.webp",
     items: [
       "Project Management",
       "Requirements Analysis & Design",
@@ -58,7 +58,7 @@ const practiceData = [
   },
   {
     title: "Application Support",
-    icon: "/assets/icons/Application-Support.png",
+    icon: "/assets/icons/Application-Support.webp",
     items: [
       "Support for All ERP Modules",
       "Ticket-Based Tracking",

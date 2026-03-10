@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     locale: "en_US",
     type: "website",
     url: "https://athenatec.com/about/",
-    images: "https://athenatec.com/assets/img/favicon.png",
+    images: "https://athenatec.com/assets/img/favicon.webp",
     title: "About - Best MES Solution Provider | Athenatec",
     description:
       "Learn about Athenatec, a trusted MES implementation and manufacturing digital transformation partner serving semiconductor and advanced industries",
@@ -95,14 +95,14 @@ export default function AboutPage() {
       company: "InnovaFlex Foundry",
       name: "Jon Baker",
       role: "IT Manager – InnovaFlex Foundry",
-      image: "/assets/Clients/InnovaFlex_Foundry.jpg",
+      image: "/assets/Clients/InnovaFlex_Foundry.webp",
       text: `Athena provides expertise in MES and beyond.  They have proven extremely easy to work with, offering project management, SW development, integration, support and expertise ensuring projects are completed successfully.  I strongly recommend Athena for MES implementations or Opcenter upgrades.`,
     },
     {
       company: "Dexcom",
       name: "Wei Wu",
       role: "Senior Manager, IT",
-      image: "/assets/Clients/Dexcom.png",
+      image: "/assets/Clients/Dexcom.webp",
       text: `“I strongly recommend Athena based on their exceptional performance and successful completion of our recent Camstar v8.9 launch. Their dedication, expertise, and professionalism have greatly contributed to the success of our project and have exceeded our expectations.
 Throughout the project, Athena demonstrated an in-depth understanding of our unique requirements and objectives. They showcased their comprehensive knowledge of manufacturing processes, industry best practices, and Camstar latest version 8.9 solutions. Their ability to translate our complex needs into an efficient and tailored manufacturing execution system was truly remarkable. We have experienced improved productivity, streamlined workflows, enhanced quality control, and real-time visibility into our manufacturing processes. Their commitment to transparency and open communication fostered a strong working relationship, allowing us to have full confidence in their abilities.
 Moreover, the post-implementation hypercare support provided by Athena has been exceptional. They have been responsive to our ongoing needs, promptly addressing any questions or concerns that arise. Their dedication to customer satisfaction and their commitment to ensuring the software’s continued optimal performance are highly commendable`,
@@ -111,28 +111,28 @@ Moreover, the post-implementation hypercare support provided by Athena has been 
       company: "Viavi",
       name: "Viavi",
       role: "",
-      image: "/assets/Clients/VLAVI.png",
+      image: "/assets/Clients/VLAVI.webp",
       text: `Through Athena’s exhaustive efforts and deep domain expertise, we were able to implement a ‘Viavi Aligned Solution’ of Siemens Opcenter 8.x that met our complex MES System requirements. This was done via streamlined manufacturing processes, user friendly UI/ UX, seamless integration with our factory equipment / metrology and a single source for factory insights. Athena utilized Industry 4.0 foundations and architected a cookie-cutter approach that is ready for all our global factories.`,
     },
     {
       company: "MiaSolé Hi-Tech",
       name: "Siva Papaiya",
       role: "Senior Director, MiaSolé Hi-Tech",
-      image: "/assets/Clients/Miasole.png",
+      image: "/assets/Clients/Miasole.webp",
       text: `Athena team has unrivalled proficiency in manufacturing and their commitment towards successful execution has been a very positive experience.`,
     },
     {
       company: "GLO-USA",
       name: "GLO-USA",
       role: "",
-      image: "/assets/Clients/GLO-USA.png",
+      image: "/assets/Clients/GLO-USA.webp",
       text: `Great partnership with Athena! We appreciate Athena’s consistent dedication, attention to detail and innovative approach in delivering a Shop Floor Management solution that is enabling better visibility of our manufacturing resulting in improvements in both product quality and cost.`,
     },
     {
       company: "Nevro",
       name: "Alonso Moya",
       role: "Site Director, Nevro",
-      image: "/assets/Clients/Nevro.png",
+      image: "/assets/Clients/Nevro.webp",
       text: `Having a commercial partner is vital for an exemplary, seamless implementation, and throughout the development and setup of MES in Nevro Costa Rica, Athena has been a critical piece. With high support for our needs, Athena was always proactive in looking for critical and strategic solutions to the Business’s needs and taking care of the integrity and structure of the systems. It was a satisfactory experience to our liking due to all the knowledge transmitted during this journey of implementing MES in our plant.
 An excellent partner for us.`,
     },
@@ -140,7 +140,7 @@ An excellent partner for us.`,
       company: "Emcore",
       name: "Jamie Lohrungruang",
       role: "VP of Information Technology",
-      image: "/assets/Clients/Emcore.png",
+      image: "/assets/Clients/Emcore.webp",
 
       text: `We were very fortunate to have found Athena as they helped us turnaround our Opcenter Semi 8.9 MES project after our initial attempt working with a different Solution Integrator was unsuccessful. Their expertise of the OpCenter product along with their experience in semiconductor allowed them to help us completely change the design of the solution to better leverage best practices and meet our business needs. We cannot be happier working with Athena, and can see that they went above and beyond what was documented to make sure we are happy with the solution. They really came through for us. You will not be disappointed working with them.`,
     },
@@ -148,7 +148,7 @@ An excellent partner for us.`,
       company: "Marki Microwave",
       name: "Marki Microwave",
       role: "",
-      image: "/assets/Clients/Marki.png",
+      image: "/assets/Clients/Marki.webp",
       text: `We reviewed several MES suppliers and selected Siemens Opscenter MES / APS as the best fit for Marki Microwave. Selecting the platform is part of the journey but a successful implementation requires an experienced system integrator.
 We choose Athena Technologies as our implementation partner as they had several successful implementations in the electronics / medical devices customers. The company resourced our project with an experienced project manager and technical team who were flexible and collaborated well with our small internal team to ensure we get the solution that fits the needs of our manufacturing operations. We used a phase and sprint approach to complete our implementation in a 9-month time frame.
 We will continue to work together with Athena to carry out continuous process improvement and harmonization to deliver greater efficiency and quality to meet our customers’ demands today and well into the more digital future.`,
@@ -157,7 +157,7 @@ We will continue to work together with Athena to carry out continuous process im
       company: "Conformis",
       name: "Conformis",
       role: "",
-      image: "/assets/Clients/Conformis.png",
+      image: "/assets/Clients/Conformis.webp",
       text: `A few years ago, Conformis was looking for a boutique Camstar consulting SI. Athena was selected and has continuously delivered on all projects, There was no red tape. as with larger organizations, and while still receiving all the proper documentation and validation.
 “I am happy to consider Athena a Conformis partner”.`,
     },
@@ -165,7 +165,7 @@ We will continue to work together with Athena to carry out continuous process im
       company: "Neophotonics",
       name: "Aim Khan",
       role: "CIO / VP Neophotonics",
-      image: "/assets/Clients/Neophotonics.png",
+      image: "/assets/Clients/Neophotonics.webp",
       text: `Athena consistently exceeds our business targets, overcomes challenges and goes the extra mile.~ Great Company, Excellent Team and Partner.`,
     },
   ];
@@ -237,7 +237,7 @@ We will continue to work together with Athena to carry out continuous process im
         <div className="container vision-grid">
           <div className="vision-image">
             <Image
-              src="/assets/images/our-mission.png"
+              src="/assets/images/our-mission.webp"
               alt="Vision"
               fill
               className="img"

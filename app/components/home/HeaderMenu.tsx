@@ -9,7 +9,7 @@ type Props = {
   onNavigate?: () => void;
 };
 
-// ── DATA ─────────────────────────────────────────────────────────────────
+//   DATA 
 
 const partnerLinks = [
   { label: "Siemens Opcenter", href: "/siemens-opcenter-mes" },
@@ -22,7 +22,7 @@ const partnerLinks = [
 ];
 
 const mesSolutionLinks = [
-  { label: "MES Solution", href: "/solutions/mes" },
+  // { label: "MES Solution", href: "/solutions/mes" },
   { label: "Siemens Opcenter MES", href: "/siemens-opcenter-mes" },
   { label: "Critical Manufacturing", href: "/critical-manufacturing" },
   // { label: "Eyelit MES", href: "/eyelit" },
@@ -30,11 +30,10 @@ const mesSolutionLinks = [
 ];
 
 const otherSolutionLinks = [
-  // ❌ Removed: PLM Solutions
-  // ❌ Removed: Enterprise ERP
-  { label: "Oracle On-Prem +", href: "/solutions/oracle-on-prem" }, // ✅ Added
-  { label: "Oracle Cloud",     href: "/solutions/oracle-cloud" },   // ✅ Added
-  { label: "PLM",              href: "/solutions/plm" },            // ✅ Retained
+ 
+  { label: "Oracle On-Prem +", href: "/solutions/oracle-on-prem" }, 
+  { label: "Oracle Cloud",     href: "/solutions/oracle-cloud" },   
+  { label: "PLM",              href: "/solutions/plm" },             
   { label: "Cyber Security",   href: "/solutions/cyber-security-service" },
 ];
 

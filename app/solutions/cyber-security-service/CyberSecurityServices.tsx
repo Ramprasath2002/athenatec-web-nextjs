@@ -394,7 +394,7 @@ export default function CyberSecurityServices() {
 
             <div className="image-wrapper">
               <Image
-                src="/assets/images/IT-Cyber-Security.png"
+                src="/assets/images/IT-Cyber-Security.webp"
                 alt="IT Cyber Security"
                 width={900}
                 height={900}

@@ -1,9 +1,9 @@
-    import HeroSection from "@/app/components/HeroSection";
+import HeroSection from "@/app/components/HeroSection";
 import PracticeSection from "@/app/components/PracticeSection";
 import CTASection from "@/app/components/CTASection";
 import type { Metadata } from "next";
 import "./cloud.scss";
-
+import Image from "next/image";
 export const metadata: Metadata = {
   title: "Oracle Cloud Solutions | Athenatec",
   description:
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "https://athenatec.com/og-image.jpg",
+        url: "https://athenatec.com/og-image.webp",
         width: 1200,
         height: 630,
         alt: "Oracle Cloud Solutions",
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
 const practiceData = [
   {
     title: "ERP Cloud",
-    icon: "/assets/icons/process.png",
+    icon: "/assets/icons/process.webp",
     items: [
       "Financial Management",
       "Project Portfolio Operations",
@@ -43,7 +43,7 @@ const practiceData = [
   },
   {
     title: "SCM Cloud",
-    icon: "/assets/icons/Implementation.png",
+    icon: "/assets/icons/Implementation.webp",
     items: [
       "Supply Chain Planning",
       "Inventory Management",
@@ -55,7 +55,7 @@ const practiceData = [
   },
   {
     title: "HCM Cloud",
-    icon: "/assets/icons/Application-Support.png",
+    icon: "/assets/icons/Application-Support.webp",
     items: [
       "Human Resources",
       "Talent Management",
@@ -64,6 +64,19 @@ const practiceData = [
       "Learning & Development",
       "HR Analytics",
     ],
+  },
+];
+
+const pathData = [
+  {
+    icon: "/assets/icons/idea.svg",
+    title: "Net New Implementations",
+    desc: "We conduct rigorous pre-implementation assessments, develop strategic project roadmaps, and perform detailed gap analyses to ensure your cloud environment is built for success from day one.",
+  },
+  {
+    icon: "/assets/icons/sharing.svg",
+    title: "Cloud Migrations",
+    desc: "Our consultants manage the transition from your legacy on-prem systems, ensuring your new plat m is scalable, secure, and perfectly aligned with your long-term business objectives.",
   },
 ];
 
@@ -90,17 +103,15 @@ export default function OracleCloud() {
         }}
       />
 
-      {/* ── Hero ── */}
       <HeroSection
         title="Oracle Cloud"
         description="Comprehensive cloud applications built for performance, security, and enterprise-scale growth."
-        image="/assets/images/PLM.jpg"
+        image="/assets/images/oracle-cloud.webp"
         align="center"
         buttonText="Contact Us"
         buttonLink="/contact"
       />
 
-      {/* ── Overview Card ── */}
       <section className="oracle-description">
         <div className="oracle-description__card">
           <p>
@@ -151,24 +162,21 @@ export default function OracleCloud() {
           </p>
 
           <div className="oracle-path__grid">
-            <div className="oracle-path__card">
-              <div className="oracle-path__card-icon">🚀</div>
-              <h3>For Net New Implementations</h3>
-              <p>
-                We conduct rigorous pre-implementation assessments, develop
-                strategic project roadmaps, and perform detailed gap analyses to
-                ensure your cloud environment is built for success from day one.
-              </p>
-            </div>
-            <div className="oracle-path__card">
-              <div className="oracle-path__card-icon">☁️</div>
-              <h3>For Cloud Migrations</h3>
-              <p>
-                Our consultants manage the transition from your legacy on-prem
-                systems, ensuring your new platform is scalable, secure, and
-                perfectly aligned with your long-term business objectives.
-              </p>
-            </div>
+            {pathData.map((item) => (
+              <div className="oracle-path__card" key={item.title}>
+                 <div className="oracle-path__card-header">
+                  <Image
+                    src={item.icon}
+                    width={33}
+                    height={33}
+                    alt={item.title}
+                    className="oracle-path__card-icon"
+                  />
+                  <h3>{item.title}</h3>
+                </div>
+                <p>{item.desc}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -178,7 +186,7 @@ export default function OracleCloud() {
         title={
           <>
             Ready to Move
-            <br /> to the Cloud?
+              to the Cloud?
           </>
         }
         description="Let Athenatec's Oracle Certified Consultants design and deploy the right Oracle Cloud strategy for your business."

@@ -38,7 +38,7 @@ export default function CareersPage() {
       <HeroSection
         title="Join Our Team"
         description="We build intelligent manufacturing solutions with a culture that values innovation, ownership, and trust."
-        image="/assets/images/careerbanner.webp"
+        image="/assets/images/careers.webp"
         align="center"
         buttonText="Contact Us"
         buttonLink="/contact"

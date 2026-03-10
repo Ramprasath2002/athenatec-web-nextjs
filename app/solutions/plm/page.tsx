@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "https://athenatec.com/og-image.jpg",
+        url: "https://athenatec.com/og-image.webp",
         width: 1200,
         height: 630,
         alt: "Agile PLM Implementation Services",
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
 const practiceData = [
   {
     title: "Solutions / Modules",
-    icon: "/assets/icons/process.png",
+    icon: "/assets/icons/process.webp",
     items: [
       "Product Portfolio Management",
       "Product Collaboration",
@@ -45,7 +45,7 @@ const practiceData = [
   },
   {
     title: "Implementation",
-    icon: "/assets/icons/Implementation.png",
+    icon: "/assets/icons/Implementation.webp",
     items: [
       "Project Management",
       "Requirements / Design",
@@ -58,7 +58,7 @@ const practiceData = [
   },
   {
     title: "Application Support",
-    icon: "/assets/icons/Application-Support.png",
+    icon: "/assets/icons/Application-Support.webp",
     items: [
       "Support all PLM Modules",
       "Ticket Based Tracking",
@@ -93,7 +93,7 @@ export default function PlmSolution() {
       <HeroSection
         title="PLM Solutions"
         description="Leave us a little info, and we’ll be in touch."
-        image="/assets/images/PLM.jpg"
+        image="/assets/images/PLM.webp"
         align="center"
         buttonText="Contact Us"
         buttonLink="/contact"
