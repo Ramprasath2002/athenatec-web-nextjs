@@ -6,16 +6,16 @@ import Image from "next/image";
 import "./prem.scss";
 
 export const metadata: Metadata = {
-  title: "Oracle On-Premise Solutions | Athenatec",
+  title: "Oracle On-Premise Implementation & Support | Athenatec",
   description:
-    "Athenatec delivers Oracle E-Business Suite implementation, support, and managed services for enterprise clients since 2012.",
+    "Athenatec delivers Oracle E-Business Suite and Agile PLM on-premise solutions since 2012. End-to-end implementation, 24/7 support, and managed services for multinational clients.",
   alternates: {
     canonical: "https://athenatec.com/solutions/oracle-on-prem",
   },
   openGraph: {
-    title: "Oracle On-Premise Solutions | Athenatec",
+    title: "Oracle On-Premise Implementation & Support | Athenatec",
     description:
-      "End-to-end Oracle E-Business Suite and Agile PLM implementation, rollout, and 24/7 support services since 2012.",
+      "Athenatec delivers Oracle E-Business Suite and Agile PLM on-premise solutions since 2012. End-to-end implementation, 24/7 support, and managed services for multinational clients.",
     url: "https://athenatec.com/solutions/oracle-on-prem",
     type: "website",
     images: [

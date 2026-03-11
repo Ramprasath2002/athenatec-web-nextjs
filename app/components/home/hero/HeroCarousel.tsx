@@ -38,7 +38,7 @@ const slides = [
     desc: "Experienced in implementing and upgrading Opcenter MES across versions, from Camstar 3.2 to Opcenter 2410, ensuring seamless transitions and optimized performance.",
     cta: "Siemens Alliance Partner",
     link: "/siemens-opcenter-mes",
-    image: "/assets/images/siemens.webp",
+    image: "/assets/images/siemens1.webp",
   },
   {
     title: "Critical Manufacturing Premier Implementation Partner",

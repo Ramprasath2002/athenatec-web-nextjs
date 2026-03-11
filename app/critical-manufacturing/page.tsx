@@ -7,16 +7,16 @@ import CTASection from "@/app/components/CTASection";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Critical Manufacturing MES Implementation",
+  title: "Critical Manufacturing MES Implementation Partner | Athenatec",
   description:
-    "Premier Critical Manufacturing MES implementation partner delivering upgrades, customization, and system integration for semiconductor and discrete industries.",
+    "Athenatec, a Premier Critical Manufacturing implementation partner, delivers CM MES for semiconductor & medical device industries. Leverage our Center of Excellence for integration & customization",
   alternates: {
     canonical: "https://athenatec.com/critical-manufacturing",
   },
   openGraph: {
-    title: "Critical Manufacturing MES Implementation",
+    title: "Critical Manufacturing MES Implementation Partner | Athenatec",
     description:
-      "Premier Critical Manufacturing MES implementation partner delivering upgrades, customization, and system integration for semiconductor and discrete industries.",
+      "Athenatec, a Premier Critical Manufacturing implementation partner, delivers CM MES for semiconductor & medical device industries. Leverage our Center of Excellence for integration & customization",
     url: "https://athenatec.com/critical-manufacturing",
     type: "website",
     images: [

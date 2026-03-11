@@ -10,19 +10,19 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Siemens Opcenter MES Implementation Partner",
+  title: "Siemens Opcenter MES Implementation Partner | Athenatec",
 
   description:
-    "Expert Siemens Opcenter MES implementation, upgrades, and Smart Factory integration for semiconductor, electronics, and medical device manufacturing.",
+    "Athenatec, a Siemens Alliance Partner, implements & upgrades Opcenter MES for Semiconductor, Medical Device & Electronics. Drive Industry 4.0 with expert integration & smart factory analytics.",
 
   alternates: {
     canonical: "https://athenatec.com/siemens-opcenter-mes",
   },
 
   openGraph: {
-    title: "Siemens Opcenter MES Implementation Partner",
+    title: "Siemens Opcenter MES Implementation Partner | Athenatec",
     description:
-      "Specialized Siemens Opcenter MES solutions including Semiconductor, Electronics, Medical Devices, APS, and Smart Factory integration.",
+      "Athenatec, a Siemens Alliance Partner, implements & upgrades Opcenter MES for Semiconductor, Medical Device & Electronics. Drive Industry 4.0 with expert integration & smart factory analytics.",
     url: "https://athenatec.com/siemens-opcenter-mes",
     type: "website",
     images: [

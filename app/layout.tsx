@@ -46,18 +46,18 @@ export const metadata: Metadata = {
   applicationName: "Athenatec",
 
   title: {
-    default: "Athenatec | MES Implementation & Manufacturing Solutions",
-    template: "%s | Athenatec",
+    default: "Best MES Solution Provider | Athenatec",
+    template: "%s",
   },
 
   description:
-    "Athenatec provides MES implementation, system integration, and manufacturing digital transformation solutions for semiconductor and electronics industries.",
+    "Trusted MES implementation partner for med device, semiconductor, electronics and advanced manufacturing for digital transformation.",
 
   openGraph: {
     locale: "en_US",
     type: "website",
     url: "https://athenatec.com/",
-    title: "Athenatec | MES Implementation & Manufacturing Solutions",
+    title: "Best MES Solution Provider | Athenatec",
     description:
       "Expert MES implementation and integration services for semiconductor, electronics, and advanced manufacturing industries.",
     images: [

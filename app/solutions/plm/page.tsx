@@ -6,16 +6,16 @@ import CTASection from "@/app/components/CTASection";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Agile PLM Implementation Services ",
+  title: "Oracle Agile PLM Implementation Services | Athenatec",
   description:
-    "Expert Agile PLM implementation and integration services connecting ERP and MES systems to streamline product lifecycle management and change control.",
+    "Athenatec implements Oracle Agile PLM with seamless ERP & MES integration. Manage product lifecycles from concept to end-of-life with centralized change control and process automation",
   alternates: {
     canonical: "https://athenatec.com/solutions/plm-solutions",
   },
   openGraph: {
-    title: "Agile PLM Implementation Services",
+    title: "Oracle Agile PLM Implementation Services | Athenatec",
     description:
-      "Oracle Agile PLM implementation, migration, upgrades, and ERP/MES integration services for manufacturing enterprises.",
+      "Athenatec implements Oracle Agile PLM with seamless ERP & MES integration. Manage product lifecycles from concept to end-of-life with centralized change control and process automation",
     url: "https://athenatec.com/solutions/plm-solutions",
     type: "website",
     images: [

@@ -2,16 +2,16 @@ import type { Metadata } from "next";
 import CyberSecurityServices from "./CyberSecurityServices";
 
 export const metadata: Metadata = {
-  title: "Enterprise Cyber Security & GRC Services",
+  title: "Enterprise Cyber Security & GRC Services | Athenatec",
   description:
-    "Enterprise cyber security services including GRC, IT security, vCISO advisory, compliance, risk management, and secure SDLC for modern organizations.",
+    "Athenatec delivers enterprise cyber security services: Governance Risk & Compliance (GRC), VAPT, vCISO advisory, and ISO 27001/NIST alignment. Protect and strengthen your digital ecosystem.",
   alternates: {
     canonical: "https://athenatec.com/solutions/cyber-security-service",
   },
   openGraph: {
-    title: "Enterprise Cyber Security & GRC Services",
+    title: "Enterprise Cyber Security & GRC Services | Athenatec",
     description:
-      "GRC, IT security, vCISO, compliance and risk management services for enterprise cyber resilience.",
+      "Athenatec delivers enterprise cyber security services: Governance Risk & Compliance (GRC), VAPT, vCISO advisory, and ISO 27001/NIST alignment. Protect and strengthen your digital ecosystem.",
     url: "https://athenatec.com/solutions/cyber-security-service",
     type: "website",
   },

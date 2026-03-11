@@ -8,18 +8,18 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "About - Best MES Solution Provider | Athenatec",
+  title: "About Athenatec | MES, PLM & Smart Factory Experts",
 
   description:
-    "Learn about Athenatec, a trusted MES implementation and manufacturing digital transformation partner serving semiconductor and advanced industries",
+    "Athenatec's experienced team delivers successful MES projects, combining deep industry knowledge with a commitment to customer success",
   openGraph: {
     locale: "en_US",
     type: "website",
     url: "https://athenatec.com/about/",
     images: "https://athenatec.com/assets/img/favicon.webp",
-    title: "About - Best MES Solution Provider | Athenatec",
+    title: "About Athenatec | MES, PLM & Smart Factory Experts",
     description:
-      "Learn about Athenatec, a trusted MES implementation and manufacturing digital transformation partner serving semiconductor and advanced industries",
+      "Athenatec's experienced team delivers successful MES projects, combining deep industry knowledge with a commitment to customer success",
   },
   alternates: {
     canonical: "https://athenatec.com/about/",
