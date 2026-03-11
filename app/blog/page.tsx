@@ -3,6 +3,39 @@ import Link from "next/link";
 import Image from "next/image";
 import "./blog.scss";
 import HeroSection from "@/app/components/HeroSection";
+import type { Metadata } from "next";
+
+ export const metadata: Metadata = {
+  title: "Athenatec Blog | MES & Digital Transformation Insights",
+  description:
+    "Explore the Athenatec blog for expert insights on MES, Industry 4.0 trends, digital transformation challenges, and smart manufacturing best practices.",
+  openGraph: {
+    title: "Athenatec Blog | MES & Digital Transformation Insights",
+    description:
+      "Explore the Athenatec blog for expert insights on MES, Industry 4.0 trends, digital transformation challenges, and smart manufacturing best practices.",
+    url: "https://www.athenatec.com/blog",
+    siteName: "Athenatec",
+    type: "website",
+    images: [
+      {
+        url: "/assets/images/Blog-banner.webp",
+        width: 1200,
+        height: 630,
+        alt: "Athenatec Blog",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Athenatec Blog | MES & Digital Transformation Insights",
+    description:
+      "Explore the Athenatec blog for expert insights on MES, Industry 4.0 trends, digital transformation challenges, and smart manufacturing best practices.",
+    images: ["/assets/images/Blog-banner.webp"],
+  },
+  alternates: {
+    canonical: "https://www.athenatec.com/blog",
+  },
+};
 
 type WPPost = {
   id: number;
@@ -39,7 +72,7 @@ function formatDate(date: string) {
 export default async function BlogPage() {
   const posts = await getPosts();
 
-  const featuredPost = posts[0] ?? null; 
+  const featuredPost = posts[0] ?? null;
   const remainingPosts = posts.slice(1);
 
   const getImage = (post: WPPost) =>
@@ -78,7 +111,7 @@ export default async function BlogPage() {
             </p>
           </div>
 
-           {featuredPost && (
+          {featuredPost && (
             <Link href={`/blog/${featuredPost.slug}`} className="featured-post">
               <div className="featured-post__image-wrap">
                 {getImage(featuredPost) && (

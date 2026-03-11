@@ -2,16 +2,16 @@ import type { Metadata } from "next";
 import WebinarsClient from "./webinarsClient";
 
 export const metadata: Metadata = {
-  title: "Manufacturing & MES Webinars",
+  title: "MES & Industry Webinars | Athenatec",
   description:
-    "Join live and on-demand webinars covering MES, Industry 4.0, digital transformation and smart manufacturing strategies.",
+    "Access Athenatec's library of manufacturing webinars. Gain insights on MES accelerators, real-time visibility, and digital transformation for medical device and high-tech industries.",
   alternates: {
     canonical: "https://athenatec.com/webinars",
   },
   openGraph: {
-    title: "Manufacturing & MES Webinars",
+    title: "MES & Industry Webinar",
     description:
-      "Live and on-demand webinars on MES, MedTech manufacturing and Industry 4.0 solutions.",
+      "Access Athenatec's library of manufacturing webinars. Gain insights on MES accelerators, real-time visibility, and digital transformation for medical device and high-tech industries.",
     url: "https://athenatec.com/webinars",
     type: "website",
   },

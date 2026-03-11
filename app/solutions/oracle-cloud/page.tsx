@@ -5,16 +5,16 @@ import type { Metadata } from "next";
 import "./cloud.scss";
 import Image from "next/image";
 export const metadata: Metadata = {
-  title: "Oracle Cloud Solutions | Athenatec",
+  title: "Oracle Cloud Implementation & Migration | Athenatec",
   description:
-    "Athenatec delivers premier Oracle Cloud implementation and managed services across ERP, SCM, and HCM Cloud for enterprise organizations.",
+    "Athenatec delivers Oracle Cloud ERP, SCM, and HCM solutions. Certified consultants manage net new implementations and cloud migrations for enterprise-scale growth and security",
   alternates: {
     canonical: "https://athenatec.com/solutions/oracle-cloud",
   },
   openGraph: {
-    title: "Oracle Cloud Solutions | Athenatec",
+    title: "Oracle Cloud Implementation & Migration | Athenatec",
     description:
-      "Oracle Certified Consultants delivering ERP Cloud, SCM Cloud, and HCM Cloud implementation and migration services.",
+      "Athenatec delivers Oracle Cloud ERP, SCM, and HCM solutions. Certified consultants manage net new implementations and cloud migrations for enterprise-scale growth and security",
     url: "https://athenatec.com/solutions/oracle-cloud",
     type: "website",
     images: [

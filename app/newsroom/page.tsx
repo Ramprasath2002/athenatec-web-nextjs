@@ -4,16 +4,16 @@ import HeroSection from "@/app/components/HeroSection";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Manufacturing & Industry 4.0 News",
+  title: "Athenatec Newsroom | Industry 4.0 & Smart Manufacturing Announcements",
   description:
-    "Latest news, announcements and partnership updates from Athenatec across MES, ERP, and digital manufacturing solutions.",
+    "Stay updated with Athenatec's latest news, strategic partnerships, and digital manufacturing announcements. Explore our press releases and Industry 4.0 updates here.",
   alternates: {
     canonical: "https://athenatec.com/newsroom",
   },
   openGraph: {
-    title: "Manufacturing & Industry 4.0 News",
+    title: "Athenatec Newsroom | Industry 4.0 & Smart Manufacturing Announcements",
     description:
-      "Company announcements, MES partnerships and Industry 4.0 updates from Athenatec.",
+      "Stay updated with Athenatec's latest news, strategic partnerships, and digital manufacturing announcements. Explore our press releases and Industry 4.0 updates here.",
     url: "https://athenatec.com/newsroom",
     type: "website",
   },

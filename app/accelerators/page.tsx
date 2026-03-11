@@ -6,21 +6,21 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Athena ECO Accelerators | MES Engineering Change Automation",
+  title: "Athena ECO Accelerators | Automate Engineering Change in MES",
 
   description:
-    "Accelerate engineering change management in MES platforms with Athena ECO Accelerators. Automate redlining, validation, and master data migration with full traceability.",
+    "Streamline engineering change workflows with Athena ECO Accelerators. Automate redlining, data migration & testing in MES to ensure traceability, compliance, and faster implementation.",
 
   openGraph: {
     locale: "en_US",
     type: "website",
-    url: "https://athenatec.com/accelerators",
-    title: "Athena ECO Accelerators | MES Engineering Change Automation",
+    url: "https://www.athenatec.com/accelerators",
+    title: "Athena ECO Accelerators | Automate Engineering Change in MES",
     description:
-      "Accelerate engineering change management in MES platforms with Athena ECO Accelerators. Automate redlining, validation, and master data migration with full traceability.",
+      "Streamline engineering change workflows with Athena ECO Accelerators. Automate redlining, data migration & testing in MES to ensure traceability, compliance, and faster implementation.",
     images: [
       {
-        url: "https://athenatec.com/assets/images/eco-accelerators.webp",
+        url: "/assets/images/eco-accelerators.webp",
         width: 1200,
         height: 630,
         alt: "Athena ECO Accelerators",
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
   },
 
   alternates: {
-    canonical: "https://athenatec.com/accelerators",
+    canonical: "https://www.athenatec.com/accelerators",
   },
 };
 
@@ -64,7 +64,7 @@ const accelerators = [
     },
   },
 ];
-export default function ecoaccelerator() {
+export default function EcoAccelerator() {
   return (
     <>
       <HeroSection
