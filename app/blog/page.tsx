@@ -39,7 +39,7 @@ function formatDate(date: string) {
 export default async function BlogPage() {
   const posts = await getPosts();
 
-  const featuredPost = posts[0];
+  const featuredPost = posts[0] ?? null; 
   const remainingPosts = posts.slice(1);
 
   const getImage = (post: WPPost) =>
@@ -78,7 +78,7 @@ export default async function BlogPage() {
             </p>
           </div>
 
-          {featuredPost && (
+           {featuredPost && (
             <Link href={`/blog/${featuredPost.slug}`} className="featured-post">
               <div className="featured-post__image-wrap">
                 {getImage(featuredPost) && (
