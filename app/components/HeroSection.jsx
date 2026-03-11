@@ -39,9 +39,9 @@ export default function HeroSection({
     font-semibold
     rounded-lg
     transition-all duration-300 ease-in-out
-    hover:bg-[#1f54a5]
+    hover:bg-[#17ACE4]
     hover:-translate-y-1
-    hover:shadow-xl
+    hover:shadow-[0_4px_14px_#17ace466 text-white
     active:translate-y-0 cursor-pointer"
           >
             {buttonText}
