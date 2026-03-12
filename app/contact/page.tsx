@@ -1,16 +1,21 @@
-"use client";
-
+import { Metadata } from "next";
 import { Mail, Phone, MapPin } from "lucide-react";
 import HeroSection from "@/app/components/HeroSection";
 import Link from "next/link";
 import ContactForm from "@/app/components/forms/ContactForm";
+
+export const metadata: Metadata = {
+  title: "Contact Athena | Industry 4.0 & MES Solutions Expert",
+  description:
+    "Connect with Athenatec manufacturing experts for MES, PLM, ERP & Digital Transformation. Offices in USA, India. Response within 1–2 business days.",
+};
 
 export default function ContactPage() {
   return (
     <>
       <HeroSection
         title="Contact"
-        description="Leave us a little info, and we’ll be in touch."
+        description="Leave us a little info, and we'll be in touch."
         image="/assets/images/contactus.webp"
         align="center"
         buttonText="Send us an Email"
@@ -19,7 +24,7 @@ export default function ContactPage() {
 
       <section className="bg-gray-50 py-20 px-6">
         <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16">
-           <div className="space-y-10">
+          <div className="space-y-10">
             <div>
               <h1 className="text-4xl font-bold text-gray-900 mb-4">
                 Get in Touch
@@ -37,7 +42,6 @@ export default function ContactPage() {
                   <h3 className="font-semibold text-gray-900 text-lg">
                     Headquarters
                   </h3>
-
                   <Link
                     href="https://maps.app.goo.gl/HF6t3r3L8aRoPsYy7"
                     target="_blank"
@@ -56,7 +60,6 @@ export default function ContactPage() {
                   <h3 className="font-semibold text-gray-900 text-lg">
                     Enquiries
                   </h3>
-
                   <div className="mt-2 space-y-1 text-gray-600">
                     <Link
                       href="tel:+15106870900"
@@ -103,11 +106,10 @@ export default function ContactPage() {
             </div>
           </div>
 
-           <div className="bg-white p-10 rounded-3xl shadow-xl">
+          <div className="bg-white p-10 rounded-3xl shadow-xl">
             <h2 className="text-2xl font-semibold text-gray-900 mb-6">
               Send Us a Message
             </h2>
-
             <ContactForm
               inquiryOptions={[
                 "Siemens Opcenter MES",
@@ -124,7 +126,7 @@ export default function ContactPage() {
         </div>
       </section>
 
-       <section className="bg-gray-100 py-20 px-6">
+      <section className="bg-gray-100 py-20 px-6">
         <div className="max-w-7xl mx-auto">
           <div className="mb-12">
             <h2 className="text-3xl font-bold text-gray-900">
@@ -133,90 +135,74 @@ export default function ContactPage() {
           </div>
 
           <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-            {" "}
-             {" "}
             <div className="bg-white rounded-2xl p-6 shadow-sm hover:shadow-md transition flex flex-col">
-              {" "}
               <h3 className="font-semibold text-lg text-gray-900 mb-4">
-                {" "}
-                Opcenter Excellence Center:{" "}
-              </h3>{" "}
+                Opcenter Excellence Center:
+              </h3>
               <p className="text-gray-600 leading-relaxed">
-                {" "}
                 Edifice, 2nd Floor, F186 BEL Layout, Bharath Nagar, 1st Main
                 Road, East West College Road, Anjana Nagar, Magadi Road,
-                Bangalore 560091{" "}
-              </p>{" "}
+                Bangalore 560091
+              </p>
               <a
                 href="https://maps.app.goo.gl/8HdSooHUkBKTqr9JA"
                 target="_blank"
                 className="mt-auto pt-6 inline-flex items-center gap-2 text-[#1c4584] font-medium hover:text-[#17ace4] transition"
               >
-                {" "}
-                → View Map{" "}
-              </a>{" "}
-            </div>{" "}
-    
+                → View Map
+              </a>
+            </div>
+
             <div className="bg-white rounded-2xl p-6 shadow-sm hover:shadow-md transition flex flex-col">
-              {" "}
               <h3 className="font-semibold text-lg text-gray-900 mb-4">
-                {" "}
-                CMF Excellence Center:{" "}
-              </h3>{" "}
+                CMF Excellence Center:
+              </h3>
               <p className="text-gray-600 leading-relaxed">
-                {" "}
                 SR Towers, 186, 2nd Cross St, Lakshmi Nagar, Shanthi Nagar,
-                Chromepet, Chennai, Tamil Nadu 600044{" "}
-              </p>{" "}
+                Chromepet, Chennai, Tamil Nadu 600044
+              </p>
               <a
                 href="https://maps.app.goo.gl/Fa5vkvr4sdbpYUnH9"
                 target="_blank"
                 className="mt-auto pt-6 inline-flex items-center gap-2 text-[#1c4584] font-medium hover:text-[#17ace4] transition"
               >
-                {" "}
-                → View Map{" "}
-              </a>{" "}
-            </div>{" "}
-             <div className="bg-white rounded-2xl p-6 shadow-sm hover:shadow-md transition flex flex-col">
-              {" "}
+                → View Map
+              </a>
+            </div>
+
+            <div className="bg-white rounded-2xl p-6 shadow-sm hover:shadow-md transition flex flex-col">
               <h3 className="font-semibold text-lg text-gray-900 mb-4">
-                {" "}
-                PLM/ERP Center:{" "}
-              </h3>{" "}
+                PLM/ERP Center:
+              </h3>
               <p className="text-gray-600 leading-relaxed">
-                {" "}
                 3rd Floor, Plot No.21, Kored Infra Building, Kakatiya Hills,
                 Guttala Begumpet, Kavuri Hills, Madhapur, Hyderabad, Telangana
-                500081{" "}
-              </p>{" "}
+                500081
+              </p>
               <a
                 href="https://maps.app.goo.gl/SFxHh68doyTB4mFb6"
                 target="_blank"
                 className="mt-auto pt-6 inline-flex items-center gap-2 text-[#1c4584] font-medium hover:text-[#17ace4] transition"
               >
-                {" "}
-                → View Map{" "}
-              </a>{" "}
-            </div>{" "}
-             <div className="bg-white rounded-2xl p-6 shadow-sm hover:shadow-md transition flex flex-col">
-              {" "}
+                → View Map
+              </a>
+            </div>
+
+            <div className="bg-white rounded-2xl p-6 shadow-sm hover:shadow-md transition flex flex-col">
               <h3 className="font-semibold text-lg text-gray-900 mb-4">
-                {" "}
-                MES Training Center:{" "}
-              </h3>{" "}
+                MES Training Center:
+              </h3>
               <p className="text-gray-600 leading-relaxed">
-                {" "}
                 18, Old Karur Road, Killa Chinthamani, Tiruchirappalli, Tamil
-                Nadu 620002{" "}
-              </p>{" "}
+                Nadu 620002
+              </p>
               <a
                 href="https://maps.app.goo.gl/NmdtB37YDYvuVVgi9"
                 target="_blank"
                 className="mt-auto pt-6 inline-flex items-center gap-2 text-[#1c4584] font-medium hover:text-[#17ace4] transition"
               >
-                {" "}
-                → View Map{" "}
-              </a>{" "}
+                → View Map
+              </a>
             </div>
           </div>
         </div>

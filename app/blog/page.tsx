@@ -6,13 +6,13 @@ import HeroSection from "@/app/components/HeroSection";
 import type { Metadata } from "next";
 
  export const metadata: Metadata = {
-  title: "Athenatec Blog | MES & Digital Transformation Insights",
+  title: "Athenatec Blog | MES & Industry 4.0 Insights",
   description:
-    "Explore the Athenatec blog for expert insights on MES, Industry 4.0 trends, digital transformation challenges, and smart manufacturing best practices.",
+    "Explore expert insights on MES implementation, Industry 4.0 trends, digital transformation challenges, and smart manufacturing best practices.",
   openGraph: {
-    title: "Athenatec Blog | MES & Digital Transformation Insights",
+    title: "Athenatec Blog | MES & Industry 4.0 Insights",
     description:
-      "Explore the Athenatec blog for expert insights on MES, Industry 4.0 trends, digital transformation challenges, and smart manufacturing best practices.",
+      "Explore expert insights on MES implementation, Industry 4.0 trends, digital transformation challenges, and smart manufacturing best practices.",
     url: "https://www.athenatec.com/blog",
     siteName: "Athenatec",
     type: "website",

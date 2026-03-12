@@ -8,14 +8,14 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Oracle Agile PLM Implementation Services | Athenatec",
   description:
-    "Athenatec implements Oracle Agile PLM with seamless ERP & MES integration. Manage product lifecycles from concept to end-of-life with centralized change control and process automation",
+    "Athenatec implements Oracle Agile PLM with seamless ERP and MES integration. Manage product lifecycles with centralized change control and automation.",
   alternates: {
     canonical: "https://athenatec.com/solutions/plm-solutions",
   },
   openGraph: {
     title: "Oracle Agile PLM Implementation Services | Athenatec",
     description:
-      "Athenatec implements Oracle Agile PLM with seamless ERP & MES integration. Manage product lifecycles from concept to end-of-life with centralized change control and process automation",
+      "Athenatec implements Oracle Agile PLM with seamless ERP and MES integration. Manage product lifecycles with centralized change control and automation.",
     url: "https://athenatec.com/solutions/plm-solutions",
     type: "website",
     images: [

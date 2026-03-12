@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   title: "About Athenatec | MES, PLM & Smart Factory Experts",
 
   description:
-    "Athenatec's experienced team delivers successful MES projects, combining deep industry knowledge with a commitment to customer success",
+    "Athenatec is a trusted MES implementation partner providing PLM, smart factory solutions, and digital transformation for global manufacturers since 2011.",
   openGraph: {
     locale: "en_US",
     type: "website",
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     images: "https://athenatec.com/assets/img/favicon.webp",
     title: "About Athenatec | MES, PLM & Smart Factory Experts",
     description:
-      "Athenatec's experienced team delivers successful MES projects, combining deep industry knowledge with a commitment to customer success",
+      "Athenatec is a trusted MES implementation partner providing PLM, smart factory solutions, and digital transformation for global manufacturers since 2011.",
   },
   alternates: {
     canonical: "https://athenatec.com/about/",

@@ -9,14 +9,14 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "MES Implementation & Integration Services | Athenatec",
   description:
-    "Athenatec specializes in MES implementation and integration with ERP, PLM, and factory equipment. Gain real-time visibility, traceability, and control across your entire manufacturing process.",
+    "Athenatec integrates MES with ERP, PLM, and factory equipment. Gain real-time visibility, traceability, and control across your manufacturing process.",
   alternates: {
     canonical: "https://athenatec.com/solutions/mes",
   },
   openGraph: {
     title: "MES Implementation & Integration Services | Athenatec",
     description:
-      "Athenatec specializes in MES implementation and integration with ERP, PLM, and factory equipment. Gain real-time visibility, traceability, and control across your entire manufacturing process.",
+      "Athenatec integrates MES with ERP, PLM, and factory equipment. Gain real-time visibility, traceability, and control across your manufacturing process.",
     url: "https://athenatec.com/mes-solutions",
     type: "website",
     images: [

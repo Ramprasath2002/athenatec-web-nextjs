@@ -5,16 +5,16 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "MES & Industry Case Studies | Athenatec Manufacturing Success Stories",
+  title: "Industry Use Cases & Success Stories | Athenatec",
   description:
-    "Explore real-world success stories from Athenatec's MES and digital transformation projects. See how we help manufacturers achieve measurable operational improvements.",
+    "See real-world success stories from Athenatec's MES, ERP, and digital transformation projects for medical device and semiconductor manufacturers.",
   alternates: {
     canonical: "https://athenatec.com/case-studies",
   },
   openGraph: {
-    title: "MES & Industry Case Studies | Athenatec Manufacturing Success Storie",
+    title: "Industry Use Cases & Success Stories | Athenatec",
     description:
-      "Explore real-world success stories from Athenatec's MES and digital transformation projects. See how we help manufacturers achieve measurable operational improvements.",
+      "See real-world success stories from Athenatec's MES, ERP, and digital transformation projects for medical device and semiconductor manufacturers.",
     url: "https://athenatec.com/case-studies",
     type: "website",
   },

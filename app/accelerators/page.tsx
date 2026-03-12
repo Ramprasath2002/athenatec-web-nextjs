@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   title: "Athena ECO Accelerators | Automate Engineering Change in MES",
 
   description:
-    "Streamline engineering change workflows with Athena ECO Accelerators. Automate redlining, data migration & testing in MES to ensure traceability, compliance, and faster implementation.",
+    "Speed up engineering change workflows with Athena ECO Accelerators. Automate redlining, data migration, and testing in MES with full traceability.",
 
   openGraph: {
     locale: "en_US",
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     url: "https://www.athenatec.com/accelerators",
     title: "Athena ECO Accelerators | Automate Engineering Change in MES",
     description:
-      "Streamline engineering change workflows with Athena ECO Accelerators. Automate redlining, data migration & testing in MES to ensure traceability, compliance, and faster implementation.",
+      "Speed up engineering change workflows with Athena ECO Accelerators. Automate redlining, data migration, and testing in MES with full traceability.",
     images: [
       {
         url: "/assets/images/eco-accelerators.webp",

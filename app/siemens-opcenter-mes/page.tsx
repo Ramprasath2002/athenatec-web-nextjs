@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   title: "Siemens Opcenter MES Implementation Partner | Athenatec",
 
   description:
-    "Athenatec, a Siemens Alliance Partner, implements & upgrades Opcenter MES for Semiconductor, Medical Device & Electronics. Drive Industry 4.0 with expert integration & smart factory analytics.",
+    "Athenatec, a Siemens Alliance Partner, implements and upgrades Opcenter MES for semiconductor, medical device, and electronics manufacturers worldwide.",
 
   alternates: {
     canonical: "https://athenatec.com/siemens-opcenter-mes",
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Siemens Opcenter MES Implementation Partner | Athenatec",
     description:
-      "Athenatec, a Siemens Alliance Partner, implements & upgrades Opcenter MES for Semiconductor, Medical Device & Electronics. Drive Industry 4.0 with expert integration & smart factory analytics.",
+      "Athenatec, a Siemens Alliance Partner, implements and upgrades Opcenter MES for semiconductor, medical device, and electronics manufacturers worldwide.",
     url: "https://athenatec.com/siemens-opcenter-mes",
     type: "website",
     images: [

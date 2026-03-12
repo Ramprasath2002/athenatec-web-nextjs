@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, SetStateAction } from "react";
+import { useState, useEffect, useRef, SetStateAction } from "react";
 import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import Link from "next/link";
@@ -12,7 +12,7 @@ const slides = [
   //   cta: "Download Now",
   //   image: "/assets/images/MDM.webp",
   // },
-  {
+    {
     title: "Digitizing the Manufacturing Enterprise Since 2011",
     desc: "Leveraging deep expertise to enhance partnerships and drive long-term manufacturing success.",
     cta: "Connect Us",
@@ -48,8 +48,7 @@ const slides = [
     image: "/assets/images/CMC.webp",
   },
   {
-    title:
-      "Athena Announces Strategic Authorised Reseller Partnership with twinzo",
+    title: "Athena Announces Strategic Authorised Reseller Partnership with twinzo",
     desc: "Strengthening smart manufacturing visibility and operational intelligence through Twinzo's digital twin platform.",
     cta: "twinzo",
     link: "/critical-manufacturing",
@@ -76,12 +75,17 @@ const slides = [
   //   cta: "Tech Mahindra",
   //   image: "/assets/images/tech-mahindra.webp",
   // },
-];
+
+  ];
 
 export default function HeroCarousel() {
   const [index, setIndex] = useState(0);
   const [fade, setFade] = useState(true);
   const total = slides.length;
+
+   const touchStartX = useRef<number | null>(null);
+  const touchStartY = useRef<number | null>(null);
+  const isSwiping = useRef(false);
 
   const changeSlide = (newIndex: SetStateAction<number>) => {
     setFade(false);
@@ -94,6 +98,42 @@ export default function HeroCarousel() {
   const prev = () => changeSlide(index === 0 ? total - 1 : index - 1);
   const next = () => changeSlide(index === total - 1 ? 0 : index + 1);
 
+   const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+    touchStartY.current = e.touches[0].clientY;
+    isSwiping.current = false;
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    if (touchStartX.current === null || touchStartY.current === null) return;
+
+    const deltaX = e.touches[0].clientX - touchStartX.current;
+    const deltaY = e.touches[0].clientY - touchStartY.current;
+
+     if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > 8) {
+      isSwiping.current = true;
+      e.preventDefault();  
+    }
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (touchStartX.current === null || !isSwiping.current) return;
+
+    const deltaX = e.changedTouches[0].clientX - touchStartX.current;
+    const SWIPE_THRESHOLD = 50; 
+
+    if (deltaX < -SWIPE_THRESHOLD) {
+      next();  
+    } else if (deltaX > SWIPE_THRESHOLD) {
+      prev();  
+    }
+
+    touchStartX.current = null;
+    touchStartY.current = null;
+    isSwiping.current = false;
+  };
+  
+
   useEffect(() => {
     const timer = setInterval(() => {
       changeSlide(index === total - 1 ? 0 : index + 1);
@@ -102,7 +142,13 @@ export default function HeroCarousel() {
   }, [index]);
 
   return (
-    <section className="relative w-full min-h-[55vh] sm:min-h-[60vh] md:min-h-[65vh] lg:min-h-[60vh] flex items-center overflow-hidden">
+    <section
+      className="relative w-full min-h-[55vh] sm:min-h-[60vh] md:min-h-[65vh] lg:min-h-[60vh] flex items-center overflow-hidden"
+       onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
+       style={{ touchAction: "pan-y" }}
+    >
       <div className="absolute inset-0">
         {slides.map((slide, i) => (
           <Image

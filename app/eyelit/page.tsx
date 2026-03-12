@@ -6,16 +6,16 @@ import CTASection from "@/app/components/CTASection";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Eyelit MES & Equipment Connect Partner | Athenate",
+  title: "Eyelit MES & Equipment Connect Partner | Athenatec",
   description:
-    "Athenatec implements Eyelit MES and Equipment Connect for enhanced real-time visibility, advanced planning, and predictive maintenance. Streamline your manufacturing operations with our expertise.",
+    "Athenatec implements Eyelit MES and Equipment Connect. Gain real-time visibility, advanced planning, and predictive maintenance for your factory.",
   alternates: {
     canonical: "https://athenatec.com/eyelit",
   },
   openGraph: {
-    title: "Eyelit MES & Equipment Connect Partner | Athenate",
+    title: "Eyelit MES & Equipment Connect Partner | Athenatec",
     description:
-      "Athenatec implements Eyelit MES and Equipment Connect for enhanced real-time visibility, advanced planning, and predictive maintenance. Streamline your manufacturing operations with our expertise.",
+      "Athenatec implements Eyelit MES and Equipment Connect. Gain real-time visibility, advanced planning, and predictive maintenance for your factory.",
     url: "https://athenatec.com/eyelit",
     type: "website",
     images: [
