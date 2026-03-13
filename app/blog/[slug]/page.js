@@ -17,7 +17,6 @@ export default async function PostPage({ params }) {
 
   const relatedPosts = allPosts.filter((p) => p.slug !== slug).slice(0, 3);
 
-  // Extract the featured image from the post
   const heroImage =
     post._embedded?.["wp:featuredmedia"]?.[0]?.media_details?.sizes
       ?.full?.source_url ||

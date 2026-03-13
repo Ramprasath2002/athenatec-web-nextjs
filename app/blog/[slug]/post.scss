@@ -1,7 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=DM+Sans:wght@300;400;500;600&display=swap");
 
-// ─── Tokens ───────────────────────────────────────────────
-:root {
+ :root {
   --ink: #0f1117;
   --ink-light: #4a5060;
   --surface: #f8f7f4;
@@ -17,15 +16,13 @@
   --font-body: "DM Sans", system-ui, sans-serif;
 }
 
-// ─── Wrapper ──────────────────────────────────────────────
-.post-wrapper {
+ .post-wrapper {
   font-family: var(--font-body);
   background: var(--surface);
   min-height: 100vh;
 }
 
-// ─── Hero ─────────────────────────────────────────────────
-.post-hero {
+ .post-hero {
   position: relative;
   width: 100%;
   min-height: 560px;
@@ -53,7 +50,6 @@
   &__overlay {
     position: absolute;
     inset: 0;
-    // Deep gradient: dark at bottom for text legibility, lighter on top
     background: linear-gradient(
       to top,
       rgba(10, 12, 20, 0.88) 0%,
@@ -125,14 +121,11 @@
     letter-spacing: -0.02em;
     margin: 0;
     max-width: 780px;
-
-    // Subtle text shadow for legibility
     text-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
   }
 }
 
-// ─── Layout ───────────────────────────────────────────────
-.post-layout {
+ .post-layout {
   max-width: 820px;
   margin: 0 auto;
   padding: 64px 40px 40px;
@@ -142,8 +135,7 @@
   }
 }
 
-// ─── Article ──────────────────────────────────────────────
-.post-article {
+ .post-article {
   background: var(--card-bg);
   border-radius: 20px;
   padding: 64px 72px;
@@ -161,13 +153,66 @@
   }
 }
 
-// ─── Post Content ─────────────────────────────────────────
-.post-content {
+ .post-content {
   font-size: 17.5px;
   line-height: 1.82;
   color: #2c2f3a;
   font-weight: 300;
 
+   img {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    margin: 40px 0;
+    box-shadow: var(--shadow-md);
+  }
+
+   img.emoji,
+  img.wp-smiley,
+  img[src*="emoji"],
+  img[src*="s.w.org"] {
+    width: 1em !important;
+    height: 1em !important;
+    max-width: 1em !important;
+    min-width: unset !important;
+    border-radius: 0 !important;
+    margin: 0 2px !important;
+    box-shadow: none !important;
+    display: inline !important;
+    vertical-align: middle !important;
+  }
+
+   svg {
+    max-width: 100%;
+    height: auto;
+  }
+
+  svg.e-font-icon-svg {
+    width: 1.2em !important;
+    height: 1.2em !important;
+    display: inline-block !important;
+    vertical-align: middle !important;
+    margin: 0 4px !important;
+  }
+
+  .eael-feature-list-icon-box {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    width: auto !important;
+    height: auto !important;
+  }
+
+  .eael-feature-list-icon,
+  .eael-feature-list-icon-inner,
+  span[class*="fl-icon"] {
+    display: none !important;
+    align-items: center !important;
+    width: auto !important;
+    height: auto !important;
+  }
+
+  // ── Headings ────────────────────────────────────────────
   h2 {
     font-family: var(--font-display);
     font-size: 28px;
@@ -176,8 +221,6 @@
     margin: 56px 0 20px;
     letter-spacing: -0.015em;
     line-height: 1.25;
-
-    // Accent bar
     position: relative;
     padding-left: 20px;
 
@@ -203,6 +246,7 @@
     font-style: italic;
   }
 
+  // ── Body ────────────────────────────────────────────────
   p {
     margin-bottom: 24px;
   }
@@ -248,13 +292,6 @@
     &::marker {
       color: var(--accent-warm);
     }
-  }
-
-  img {
-    width: 100%;
-    border-radius: 12px;
-    margin: 40px 0;
-    box-shadow: var(--shadow-md);
   }
 
   hr {

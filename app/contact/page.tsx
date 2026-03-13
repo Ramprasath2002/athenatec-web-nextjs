@@ -5,9 +5,9 @@ import Link from "next/link";
 import ContactForm from "@/app/components/forms/ContactForm";
 
 export const metadata: Metadata = {
-  title: "Contact Athena | Industry 4.0 & MES Solutions Expert",
+  title: "Contact Athenatec | MES, PLM & Smart Factory Experts",
   description:
-    "Connect with Athenatec manufacturing experts for MES, PLM, ERP & Digital Transformation. Offices in USA, India. Response within 1–2 business days.",
+    "Get in touch with Athenatec's team for MES, PLM, and smart manufacturing solutions, in Bangalore, Chennai, Hyderabad, and Trichy. We respond within 24 hours",
 };
 
 export default function ContactPage() {
