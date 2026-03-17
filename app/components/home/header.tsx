@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import HeaderMenu from "./HeaderMenu";
+import Image from "next/image";
 
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -19,8 +20,7 @@ export default function Header() {
   useEffect(() => {
     const isDesktop = () => window.innerWidth >= 900;
     const apply = () => {
-      document.body.style.overflow =
-        !isDesktop() && mobileOpen ? "hidden" : "";
+      document.body.style.overflow = !isDesktop() && mobileOpen ? "hidden" : "";
     };
     apply();
     window.addEventListener("resize", apply);
@@ -41,26 +41,28 @@ export default function Header() {
           : "shadow-sm",
       ].join(" ")}
     >
-       <div className="mx-auto flex h-[72px] max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-
-         <Link href="/" className="flex shrink-0 items-center">
-          <img
+      <div className="mx-auto flex h-[72px] max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+        <Link href="/" className="flex shrink-0 items-center">
+          <Image
             src="/assets/logo/Athenatec-Logo.png"
             alt="Athena Technology Solutions"
+            width={290}
+            height={56}
             className="h-12 sm:h-14 w-auto"
-            loading="lazy"
+            priority // navbar logo is above-fold — load eagerly
+            quality={90}
           />
         </Link>
 
-         <nav className="hidden [@media(min-width:900px)]:flex items-center gap-1 text-[14.5px] font-medium text-gray-700">
+        <nav className="hidden [@media(min-width:900px)]:flex items-center gap-1 text-[14.5px] font-medium text-gray-700">
           <NavLink href="/about">About</NavLink>
           <NavLink href="/accelerators">Athena Accelerators</NavLink>
 
-           <HeaderMenu variant="desktop" />
+          <HeaderMenu variant="desktop" />
 
           <NavLink href="/careers">Career</NavLink>
 
-           <Link
+          <Link
             href="/contact"
             className="ml-3 inline-flex items-center rounded-lg bg-[#1c4584] px-5 py-2.5 text-sm font-semibold text-white
                        transition-all duration-200 hover:bg-[#17ace4] hover:shadow-[0_4px_14px_rgba(23,172,228,0.4)]"
@@ -69,7 +71,7 @@ export default function Header() {
           </Link>
         </nav>
 
-         <button
+        <button
           aria-label={mobileOpen ? "Close menu" : "Open menu"}
           aria-expanded={mobileOpen}
           onClick={() => setMobileOpen((v) => !v)}
@@ -95,7 +97,7 @@ export default function Header() {
         </button>
       </div>
 
-       <div
+      <div
         className={[
           "[@media(min-width:900px)]:hidden",
           "bg-white border-t border-gray-100",
@@ -105,19 +107,24 @@ export default function Header() {
             : "max-h-0 opacity-0 pointer-events-none",
         ].join(" ")}
       >
-        <nav className="flex flex-col gap-0 px-5 py-4 text-[15px] text-gray-700
-                        max-h-[calc(100dvh-72px)] overflow-y-auto overscroll-contain">
-
-          <MobileNavLink href="/about" onClick={closeMobile}>About</MobileNavLink>
+        <nav
+          className="flex flex-col gap-0 px-5 py-4 text-[15px] text-gray-700
+                        max-h-[calc(100dvh-72px)] overflow-y-auto overscroll-contain"
+        >
+          <MobileNavLink href="/about" onClick={closeMobile}>
+            About
+          </MobileNavLink>
           <MobileNavLink href="/accelerators" onClick={closeMobile}>
             Athena Accelerators
           </MobileNavLink>
 
-           <HeaderMenu variant="mobile" onNavigate={closeMobile} />
+          <HeaderMenu variant="mobile" onNavigate={closeMobile} />
 
-          <MobileNavLink href="/careers" onClick={closeMobile}>Career</MobileNavLink>
+          <MobileNavLink href="/careers" onClick={closeMobile}>
+            Career
+          </MobileNavLink>
 
-           <div className="mt-4 pb-2">
+          <div className="mt-4 pb-2">
             <Link
               href="/contact"
               onClick={closeMobile}

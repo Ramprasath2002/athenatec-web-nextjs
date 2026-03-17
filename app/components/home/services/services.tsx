@@ -328,7 +328,7 @@ export default function Services() {
           <h2 className="managed-title">Athena Managed Services</h2>
 
           <div className="managed-layout">
-             <div className="managed-tabs-wrapper">
+            <div className="managed-tabs-wrapper">
               <div className="managed-tabs">
                 {managedServices.map((item, i) => (
                   <button
@@ -342,11 +342,19 @@ export default function Services() {
               </div>
             </div>
 
-             <div
+            <div
               className={`managed-content ${isTransitioning ? "fade-out" : ""}`}
             >
               <div className="managed-image">
-                <img src={service.image} alt={service.title} loading="lazy"/>
+                <Image
+                  src={service.image}
+                  alt={service.title}
+                  width={600}
+                  height={400}
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
+                  className="w-full h-full object-cover"
+                  quality={75}
+                />
               </div>
 
               <div className="managed-text">
@@ -365,7 +373,7 @@ export default function Services() {
       </section>
       <section className="why-us">
         <div className="container why-us-grid">
-           <div className="why-us-content">
+          <div className="why-us-content">
             <span className="why-us-label">WHY US</span>
             <h2>Expertise, Innovation, and Global Excellence</h2>
             <p>
@@ -395,7 +403,14 @@ export default function Services() {
                 onClick={() => router.push("/about")}
               >
                 <div className="testimonial-card">
-                  <img src={item.image} alt={item.name} className="avatar" loading="lazy" />
+                  <Image
+                    src={item.image}
+                    alt={item.name}
+                    width={110}
+                    height={72}
+                    className="avatar rounded-full object-cover"
+                    quality={80}
+                  />
                   <h3>{item.name}</h3>
                   <div className="role">{item.role}</div>
                   <p className="testimonial-text">{item.text}</p>

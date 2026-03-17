@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import "./bot.scss";
+import Image from "next/image";
 
 type Message = {
   role: "user" | "assistant";
@@ -83,8 +84,7 @@ export default function AIChatbot() {
         ...updatedMessages,
         {
           role: "assistant",
-          content:
-            "Great! Now tell us how we can assist you today.",
+          content: "Great! Now tell us how we can assist you today.",
         },
       ]);
 
@@ -121,55 +121,62 @@ export default function AIChatbot() {
 
   return (
     <>
-<div className="chat-button" onClick={() => setOpen(!open)}>
-  <div className="chat-icon-wrapper">
-    <img src="/assets/icons/chatai.webp" alt="AI Chat" loading="lazy" className="chat-icon" />
-  </div>
-  <span className="pulse-ring"></span>
-</div>
-
+      <div className="chat-button" onClick={() => setOpen(!open)}>
+        <div className="chat-icon-wrapper">
+          <Image
+            src="/assets/icons/chatai.webp"
+            alt="AI Chat"
+            width={56}
+            height={56}
+            className="chat-icon"
+            quality={85}
+          />{" "}
+        </div>
+        <span className="pulse-ring"></span>
+      </div>
 
       {open && (
         <div className="chat-window">
-  <div className="chat-header">
-    <div className="chat-header-left">
-      <div className="chat-avatar">AI</div>
-      <div>
-        <div className="chat-title">Athenatec Bot</div>
-        <div className="chat-status">● Online</div>
-      </div>
-    </div>
-    <div className="chat-close" onClick={() => setOpen(false)}>✕</div>
-  </div>
+          <div className="chat-header">
+            <div className="chat-header-left">
+              <div className="chat-avatar">AI</div>
+              <div>
+                <div className="chat-title">Athenatec Bot</div>
+                <div className="chat-status">● Online</div>
+              </div>
+            </div>
+            <div className="chat-close" onClick={() => setOpen(false)}>
+              ✕
+            </div>
+          </div>
 
-  <div className="chat-body">
-    {messages.map((msg, i) => (
-      <div key={i} className={`chat-row ${msg.role}`}>
-        <div className="chat-bubble">
-          {msg.content}
+          <div className="chat-body">
+            {messages.map((msg, i) => (
+              <div key={i} className={`chat-row ${msg.role}`}>
+                <div className="chat-bubble">{msg.content}</div>
+              </div>
+            ))}
+            {loading && (
+              <div className="chat-row assistant">
+                <div className="chat-bubble typing">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </div>
+              </div>
+            )}
+          </div>
+
+          <div className="chat-input">
+            <input
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+              placeholder="Type your message..."
+              onKeyDown={(e) => e.key === "Enter" && sendMessage()}
+            />
+            <button onClick={sendMessage}>Send</button>
+          </div>
         </div>
-      </div>
-    ))}
-    {loading && (
-      <div className="chat-row assistant">
-        <div className="chat-bubble typing">
-          <span></span><span></span><span></span>
-        </div>
-      </div>
-    )}
-  </div>
-
-  <div className="chat-input">
-    <input
-      value={input}
-      onChange={(e) => setInput(e.target.value)}
-      placeholder="Type your message..."
-      onKeyDown={(e) => e.key === "Enter" && sendMessage()}
-    />
-    <button onClick={sendMessage}>Send</button>
-  </div>
-</div>
-
       )}
     </>
   );

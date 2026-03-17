@@ -120,7 +120,15 @@ export default function PlmSolution() {
           <h2 className="plm-team__title">Agile PLM Close Loop System</h2>
 
           <div className="plm-team__image">
-            <img src="/assets/images/05-6.webp" alt="Athena Opcenter Team" loading="lazy" />
+         <Image
+  src="/assets/images/05-6.webp"
+  alt="Athena Opcenter Team"
+  width={700}
+  height={470}
+  sizes="(max-width: 768px) 100vw, 700px"
+  className="w-full h-auto object-cover"
+  quality={75}
+/>
           </div>
         </div>
       </section>
