@@ -322,7 +322,7 @@ export default function SiemensOpcenter() {
         buttonLink="/contact"
       />
 
-       <section className="soc-description">
+      <section className="soc-description">
         <div className="soc-description__card">
           <p>
             Siemens Opcenter (formally known as Siemens Camstar) is a
@@ -378,7 +378,7 @@ export default function SiemensOpcenter() {
           </div>
         </div>
       </section>
-       <section className="soc-expertise">
+      <section className="soc-expertise">
         <div className="soc-expertise__container">
           <div className="soc-expertise__content">
             <h2>Athena Opcenter Siemens Expertise</h2>
@@ -395,34 +395,42 @@ export default function SiemensOpcenter() {
               Our team possesses specialized skills in Designer, Portal Studio,
               APS, and Mendix.
             </p>
-           </div>
+          </div>
 
           <div className="soc-expertise__timeline">
-            <img
+            <Image
               src="/assets/images/Seimens-Roadmap.webp"
               alt="Opcenter Timeline"
-              loading="lazy"
+              width={900}
+              height={500}
+              sizes="(max-width: 768px) 100vw, 900px"
+              className="w-full h-auto"
+              quality={80}
             />
           </div>
         </div>
       </section>
-       <section className="soc-team">
+      <section className="soc-team">
         <div className="soc-team__container">
           <h2 className="soc-team__title">
             Athena Opcenter Siemens Expertise Team
           </h2>
 
           <div className="soc-team__image">
-            <img
+            <Image
               src="/assets/images/siemens-img.webp"
               alt="Athena Opcenter Team"
-              loading="lazy"
+              width={700}
+              height={470}
+              sizes="(max-width: 768px) 100vw, 700px"
+              className="w-full h-auto object-cover"
+              quality={75}
             />
           </div>
         </div>
       </section>
 
-       <section className="soc-factory">
+      <section className="soc-factory">
         <div className="soc-factory__container">
           <h2 className="soc-factory__title">
             Factory System Overview and Integration
@@ -481,7 +489,7 @@ export default function SiemensOpcenter() {
       />
       <section className="siemens-analytics">
         <div className="container">
-             <div className="analytics-diagram">
+          <div className="analytics-diagram">
             <Image
               src="/assets/images/07-4.webp"
               alt="Manufacturing Process Flow"
@@ -491,7 +499,7 @@ export default function SiemensOpcenter() {
             />
           </div>
 
-           <div className="analytics-content">
+          <div className="analytics-content">
             <h2 className="analytics-title">Analytics</h2>
 
             <p>
@@ -514,9 +522,9 @@ export default function SiemensOpcenter() {
             </p>
           </div>
 
-           <h2 className="analytics-title">Smart Factory Analytics</h2>
+          <h2 className="analytics-title">Smart Factory Analytics</h2>
 
-           <div className="analytics-block">
+          <div className="analytics-block">
             <Image
               src="/assets/images/10-1.webp"
               alt="Smart Factory Analytics"
@@ -525,7 +533,7 @@ export default function SiemensOpcenter() {
             />
           </div>
 
-           <div className="analytics-block dmaic-section">
+          <div className="analytics-block dmaic-section">
             <Image
               src="/assets/images/04-6.webp"
               alt="DMAIC Process"

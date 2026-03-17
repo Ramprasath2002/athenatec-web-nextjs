@@ -123,10 +123,14 @@ export default function EyelitPage() {
             </div>
 
             <div className="expertise-image">
-              <img
+              <Image
                 src="/assets/images/1722014978283.webp"
                 alt="Expertise"
-                loading="lazy"
+                width={600}
+                height={400}
+                sizes="(max-width: 768px) 100vw, 50vw"
+                className="w-full h-auto object-cover"
+                quality={75}
               />
             </div>
           </div>
@@ -213,10 +217,14 @@ export default function EyelitPage() {
         <div className="container">
           <div className="equipment-grid">
             <div className="equipment-image">
-              <img
+              <Image
                 src="/assets/images/Eyelit-Equipment.webp"
                 alt="Equipment Connect"
-                loading="lazy"
+                width={700}
+                height={470}
+                sizes="(max-width: 768px) 100vw, 700px"
+                className="w-full h-auto object-cover"
+                quality={75}
               />
             </div>
 
@@ -234,7 +242,11 @@ export default function EyelitPage() {
 
               <div className="benefits-list">
                 <div className="benefit-item">
-                  <img src="/assets/icons/check-mark.svg" alt="icon" loading="lazy" />
+                  <img
+                    src="/assets/icons/check-mark.svg"
+                    alt="icon"
+                    loading="lazy"
+                  />
                   <div>
                     <h4>Real-Time Monitoring and Diagnostics</h4>
                     <p>
@@ -246,7 +258,11 @@ export default function EyelitPage() {
                 </div>
 
                 <div className="benefit-item">
-                  <img src="/assets/icons/check-mark.svg" alt="icon" loading="lazy" />
+                  <img
+                    src="/assets/icons/check-mark.svg"
+                    alt="icon"
+                    loading="lazy"
+                  />
                   <div>
                     <h4>Predictive Maintenance</h4>
                     <p>
@@ -258,7 +274,11 @@ export default function EyelitPage() {
                 </div>
 
                 <div className="benefit-item">
-                  <img src="/assets/icons/check-mark.svg" alt="icon" loading="lazy" />
+                  <img
+                    src="/assets/icons/check-mark.svg"
+                    alt="icon"
+                    loading="lazy"
+                  />
                   <div>
                     <h4>Enhanced Operational Efficiency</h4>
                     <p>

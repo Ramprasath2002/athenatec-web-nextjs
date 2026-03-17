@@ -172,7 +172,7 @@ We will continue to work together with Athena to carry out continuous process im
 
   return (
     <div className="about-page">
-       <HeroSection
+      <HeroSection
         title="About Us"
         description="Delivering innovative solutions that drive measurable business growth."
         image="/assets/images/aboutus.webp"
@@ -180,7 +180,7 @@ We will continue to work together with Athena to carry out continuous process im
         buttonText="Contact Us"
         buttonLink="/contact"
       />
-       <section className="achievements">
+      <section className="achievements">
         <div className="container">
           <h2 className="section-title">Achievements and Success</h2>
 
@@ -233,7 +233,7 @@ We will continue to work together with Athena to carry out continuous process im
           </div>
         </div>
       </section>
-       <section className="vision-section">
+      <section className="vision-section">
         <div className="container vision-grid">
           <div className="vision-image">
             <Image
@@ -264,7 +264,7 @@ We will continue to work together with Athena to carry out continuous process im
           </div>
         </div>
       </section>
-       <section className="services-section">
+      <section className="services-section">
         <div className="container">
           <h4 className="small-heading">What we do</h4>
           <h2 className="big-heading">
@@ -318,21 +318,29 @@ We will continue to work together with Athena to carry out continuous process im
           </div>
         </div>
       </section>
-       <section className="customers-section">
+      <section className="customers-section">
         <div className="container">
           <h2 className="customers-title">Our Customers</h2>
 
           <div className="customers-grid">
             {logos.map((logo, index) => (
               <div key={index} className="customer-logo">
-                <img src={logo} alt="Client Logo" loading="lazy" />
+                <Image
+                  src={logo}
+                  alt="Client Logo"
+                  width={160}
+                  height={60}
+                  sizes="160px"
+                  className="h-auto w-auto object-contain"
+                  quality={80}
+                />{" "}
               </div>
             ))}
           </div>
         </div>
       </section>
 
-       <section className="about-testimonial-section">
+      <section className="about-testimonial-section">
         <div className="container">
           <ScrollReveal>
             <h2 className="testimonial-title">Testimonial</h2>
@@ -348,11 +356,14 @@ We will continue to work together with Athena to carry out continuous process im
                     </div>
 
                     {item.image && (
-                      <img
+                      <Image
                         src={item.image}
                         alt={item.company}
-                        className="testimonial-logo"
-                        loading="lazy"
+                        width={120}
+                        height={48}
+                        sizes="120px"
+                        className="testimonial-logo h-auto w-auto object-contain"
+                        quality={80}
                       />
                     )}
                   </div>

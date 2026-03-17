@@ -404,7 +404,7 @@ export default function CyberSecurityServices() {
             </div>
           </div>
 
-           <div className="why-athena">
+          <div className="why-athena">
             <h2 className="section-title">Why Athena?</h2>
 
             <div className="why-grid">
@@ -437,7 +437,15 @@ export default function CyberSecurityServices() {
           <div className="product-grid">
             {products.map((product, index) => (
               <div key={index} className="product-card">
-                <img src={product.logo} alt={product.name} loading="lazy" />
+                <Image
+                  src={product.logo}
+                  alt={product.name}
+                  width={160}
+                  height={64}
+                  sizes="160px"
+                  className="h-auto w-auto object-contain"
+                  quality={80}
+                />
               </div>
             ))}
           </div>

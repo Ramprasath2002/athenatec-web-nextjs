@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Facebook, Instagram, Linkedin, Youtube } from "lucide-react";
-
+import Image from "next/image";
 
 const mesSolutions = [
   { name: "Siemens Opcenter MES", href: "/siemens-opcenter-mes" },
@@ -12,10 +12,13 @@ const mesSolutions = [
 const otherSolutions = [
   // ❌ Removed: PLM Solutions
   // ❌ Removed: Enterprise ERP
-  { name: "Oracle On-Prem",        href: "/solutions/oracle-on-prem" },       // ✅ Added
-  { name: "Oracle Cloud",          href: "/solutions/oracle-cloud" },          // ✅ Added
-  { name: "PLM",                   href: "/solutions/plm" },                   // ✅ Retained
-  { name: "Cyber Security Services", href: "/solutions/cyber-security-service" },
+  { name: "Oracle On-Prem", href: "/solutions/oracle-on-prem" }, // ✅ Added
+  { name: "Oracle Cloud", href: "/solutions/oracle-cloud" }, // ✅ Added
+  { name: "PLM", href: "/solutions/plm" }, // ✅ Retained
+  {
+    name: "Cyber Security Services",
+    href: "/solutions/cyber-security-service",
+  },
 ];
 
 const partners = [
@@ -43,38 +46,42 @@ const socials = [
     label: "Facebook",
     href: "https://www.facebook.com/athenatecindia/",
     icon: <Facebook size={16} strokeWidth={1.8} />,
-    style: "hover:bg-[#1877F2] hover:border-[#1877F2] hover:shadow-[0_0_18px_rgba(24,119,242,0.5)]",
+    style:
+      "hover:bg-[#1877F2] hover:border-[#1877F2] hover:shadow-[0_0_18px_rgba(24,119,242,0.5)]",
   },
   {
     label: "Instagram",
     href: "https://www.instagram.com/athenatecofficial?igsh=MTN6eXFwYmdhNjdvNw==",
     icon: <Instagram size={16} strokeWidth={1.8} />,
-    style: "hover:border-transparent hover:shadow-[0_0_18px_rgba(225,48,108,0.5)] instagram-hover",
+    style:
+      "hover:border-transparent hover:shadow-[0_0_18px_rgba(225,48,108,0.5)] instagram-hover",
   },
   {
     label: "X",
     href: "https://x.com/athena_tec",
     icon: <XIcon />,
-    style: "hover:bg-[#0f0f0f] hover:border-[#0f0f0f] hover:shadow-[0_0_18px_rgba(0,0,0,0.5)]",
+    style:
+      "hover:bg-[#0f0f0f] hover:border-[#0f0f0f] hover:shadow-[0_0_18px_rgba(0,0,0,0.5)]",
   },
   {
     label: "LinkedIn",
     href: "https://www.linkedin.com/company/athena-technology-solutions/",
     icon: <Linkedin size={16} strokeWidth={1.8} />,
-    style: "hover:bg-[#0A66C2] hover:border-[#0A66C2] hover:shadow-[0_0_18px_rgba(10,102,194,0.5)]",
+    style:
+      "hover:bg-[#0A66C2] hover:border-[#0A66C2] hover:shadow-[0_0_18px_rgba(10,102,194,0.5)]",
   },
   {
     label: "YouTube",
     href: "https://www.youtube.com/@AthenaTechnologySolutions/",
     icon: <Youtube size={16} strokeWidth={1.8} />,
-    style: "hover:bg-[#FF0000] hover:border-[#FF0000] hover:shadow-[0_0_18px_rgba(255,0,0,0.5)]",
+    style:
+      "hover:bg-[#FF0000] hover:border-[#FF0000] hover:shadow-[0_0_18px_rgba(255,0,0,0.5)]",
   },
 ];
 
 export default function Footer() {
   return (
     <footer className="bg-[#1c4584] text-white">
-
       <style>{`
         .instagram-hover:hover {
           background: linear-gradient(135deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
@@ -82,15 +89,15 @@ export default function Footer() {
       `}</style>
 
       <div className="mx-auto max-w-7xl px-6 py-16">
-
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-6">
-
           <div className="space-y-6 lg:col-span-2">
-            <img
+            <Image
               src="/assets/logo/footer-logo.png"
               alt="Athena"
+              width={180}
+              height={48}
               className="h-12 w-auto"
-              loading="lazy"
+              quality={90}
             />
             <p className="max-w-sm text-sm leading-relaxed text-[#c7d4f1]">
               Athena Technology Solutions delivers enterprise-grade digital
@@ -251,7 +258,6 @@ export default function Footer() {
             </Link>
           </div>
         </div>
-
       </div>
     </footer>
   );

@@ -1,7 +1,7 @@
 "use client";
 
 import "./leadership.scss";
-
+import Image from "next/image";
 type Leader = {
   name: string;
   role: string;
@@ -20,8 +20,7 @@ export default function Leadership() {
     {
       name: "Peter Nakaso",
       role: "VP of Sales",
-      image:
-        "/assets/images/Peter-Picture.webp",
+      image: "/assets/images/Peter-Picture.webp",
       bio: "Sales strategist focused on enterprise manufacturing solutions, partnerships, and global revenue growth.",
     },
     {
@@ -33,8 +32,7 @@ export default function Leadership() {
     {
       name: "Sachi Javli",
       role: "Managing Director & Global Delivery",
-      image:
-        "/assets/images/409933-e1754047370496.webp",
+      image: "/assets/images/409933-e1754047370496.webp",
       bio: "Leads global delivery and execution with a strong focus on operational excellence and customer success.",
     },
     {
@@ -75,7 +73,15 @@ export default function Leadership() {
         <div className="flip-card" key={i}>
           <div className="flip-inner">
             <div className="flip-front">
-              <img src={leader.image} alt={leader.name} loading="lazy" />
+              <Image
+                src={leader.image}
+                alt={leader.name}
+                width={320}
+                height={320}
+                sizes="(max-width: 768px) 50vw, 320px"
+                className="w-full h-full object-cover"
+                quality={80}
+              />
               <div className="overlay">
                 <h4>{leader.name}</h4>
                 <span>{leader.role}</span>
@@ -95,7 +101,7 @@ export default function Leadership() {
   return (
     <section className="leadership">
       <div className="container">
-         <div className="header">
+        <div className="header">
           <h2>Meet Our Leadership Team</h2>
           <p>
             Meet the visionaries behind our success. Our leadership team brings
@@ -106,7 +112,7 @@ export default function Leadership() {
 
         {renderGrid(leadershipTeam)}
 
-         <div className="header advisory-header">
+        <div className="header advisory-header">
           <h2>Advisory Board</h2>
           <p>
             Our advisory board provides strategic guidance, industry insight,
@@ -117,11 +123,19 @@ export default function Leadership() {
         <div className="advisory-list">
           {advisoryBoard.map((advisor, i) => (
             <div className="advisory-card" key={i}>
-               <div className="advisory-image">
-                <img src={advisor.image} alt={advisor.name} loading="lazy" />
+              <div className="advisory-image">
+                <Image
+                  src={advisor.image}
+                  alt={advisor.name}
+                  width={280}
+                  height={280}
+                  sizes="(max-width: 768px) 50vw, 280px"
+                  className="w-full h-full object-cover"
+                  quality={80}
+                />
               </div>
 
-               <div className="advisory-content">
+              <div className="advisory-content">
                 <h3>{advisor.name}</h3>
                 <h4>{advisor.role}</h4>
                 <p>{advisor.bio}</p>

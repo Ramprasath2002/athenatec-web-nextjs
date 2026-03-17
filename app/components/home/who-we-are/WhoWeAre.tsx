@@ -8,7 +8,7 @@ export default function WhoWeAre() {
     <>
       <section className="who-we-are">
         <div className="container">
-           <div className="who-content">
+          <div className="who-content">
             <span className="section-eyebrow">Who We Are</span>
 
             <h2 className="who-title">
@@ -29,7 +29,7 @@ export default function WhoWeAre() {
             </Link>
           </div>
 
-           <div className="who-image">
+          <div className="who-image">
             <Image
               src="/assets/images/Prototyping-to-Delivery.webp"
               alt="Prototyping to Delivery"
@@ -41,19 +41,21 @@ export default function WhoWeAre() {
         </div>
       </section>
 
-       <section className="partners">
+      <section className="partners">
         <div className="container">
           <h3 className="partners-title">
             Our Strategic Technology Partnerships
           </h3>
 
           <div className="partners-grid">
-             <div className="partner-card">
-              <img
+            <div className="partner-card">
+              <Image
                 src="/assets/images/images-3.webp"
                 alt="Siemens"
-                className="partner-logo"
-                loading="lazy"
+                width={180}
+                height={72}
+                className="partner-logo h-auto w-auto object-contain"
+                quality={80}
               />
 
               <h4>Siemens Alliance Partner</h4>
@@ -71,12 +73,14 @@ export default function WhoWeAre() {
               </Link>
             </div>
 
-             <div className="partner-card">
-              <img
+            <div className="partner-card">
+              <Image
                 src="/assets/images/critical_manufacturing_logo-e1727901256634-1.webp"
                 alt="Critical Manufacturing"
-                className="partner-logo"
-                loading="lazy"
+                width={180}
+                height={72}
+                className="partner-logo h-auto w-auto object-contain"
+                quality={80}
               />
 
               <h4>Critical Manufacturing Premier Partner</h4>
@@ -89,19 +93,19 @@ export default function WhoWeAre() {
                 manufacturing process.
               </p>
 
-          
-
-               <Link href="/critical-manufacturing" className="partner-btn">
+              <Link href="/critical-manufacturing" className="partner-btn">
                 Know More
               </Link>
             </div>
 
-             <div className="partner-card">
-              <img
+            <div className="partner-card">
+              <Image
                 src="/assets/images/00.webp"
                 alt="Eyelit"
-                className="partner-logo"
-                loading="lazy"
+                width={180}
+                height={72}
+                className="partner-logo h-auto w-auto object-contain"
+                quality={80}
               />
 
               <h4>Eyelit Implementation Partner</h4>
@@ -119,11 +123,13 @@ export default function WhoWeAre() {
               </Link>
             </div>
             <div className="partner-card">
-              <img
+              <Image
                 src="/assets/Clients/twinzo-img.webp"
-                alt="Eyelit"
-                className="partner-logo"
-                loading="lazy"
+                alt="Twinzo"
+                width={180}
+                height={72}
+                className="partner-logo h-auto w-auto object-contain"
+                quality={80}
               />
 
               <h4>Twinzo Authorized Reseller Partner</h4>
@@ -135,7 +141,10 @@ export default function WhoWeAre() {
                 monitoring, and data-driven operations across sectors.
               </p>
 
-             <Link href="/blog/authorised-reseller-partnership-with-twinzo" className="partner-btn">
+              <Link
+                href="/blog/authorised-reseller-partnership-with-twinzo"
+                className="partner-btn"
+              >
                 Know More
               </Link>
             </div>
@@ -144,7 +153,7 @@ export default function WhoWeAre() {
       </section>
       <section className="what-we-do">
         <div className="what-container">
-           <div className="what-media">
+          <div className="what-media">
             <div className="what-image-wrapper">
               <video
                 autoPlay
@@ -153,16 +162,13 @@ export default function WhoWeAre() {
                 playsInline
                 className="w-full h-full object-cover rounded-md"
               >
-                <source
-                  src="/assets/videos/aps.mp4"
-                  type="video/mp4"
-                />
+                <source src="/assets/videos/aps.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
               </video>
             </div>
           </div>
 
-           <div className="what-content">
+          <div className="what-content">
             <span className="section-eyebrow">WHAT WE DO</span>
 
             <h2 className="what-title">
@@ -190,9 +196,7 @@ export default function WhoWeAre() {
     </>
   );
 }
- 
 
- 
 function Counter({ end, label }: { end: number; label: string }) {
   const [count, setCount] = useState(0);
   const ref = useRef<HTMLDivElement | null>(null);

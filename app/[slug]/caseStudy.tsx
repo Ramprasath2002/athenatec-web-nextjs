@@ -1,5 +1,6 @@
-"use client"
+"use client";
 import { useState } from "react";
+import Image from 'next/image'
 
 type CaseStudyType = {
   slug: string;
@@ -23,11 +24,27 @@ type FormData = {
 
 type FormErrors = Partial<Record<keyof FormData, string>>;
 
-const INDUSTRIES = ["Semiconductor", "Electronics", "Medical Devices", "Discrete Manufacturing", "Solar",];
-const COUNTRIES = ["USA", "India", "China", "United Kingdom", "Canada", "California", "Singapore", "Other"];
+const INDUSTRIES = [
+  "Semiconductor",
+  "Electronics",
+  "Medical Devices",
+  "Discrete Manufacturing",
+  "Solar",
+];
+const COUNTRIES = [
+  "USA",
+  "India",
+  "China",
+  "United Kingdom",
+  "Canada",
+  "California",
+  "Singapore",
+  "Other",
+];
 
 // ── CHANGE THIS to your WordPress site URL ──────────────
-const WP_API_URL = "https://your-wordpress-site.com/wp-json/athena/v1/case-study-form";
+const WP_API_URL =
+  "https://your-wordpress-site.com/wp-json/athena/v1/case-study-form";
 
 export default function CaseStudy({ study }: Props) {
   const [formData, setFormData] = useState<FormData>({
@@ -79,10 +96,11 @@ export default function CaseStudy({ study }: Props) {
   };
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>,
   ) => {
     const { name, value, type } = e.target;
-    const checked = type === "checkbox" ? (e.target as HTMLInputElement).checked : undefined;
+    const checked =
+      type === "checkbox" ? (e.target as HTMLInputElement).checked : undefined;
 
     setFormData((prev) => ({
       ...prev,
@@ -129,7 +147,9 @@ export default function CaseStudy({ study }: Props) {
       const data = await response.json();
 
       if (!response.ok || !data.success) {
-        throw new Error(data.message || "Something went wrong. Please try again.");
+        throw new Error(
+          data.message || "Something went wrong. Please try again.",
+        );
       }
 
       setSubmitted(true);
@@ -146,46 +166,69 @@ export default function CaseStudy({ study }: Props) {
 
   return (
     <section className="case-study">
-       <div className="cs-bg-orb cs-bg-orb--1" />
+      <div className="cs-bg-orb cs-bg-orb--1" />
       <div className="cs-bg-orb cs-bg-orb--2" />
 
       <div className="case-container">
-         <div className="case-intro">
+        <div className="case-intro">
           <h2>{study.fullTitle}</h2>
           <p>{study.description}</p>
         </div>
 
-         <div className="download-wrapper">
+        <div className="download-wrapper">
           <div className="download-card">
-             <div className="download-image">
-              <img
-                src={study.image || "/assets/images/download-preview.webp"} loading="lazy"
+            <div className="download-image">
+              <Image
+                src={study.image || "/assets/images/download-preview.webp"}
                 alt={study.fullTitle}
+                width={600}
+                height={400}
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
+                className="w-full h-full object-cover"
+                quality={75}
               />
               <div className="download-image__overlay">
                 <div className="overlay-badge">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                  >
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
                   </svg>
                   <span>Featured Research</span>
                 </div>
-                
               </div>
             </div>
 
-             <div className="download-content">
+            <div className="download-content">
               {submitted ? (
                 <div className="success-state">
                   <div className="success-icon">
-                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                    <svg
+                      width="32"
+                      height="32"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2.5"
+                    >
                       <polyline points="20 6 9 17 4 12" />
                     </svg>
                   </div>
                   <h3>You're all set!</h3>
                   <p>
-                    Your download link has been sent to <strong>{formData.email}</strong>. Check your inbox in the next few minutes.
+                    Your download link has been sent to{" "}
+                    <strong>{formData.email}</strong>. Check your inbox in the
+                    next few minutes.
                   </p>
-                  <button className="download-btn" onClick={() => setSubmitted(false)}>
+                  <button
+                    className="download-btn"
+                    onClick={() => setSubmitted(false)}
+                  >
                     Download Another
                   </button>
                 </div>
@@ -194,13 +237,22 @@ export default function CaseStudy({ study }: Props) {
                   <div className="form-header">
                     <h3>Download the Full Case Study</h3>
                     <p>
-                      Fill out the form to access the complete document and learn how Athena implemented this solution.
+                      Fill out the form to access the complete document and
+                      learn how Athena implemented this solution.
                     </p>
                   </div>
 
-                  <form className="download-form" onSubmit={handleSubmit} noValidate>
-                     <div className={`form-field ${errors.fullName ? "form-field--error" : formData.fullName ? "form-field--valid" : ""}`}>
-                      <label htmlFor="fullName">Full Name <span className="required">*</span></label>
+                  <form
+                    className="download-form"
+                    onSubmit={handleSubmit}
+                    noValidate
+                  >
+                    <div
+                      className={`form-field ${errors.fullName ? "form-field--error" : formData.fullName ? "form-field--valid" : ""}`}
+                    >
+                      <label htmlFor="fullName">
+                        Full Name <span className="required">*</span>
+                      </label>
                       <div className="input-wrapper">
                         <input
                           id="fullName"
@@ -212,14 +264,22 @@ export default function CaseStudy({ study }: Props) {
                           autoComplete="name"
                         />
                         {formData.fullName && !errors.fullName && (
-                          <span className="input-icon input-icon--valid">✓</span>
+                          <span className="input-icon input-icon--valid">
+                            ✓
+                          </span>
                         )}
                       </div>
-                      {errors.fullName && <p className="error-msg">{errors.fullName}</p>}
+                      {errors.fullName && (
+                        <p className="error-msg">{errors.fullName}</p>
+                      )}
                     </div>
 
-                     <div className={`form-field ${errors.email ? "form-field--error" : formData.email && !errors.email ? "form-field--valid" : ""}`}>
-                      <label htmlFor="email">Work Email <span className="required">*</span></label>
+                    <div
+                      className={`form-field ${errors.email ? "form-field--error" : formData.email && !errors.email ? "form-field--valid" : ""}`}
+                    >
+                      <label htmlFor="email">
+                        Work Email <span className="required">*</span>
+                      </label>
                       <div className="input-wrapper">
                         <input
                           id="email"
@@ -230,15 +290,25 @@ export default function CaseStudy({ study }: Props) {
                           onChange={handleChange}
                           autoComplete="email"
                         />
-                        {formData.email && !errors.email && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email) && (
-                          <span className="input-icon input-icon--valid">✓</span>
-                        )}
+                        {formData.email &&
+                          !errors.email &&
+                          /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email) && (
+                            <span className="input-icon input-icon--valid">
+                              ✓
+                            </span>
+                          )}
                       </div>
-                      {errors.email && <p className="error-msg">{errors.email}</p>}
+                      {errors.email && (
+                        <p className="error-msg">{errors.email}</p>
+                      )}
                     </div>
 
-                     <div className={`form-field ${errors.companyName ? "form-field--error" : formData.companyName ? "form-field--valid" : ""}`}>
-                      <label htmlFor="companyName">Company Name <span className="required">*</span></label>
+                    <div
+                      className={`form-field ${errors.companyName ? "form-field--error" : formData.companyName ? "form-field--valid" : ""}`}
+                    >
+                      <label htmlFor="companyName">
+                        Company Name <span className="required">*</span>
+                      </label>
                       <div className="input-wrapper">
                         <input
                           id="companyName"
@@ -250,15 +320,23 @@ export default function CaseStudy({ study }: Props) {
                           autoComplete="organization"
                         />
                         {formData.companyName && !errors.companyName && (
-                          <span className="input-icon input-icon--valid">✓</span>
+                          <span className="input-icon input-icon--valid">
+                            ✓
+                          </span>
                         )}
                       </div>
-                      {errors.companyName && <p className="error-msg">{errors.companyName}</p>}
+                      {errors.companyName && (
+                        <p className="error-msg">{errors.companyName}</p>
+                      )}
                     </div>
 
-                     <div className="form-row-2col">
-                      <div className={`form-field ${errors.industry ? "form-field--error" : formData.industry ? "form-field--valid" : ""}`}>
-                        <label htmlFor="industry">Industry <span className="required">*</span></label>
+                    <div className="form-row-2col">
+                      <div
+                        className={`form-field ${errors.industry ? "form-field--error" : formData.industry ? "form-field--valid" : ""}`}
+                      >
+                        <label htmlFor="industry">
+                          Industry <span className="required">*</span>
+                        </label>
                         <div className="input-wrapper select-wrapper">
                           <select
                             id="industry"
@@ -268,16 +346,24 @@ export default function CaseStudy({ study }: Props) {
                           >
                             <option value="">Select industry</option>
                             {INDUSTRIES.map((i) => (
-                              <option key={i} value={i}>{i}</option>
+                              <option key={i} value={i}>
+                                {i}
+                              </option>
                             ))}
                           </select>
                           <span className="select-arrow">▾</span>
                         </div>
-                        {errors.industry && <p className="error-msg">{errors.industry}</p>}
+                        {errors.industry && (
+                          <p className="error-msg">{errors.industry}</p>
+                        )}
                       </div>
 
-                      <div className={`form-field ${errors.country ? "form-field--error" : formData.country ? "form-field--valid" : ""}`}>
-                        <label htmlFor="country">Country <span className="required">*</span></label>
+                      <div
+                        className={`form-field ${errors.country ? "form-field--error" : formData.country ? "form-field--valid" : ""}`}
+                      >
+                        <label htmlFor="country">
+                          Country <span className="required">*</span>
+                        </label>
                         <div className="input-wrapper select-wrapper">
                           <select
                             id="country"
@@ -287,16 +373,22 @@ export default function CaseStudy({ study }: Props) {
                           >
                             <option value="">Select country</option>
                             {COUNTRIES.map((c) => (
-                              <option key={c} value={c}>{c}</option>
+                              <option key={c} value={c}>
+                                {c}
+                              </option>
                             ))}
                           </select>
                           <span className="select-arrow">▾</span>
                         </div>
-                        {errors.country && <p className="error-msg">{errors.country}</p>}
+                        {errors.country && (
+                          <p className="error-msg">{errors.country}</p>
+                        )}
                       </div>
                     </div>
 
-                     <div className={`form-checkbox ${errors.agree ? "form-checkbox--error" : ""}`}>
+                    <div
+                      className={`form-checkbox ${errors.agree ? "form-checkbox--error" : ""}`}
+                    >
                       <label className="checkbox-label">
                         <input
                           type="checkbox"
@@ -306,14 +398,25 @@ export default function CaseStudy({ study }: Props) {
                         />
                         <span className="checkbox-custom" />
                         <span className="checkbox-text">
-                          I agree to receive communications related to this content from Athena.
+                          I agree to receive communications related to this
+                          content from Athena.
                         </span>
                       </label>
-                      {errors.agree && <p className="error-msg">{errors.agree}</p>}
+                      {errors.agree && (
+                        <p className="error-msg">{errors.agree}</p>
+                      )}
                     </div>
 
-                     {submitError && (
-                      <p className="error-msg" style={{ fontSize: "13px", padding: "10px 12px", background: "#fff5f5", borderRadius: "8px" }}>
+                    {submitError && (
+                      <p
+                        className="error-msg"
+                        style={{
+                          fontSize: "13px",
+                          padding: "10px 12px",
+                          background: "#fff5f5",
+                          borderRadius: "8px",
+                        }}
+                      >
                         {submitError}
                       </p>
                     )}
@@ -330,10 +433,17 @@ export default function CaseStudy({ study }: Props) {
                         </>
                       ) : (
                         <>
-                          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-                            <polyline points="7 10 12 15 17 10"/>
-                            <line x1="12" y1="15" x2="12" y2="3"/>
+                          <svg
+                            width="18"
+                            height="18"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="2"
+                          >
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                            <polyline points="7 10 12 15 17 10" />
+                            <line x1="12" y1="15" x2="12" y2="3" />
                           </svg>
                           Download Case Study
                         </>
