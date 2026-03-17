@@ -18,7 +18,7 @@ import type { Metadata } from "next";
     type: "website",
     images: [
       {
-        url: "/assets/images/Blog.webp",
+        url: "/assets/images/blog.webp",
         width: 1200,
         height: 630,
         alt: "Athenatec Blog",
@@ -30,7 +30,7 @@ import type { Metadata } from "next";
     title: "Athenatec Blog | MES & Digital Transformation Insights",
     description:
       "Explore the Athenatec blog for expert insights on MES, Industry 4.0 trends, digital transformation challenges, and smart manufacturing best practices.",
-    images: ["/assets/images/Blog.webp"],
+    images: ["/assets/images/blog.webp"],
   },
   alternates: {
     canonical: "https://www.athenatec.com/blog",
@@ -92,7 +92,7 @@ export default async function BlogPage() {
       <HeroSection
         title="Blog"
         description="Leave us a little info, and we'll be in touch."
-        image="/assets/images/Blog.webp"
+        image="/assets/images/blog.webp"
         align="center"
         buttonText="Contact Us"
         buttonLink="/contact"
