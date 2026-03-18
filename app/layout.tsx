@@ -46,7 +46,7 @@ export const metadata: Metadata = {
   applicationName: "Athenatec",
 
   title: {
-    default: "Best MES Solution Provider | Athenatec |",
+    default: "Best MES Solution Provider | Athenatec  ",
     template: "%s",
   },
 
@@ -57,7 +57,7 @@ export const metadata: Metadata = {
     locale: "en_US",
     type: "website",
     url: "https://athenatec.com/",
-    title: "Best MES Solution Provider | Athenatec |",
+    title: "Best MES Solution Provider | Athenatec",
     description:
       "Athenatec delivers MES, PLM, and smart factory solutions for medical device, semiconductor, and electronics manufacturers. Start your Industry 4.0 journey.",
     images: [
