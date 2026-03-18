@@ -9,7 +9,6 @@ type Props = {
   onNavigate?: () => void;
 };
 
-//   DATA 
 
 const partnerLinks = [
   { label: "Siemens Opcenter", href: "/siemens-opcenter-mes" },
@@ -30,8 +29,7 @@ const mesSolutionLinks = [
 ];
 
 const otherSolutionLinks = [
- 
-  { label: "Oracle On-Prem +", href: "/solutions/oracle-on-prem" }, 
+  { label: "Oracle On-Prem +", href: "/solutions/oracle-on-prem" },
   { label: "Oracle Cloud",     href: "/solutions/oracle-cloud" },   
   { label: "PLM",              href: "/solutions/plm" },             
   { label: "Cyber Security",   href: "/solutions/cyber-security-service" },
@@ -44,18 +42,18 @@ const resourceLinks = [
   { label: "Webinars", href: "/webinars" },
 ];
 
- const itemCls =
+const itemCls =
   "flex items-center gap-2 w-full px-3.5 py-2.5 rounded-lg text-[13.5px] font-medium text-gray-700 \
    hover:text-[#1c4584] hover:bg-[#1c4584]/6 transition-colors duration-150 group";
 
- export default function HeaderMenu({ variant = "desktop", onNavigate }: Props) {
+export default function HeaderMenu({ variant = "desktop", onNavigate }: Props) {
   const isMobile = variant === "mobile";
 
   const [open, setOpen] = useState<string | null>(null);
   const [openMES, setOpenMES] = useState(false);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-   const openMenu = (menu: string) => {
+  const openMenu = (menu: string) => {
     if (closeTimer.current) clearTimeout(closeTimer.current);
     setOpen(menu);
   };
@@ -69,10 +67,11 @@ const resourceLinks = [
     if (closeTimer.current) clearTimeout(closeTimer.current);
   };
 
-   const toggle = (menu: string) =>
+  const toggle = (menu: string) =>
     setOpen((prev) => (prev === menu ? null : menu));
 
-   if (isMobile) {
+  // ── MOBILE ────────────────────────────────────────────────────────────────
+  if (isMobile) {
     return (
       <div className="flex flex-col w-full">
         <MobileAccordion
@@ -94,6 +93,7 @@ const resourceLinks = [
         >
           <MobileAccordion
             label="MES Solutions"
+            href="/solutions/mes"
             isOpen={openMES}
             onToggle={() => setOpenMES((v) => !v)}
             nested
@@ -132,6 +132,7 @@ const resourceLinks = [
     );
   }
 
+  // ── DESKTOP ───────────────────────────────────────────────────────────────
   return (
     <>
       <DesktopDropdownWrapper
@@ -308,38 +309,68 @@ function DropdownPanel({
 
 function MobileAccordion({
   label,
+  href,
   isOpen,
   onToggle,
   nested = false,
   children,
 }: {
   label: string;
+  href?: string;         
   isOpen: boolean;
   onToggle: () => void;
   nested?: boolean;
   children: React.ReactNode;
 }) {
+  const labelBaseCls = [
+    "font-medium transition-colors duration-150",
+    nested
+      ? "pl-3 text-[13.5px] text-gray-600"
+      : "text-[15px] text-gray-700",
+    isOpen ? "text-[#1c4584]" : "hover:text-[#1c4584]",
+  ].join(" ");
+
   return (
     <div className={nested ? "w-full" : "border-b border-gray-100 w-full"}>
-      <button
-        onClick={onToggle}
-        className={[
-          "flex w-full items-center justify-between py-3.5 font-medium transition-colors duration-150",
-          nested
-            ? "pl-3 text-[13.5px] text-gray-600 py-2.5"
-            : "text-[15px] text-gray-700",
-          isOpen ? "text-[#1c4584]" : "hover:text-[#1c4584]",
-        ].join(" ")}
-      >
-        {label}
-        <ChevronDown
-          size={15}
-          strokeWidth={2.2}
-          className={`transition-transform duration-200 mr-1 ${
-            isOpen ? "rotate-180" : ""
-          }`}
-        />
-      </button>
+      <div className={`flex w-full items-center ${nested ? "py-0" : "py-0"}`}>
+        {href ? (
+          <>
+            <Link
+              href={href}
+              className={`flex-1 py-3.5 ${labelBaseCls}`}
+            >
+              {label}
+            </Link>
+            <button
+              onClick={onToggle}
+              aria-label={`Toggle ${label} submenu`}
+              className="px-2 py-3.5 hover:text-[#1c4584] transition-colors duration-150"
+            >
+              <ChevronDown
+                size={15}
+                strokeWidth={2.2}
+                className={`transition-transform duration-200 ${
+                  isOpen ? "rotate-180" : ""
+                }`}
+              />
+            </button>
+          </>
+        ) : (
+          <button
+            onClick={onToggle}
+            className={`flex w-full items-center justify-between py-3.5 ${labelBaseCls}`}
+          >
+            {label}
+            <ChevronDown
+              size={15}
+              strokeWidth={2.2}
+              className={`transition-transform duration-200 mr-1 ${
+                isOpen ? "rotate-180" : ""
+              }`}
+            />
+          </button>
+        )}
+      </div>
 
       <div
         className={[

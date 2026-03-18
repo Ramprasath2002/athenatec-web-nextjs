@@ -19,6 +19,8 @@ export const metadata: Metadata = {
   },
 };
 
+export const revalidate = 3600;
+
 type WPPost = {
   id: number;
   slug: string;
@@ -26,19 +28,36 @@ type WPPost = {
   excerpt: { rendered: string };
   date: string;
   featured_media: number;
+  _embedded?: {
+    "wp:featuredmedia"?: Array<{ source_url: string }>;
+  };
 };
 
-async function getPosts(): Promise<WPPost[]> {
-  const res = await fetch(
-    "https://www.athenatec.com/wp-json/wp/v2/posts?_embed&slug=athena-and-tech-mahindra-announce-partnership,authorised-reseller-partnership-with-twinzo",
-    { next: { revalidate: 60 } },
-  );
+ async function getPosts(): Promise<WPPost[]> {
+  try {
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 5000); 
 
-  if (!res.ok) {
-    throw new Error("Failed to fetch posts");
+    const res = await fetch(
+      "https://www.athenatec.com/wp-json/wp/v2/posts?_embed&slug=athena-and-tech-mahindra-announce-partnership,authorised-reseller-partnership-with-twinzo",
+      {
+        next: { revalidate: 3600 },
+        signal: controller.signal,
+      }
+    );
+
+    clearTimeout(timeoutId);
+
+    if (!res.ok) {
+      console.warn(`Newsroom fetch failed: ${res.status} ${res.statusText}`);
+      return [];  
+    }
+
+    return res.json();
+  } catch (error) {
+    console.warn("Newsroom fetch error — returning empty:", error);
+    return [];  
   }
-
-  return res.json();
 }
 
 export default async function NewsRoom() {
@@ -79,58 +98,67 @@ export default async function NewsRoom() {
         <div className="container mx-auto px-6">
           <h2 className="text-4xl font-bold mb-12">Newsroom</h2>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
-            {posts.map((post: any) => {
-              const featuredImage =
-                post._embedded?.["wp:featuredmedia"]?.[0]?.source_url;
+          {posts.length === 0 ? (
+            <div className="flex flex-col items-center justify-center py-24 text-center">
+              <p className="text-gray-400 text-lg">
+                News articles are coming soon. Check back later.
+              </p>
+            </div>
+          ) : (
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+              {posts.map((post: WPPost) => {
+                const featuredImage =
+                  post._embedded?.["wp:featuredmedia"]?.[0]?.source_url;
 
-              return (
-                <div
-                  key={post.id}
-                  className="bg-white rounded-xl shadow-md hover:shadow-xl transition overflow-hidden"
-                >
-                  {featuredImage && (
-                    <div className="relative h-60">
-                      <Image
-                        src={featuredImage}
-                        alt={post.title.rendered}
-                        fill
-                        className="object-cover"
+                return (
+                  <div
+                    key={post.id}
+                    className="bg-white rounded-xl shadow-md hover:shadow-xl transition overflow-hidden"
+                  >
+                    {featuredImage && (
+                      <div className="relative h-60">
+                        <Image
+                          src={featuredImage}
+                          alt={post.title.rendered}
+                          fill
+                          className="object-cover"
+                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                        />
+                      </div>
+                    )}
+
+                    <div className="p-6">
+                      <h2
+                        className="text-xl font-semibold mb-3"
+                        dangerouslySetInnerHTML={{
+                          __html: post.title.rendered,
+                        }}
                       />
+
+                      <div
+                        className="text-gray-600 text-sm mb-4"
+                        dangerouslySetInnerHTML={{
+                          __html: post.excerpt.rendered,
+                        }}
+                      />
+
+                      <p className="text-xs text-gray-400 mb-4">
+                        {new Date(post.date).toLocaleDateString()}
+                      </p>
+
+                      <Link
+                        href={`/blog/${post.slug}`}
+                        target="_blank"
+                        className="text-[#1c4584] font-medium hover:underline"
+                      >
+                        Read More →
+                      </Link>
                     </div>
-                  )}
-
-                  <div className="p-6">
-                    <h2
-                      className="text-xl font-semibold mb-3"
-                      dangerouslySetInnerHTML={{
-                        __html: post.title.rendered,
-                      }}
-                    />
-
-                    <div
-                      className="text-gray-600 text-sm mb-4"
-                      dangerouslySetInnerHTML={{
-                        __html: post.excerpt.rendered,
-                      }}
-                    />
-
-                    <p className="text-xs text-gray-400 mb-4">
-                      {new Date(post.date).toLocaleDateString()}
-                    </p>
-
-                    <Link
-                      href={`/blog/${post.slug}`}
-                      target="_blank"
-                      className="text-[#1c4584] font-medium hover:underline"
-                    >
-                      Read More →
-                    </Link>
                   </div>
-                </div>
-              );
-            })}
-          </div>
+                );
+              })}
+            </div>
+          )}
         </div>
       </section>
     </>

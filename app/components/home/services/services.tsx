@@ -98,6 +98,12 @@ export default function Services() {
 
   const testimonials = [
     {
+      name: "Alameda-Basora M",
+      image: "/assets/Clients/PSi-Quantum.webp",
+      role: "Manager, Operations Data Software - PsiQuantum",
+      text: "We partnered with Athenatec to develop and scale our Manufacturing Execution System (MES) as our operations rapidly evolved from tracking individual wafers and decoupled processes to managing multiple production lines, diverse subassembly SKUs, and complex downstream workflows.Athenatec demonstrated a strong understanding of our requirements and consistently delivered high-quality solutions on time. Their ability to quickly develop API services enabled seamless integration between our engineering systems and their manufacturing platform, significantly improving operational efficiency while supporting our custom requirements.What stands out most is their team’s experience and adaptability. They are reliable, responsive, and collaborative, helping us navigate challenges and effectively interface with partners like Siemens to resolve complex issues.Athenatec has been a critical partner in scaling our manufacturing capabilities. I would strongly recommend them to any organization configuring, implementing, or optimizing an MES system.",
+    },
+    {
       name: "Jon Baker",
       image: "/assets/Clients/InnovaFlex_Foundry.webp",
       role: "IT Manager – InnovaFlex Foundry",

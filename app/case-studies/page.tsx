@@ -54,7 +54,7 @@ export default function CaseStudies() {
       <HeroSection
         title="Case Studies"
         description="Leave us a little info, and we'll be in touch."
-        image="/assets/images/business-women-signature-document-scaled.webp"
+        image="/assets/images/casestudie-banner.webp"
         align="center"
         buttonText="Contact Us"
         buttonLink="/contact"
