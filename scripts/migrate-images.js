@@ -7,7 +7,7 @@ const sharp = require("sharp");
 const fse = require("fs-extra");
 
 const IMAGE_LIST_FILE = "image-urls.txt";
-const OUTPUT_DIR = "public/assets/images/";
+const OUTPUT_DIR = "public/assets/Clients/";
 const MAX_WIDTH = 1200;
 const QUALITY = 80;
 

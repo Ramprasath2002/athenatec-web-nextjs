@@ -307,7 +307,14 @@
     }
   }
 }
-
+ .analytics-title {
+      font-size: clamp(26px, 4.5vw, 52px);
+      font-weight: 800;
+      color: #1f3b73;
+      margin-bottom: clamp(24px, 3.5vw, 40px);
+      letter-spacing: 0.5px;
+      line-height: 1.15;
+    }
 // ── CLIENTS SECTION ───────────────────────────────────────────────────────
 .clients-section {
   padding: clamp(40px, 6vw, 50px) 0;
