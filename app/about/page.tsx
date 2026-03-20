@@ -91,7 +91,7 @@ export default function AboutPage() {
     },
   ];
   const testimonials = [
-     {
+    {
       company: "PsiQuantum",
       name: "Alameda-Basora M",
       role: "Manager, Operations Data Software - PsiQuantum",
@@ -330,19 +330,24 @@ We will continue to work together with Athena to carry out continuous process im
           <h2 className="customers-title">Our Customers</h2>
 
           <div className="customers-grid">
-            {logos.map((logo, index) => (
-              <div key={index} className="customer-logo">
-                <Image
-                  src={logo}
-                  alt="Client Logo"
-                  width={160}
-                  height={60}
+            {logos
+              .filter(
+                (logo): logo is string =>
+                  typeof logo === "string" && logo.trim() !== "",
+              )
+              .map((logo, index) => (
+                <div key={index} className="customer-logo">
+                  <Image
+                    src={logo}
+                    alt="Client Logo"
+                    width={160}
+                    height={60}
                   sizes="160px"
-                  className="h-auto w-auto object-contain"
+                    className="h-auto w-auto object-contain"
                   quality={80}
-                />{" "}
-              </div>
-            ))}
+                /> 
+                </div>
+              ))}
           </div>
         </div>
       </section>

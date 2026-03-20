@@ -212,6 +212,7 @@ const logos = [
   "/assets/Clients/Penumbra.webp",
   "/assets/Clients/PSi-Quantum.webp",
   "/assets/Clients/View-Dynamic-Glass.webp",
+  "/assets/Clients/Raxium.webp",
   "/assets/Clients/VLAVI.webp",
 ];
 const caseStudies = [
