@@ -100,23 +100,6 @@ function StatCard({ title, value, suffix = "", subtitle }: StatCardProps) {
   const ref = useRef<HTMLDivElement | null>(null);
   const [hasAnimated, setHasAnimated] = useState(false);
 
-  useEffect(() => {
-    if (!ref.current) return;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting && !hasAnimated) {
-          animateCount();
-          setHasAnimated(true);
-        }
-      },
-      { threshold: 0.5 },
-    );
-
-    observer.observe(ref.current);
-    return () => observer.disconnect();
-  }, [hasAnimated]);
-
   const animateCount = () => {
     const duration = 1500;
     const startTime = performance.now();
@@ -132,6 +115,23 @@ function StatCard({ title, value, suffix = "", subtitle }: StatCardProps) {
 
     requestAnimationFrame(update);
   };
+
+  useEffect(() => {
+    if (!ref.current) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !hasAnimated) {
+          animateCount();
+          setHasAnimated(true);
+        }
+      },
+      { threshold: 0.5 },
+    );
+
+    observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, [animateCount, hasAnimated]);
 
   return (
     <div

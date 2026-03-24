@@ -9,14 +9,13 @@ export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
-  // Scroll-aware shadow & bg
-  useEffect(() => {
+   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Lock body scroll when mobile menu is open
+ 
   useEffect(() => {
     const isDesktop = () => window.innerWidth >= 900;
     const apply = () => {
@@ -49,12 +48,13 @@ export default function Header() {
             width={290}
             height={56}
             className="h-12 sm:h-14 w-auto"
-            priority // navbar logo is above-fold — load eagerly
+            style={{ width: "auto" }}
+            priority  
             quality={90}
           />
         </Link>
 
-        <nav className="hidden [@media(min-width:900px)]:flex items-center gap-1 text-[14.5px] font-medium text-gray-700">
+        <nav className="hidden [@media(min-width:900px)]:flex items-center gap-1 text-[14.5px] font-medium text-gray-700 text-center">
           <NavLink href="/about">About</NavLink>
           <NavLink href="/accelerators">Athena Accelerators</NavLink>
 

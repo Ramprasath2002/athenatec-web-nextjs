@@ -18,7 +18,13 @@ export default async function IndustryPage({
   return (
     <div className="industry-page">
        <section className="hero">
-        <Image src={data.heroImage} alt={data.title} fill priority />
+        <Image
+          src={data.heroImage}
+          alt={data.title}
+          fill
+          priority
+          sizes="100vw"
+        />
 
         <div className="overlay">
           <div>

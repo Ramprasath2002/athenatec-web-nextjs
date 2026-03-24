@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import "./bot.scss";
 import Image from "next/image";
 
@@ -20,9 +20,8 @@ export default function AIChatbot() {
     email: "",
   });
 
-  // Auto welcome message when chatbot opens first time
-  useEffect(() => {
-    if (open && messages.length === 0) {
+  const toggleOpen = () => {
+    if (!open && messages.length === 0) {
       setMessages([
         {
           role: "assistant",
@@ -31,7 +30,8 @@ export default function AIChatbot() {
         },
       ]);
     }
-  }, [open]);
+    setOpen((prev) => !prev);
+  };
 
   const validateEmail = (email: string) => {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
@@ -121,7 +121,7 @@ export default function AIChatbot() {
 
   return (
     <>
-      <div className="chat-button" onClick={() => setOpen(!open)}>
+      <div className="chat-button" onClick={toggleOpen}>
         <div className="chat-icon-wrapper">
           <Image
             src="/assets/icons/chatai.webp"

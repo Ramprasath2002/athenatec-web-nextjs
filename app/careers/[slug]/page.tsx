@@ -145,7 +145,7 @@ export default async function JobDetailsPage({
           </ul>
         </div>
 
-        <ApplyForm />
+      <ApplyForm jobTitle={job.title} jobId={job.wpJobId ?? ""} />
       </div>
     </div>
   );

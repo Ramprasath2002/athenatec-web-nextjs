@@ -20,7 +20,7 @@ export async function POST(req: Request) {
       JSON.stringify({ reply: data.response }),
       { status: 200 }
     );
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("OLLAMA ERROR:", error);
     return new Response(
       JSON.stringify({ error: "Something went wrong" }),

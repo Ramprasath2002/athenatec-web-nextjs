@@ -10,15 +10,10 @@ const mesSolutions = [
 ];
 
 const otherSolutions = [
-  // ❌ Removed: PLM Solutions
-  // ❌ Removed: Enterprise ERP
-  { name: "Oracle On-Prem", href: "/solutions/oracle-on-prem" }, // ✅ Added
-  { name: "Oracle Cloud", href: "/solutions/oracle-cloud" }, // ✅ Added
-  { name: "PLM", href: "/solutions/plm" }, // ✅ Retained
-  {
-    name: "Cyber Security Services",
-    href: "/solutions/cyber-security-service",
-  },
+  { name: "Oracle On-Prem", href: "/solutions/oracle-on-prem" },  
+  { name: "Oracle Cloud", href: "/solutions/oracle-cloud" }, 
+  { name: "PLM", href: "/solutions/plm" }, 
+  {name: "Cyber Security Services", href: "/solutions/cyber-security-service",},
 ];
 
 const partners = [
@@ -97,6 +92,7 @@ export default function Footer() {
               width={180}
               height={48}
               className="h-12 w-auto"
+              style={{ width: "auto" }}
               quality={90}
             />
             <p className="max-w-sm text-sm leading-relaxed text-[#c7d4f1]">
