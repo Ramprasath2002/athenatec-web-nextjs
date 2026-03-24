@@ -1,6 +1,6 @@
 import { caseStudyContent } from "@/app/data/caseStudyContent";
 import { notFound } from "next/navigation";
-import CaseStudy from "./caseStudy";
+import CaseStudy from "./DownloadNow";
 import HeroSection from "@/app/components/HeroSection";
 import "./casecontent.scss";
 

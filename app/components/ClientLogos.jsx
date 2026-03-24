@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export const logos = [
   "/assets/Clients/ALRA-LAVAL.webp",
   "/assets/Clients/AMU1-OSRAM.webp",
@@ -51,6 +53,7 @@ export default function ClientLogos() {
             height={56}
             sizes="140px"
             className="h-auto w-auto object-contain"
+            style={{ width: "auto", height: "auto" }}
             quality={80}
           />
         </div>

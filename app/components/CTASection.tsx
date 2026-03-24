@@ -28,6 +28,7 @@ export default function CTASection({
       src={backgroundImage}
       alt="CTA Background"
       fill
+      sizes="(max-width: 1200px) 100vw, 1200px"
       className="object-cover"
     />
 

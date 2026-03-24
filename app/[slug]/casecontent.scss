@@ -238,7 +238,8 @@ $shadow: 0 24px 60px rgba(15, 47, 79, 0.1);
 
   &--error {
     .input-wrapper input,
-    .input-wrapper select {
+    .input-wrapper select,
+    .input-wrapper textarea {
       border-color: $error !important;
       background: #fff5f5 !important;
       box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1) !important;
@@ -247,7 +248,8 @@ $shadow: 0 24px 60px rgba(15, 47, 79, 0.1);
 
   &--valid {
     .input-wrapper input,
-    .input-wrapper select {
+    .input-wrapper select,
+    .input-wrapper textarea {
       border-color: #86efac !important;
     }
   }
@@ -257,7 +259,8 @@ $shadow: 0 24px 60px rgba(15, 47, 79, 0.1);
   position: relative;
 
   input,
-  select {
+  select,
+  textarea {
     width: 100%;
     padding: 11px 14px;
     border-radius: 9px;
@@ -279,6 +282,13 @@ $shadow: 0 24px 60px rgba(15, 47, 79, 0.1);
       background: $white;
       box-shadow: 0 0 0 3px rgba(29, 111, 232, 0.12);
     }
+  }
+
+  textarea {
+    min-height: 108px;
+    resize: vertical;
+    line-height: 1.55;
+    font-family: inherit;
   }
 }
 

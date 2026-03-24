@@ -215,6 +215,7 @@ We will continue to work together with Athena to carry out continuous process im
                 src="/assets/images/industry-4.0.webp"
                 alt="Team"
                 fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
                 className="img"
               />
             </div>
@@ -230,6 +231,7 @@ We will continue to work together with Athena to carry out continuous process im
                     src={item.image}
                     alt={item.year}
                     fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
                     className="img"
                   />
                 </div>
@@ -247,6 +249,7 @@ We will continue to work together with Athena to carry out continuous process im
               src="/assets/images/our-mission.webp"
               alt="Vision"
               fill
+              sizes="(max-width: 1024px) 100vw, 50vw"
               className="img"
             />
           </div>
@@ -342,10 +345,11 @@ We will continue to work together with Athena to carry out continuous process im
                     alt="Client Logo"
                     width={160}
                     height={60}
-                  sizes="160px"
+                    sizes="160px"
                     className="h-auto w-auto object-contain"
-                  quality={80}
-                /> 
+                    style={{ width: "auto", height: "auto" }}
+                    quality={80}
+                  />
                 </div>
               ))}
           </div>
@@ -375,6 +379,7 @@ We will continue to work together with Athena to carry out continuous process im
                         height={48}
                         sizes="120px"
                         className="testimonial-logo h-auto w-auto object-contain"
+                        style={{ width: "auto", height: "auto" }}
                         quality={80}
                       />
                     )}

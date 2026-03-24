@@ -269,6 +269,8 @@
   .customer-logo img {
     max-width: 130px;
     max-height: 63px;
+    width: auto;
+    height: auto;
     object-fit: contain;
     opacity: 0.8;
     transition: 0.3s ease;
@@ -326,6 +328,7 @@
 
     .testimonial-logo {
       height: 80px;
+      width: auto;
       object-fit: contain;
     }
     .card-body {
@@ -483,6 +486,7 @@
 
   .about-page .about-testimonial-section .testimonial-logo {
     height: 40px;
+    width: auto;
   }
 
   .about-page .about-testimonial-section .card-body {

@@ -4,6 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import { useParams } from "next/navigation";
 import "./webinar.scss";
+import { getCf7Endpoint } from "@/lib/wp";
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Types
@@ -29,16 +30,11 @@ interface FormErrors {
 }
 
 const INDUSTRIES = [
-  "Semiconductor",
-  "Electronics",
   "Medical Devices",
-  "Discrete Manufacturing",
-  "Solar",
+  "Other",
 ];
 
-// ─────────────────────────────────────────────────────────────────────────────
-// WebinarForm — inline, no separate file needed
-// ─────────────────────────────────────────────────────────────────────────────
+ 
 
 function WebinarForm({ webinarTitle = "MedTech MES Accelerator" }: { webinarTitle?: string }) {
   const [formData, setFormData] = useState<FormData>({
@@ -56,8 +52,7 @@ function WebinarForm({ webinarTitle = "MedTech MES Accelerator" }: { webinarTitl
   const [submitError, setSubmitError] = useState("");
   const [submitted, setSubmitted]     = useState(false);
 
-  // ── Validation ──────────────────────────────────────────────────────────────
-  const validate = (): boolean => {
+   const validate = (): boolean => {
     const e: FormErrors = {};
     if (!formData.name.trim())        e.name        = "Full name is required.";
     if (!formData.email.trim())       e.email       = "Email is required.";
@@ -71,42 +66,48 @@ function WebinarForm({ webinarTitle = "MedTech MES Accelerator" }: { webinarTitl
     return Object.keys(e).length === 0;
   };
 
-  // ── Submit ──────────────────────────────────────────────────────────────────
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setSubmitError("");
-    if (!validate()) return;
+ const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+  setSubmitError("");
+  if (!validate()) return;
+  setSubmitting(true);
 
-    setSubmitting(true);
-    try {
-      const WP_API_URL =
-        process.env.NEXT_PUBLIC_WP_API_URL || "https://athenatec.com/";
+  try {
+    const CF7_FORM_ID = "231536";
+    const CF7_URL = getCf7Endpoint(CF7_FORM_ID);
 
-      const res = await fetch(`${WP_API_URL}/wp-json/webinar/v1/register`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name:            formData.name.trim(),
-          email:           formData.email.trim(),
-          company_name:    formData.companyName.trim(),
-          job_title:       formData.jobTitle.trim(),
-          industry:        formData.industry,
-          receive_updates: formData.receiveUpdates,
-          webinar_title:   webinarTitle,
-        }),
-      });
+    const fd = new FormData();
+    fd.append("_wpcf7",                CF7_FORM_ID);
+    fd.append("_wpcf7_version",        "5.9");
+    fd.append("_wpcf7_locale",         "en_US");
+    fd.append("_wpcf7_unit_tag",       `wpcf7-f${CF7_FORM_ID}-o1`);
+    fd.append("_wpcf7_container_post", "0");
 
-      const result = await res.json();
-      if (!res.ok) throw new Error(result?.message || "Something went wrong.");
-      setSubmitted(true);
-    } catch (err: unknown) {
-      setSubmitError(
-        err instanceof Error ? err.message : "Submission failed. Please try again."
-      );
-    } finally {
-      setSubmitting(false);
+    fd.append("your-name",    formData.name.trim());
+    fd.append("your-email",   formData.email.trim().toLowerCase());
+    fd.append("company-name", formData.companyName.trim());
+    fd.append("job",          formData.jobTitle.trim());
+    fd.append("industries",   formData.industry);
+
+    if (formData.receiveUpdates) {
+      fd.append("receive", "I would like to receive relevant updates and resources from Athena Technology Solutions.");
     }
-  };
+
+    if (formData.agreePolicy) {
+      fd.append("checkbox-649", "I agree*");
+    }
+
+    const res  = await fetch(CF7_URL, { method: "POST", body: fd });
+    const json = await res.json();
+
+    if (json.status !== "mail_sent") throw new Error(json.message || "Something went wrong.");
+    setSubmitted(true);
+  } catch (err: unknown) {
+    setSubmitError(err instanceof Error ? err.message : "Submission failed.");
+  } finally {
+    setSubmitting(false);
+  }
+};
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>

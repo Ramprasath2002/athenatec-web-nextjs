@@ -1,16 +1,19 @@
 "use client";
-import { useState } from "react";
-import Image from 'next/image'
 
-type CaseStudyType = {
+import { useState } from "react";
+import Image from "next/image";
+import { getCf7Endpoint } from "@/lib/wp";
+
+type Study = {
   slug: string;
   fullTitle: string;
   image: string;
   description: string;
+  formType: "siemens" | "cmf";
 };
 
 type Props = {
-  study: CaseStudyType;
+  study: Study;
 };
 
 type FormData = {
@@ -19,40 +22,59 @@ type FormData = {
   companyName: string;
   industry: string;
   country: string;
+  supportNeeded: string;
   agree: boolean;
 };
 
 type FormErrors = Partial<Record<keyof FormData, string>>;
 
-const INDUSTRIES = [
-  "Semiconductor",
-  "Electronics",
-  "Medical Devices",
-  "Discrete Manufacturing",
-  "Solar",
-];
-const COUNTRIES = [
-  "USA",
-  "India",
-  "China",
-  "United Kingdom",
-  "Canada",
-  "California",
-  "Singapore",
-  "Other",
-];
+type FormConfig = {
+  formId: string;
+  industries: string[];
+  privacyText: string;
+  submitText: string;
+};
 
-// ── CHANGE THIS to your WordPress site URL ──────────────
-const WP_API_URL =
-  "https://your-wordpress-site.com/wp-json/athena/v1/case-study-form";
+const FORM_CONFIG: Record<Study["formType"], FormConfig> = {
+  siemens: {
+    formId: "227902",
+    industries: [
+      "Semiconductor",
+      "Electronics",
+      "Medical Devices",
+      "Discrete Manufacturing",
+      "Solar",
+    ],
+    privacyText:
+      "By submitting this form, you agree to receive communications with related content from Siemens Opcenter and can unsubscribe at any time. For more information on our Privacy Policy, click here.",
+    submitText: "Download Case Study",
+  },
+  cmf: {
+    formId: "228423",
+    industries: [
+      "Semiconductor",
+      "Electronics",
+      "Medical Devices",
+      "Discrete Manufacturing",
+      "Solar",
+    ],
+    privacyText:
+      "By submitting this form, you agree to receive communications with related content from Critical Manufacturing and can unsubscribe at any time. For more information on our Privacy Policy, click here.",
+    submitText: "Download Case Study",
+  },
+};
 
-export default function CaseStudy({ study }: Props) {
+export default function PartnersForm({ study }: Props) {
+  const config = FORM_CONFIG[study.formType];
+  const wpCf7Url = getCf7Endpoint(config.formId);
+
   const [formData, setFormData] = useState<FormData>({
     fullName: "",
     email: "",
     companyName: "",
     industry: "",
     country: "",
+    supportNeeded: "",
     agree: false,
   });
 
@@ -84,19 +106,19 @@ export default function CaseStudy({ study }: Props) {
       errs.industry = "Please select your industry.";
     }
 
-    if (!formData.country) {
-      errs.country = "Please select your country.";
+    if (!formData.country.trim()) {
+      errs.country = "Country is required.";
     }
 
     if (!formData.agree) {
-      errs.agree = "You must agree to receive communications.";
+      errs.agree = "You must agree to continue.";
     }
 
     return errs;
   };
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>,
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>,
   ) => {
     const { name, value, type } = e.target;
     const checked =
@@ -107,13 +129,13 @@ export default function CaseStudy({ study }: Props) {
       [name]: type === "checkbox" ? checked : value,
     }));
 
-    // Clear error on change
     if (errors[name as keyof FormData]) {
       setErrors((prev) => ({ ...prev, [name]: undefined }));
     }
 
-    // Clear submit-level error when user edits anything
-    if (submitError) setSubmitError(null);
+    if (submitError) {
+      setSubmitError(null);
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -129,24 +151,36 @@ export default function CaseStudy({ study }: Props) {
     setSubmitError(null);
 
     try {
-      const response = await fetch(WP_API_URL, {
+      const fd = new FormData();
+
+      fd.append("_wpcf7", config.formId);
+      fd.append("_wpcf7_version", "5.9");
+      fd.append("_wpcf7_locale", "en_US");
+      fd.append("_wpcf7_unit_tag", `wpcf7-f${config.formId}-o1`);
+      fd.append("_wpcf7_container_post", "0");
+
+      fd.append("your-name", formData.fullName.trim());
+      fd.append("your-email", formData.email.trim().toLowerCase());
+      fd.append("company-name", formData.companyName.trim());
+      fd.append("industries", formData.industry);
+      fd.append("country", formData.country.trim());
+
+      if (formData.supportNeeded.trim()) {
+        fd.append("support-needed", formData.supportNeeded.trim());
+      }
+
+      if (formData.agree) {
+        fd.append("checkbox-649", "I agree*");
+      }
+
+      const response = await fetch(wpCf7Url, {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          fullName: formData.fullName,
-          email: formData.email,
-          companyName: formData.companyName,
-          industry: formData.industry,
-          country: formData.country,
-          caseStudyTitle: study.fullTitle,
-        }),
+        body: fd,
       });
 
       const data = await response.json();
 
-      if (!response.ok || !data.success) {
+      if (data.status !== "mail_sent") {
         throw new Error(
           data.message || "Something went wrong. Please try again.",
         );
@@ -248,7 +282,13 @@ export default function CaseStudy({ study }: Props) {
                     noValidate
                   >
                     <div
-                      className={`form-field ${errors.fullName ? "form-field--error" : formData.fullName ? "form-field--valid" : ""}`}
+                      className={`form-field ${
+                        errors.fullName
+                          ? "form-field--error"
+                          : formData.fullName
+                            ? "form-field--valid"
+                            : ""
+                      }`}
                     >
                       <label htmlFor="fullName">
                         Full Name <span className="required">*</span>
@@ -275,7 +315,13 @@ export default function CaseStudy({ study }: Props) {
                     </div>
 
                     <div
-                      className={`form-field ${errors.email ? "form-field--error" : formData.email && !errors.email ? "form-field--valid" : ""}`}
+                      className={`form-field ${
+                        errors.email
+                          ? "form-field--error"
+                          : formData.email && !errors.email
+                            ? "form-field--valid"
+                            : ""
+                      }`}
                     >
                       <label htmlFor="email">
                         Work Email <span className="required">*</span>
@@ -304,7 +350,13 @@ export default function CaseStudy({ study }: Props) {
                     </div>
 
                     <div
-                      className={`form-field ${errors.companyName ? "form-field--error" : formData.companyName ? "form-field--valid" : ""}`}
+                      className={`form-field ${
+                        errors.companyName
+                          ? "form-field--error"
+                          : formData.companyName
+                            ? "form-field--valid"
+                            : ""
+                      }`}
                     >
                       <label htmlFor="companyName">
                         Company Name <span className="required">*</span>
@@ -332,7 +384,13 @@ export default function CaseStudy({ study }: Props) {
 
                     <div className="form-row-2col">
                       <div
-                        className={`form-field ${errors.industry ? "form-field--error" : formData.industry ? "form-field--valid" : ""}`}
+                        className={`form-field ${
+                          errors.industry
+                            ? "form-field--error"
+                            : formData.industry
+                              ? "form-field--valid"
+                              : ""
+                        }`}
                       >
                         <label htmlFor="industry">
                           Industry <span className="required">*</span>
@@ -345,9 +403,9 @@ export default function CaseStudy({ study }: Props) {
                             onChange={handleChange}
                           >
                             <option value="">Select industry</option>
-                            {INDUSTRIES.map((i) => (
-                              <option key={i} value={i}>
-                                {i}
+                            {config.industries.map((industry) => (
+                              <option key={industry} value={industry}>
+                                {industry}
                               </option>
                             ))}
                           </select>
@@ -359,26 +417,27 @@ export default function CaseStudy({ study }: Props) {
                       </div>
 
                       <div
-                        className={`form-field ${errors.country ? "form-field--error" : formData.country ? "form-field--valid" : ""}`}
+                        className={`form-field ${
+                          errors.country
+                            ? "form-field--error"
+                            : formData.country
+                              ? "form-field--valid"
+                              : ""
+                        }`}
                       >
                         <label htmlFor="country">
                           Country <span className="required">*</span>
                         </label>
-                        <div className="input-wrapper select-wrapper">
-                          <select
+                        <div className="input-wrapper">
+                          <input
                             id="country"
                             name="country"
+                            type="text"
+                            placeholder="Enter your country"
                             value={formData.country}
                             onChange={handleChange}
-                          >
-                            <option value="">Select country</option>
-                            {COUNTRIES.map((c) => (
-                              <option key={c} value={c}>
-                                {c}
-                              </option>
-                            ))}
-                          </select>
-                          <span className="select-arrow">▾</span>
+                            autoComplete="country-name"
+                          />
                         </div>
                         {errors.country && (
                           <p className="error-msg">{errors.country}</p>
@@ -387,7 +446,33 @@ export default function CaseStudy({ study }: Props) {
                     </div>
 
                     <div
-                      className={`form-checkbox ${errors.agree ? "form-checkbox--error" : ""}`}
+                      className={`form-field ${
+                        formData.supportNeeded.trim()
+                          ? "form-field--valid"
+                          : ""
+                      }`}
+                    >
+                      <label htmlFor="supportNeeded">
+                        What kind of support are you looking for?
+                      </label>
+                      <div className="input-wrapper">
+                        <textarea
+                          id="supportNeeded"
+                          name="supportNeeded"
+                          placeholder="Tell us what you need help with"
+                          value={formData.supportNeeded}
+                          onChange={handleChange}
+                          rows={4}
+                        />
+                      </div>
+                    </div>
+
+                    <p className="form-privacy">{config.privacyText}</p>
+
+                    <div
+                      className={`form-checkbox ${
+                        errors.agree ? "form-checkbox--error" : ""
+                      }`}
                     >
                       <label className="checkbox-label">
                         <input
@@ -397,10 +482,7 @@ export default function CaseStudy({ study }: Props) {
                           onChange={handleChange}
                         />
                         <span className="checkbox-custom" />
-                        <span className="checkbox-text">
-                          I agree to receive communications related to this
-                          content from Athena.
-                        </span>
+                        <span className="checkbox-text">I agree*</span>
                       </label>
                       {errors.agree && (
                         <p className="error-msg">{errors.agree}</p>
@@ -423,7 +505,9 @@ export default function CaseStudy({ study }: Props) {
 
                     <button
                       type="submit"
-                      className={`download-btn ${loading ? "download-btn--loading" : ""}`}
+                      className={`download-btn ${
+                        loading ? "download-btn--loading" : ""
+                      }`}
                       disabled={loading}
                     >
                       {loading ? (
@@ -445,14 +529,10 @@ export default function CaseStudy({ study }: Props) {
                             <polyline points="7 10 12 15 17 10" />
                             <line x1="12" y1="15" x2="12" y2="3" />
                           </svg>
-                          Download Case Study
+                          {config.submitText}
                         </>
                       )}
                     </button>
-
-                    <p className="form-privacy">
-                      🔒 Your data is safe. We never share your information.
-                    </p>
                   </form>
                 </>
               )}

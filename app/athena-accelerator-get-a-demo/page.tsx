@@ -2,6 +2,7 @@
 
 import React, { useState, useRef, useEffect } from "react";
 import "./demo.scss";
+import { getCf7Endpoint } from "@/lib/wp";
 
 // ── TYPES ─────────────────────────────────────────────────────────────────
 interface FormData {
@@ -14,7 +15,8 @@ type FormErrors = Partial<Record<keyof FormData, string>>;
 // ── CONSTANTS ─────────────────────────────────────────────────────────────
 const INDUSTRY_OPTIONS = ["Semiconductor","Electronics","Medical Devices","Discrete Manufacturing","Solar"];
 const DEMO_SUBJECT_OPTIONS = ["ECO Redliner","Master Data Migrator","Automation Scripting Tool"];
-const WP_API_URL = process.env.NEXT_PUBLIC_WP_API_URL ?? "";
+const CF7_FORM_ID = "230890";
+const CF7_URL = getCf7Endpoint(CF7_FORM_ID);
 const EMPTY_FORM: FormData = {
   name:"", email:"", companyName:"", industry:"",
   country:"", demoSubject:"", comments:"", agreeToPolicy: false,
@@ -222,15 +224,11 @@ function WarpCanvas() {
 
 // ── SPEEDOMETER ───────────────────────────────────────────────────────────
 function Speedometer() {
-  const [mounted, setMounted] = useState(false);
   const [needle, setNeedle] = useState(0);
   const [displayVal, setDisplayVal] = useState(0);
   const targetRef = useRef(78);
 
-  useEffect(() => { setMounted(true); }, []);
-
   useEffect(() => {
-    if (!mounted) return;
     let rafId: number;
     const target = targetRef.current;
     let start: number|null = null;
@@ -252,9 +250,7 @@ function Speedometer() {
 
     const timer=setTimeout(() => { rafId=requestAnimationFrame(animate); }, 400);
     return () => { clearTimeout(timer); cancelAnimationFrame(rafId); };
-  }, [mounted]);
-
-  if (!mounted) return null;
+  }, []);
 
   const CX=100, CY=110, R=80, START_DEG=225, SWEEP=270;
   const polar = (deg:number, r=R) => ({ x:CX+r*Math.cos((deg-90)*Math.PI/180), y:CY+r*Math.sin((deg-90)*Math.PI/180) });
@@ -334,16 +330,31 @@ export default function GetADemoPage() {
     if (!validate()) return;
     setSubmitting(true); setApiError("");
     try {
-      if (!WP_API_URL) throw new Error("API URL is not configured. Set NEXT_PUBLIC_WP_API_URL in your .env.local file.");
-      const res = await fetch(`${WP_API_URL}/wp-json/athena/v1/demo-request`, {
-        method:"POST", headers:{"Content-Type":"application/json"},
-        body: JSON.stringify({ name:formData.name, email:formData.email, companyName:formData.companyName,
-          industry:formData.industry, country:formData.country, demoSubject:formData.demoSubject, comments:formData.comments }),
-      });
-      const ct = res.headers.get("content-type")??"";
-      if (!ct.includes("application/json")) throw new Error(`Server returned an unexpected response (HTTP ${res.status}).`);
+      const fd = new FormData();
+      fd.append("_wpcf7", CF7_FORM_ID);
+      fd.append("_wpcf7_version", "5.9");
+      fd.append("_wpcf7_locale", "en_US");
+      fd.append("_wpcf7_unit_tag", `wpcf7-f${CF7_FORM_ID}-o1`);
+      fd.append("_wpcf7_container_post", "0");
+
+      fd.append("your-name", formData.name.trim());
+      fd.append("your-email", formData.email.trim().toLowerCase());
+      fd.append("company-name", formData.companyName.trim());
+      fd.append("industries", formData.industry);
+      fd.append("country", formData.country.trim());
+      fd.append("topic", formData.demoSubject);
+
+      if (formData.comments.trim()) {
+        fd.append("textarea-11", formData.comments.trim());
+      }
+
+      if (formData.agreeToPolicy) {
+        fd.append("checkbox-649", "I agree*");
+      }
+
+      const res = await fetch(CF7_URL, { method:"POST", body: fd });
       const json = await res.json();
-      if (!res.ok||!json.success) throw new Error(json.message??`Request failed with status ${res.status}.`);
+      if (json.status !== "mail_sent") throw new Error(json.message ?? "Something went wrong. Please try again.");
       setSubmitStatus("success"); setSubmitted(true);
     } catch (err: unknown) {
       setApiError(err instanceof Error ? err.message : "Something went wrong. Please try again.");
@@ -423,7 +434,7 @@ export default function GetADemoPage() {
                     <textarea id="comments" name="comments" rows={4} placeholder="Any comments regarding demo…" value={formData.comments} onChange={handleChange}/>
                   </div>
                   <p className="form-legal">
-                    By submitting this form, you agree to receive communications from Athena Accelerators and can unsubscribe at any time.{" "}
+                    By submitting this form, you agree to receive communications with related content from Athena Accelerators and can unsubscribe at any time. For more information on our{" "}
                     <a href="#" onClick={e => e.preventDefault()}>Privacy Policy</a>.
                   </p>
                   <div className={`field field--check ${errors.agreeToPolicy?"field--err":""}`}>
@@ -438,7 +449,7 @@ export default function GetADemoPage() {
                     <div className="api-error" role="alert"><ErrIco/><span>{apiError}</span></div>
                   )}
                   <button type="submit" className={`submit-btn ${submitting?"submit-btn--busy":""}`} disabled={submitting}>
-                    {submitting ? <><span className="spinner"/>Submitting…</> : <>Request My Demo
+                    {submitting ? <><span className="spinner"/>Submitting…</> : <>Download Now
                       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                         <path d="M5 12h14M12 5l7 7-7 7"/>
                       </svg></>}

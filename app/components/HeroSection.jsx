@@ -22,6 +22,7 @@ export default function HeroSection({
         alt={title}
         fill
         priority
+        sizes="100vw"
         className="object-cover"
       />
        <div className="absolute inset-0 z-10" />
