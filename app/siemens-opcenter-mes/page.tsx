@@ -479,7 +479,7 @@ export default function SiemensOpcenter() {
                 </strong>
               </p>
             </div>
-            <div className="relative mt-8 aspect-[5/3] w-full max-w-[1000px]">
+            <div className="relative mt-8 aspect-[5/3] w-full max-w-[1000px] m-auto">
               <Image
                 src="/assets/images/02-8.webp"
                 alt="Factory System Integration Diagram"
