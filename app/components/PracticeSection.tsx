@@ -34,15 +34,17 @@ export default function PracticeSection({
             >
               <div className="absolute top-0 left-0 h-1 w-0 bg-[#1f4b8f] transition-all duration-300 group-hover:w-full" />
 
-              <div className="w-[70px] h-[70px] rounded-lg flex items-center justify-center mb-6">
-                <Image
-                  src={card.icon}
-                  alt={card.title}
-                  width={80}
-                  height={80}
-                  className="w-[80px] h-[80px] object-contain"
-                  quality={85}
-                />
+              <div className="mb-6 flex h-[80px] w-[80px] items-center justify-center rounded-lg">
+                <div className="relative h-full w-full">
+                  <Image
+                    src={card.icon}
+                    alt={card.title}
+                    fill
+                    sizes="80px"
+                    className="object-contain"
+                    quality={85}
+                  />
+                </div>
               </div>
 
               <h3 className="text-[18px] mb-5 text-[#1f4b8f] font-semibold">

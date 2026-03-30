@@ -266,17 +266,19 @@
     align-items: center;
   }
 
-  .customer-logo img {
-    max-width: 130px;
-    max-height: 63px;
-    width: auto;
-    height: auto;
+  .customer-logo-media {
+    position: relative;
+    width: 130px;
+    height: 63px;
+  }
+
+  .customer-logo-media img {
     object-fit: contain;
     opacity: 0.8;
     transition: 0.3s ease;
   }
 
-  .customer-logo img:hover {
+  .customer-logo:hover .customer-logo-media img {
     opacity: 1;
     transform: scale(1.05);
   }
@@ -326,9 +328,14 @@
       font-weight: 600;
     }
 
-    .testimonial-logo {
+    .testimonial-logo-frame {
+      position: relative;
+      width: 120px;
       height: 80px;
-      width: auto;
+      flex-shrink: 0;
+    }
+
+    .testimonial-logo-frame img {
       object-fit: contain;
     }
     .card-body {
@@ -484,9 +491,8 @@
     gap: 15px;
   }
 
-  .about-page .about-testimonial-section .testimonial-logo {
+  .about-page .about-testimonial-section .testimonial-logo-frame {
     height: 40px;
-    width: auto;
   }
 
   .about-page .about-testimonial-section .card-body {

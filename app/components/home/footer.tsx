@@ -86,15 +86,16 @@ export default function Footer() {
       <div className="mx-auto max-w-7xl px-6 py-16">
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-6">
           <div className="space-y-6 lg:col-span-2">
-            <Image
-              src="/assets/logo/footer-logo.png"
-              alt="Athena"
-              width={180}
-              height={48}
-              className="h-12 w-auto"
-              style={{ width: "auto" }}
-              quality={90}
-            />
+            <div className="relative h-12 w-[180px]">
+              <Image
+                src="/assets/logo/footer-logo.png"
+                alt="Athena"
+                fill
+                sizes="180px"
+                className="object-contain"
+                quality={90}
+              />
+            </div>
             <p className="max-w-sm text-sm leading-relaxed text-[#c7d4f1]">
               Athena Technology Solutions delivers enterprise-grade digital
               solutions that scale, secure, and simplify complex manufacturing

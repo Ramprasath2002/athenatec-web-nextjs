@@ -53,16 +53,16 @@ export default function HeroSection() {
         <div className="relative overflow-hidden w-full">
           <div className="marquee-track">
             {[...logos, ...logos].map((logo, i) => (
-              <Image
-                key={i}
-                src={logo}
-                alt="Client logo"
-                width={160}
-                height={88}
-                sizes="160px"
-                className="h-22 w-auto object-contain opacity-80"
-                quality={75}
-              />
+              <div key={i} className="relative h-[88px] w-[160px] shrink-0">
+                <Image
+                  src={logo}
+                  alt="Client logo"
+                  fill
+                  sizes="160px"
+                  className="object-contain opacity-80"
+                  quality={75}
+                />
+              </div>
             ))}
           </div>
         </div>
@@ -100,24 +100,24 @@ function StatCard({ title, value, suffix = "", subtitle }: StatCardProps) {
   const ref = useRef<HTMLDivElement | null>(null);
   const [hasAnimated, setHasAnimated] = useState(false);
 
-  const animateCount = () => {
-    const duration = 1500;
-    const startTime = performance.now();
-
-    const update = (currentTime: number) => {
-      const progress = Math.min((currentTime - startTime) / duration, 1);
-      setCount(Math.floor(progress * value));
-
-      if (progress < 1) {
-        requestAnimationFrame(update);
-      }
-    };
-
-    requestAnimationFrame(update);
-  };
-
   useEffect(() => {
     if (!ref.current) return;
+
+    const animateCount = () => {
+      const duration = 1500;
+      const startTime = performance.now();
+
+      const update = (currentTime: number) => {
+        const progress = Math.min((currentTime - startTime) / duration, 1);
+        setCount(Math.floor(progress * value));
+
+        if (progress < 1) {
+          requestAnimationFrame(update);
+        }
+      };
+
+      requestAnimationFrame(update);
+    };
 
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -131,7 +131,7 @@ function StatCard({ title, value, suffix = "", subtitle }: StatCardProps) {
 
     observer.observe(ref.current);
     return () => observer.disconnect();
-  }, [animateCount, hasAnimated]);
+  }, [hasAnimated, value]);
 
   return (
     <div
