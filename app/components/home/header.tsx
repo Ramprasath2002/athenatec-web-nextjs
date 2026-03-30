@@ -42,12 +42,12 @@ export default function Header() {
     >
       <div className="mx-auto flex h-[72px] max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         <Link href="/" className="flex shrink-0 items-center">
-          <div className="relative h-12 w-[249px] sm:h-14 sm:w-[290px]">
+          <div className="relative h-11 w-[220px] sm:h-12 sm:w-[240px] min-[1180px]:h-14 min-[1180px]:w-[290px]">
             <Image
               src="/assets/logo/Athenatec-Logo.png"
               alt="Athena Technology Solutions"
               fill
-              sizes="(max-width: 640px) 249px, 290px"
+              sizes="(max-width: 899px) 220px, (max-width: 1179px) 240px, 290px"
               className="object-contain"
               priority
               quality={90}
@@ -55,9 +55,12 @@ export default function Header() {
           </div>
         </Link>
 
-        <nav className="hidden [@media(min-width:900px)]:flex items-center gap-1 text-[14.5px] font-medium text-gray-700 text-center">
+        <nav className="hidden min-[900px]:flex items-center gap-0 min-[1180px]:gap-1 text-[13px] min-[1180px]:text-[14.5px] font-medium text-gray-700">
           <NavLink href="/about">About</NavLink>
-          <NavLink href="/accelerators">Athena Accelerators</NavLink>
+          <NavLink href="/accelerators">
+            <span className="min-[1180px]:hidden">Accelerators</span>
+            <span className="hidden min-[1180px]:inline">Athena Accelerators</span>
+          </NavLink>
 
           <HeaderMenu variant="desktop" />
 
@@ -65,10 +68,11 @@ export default function Header() {
 
           <Link
             href="/contact"
-            className="ml-3 inline-flex items-center rounded-lg bg-[#1c4584] px-5 py-2.5 text-sm font-semibold text-white
+            className="ml-2 min-[1180px]:ml-3 inline-flex items-center whitespace-nowrap rounded-lg bg-[#1c4584] px-3.5 min-[1180px]:px-5 py-2.5 text-[13px] min-[1180px]:text-sm font-semibold text-white
                        transition-all duration-200 hover:bg-[#17ace4] hover:shadow-[0_4px_14px_rgba(23,172,228,0.4)]"
           >
-            Contact Us
+            <span className="min-[1180px]:hidden">Contact</span>
+            <span className="hidden min-[1180px]:inline">Contact Us</span>
           </Link>
         </nav>
 
@@ -77,7 +81,7 @@ export default function Header() {
           aria-expanded={mobileOpen}
           onClick={() => setMobileOpen((v) => !v)}
           className="relative z-50 flex h-9 w-9 flex-col items-center justify-center rounded-lg
-                     [@media(min-width:900px)]:hidden
+                     min-[900px]:hidden
                      transition-colors hover:bg-gray-100"
         >
           <span
@@ -100,7 +104,7 @@ export default function Header() {
 
       <div
         className={[
-          "[@media(min-width:900px)]:hidden",
+          "min-[900px]:hidden",
           "bg-white border-t border-gray-100",
           "overflow-hidden transition-all duration-300 ease-[cubic-bezier(.23,1,.32,1)]",
           mobileOpen
@@ -142,8 +146,6 @@ export default function Header() {
   );
 }
 
-// ── HELPERS ──────────────────────────────────────────────────────────────
-
 function NavLink({
   href,
   children,
@@ -154,9 +156,9 @@ function NavLink({
   return (
     <Link
       href={href}
-      className="relative px-3 py-2 rounded-lg text-gray-700 transition-colors duration-150
+      className="relative whitespace-nowrap px-2 min-[1180px]:px-3 py-2 rounded-lg text-gray-700 transition-colors duration-150
                  hover:text-[#1c4584] hover:bg-[#1c4584]/5
-                 after:absolute after:bottom-1 after:left-3 after:right-3 after:h-[2px]
+                 after:absolute after:bottom-1 after:left-2 after:right-2 after:h-[2px]
                  after:rounded-full after:bg-[#17ace4] after:scale-x-0 after:origin-left
                  after:transition-transform after:duration-200
                  hover:after:scale-x-100"

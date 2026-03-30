@@ -137,6 +137,7 @@ export default function HeaderMenu({ variant = "desktop", onNavigate }: Props) {
     <>
       <DesktopDropdownWrapper
         label="Partners"
+        compactLabel="Partners"
         isOpen={open === "partners"}
         onEnter={() => openMenu("partners")}
         onLeave={scheduleClose}
@@ -153,6 +154,7 @@ export default function HeaderMenu({ variant = "desktop", onNavigate }: Props) {
 
       <DesktopDropdownWrapper
         label="Solutions & Services"
+        compactLabel="Solutions"
         isOpen={open === "solutions"}
         onEnter={() => openMenu("solutions")}
         onLeave={scheduleClose}
@@ -212,6 +214,7 @@ export default function HeaderMenu({ variant = "desktop", onNavigate }: Props) {
 
       <DesktopDropdownWrapper
         label="Resources"
+        compactLabel="Resources"
         isOpen={open === "resources"}
         onEnter={() => openMenu("resources")}
         onLeave={scheduleClose}
@@ -241,12 +244,14 @@ export default function HeaderMenu({ variant = "desktop", onNavigate }: Props) {
 
 function DesktopDropdownWrapper({
   label,
+  compactLabel,
   isOpen,
   onEnter,
   onLeave,
   children,
 }: {
   label: string;
+  compactLabel?: string;
   isOpen: boolean;
   onEnter: () => void;
   onLeave: () => void;
@@ -256,14 +261,21 @@ function DesktopDropdownWrapper({
     <div className="relative" onMouseEnter={onEnter} onMouseLeave={onLeave}>
       <button
         className={[
-          "flex items-center gap-1.5 px-3 py-2 rounded-lg text-[14.5px] font-medium",
+          "flex items-center gap-1.5 whitespace-nowrap px-2 min-[1180px]:px-3 py-2 rounded-lg text-[13px] min-[1180px]:text-[14.5px] font-medium",
           "transition-colors duration-150",
           isOpen
             ? "text-[#1c4584] bg-[#1c4584]/6"
             : "text-gray-700 hover:text-[#1c4584] hover:bg-[#1c4584]/5",
         ].join(" ")}
       >
-        {label}
+        {compactLabel && compactLabel !== label ? (
+          <>
+            <span className="min-[1180px]:hidden">{compactLabel}</span>
+            <span className="hidden min-[1180px]:inline">{label}</span>
+          </>
+        ) : (
+          label
+        )}
         <ChevronDown
           size={14}
           strokeWidth={2.2}
