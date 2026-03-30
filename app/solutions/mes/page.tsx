@@ -174,13 +174,13 @@ export default function MESPage() {
                 </strong>
               </p>
             </div>
-            <div className="mt-8 flex justify-center">
+            <div className="relative mt-8 aspect-[5/3] w-full max-w-[1200px]">
               <Image
                 src="/assets/images/02-8.webp"
                 alt="Factory System Integration Diagram"
-                width={1200}
-                height={600}
-                className="rounded-lg  "
+                fill
+                sizes="(max-width: 1280px) 100vw, 1200px"
+                className="rounded-lg object-contain"
               />
             </div>
           </div>

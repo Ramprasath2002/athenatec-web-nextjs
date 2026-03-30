@@ -340,16 +340,16 @@ We will continue to work together with Athena to carry out continuous process im
               )
               .map((logo, index) => (
                 <div key={index} className="customer-logo">
-                  <Image
-                    src={logo}
-                    alt="Client Logo"
-                    width={160}
-                    height={60}
-                    sizes="160px"
-                    className="h-auto w-auto object-contain"
-                    style={{ width: "auto", height: "auto" }}
-                    quality={80}
-                  />
+                  <div className="customer-logo-media">
+                    <Image
+                      src={logo}
+                      alt="Client Logo"
+                      fill
+                      sizes="130px"
+                      className="object-contain"
+                      quality={80}
+                    />
+                  </div>
                 </div>
               ))}
           </div>
@@ -372,16 +372,16 @@ We will continue to work together with Athena to carry out continuous process im
                     </div>
 
                     {item.image && (
-                      <Image
-                        src={item.image}
-                        alt={item.company}
-                        width={120}
-                        height={48}
-                        sizes="120px"
-                        className="testimonial-logo h-auto w-auto object-contain"
-                        style={{ width: "auto", height: "auto" }}
-                        quality={80}
-                      />
+                      <div className="testimonial-logo-frame">
+                        <Image
+                          src={item.image}
+                          alt={item.company}
+                          fill
+                          sizes="120px"
+                          className="object-contain"
+                          quality={80}
+                        />
+                      </div>
                     )}
                   </div>
 

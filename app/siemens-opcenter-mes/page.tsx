@@ -479,13 +479,13 @@ export default function SiemensOpcenter() {
                 </strong>
               </p>
             </div>
-            <div className="mt-8 flex justify-center">
+            <div className="relative mt-8 aspect-[5/3] w-full max-w-[1000px]">
               <Image
                 src="/assets/images/02-8.webp"
                 alt="Factory System Integration Diagram"
-                width={1000}
-                height={600}
-                className="rounded-lg  "
+                fill
+                sizes="(max-width: 1024px) 100vw, 1000px"
+                className="rounded-lg object-contain"
               />
             </div>
           </div>
@@ -542,12 +542,15 @@ export default function SiemensOpcenter() {
           </div>
 
           <div className="analytics-block dmaic-section">
-            <Image
-              src="/assets/images/04-6.webp"
-              alt="DMAIC Process"
-              width={1200}
-              height={500}
-            />
+            <div className="relative aspect-[12/5] w-full">
+              <Image
+                src="/assets/images/04-6.webp"
+                alt="DMAIC Process"
+                fill
+                sizes="100vw"
+                className="object-contain"
+              />
+            </div>
           </div>
         </div>
       </section>
@@ -559,7 +562,15 @@ export default function SiemensOpcenter() {
           <div className="logos-grid">
             {logos.map((logo, index) => (
               <div key={index} className="logo-item">
-                <Image src={logo} alt="client logo" width={180} height={100} />
+                <div className="logo-item__media">
+                  <Image
+                    src={logo}
+                    alt="client logo"
+                    fill
+                    sizes="180px"
+                    className="object-contain"
+                  />
+                </div>
               </div>
             ))}
           </div>
@@ -581,12 +592,16 @@ export default function SiemensOpcenter() {
                     </div>
 
                     {item.image && (
-                      <img
-                        src={item.image}
-                        alt={item.company}
-                        className="testimonial-logo"
-                        loading="lazy"
-                      />
+                      <div className="testimonial-logo-frame">
+                        <Image
+                          src={item.image}
+                          alt={item.company}
+                          fill
+                          sizes="120px"
+                          className="object-contain"
+                          loading="lazy"
+                        />
+                      </div>
                     )}
                   </div>
 

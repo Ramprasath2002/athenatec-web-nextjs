@@ -23,12 +23,12 @@ export default function Leadership() {
       image: "/assets/images/Peter-Picture.webp",
       bio: "Sales strategist focused on enterprise manufacturing solutions, partnerships, and global revenue growth.",
     },
-    {
-      name: "Jason Adams",
-      role: "Global Vice President, Industry",
-      image: "/assets/images/GV.webp",
-      bio: "Industry expert helping manufacturers adopt smart factory and Industry 4.0 practices at scale.",
-    },
+    // {
+    //   name: "Jason Adams", 
+    //   role: "Global Vice President, Industry",
+    //   image: "/assets/images/GV.webp",
+    //   bio: "Industry expert helping manufacturers adopt smart factory and Industry 4.0 practices at scale.",
+    // },
     {
       name: "Sachi Javli",
       role: "Managing Director & Global Delivery",

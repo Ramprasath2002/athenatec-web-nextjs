@@ -5,6 +5,21 @@ import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import Link from "next/link";
 
+function getTitleVariant(title: string) {
+  const wordCount = title.trim().split(/\s+/).length;
+  const characterCount = title.length;
+
+  if (characterCount >= 52 || wordCount >= 7) {
+    return "very-long";
+  }
+
+  if (characterCount >= 34 || wordCount >= 5) {
+    return "long";
+  }
+
+  return "default";
+}
+
 const slides = [
   // {
   //   title: "Gain End-to-End Visibility in Medical Device Manufacturing",
@@ -38,7 +53,7 @@ const slides = [
     desc: "Experienced in implementing and upgrading Opcenter MES across versions, from Camstar 3.2 to Opcenter 2410, ensuring seamless transitions and optimized performance.",
     cta: "Siemens Alliance Partner",
     link: "/siemens-opcenter-mes",
-    image: "/assets/images/siemens1.webp",
+    image: "/assets/images/siemens3.webp",
   },
   {
     title: "Critical Manufacturing Premier Implementation Partner",
@@ -68,6 +83,7 @@ const slides = [
     link: "/accelerators",
     image: "/assets/images/eco-accelerators.webp",
   },
+  
   // {
   //   title:
   //     "Athena and Tech Mahindra Announce Partnership to Accelerate Smart Manufacturing",
@@ -82,6 +98,22 @@ export default function HeroCarousel() {
   const [index, setIndex] = useState(0);
   const [fade, setFade] = useState(true);
   const total = slides.length;
+  const activeSlide = slides[index];
+  const titleVariant = getTitleVariant(activeSlide.title);
+  const contentShellClassName = `hero-carousel__content-shell mx-auto sm:mx-0 ${
+    titleVariant === "very-long"
+      ? "hero-carousel__content-shell--very-wide"
+      : titleVariant === "long"
+        ? "hero-carousel__content-shell--wide"
+        : ""
+  }`;
+  const titleClassName = `hero-carousel__title mb-3 sm:mb-5 ${
+    titleVariant === "very-long"
+      ? "hero-carousel__title--very-long"
+      : titleVariant === "long"
+        ? "hero-carousel__title--long"
+        : ""
+  }`;
 
    const touchStartX = useRef<number | null>(null);
   const touchStartY = useRef<number | null>(null);
@@ -139,11 +171,11 @@ export default function HeroCarousel() {
       changeSlide(index === total - 1 ? 0 : index + 1);
     }, 5000);
     return () => clearInterval(timer);
-  }, [index]);
+  }, [index, total]);
 
   return (
     <section
-      className="relative w-full min-h-[55vh] sm:min-h-[60vh] md:min-h-[65vh] lg:min-h-[60vh] flex items-center overflow-hidden"
+      className="hero-carousel relative flex min-h-[55vh] w-full items-center overflow-hidden sm:min-h-[60vh] md:min-h-[65vh] lg:min-h-[60vh]"
        onTouchStart={handleTouchStart}
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
@@ -154,17 +186,17 @@ export default function HeroCarousel() {
           <Image
             key={i}
             src={slide.image}
-            alt="Hero background"
+            alt={slide.title}
             fill
             priority={i === 0}
             sizes="100vw"
             quality={75}
-            className={`object-cover transition-opacity duration-700 ease-in-out ${
+            className={`hero-carousel__image object-cover transition-opacity duration-700 ease-in-out ${
               i === index ? "opacity-100 z-10" : "opacity-0 z-0"
             }`}
           />
         ))}
-        <div className="absolute inset-0 z-20 via-black/30 to-transparent" />
+        <div className="hero-carousel__scrim absolute inset-0 z-20" />
       </div>
 
       <div
@@ -172,29 +204,25 @@ export default function HeroCarousel() {
           fade ? "opacity-100" : "opacity-0"
         }`}
       >
-        <div
-          className="w-full max-w-[90%] sm:max-w-[75%] md:max-w-[620px] lg:max-w-[700px] mx-auto sm:mx-0 backdrop-blur-xl 
-                        bg-white/10 border border-white/20 shadow-2xl
-                        p-5 sm:p-7 md:p-8 rounded-2xl text-white"
-        >
-          <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold mb-3 sm:mb-5 leading-snug">
-            {slides[index].title}
+        <div className={contentShellClassName}>
+          <h1 className={titleClassName}>
+            {activeSlide.title}
           </h1>
 
-          <p className="text-sm sm:text-base md:text-lg text-white/90 mb-5 sm:mb-7 leading-relaxed">
-            {slides[index].desc}
+          <p className="hero-carousel__desc mb-5 sm:mb-7">
+            {activeSlide.desc}
           </p>
 
           <Link
-            href={slides[index].link}
-            className="cta-btn relative overflow-hidden inline-block
+            href={activeSlide.link}
+            className="hero-carousel__cta cta-btn relative overflow-hidden inline-flex
                        text-white font-semibold
                        text-sm sm:text-base
                        px-5 sm:px-7 md:px-8
                        py-2.5 sm:py-3
                        rounded-xl cursor-pointer"
           >
-            <span className="relative z-10">{slides[index].cta}</span>
+            <span className="relative z-10">{activeSlide.cta}</span>
             <span className="shine" />
           </Link>
         </div>

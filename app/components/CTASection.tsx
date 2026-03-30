@@ -22,11 +22,11 @@ export default function CTASection({
 }: CTAProps) {
   return (
  <section className="py-20 bg-gray-100">
-  <div className="relative mx-auto max-w-[1200px] h-[300px] rounded-3xl overflow-hidden">
+  <div className="relative mx-auto max-w-[1200px] h-[300px] rounded-3xl overflow-hidden m-5  ">
 
      <Image
       src={backgroundImage}
-      alt="CTA Background"
+      alt="CTA Background" 
       fill
       sizes="(max-width: 1200px) 100vw, 1200px"
       className="object-cover"

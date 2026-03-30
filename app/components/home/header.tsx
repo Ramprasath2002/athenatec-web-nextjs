@@ -42,16 +42,17 @@ export default function Header() {
     >
       <div className="mx-auto flex h-[72px] max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         <Link href="/" className="flex shrink-0 items-center">
-          <Image
-            src="/assets/logo/Athenatec-Logo.png"
-            alt="Athena Technology Solutions"
-            width={290}
-            height={56}
-            className="h-12 sm:h-14 w-auto"
-            style={{ width: "auto" }}
-            priority  
-            quality={90}
-          />
+          <div className="relative h-12 w-[249px] sm:h-14 sm:w-[290px]">
+            <Image
+              src="/assets/logo/Athenatec-Logo.png"
+              alt="Athena Technology Solutions"
+              fill
+              sizes="(max-width: 640px) 249px, 290px"
+              className="object-contain"
+              priority
+              quality={90}
+            />
+          </div>
         </Link>
 
         <nav className="hidden [@media(min-width:900px)]:flex items-center gap-1 text-[14.5px] font-medium text-gray-700 text-center">
