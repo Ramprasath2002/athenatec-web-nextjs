@@ -364,10 +364,14 @@
   .logo-item {
     display: flex;
     justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-width: 0;
 
     &__media {
       position: relative;
-      width: min(100%, 180px);
+      width: 100%;
+      max-width: 180px;
       height: clamp(40px, 7vw, 90px);
     }
 
