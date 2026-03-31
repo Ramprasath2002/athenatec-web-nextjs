@@ -14,7 +14,7 @@ export default function Leadership() {
     {
       name: "Senthil Ranganathan",
       role: "Founder & CEO",
-      image: "/assets/images/Senthil-Ranganathan.webp",
+      image: "/assets/images/Senthil.webp",
       bio: "Visionary leader with over two decades of experience driving digital manufacturing and MES transformations globally.",
     },
     {
@@ -32,7 +32,7 @@ export default function Leadership() {
     {
       name: "Sachi Javli",
       role: "Managing Director & Global Delivery",
-      image: "/assets/images/409933-e1754047370496.webp",
+      image: "/assets/images/sachi.webp",
       bio: "Leads global delivery and execution with a strong focus on operational excellence and customer success.",
     },
     {
