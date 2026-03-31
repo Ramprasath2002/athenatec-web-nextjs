@@ -1,10 +1,10 @@
 "use client";
 
 import React, { useState, useRef, useEffect } from "react";
+import Link from "next/link";
 import "./demo.scss";
 import { getCf7Endpoint } from "@/lib/wp";
 
-// ── TYPES ─────────────────────────────────────────────────────────────────
 interface FormData {
   name: string; email: string; companyName: string;
   industry: string; country: string; demoSubject: string;
@@ -12,7 +12,6 @@ interface FormData {
 }
 type FormErrors = Partial<Record<keyof FormData, string>>;
 
-// ── CONSTANTS ─────────────────────────────────────────────────────────────
 const INDUSTRY_OPTIONS = ["Semiconductor","Electronics","Medical Devices","Discrete Manufacturing","Solar"];
 const DEMO_SUBJECT_OPTIONS = ["ECO Redliner","Master Data Migrator","Automation Scripting Tool"];
 const CF7_FORM_ID = "230890";
@@ -22,7 +21,6 @@ const EMPTY_FORM: FormData = {
   country:"", demoSubject:"", comments:"", agreeToPolicy: false,
 };
 
-// ── SMALL HELPERS ─────────────────────────────────────────────────────────
 const ChevDown = () => (
   <svg className="sel-arrow" viewBox="0 0 20 20" fill="currentColor">
     <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd"/>
@@ -35,7 +33,6 @@ const ErrIco = () => (
   </svg>
 );
 
-// ── REUSABLE FIELD ─────────────────────────────────────────────────────────
 function Field({ label, error, isSelect = false, hasValue = false, children }: {
   label: string; error?: string; isSelect?: boolean; hasValue?: boolean; children: React.ReactNode;
 }) {
@@ -48,7 +45,6 @@ function Field({ label, error, isSelect = false, hasValue = false, children }: {
   );
 }
 
-// ── CUSTOM DROPDOWN ────────────────────────────────────────────────────────
 function CustomSelect({ id, name, value, onChange, placeholder, options }: {
   id: string; name: string; value: string;
   onChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
@@ -57,7 +53,6 @@ function CustomSelect({ id, name, value, onChange, placeholder, options }: {
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
-  // Close on outside click
   useEffect(() => {
     const handler = (e: MouseEvent) => {
       if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false);
@@ -67,7 +62,6 @@ function CustomSelect({ id, name, value, onChange, placeholder, options }: {
   }, []);
 
   const select = (opt: string) => {
-    // Synthesise a change event so parent handleChange works unchanged
     const nativeInput = ref.current?.querySelector("select") as HTMLSelectElement;
     if (nativeInput) {
       Object.getOwnPropertyDescriptor(window.HTMLSelectElement.prototype, "value")!
@@ -82,21 +76,18 @@ function CustomSelect({ id, name, value, onChange, placeholder, options }: {
 
   return (
     <div className={`csel ${open ? "csel--open" : ""}`} ref={ref}>
-      {/* Hidden native select keeps form/validation working */}
       <select id={id} name={name} value={value} onChange={onChange}
         tabIndex={-1} aria-hidden="true" className="csel__native">
         <option value="">{placeholder}</option>
         {options.map(o => <option key={o} value={o}>{o}</option>)}
       </select>
 
-      {/* Visible trigger */}
       <button type="button" className={`csel__trigger ${isPlaceholder ? "csel__trigger--ph" : ""}`}
         onClick={() => setOpen(p => !p)} aria-haspopup="listbox" aria-expanded={open}>
         <span className="csel__val">{label}</span>
         <span className="csel__arrow-box"><ChevDown /></span>
       </button>
 
-      {/* Options panel */}
       {open && (
         <ul className="csel__menu" role="listbox">
           {options.map((opt, i) => (
@@ -119,7 +110,6 @@ function CustomSelect({ id, name, value, onChange, placeholder, options }: {
   );
 }
 
-// ── WARP CANVAS ───────────────────────────────────────────────────────────
 function WarpCanvas() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
@@ -222,7 +212,6 @@ function WarpCanvas() {
   return <canvas ref={canvasRef} className="warp-canvas"/>;
 }
 
-// ── SPEEDOMETER ───────────────────────────────────────────────────────────
 function Speedometer() {
   const [needle, setNeedle] = useState(0);
   const [displayVal, setDisplayVal] = useState(0);
@@ -295,7 +284,6 @@ function Speedometer() {
   );
 }
 
-// ── MAIN PAGE ─────────────────────────────────────────────────────────────
 export default function GetADemoPage() {
   const [formData, setFormData] = useState<FormData>(EMPTY_FORM);
   const [errors, setErrors]     = useState<FormErrors>({});
@@ -435,7 +423,7 @@ export default function GetADemoPage() {
                   </div>
                   <p className="form-legal">
                     By submitting this form, you agree to receive communications with related content from Athena Accelerators and can unsubscribe at any time. For more information on our{" "}
-                    <a href="#" onClick={e => e.preventDefault()}>Privacy Policy</a>.
+                    <Link href="/privacy-policy">Privacy Policy</Link>.
                   </p>
                   <div className={`field field--check ${errors.agreeToPolicy?"field--err":""}`}>
                     <label className="chk-label" htmlFor="agreeToPolicy">

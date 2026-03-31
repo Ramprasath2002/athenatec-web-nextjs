@@ -247,10 +247,10 @@ export default function Footer() {
             © 2026 Athena Technologies. All rights reserved.
           </p>
           <div className="flex gap-6">
-            <Link href="#" className="text-[#c7d4f1] hover:text-[#17ace4]">
+            <Link href="/privacy-policy" className="text-[#c7d4f1] hover:text-[#17ace4]">
               Privacy Policy
             </Link>
-            <Link href="#" className="text-[#c7d4f1] hover:text-[#17ace4]">
+            <Link href="/terms-of-use" className="text-[#c7d4f1] hover:text-[#17ace4]">
               Terms of Use
             </Link>
           </div>

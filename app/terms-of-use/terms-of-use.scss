@@ -1,0 +1,126 @@
+@import "../globals.css";
+
+.legal-page {
+  background-color: #f8fafc;
+  min-height: 100vh;
+  padding-bottom: 80px;
+
+  .legal-hero {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    padding: 100px 0 60px 0;
+    text-align: center;
+    color: #ffffff;
+
+    .container {
+      max-width: 800px;
+    }
+
+    h1 {
+      font-size: 3.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      background: linear-gradient(to right, #ffffff, #94a3b8);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      letter-spacing: -0.02em;
+
+      @media (max-width: 768px) {
+        font-size: 2.5rem;
+      }
+    }
+
+    .effective-date {
+      font-size: 1.125rem;
+      color: #94a3b8;
+      font-weight: 500;
+      display: inline-block;
+      padding: 8px 16px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      backdrop-filter: blur(10px);
+    }
+  }
+
+  .legal-content-wrapper {
+    max-width: 900px;
+    margin: -40px auto 0;
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06), 0 20px 25px -5px rgba(0, 0, 0, 0.05);
+    padding: 60px;
+    position: relative;
+    z-index: 10;
+
+    @media (max-width: 768px) {
+      margin-top: 0;
+      border-radius: 0;
+      padding: 40px 24px;
+    }
+  }
+
+  .legal-section {
+    margin-bottom: 48px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    h2 {
+      font-size: 1.75rem;
+      color: #0f172a;
+      font-weight: 700;
+      margin-bottom: 24px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid #e2e8f0;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    p {
+      color: #334155;
+      line-height: 1.8;
+      margin-bottom: 16px;
+      font-size: 1.0625rem;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    ul, ol {
+      margin-top: 16px;
+      margin-bottom: 24px;
+      padding-left: 24px;
+
+      li {
+        color: #334155;
+        line-height: 1.8;
+        margin-bottom: 12px;
+        font-size: 1.0625rem;
+
+        strong {
+          color: #0f172a;
+          font-weight: 600;
+        }
+
+        &::marker {
+          color: #3b82f6;
+        }
+      }
+    }
+    
+    a {
+      color: #2563eb;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s ease;
+      
+      &:hover {
+        color: #1d4ed8;
+        text-decoration: underline;
+      }
+    }
+  }
+}

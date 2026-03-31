@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { getCf7Endpoint } from "@/lib/wp";
 
 type Study = {
@@ -31,7 +32,7 @@ type FormErrors = Partial<Record<keyof FormData, string>>;
 type FormConfig = {
   formId: string;
   industries: string[];
-  privacyText: string;
+  privacyText: React.ReactNode;
   submitText: string;
 };
 
@@ -45,8 +46,9 @@ const FORM_CONFIG: Record<Study["formType"], FormConfig> = {
       "Discrete Manufacturing",
       "Solar",
     ],
-    privacyText:
-      "By submitting this form, you agree to receive communications with related content from Siemens Opcenter and can unsubscribe at any time. For more information on our Privacy Policy, click here.",
+    privacyText: (
+      <>By submitting this form, you agree to receive communications with related content from Siemens Opcenter and can unsubscribe at any time. For more information on our <Link href="/privacy-policy" className="font-medium underline hover:text-blue-500">Privacy Policy</Link>, click here.</>
+    ),
     submitText: "Download Case Study",
   },
   cmf: {
@@ -58,8 +60,9 @@ const FORM_CONFIG: Record<Study["formType"], FormConfig> = {
       "Discrete Manufacturing",
       "Solar",
     ],
-    privacyText:
-      "By submitting this form, you agree to receive communications with related content from Critical Manufacturing and can unsubscribe at any time. For more information on our Privacy Policy, click here.",
+    privacyText: (
+      <>By submitting this form, you agree to receive communications with related content from Critical Manufacturing and can unsubscribe at any time. For more information on our <Link href="/privacy-policy" className="font-medium underline hover:text-blue-500">Privacy Policy</Link>, click here.</>
+    ),
     submitText: "Download Case Study",
   },
 };

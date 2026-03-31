@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { useParams } from "next/navigation";
 import "./webinar.scss";
 import { getCf7Endpoint } from "@/lib/wp";
@@ -239,7 +240,7 @@ function WebinarForm({ webinarTitle = "MedTech MES Accelerator" }: { webinarTitl
       </label>
 
        <p className="wf-privacy-note">
-        By registering, you agree to our Privacy Policy and consent to receive
+        By registering, you agree to our <Link href="/privacy-policy">Privacy Policy</Link> and consent to receive
         communications about this event and related content.
       </p>
 
