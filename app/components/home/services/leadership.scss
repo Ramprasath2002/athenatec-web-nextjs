@@ -1,118 +1,222 @@
+// ─────────────────────────────────────────────
+//  Leadership Section
+// ─────────────────────────────────────────────
+
 .leadership {
-  padding: 100px 0;
+  padding: 120px 0;
   background: #fff;
+  position: relative;
+  overflow: hidden;
+
+  // Dot pattern background
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: radial-gradient(rgba(28, 69, 132, 0.05) 1px, transparent 1px);
+    background-size: 32px 32px;
+    pointer-events: none;
+    z-index: 0;
+  }
 }
-.advisory-header {
-  margin-top: 120px;
+ 
+.glow-shape {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(140px);
+  z-index: 0;
+  pointer-events: none;
+
+  &.shape-1 {
+    top: 0;
+    left: -200px;
+    width: 600px;
+    height: 600px;
+    background: rgba(28, 69, 132, 0.12);
+  }
+
+  &.shape-2 {
+    bottom: 20%;
+    right: -300px;
+    width: 800px;
+    height: 800px;
+    background: rgba(28, 69, 132, 0.1);
+  }
+}
+
+.bg-logo-watermark {
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%; 
+  max-width: 1200px;
+  height: 100%;
+  max-height: 600px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 0;
+  pointer-events: none;
+  user-select: none;
+  opacity: 0.08;  
+
+  .watermark-img {
+    object-fit: contain;
+    filter: grayscale(100%);
+  }
+
+  @media (max-width: 1024px) {
+    width: 95%;
+  }
+}
+
+.decorative-side {
+  position: absolute;
+  top: 0;
+  bottom: 40%;
+  z-index: 0;
+  display: flex;
+  align-items: center;
+  pointer-events: none;
+  user-select: none;
+  
+  &.left {
+    left: 4%;
+  }
+
+  &.right {
+    right: 4%;
+  }
+
+  .watermark {
+    writing-mode: vertical-rl;
+    font-size: clamp(100px, 12vw, 200px);
+    font-weight: 900;
+    color: rgba(28, 69, 132, 0.03); // Very subtle watermark
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    line-height: 1;
+  }
+
+  &.left .watermark {
+    transform: rotate(180deg);
+  }
+
+  @media (max-width: 1200px) {
+    &.left { left: 2%; }
+    &.right { right: 2%; }
+  }
+
+  @media (max-width: 1024px) {
+    display: none; // Hide on smaller screens
+  }
 }
 
 .container {
   max-width: 1300px;
   margin: 0 auto;
   padding: 0 20px;
+  position: relative;
+  z-index: 1;
 }
 
- .header {
+// ── Section header ──────────────────────────
+
+.header {
   max-width: 720px;
   margin-bottom: 64px;
+
+  h2 {
+    font-size: 40px;
+    font-weight: 600;
+    color: #1c4584;
+    margin-bottom: 16px;
+  }
+
+  p {
+    color: #6b7280;
+    line-height: 1.6;
+  }
 }
 
-.header h2 {
-  font-size: 40px;
-  font-weight: 600;
-  color: #1c4584;
-  margin-bottom: 16px;
+.advisory-header {
+  margin-top: 120px;
 }
 
-.header p {
-  color: #6b7280;
-  line-height: 1.6;
-}
+// ── Leadership grid  ─  2 × 2 ───────────────
 
- .leadership-grid {
+.leadership-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(360px, 360px));
+  grid-template-columns: repeat(2, 360px);
   gap: 40px;
-  justify-content: center !important;
+  justify-content: center;
+
+  @media (max-width: 840px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 560px) {
+    grid-template-columns: 1fr;
+  }
 }
 
- .flip-card {
+// ── Flip card ───────────────────────────────
+
+.flip-card {
   width: 100%;
   max-width: 360px;
 }
 
- .flip-inner {
+.flip-inner {
   position: relative;
   width: 100%;
   height: 460px;
-  transform: none;
-  transition: none;
+
+  @media (max-width: 560px) {
+    height: 420px;
+  }
 }
 
- .flip-front {
+.flip-front {
   position: absolute;
   inset: 0;
   border-radius: 16px;
   overflow: hidden;
 }
 
- .flip-back {
-  display: none;
-}
-
-
-.flip-front img {
-  width: 100%;
-  height: 100%;
+// Next.js fill-mode image
+.leader-img {
   object-fit: cover;
+  object-position: top center;
 }
 
- .overlay {
+.overlay {
   position: absolute;
   inset: auto 0 0 0;
-  padding: 24px;
-  background: linear-gradient(
-    to top,
-    rgba(0, 0, 0, 0.85),
-    rgba(0, 0, 0, 0)
-  );
-}
+  padding: 28px 24px 24px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0) 100%);
 
-.overlay h4 {
-  color: #fff;
-  font-size: 18px;
-  font-weight: 600;
-}
+  h4 {
+    color: #fff;
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
 
-.overlay span {
-  color: #d1d5db;
-  font-size: 14px;
-}
-
-
-.flip-back p {
-  color: #cbd5f5;
-  font-size: 14px;
-  line-height: 1.6;
-}
-
- @media (max-width: 1024px) {
-  .leadership-grid {
-    grid-template-columns: repeat(2, 1fr);
+  span {
+    color: #d1d5db;
+    font-size: 14px;
+    line-height: 1.4;
+    display: block;
   }
 }
 
- @media (max-width: 640px) {
-  .leadership-grid {
-    grid-template-columns: 1fr;
-  }
+// ── Advisory list ────────────────────────────
 
-  .flip-inner {
-    height: 420px;
-  }
-}
-
- 
 .advisory-list {
   display: flex;
   flex-direction: column;
@@ -120,62 +224,58 @@
   margin-top: 48px;
 }
 
- .advisory-card {
+.advisory-card {
   display: grid;
   grid-template-columns: 280px 1fr;
   gap: 32px;
   background: #1c4584;
-  // background: linear-gradient(
-  //   135deg,
-  //   #1c4584,
-  //   #5172b0
-  // );
   border-radius: 28px;
   padding: 32px;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
   align-items: center;
-}
 
- .advisory-image img {
-  width: 100%;
-  height: 280px;
-  object-fit: cover;
-  border-radius: 20px;
-}
-
- .advisory-content h3 {
-  font-size: 28px;
-  font-weight: 600;
-  color: #ffffff;
-  margin-bottom: 6px;
-}
-
-.advisory-content h4 {
-  font-size: 16px;
-  font-weight: 500;
-  color: rgb(255, 255, 255);
-  margin-bottom: 16px;
-}
-
-.advisory-content p {
-  font-size: 15px;
-  line-height: 1.7;
-  color: #e6eefc;
-  max-width: 900px;
-}
-
- 
-@media (max-width: 900px) {
-  .advisory-card {
+  @media (max-width: 900px) {
     grid-template-columns: 1fr;
     text-align: center;
   }
+}
 
-  .advisory-image img {
-    height: 320px;
+.advisory-image {
+  .advisor-img {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    border-radius: 20px;
+
+    @media (max-width: 900px) {
+      height: 320px;
+    }
+  }
+}
+
+.advisory-content {
+  h3 {
+    font-size: 28px;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 6px;
   }
 
-  .advisory-content p {
-    margin: 0 auto;
+  h4 {
+    font-size: 16px;
+    font-weight: 500;
+    color: #ffffff;
+    margin-bottom: 16px;
+  }
+
+  p {
+    font-size: 15px;
+    line-height: 1.7;
+    color: #e6eefc;
+    max-width: 900px;
+
+    @media (max-width: 900px) {
+      margin: 0 auto;
+    }
   }
 }
