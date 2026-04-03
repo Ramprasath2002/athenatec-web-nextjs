@@ -27,7 +27,7 @@ const slides = [
   //   cta: "Download Now",
   //   image: "/assets/images/MDM.webp",
   // },
-    {
+  {
     title: "Digitizing the Manufacturing Enterprise Since 2011",
     desc: "Leveraging deep expertise to enhance partnerships and drive long-term manufacturing success.",
     cta: "Connect Us",
@@ -53,7 +53,7 @@ const slides = [
     desc: "Experienced in implementing and upgrading Opcenter MES across versions, from Camstar 3.2 to Opcenter 2410, ensuring seamless transitions and optimized performance.",
     cta: "Siemens Alliance Partner",
     link: "/siemens-opcenter-mes",
-    image: "/assets/images/siemens3.webp",
+    image: "/assets/images/s8.webp",
   },
   {
     title: "Critical Manufacturing Premier Implementation Partner",
@@ -231,7 +231,7 @@ export default function HeroCarousel() {
       <button
         onClick={prev}
         aria-label="Previous slide"
-        className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-40
+        className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-40 hidden md:flex
                    flex items-center justify-center
                    w-9 h-9 sm:w-11 sm:h-11
                    rounded-full cursor-pointer
@@ -247,7 +247,7 @@ export default function HeroCarousel() {
       <button
         onClick={next}
         aria-label="Next slide"
-        className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-40
+        className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-40 hidden md:flex
                    flex items-center justify-center
                    w-9 h-9 sm:w-11 sm:h-11
                    rounded-full cursor-pointer

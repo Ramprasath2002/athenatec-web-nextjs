@@ -1,3 +1,5 @@
+import { buildMetadata, truncate } from "@/lib/seo";
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import EventGalleryPage, {
   EventPhoto,
@@ -69,9 +71,42 @@ const EVENT_DATA: Record<
     date: "June 2023 · Las Vegas, NV",
     heroImage: "/assets/images/events/i4is23/event-01.webp",
     photos: generatePhotos("i4is23", 23),
+  },
+};
+
+export async function generateStaticParams() {
+  return Object.keys(EVENT_DATA).map((slug) => ({ slug }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+
+  const event = EVENT_DATA[slug];
+
+  if (!event) {
+    return buildMetadata({
+      title: "Event Gallery Not Found",
+      description: "The requested event gallery could not be found.",
+      path: `/gallery/${slug}`,
+      noIndex: true,
+    });
   }
 
-};
+  return buildMetadata({
+    title: `${event.title} Gallery`,
+    description: truncate(
+      `Explore photos from ${event.title} held ${event.date}. View highlights from this Athenatec event gallery.`,
+      160,
+    ),
+    path: `/gallery/${slug}`,
+    image: event.heroImage,
+    keywords: ["event gallery", "Athenatec events", event.title],
+  });
+}
 
 export default async function Page({
   params,

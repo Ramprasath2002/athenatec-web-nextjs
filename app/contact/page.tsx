@@ -3,6 +3,7 @@ import { Mail, Phone, MapPin } from "lucide-react";
 import HeroSection from "@/app/components/HeroSection";
 import Link from "next/link";
 import ContactForm from "@/app/components/forms/ContactForm";
+import { buildContactPageSchema } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Contact Athenatec | MES, PLM & Smart Factory Experts",
@@ -11,8 +12,16 @@ export const metadata: Metadata = {
 };
 
 export default function ContactPage() {
+  const contactPageSchema = buildContactPageSchema();
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(contactPageSchema),
+        }}
+      />
       <HeroSection
         title="Contact"
         description="Leave us a little info, and we'll be in touch."

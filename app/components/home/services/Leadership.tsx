@@ -27,7 +27,7 @@ export default function Leadership() {
     {
       name: "Sachi Javli",
       role: "Managing Director & Global Delivery",
-      image: "/assets/images/Sachi.webp",
+      image: "/assets/images/Sachii.webp",
       bio: "Leads global delivery and execution with a strong focus on operational excellence and customer success.",
     },
     {

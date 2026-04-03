@@ -1,9 +1,12 @@
-const API_URL = "https://www.athenatec.com/wp-json/wp/v2";
+import { getWpApiUrl } from "@/lib/wp";
+
+const API_URL = getWpApiUrl("/wp-json/wp/v2");
 
 export type WPPost = {
   id: number;
   slug: string;
   date: string;
+  modified?: string;
   title: {
     rendered: string;
   };
@@ -21,51 +24,50 @@ export type WPPost = {
           medium_large?: {
             source_url: string;
           };
+          full?: {
+            source_url: string;
+          };
         };
       };
     }[];
   };
 };
 
-export async function getPosts(): Promise<WPPost[]> {
+async function fetchWp<T>(path: string, revalidate: number): Promise<T | null> {
   try {
-    const res = await fetch(
-      `${API_URL}/posts?_embed`,
-      { next: { revalidate: 60 } }
-    );
-    if (!res.ok) return [];
-    return res.json();
-  } catch (error) {
-    console.error("getPosts failed:", error);
-    return [];
-  }
-}
+    const res = await fetch(`${API_URL}${path}`, {
+      next: { revalidate },
+    });
 
-export async function getPost(slug: string): Promise<WPPost | null> {
-  try {
-    const res = await fetch(
-      `${API_URL}/posts?slug=${slug}&_embed`,
-      { next: { revalidate: 300 } }
-    );
     if (!res.ok) return null;
-    const data = await res.json();
-    return data.length ? data[0] : null;
+    return (await res.json()) as T;
   } catch (error) {
-    console.error("getPost failed:", error);
+    console.error("WordPress fetch failed:", error);
     return null;
   }
 }
 
+export async function getPosts(): Promise<WPPost[]> {
+  const posts = await fetchWp<WPPost[]>(
+    "/posts?_embed&orderby=date&order=desc",
+    60,
+  );
+  return posts ?? [];
+}
+
+export async function getPost(slug: string): Promise<WPPost | null> {
+  const encodedSlug = encodeURIComponent(slug);
+  const data = await fetchWp<WPPost[]>(
+    `/posts?slug=${encodedSlug}&_embed`,
+    300,
+  );
+  return data?.length ? data[0] : null;
+}
+
 export async function getAllPosts(): Promise<WPPost[]> {
-  try {
-    const res = await fetch(
-      `${API_URL}/posts?_embed&per_page=100`,
-      { next: { revalidate: 300 } }
-    );
-    if (!res.ok) return [];
-    return res.json();
-  } catch (error) {
-    console.error("getAllPosts failed:", error);
-    return [];
-  }
+  const posts = await fetchWp<WPPost[]>(
+    "/posts?_embed&per_page=100&orderby=date&order=desc",
+    300,
+  );
+  return posts ?? [];
 }
