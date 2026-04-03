@@ -1,15 +1,19 @@
 import { jobs } from "@/app/data/jobs";
+import { buildJobPostingSchema, buildMetadata, stripHtml } from "@/lib/seo";
 import "./job-details.scss";
 import ApplyForm from "./ApplyForm";
 import type { Metadata } from "next";
 
- 
- function buildTitle(jobTitle: string, locations: string[]): string {
+export async function generateStaticParams() {
+  return jobs.map((job) => ({ slug: job.slug }));
+}
+
+function buildTitle(jobTitle: string, locations: string[]): string {
   const SUFFIX = " | Careers at Athenatec";
   const MAX = 60;
   const MIN = 50;
 
-   const maxJobLen = MAX - SUFFIX.length;  
+  const maxJobLen = MAX - SUFFIX.length;
   const t =
     jobTitle.length > maxJobLen
       ? jobTitle.slice(0, maxJobLen - 1).trim() + "…"
@@ -17,7 +21,7 @@ import type { Metadata } from "next";
 
   let full = t + SUFFIX;
 
-   if (full.length < MIN) {
+  if (full.length < MIN) {
     const padded = t + " in " + locations[0] + SUFFIX;
     full = padded.length <= MAX ? padded : full;
   }
@@ -33,7 +37,7 @@ function buildDesc(
 ): string {
   const MAX = 160;
   const MIN = 150;
-  const clean = (overview ?? "").replace(/<[^>]+>/g, "").trim();
+  const clean = stripHtml(overview ?? "");
   const locStr = locations.join(", ");
   const prefix = `Hiring ${jobTitle} (${type}) in ${locStr}. `;
   const ELLIPSIS = "...";
@@ -68,34 +72,29 @@ export async function generateMetadata({
   const job = jobs.find((j) => j.slug === slug);
 
   if (!job) {
-    return {
-      title: "Job Not Found | Athenatec",
+    return buildMetadata({
+      title: "Job Not Found",
       description: "This job listing is no longer available.",
-    };
+      path: `/careers/${slug}`,
+      noIndex: true,
+    });
   }
 
   const title = buildTitle(job.title, job.locations);
-  const description = buildDesc(job.title, job.type, job.locations, job.overview);
+  const description = buildDesc(
+    job.title,
+    job.type,
+    job.locations,
+    job.overview
+  );
 
-  return {
+  return buildMetadata({
     title,
     description,
-    openGraph: {
-      title,
-      description,
-      url: `https://www.athenatec.com/careers/${slug}`,
-      siteName: "Athenatec",
-      type: "website",
-    },
-    twitter: {
-      card: "summary_large_image",
-      title,
-      description,
-    },
-    alternates: {
-      canonical: `https://www.athenatec.com/careers/${slug}`,
-    },
-  };
+    path: `/careers/${slug}`,
+    type: "website",
+    keywords: ["careers", "jobs", job.title, ...job.locations],
+  });
 }
 
 export default async function JobDetailsPage({
@@ -110,8 +109,28 @@ export default async function JobDetailsPage({
     return <div style={{ padding: "100px" }}>Job Not Found</div>;
   }
 
+  const jobDescription = [
+    job.overview,
+    ...(job.responsibilities ?? []),
+    ...(job.requirements ?? []),
+  ]
+    .filter(Boolean)
+    .join(" ");
+
+  const jobPostingSchema = buildJobPostingSchema({
+    title: job.title,
+    description: stripHtml(jobDescription),
+    path: `/careers/${slug}`,
+    employmentType: job.type,
+    locations: job.locations,
+  });
+
   return (
     <div className="job-details-page">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jobPostingSchema) }}
+      />
       <div className="container job-layout">
         <div className="job-info">
           <h1>{job.title}</h1>
@@ -145,7 +164,7 @@ export default async function JobDetailsPage({
           </ul>
         </div>
 
-      <ApplyForm jobTitle={job.title} jobId={job.wpJobId ?? ""} />
+        <ApplyForm jobTitle={job.title} jobId={job.wpJobId ?? ""} />
       </div>
     </div>
   );

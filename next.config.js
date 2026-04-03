@@ -14,6 +14,7 @@ const nextConfig = {
     remotePatterns: [
       { protocol: "https", hostname: "athenatec.com" },
       { protocol: "https", hostname: "www.athenatec.com" },
+      { protocol: "https", hostname: "cms.athenatec.com" },
     ],
   },
 

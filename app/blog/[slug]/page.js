@@ -1,8 +1,66 @@
 import { getPost, getAllPosts } from "@/lib/wordpress";
+import {
+  DEFAULT_OG_IMAGE,
+  buildArticleSchema,
+  buildMetadata,
+  stripHtml,
+  truncate,
+} from "@/lib/seo";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import "./post.scss";
+
+function getPostImage(post) {
+  return (
+    post._embedded?.["wp:featuredmedia"]?.[0]?.media_details?.sizes?.full
+      ?.source_url ||
+    post._embedded?.["wp:featuredmedia"]?.[0]?.media_details?.sizes
+      ?.medium_large?.source_url ||
+    post._embedded?.["wp:featuredmedia"]?.[0]?.source_url ||
+    DEFAULT_OG_IMAGE
+  );
+}
+
+function getPostDescription(post) {
+  const excerpt = stripHtml(post.excerpt?.rendered || "");
+  const content = stripHtml(post.content?.rendered || "");
+  return truncate(excerpt || content, 160);
+}
+
+export async function generateStaticParams() {
+  const posts = await getAllPosts();
+  return posts.map((post) => ({ slug: post.slug }));
+}
+
+export async function generateMetadata({ params }) {
+  const { slug } = await params;
+  const post = await getPost(slug);
+
+  if (!post) {
+    return buildMetadata({
+      title: "Blog",
+      description: "Insights, updates, and articles from Athenatec.",
+      path: `/blog/${slug}`,
+      type: "article",
+      noIndex: true,
+    });
+  }
+
+  const title = stripHtml(post.title.rendered);
+  const description = getPostDescription(post);
+  const image = getPostImage(post);
+
+  return buildMetadata({
+    title,
+    description,
+    path: `/blog/${slug}`,
+    image,
+    type: "article",
+    publishedTime: post.date,
+    modifiedTime: post.modified,
+  });
+}
 
 export default async function PostPage({ params }) {
   const { slug } = await params;
@@ -17,11 +75,7 @@ export default async function PostPage({ params }) {
 
   const relatedPosts = allPosts.filter((p) => p.slug !== slug).slice(0, 3);
 
-  const heroImage =
-    post._embedded?.["wp:featuredmedia"]?.[0]?.media_details?.sizes
-      ?.full?.source_url ||
-    post._embedded?.["wp:featuredmedia"]?.[0]?.source_url ||
-    null;
+  const heroImage = getPostImage(post);
 
   const formattedDate = new Date(post.date).toLocaleDateString("en-US", {
     year: "numeric",
@@ -30,12 +84,25 @@ export default async function PostPage({ params }) {
   });
 
   const readTime = Math.ceil(
-    post.content.rendered.replace(/<[^>]+>/g, "").split(" ").length / 200
+    (post.content?.rendered || "").replace(/<[^>]+>/g, "").split(" ").length /
+      200
   );
+
+  const articleSchema = buildArticleSchema({
+    headline: stripHtml(post.title.rendered),
+    description: getPostDescription(post),
+    path: `/blog/${slug}`,
+    image: heroImage,
+    datePublished: post.date,
+  });
 
   return (
     <div className="post-wrapper">
-       <header className="post-hero">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+      />
+      <header className="post-hero">
         {heroImage && (
           <div className="post-hero__bg">
             <Image
@@ -77,14 +144,13 @@ export default async function PostPage({ params }) {
         </div>
       </header>
 
-       <div className="post-layout">
+      <div className="post-layout">
         <article className="post-article">
           <div
             className="post-content"
             dangerouslySetInnerHTML={{ __html: post.content.rendered }}
           />
 
-         
           <nav className="post-nav">
             {prevPost && (
               <Link href={`/blog/${prevPost.slug}`} className="post-nav__item post-nav__item--prev">
@@ -118,7 +184,7 @@ export default async function PostPage({ params }) {
         </article>
       </div>
 
-       {relatedPosts.length > 0 && (
+      {relatedPosts.length > 0 && (
         <section className="related-section">
           <div className="related-header">
             <span className="related-eyebrow">
