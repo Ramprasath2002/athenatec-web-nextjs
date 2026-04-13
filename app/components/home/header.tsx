@@ -160,6 +160,9 @@ function NavLink({
           className="flex flex-col gap-0 px-5 py-4 text-[15px] text-gray-700
                         max-h-[calc(100dvh-72px)] overflow-y-auto overscroll-contain"
         >
+           <MobileNavLink href="https://243988893.hs-sites-na2.com/faborchestratorai" onClick={closeMobile}>
+            FabOrchestrator AI
+          </MobileNavLink>
           <MobileNavLink href="/about" onClick={closeMobile}>
             About
           </MobileNavLink>
