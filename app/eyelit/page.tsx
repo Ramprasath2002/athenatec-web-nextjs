@@ -3,31 +3,15 @@ import Link from "next/link";
 import "./eyelit.scss";
 import HeroSection from "@/app/components/HeroSection";
 import CTASection from "@/app/components/CTASection";
-import type { Metadata } from "next";
+import { buildMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = buildMetadata({
   title: "Eyelit MES & Equipment Connect Partner | Athenatec",
   description:
     "Athenatec implements Eyelit MES and Equipment Connect. Gain real-time visibility, advanced planning, and predictive maintenance for your factory.",
-  alternates: {
-    canonical: "https://athenatec.com/eyelit",
-  },
-  openGraph: {
-    title: "Eyelit MES & Equipment Connect Partner | Athenatec",
-    description:
-      "Athenatec implements Eyelit MES and Equipment Connect. Gain real-time visibility, advanced planning, and predictive maintenance for your factory.",
-    url: "https://athenatec.com/eyelit",
-    type: "website",
-    images: [
-      {
-        url: "https://athenatec.com/og-image.webp",
-        width: 1200,
-        height: 630,
-        alt: "Eyelit MES Implementation Services",
-      },
-    ],
-  },
-};
+  path: "/eyelit",
+  image: "/assets/images/eyelitsbanner1.webp",
+});
 export default function EyelitPage() {
   return (
     <main className="eyelit-page">

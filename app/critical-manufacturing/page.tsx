@@ -4,31 +4,15 @@ import "./critical.scss";
 import CaseStudiesSection from "@/app/components/CaseStudiesSection";
 import GallerySection from "@/app/components/events/GallerySection";
 import CTASection from "@/app/components/CTASection";
-import type { Metadata } from "next";
+import { buildMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = buildMetadata({
   title: "Critical Manufacturing MES Partner | Athenatec",
   description:
     "Athenatec is a Premier Critical Manufacturing partner with a dedicated CoE. We implement CM MES for semiconductor and medical device industries.",
-  alternates: {
-    canonical: "https://athenatec.com/critical-manufacturing",
-  },
-  openGraph: {
-    title: "Critical Manufacturing MES Implementation Partner | Athenatec",
-    description:
-      "Athenatec is a Premier Critical Manufacturing partner with a dedicated CoE. We implement CM MES for semiconductor and medical device industries.",
-    url: "https://athenatec.com/critical-manufacturing",
-    type: "website",
-    images: [
-      {
-        url: "https://athenatec.com/og-image.webp",
-        width: 1200,
-        height: 630,
-        alt: "Critical Manufacturing MES Services",
-      },
-    ],
-  },
-};
+  path: "/critical-manufacturing",
+  image: "/assets/images/CMC.webp",
+});
 const caseStudies = [
   {
     id: 1,

@@ -1,33 +1,17 @@
 import HeroSection from "@/app/components/HeroSection";
 import PracticeSection from "@/app/components/PracticeSection";
 import CTASection from "@/app/components/CTASection";
-import type { Metadata } from "next";
 import Image from "next/image";
 import "./prem.scss";
+import { buildMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = buildMetadata({
   title: "Oracle On-Premise Implementation & Support | Athenatec",
   description:
     "Athenatec delivers Oracle E-Business Suite and Agile PLM on-premise solutions since 2012. End-to-end implementation and 24/7 support.",
-  alternates: {
-    canonical: "https://athenatec.com/solutions/oracle-on-prem",
-  },
-  openGraph: {
-    title: "Oracle On-Premise Implementation & Support | Athenatec",
-    description:
-      "Athenatec delivers Oracle E-Business Suite and Agile PLM on-premise solutions since 2012. End-to-end implementation and 24/7 support.",
-    url: "https://athenatec.com/solutions/oracle-on-prem",
-    type: "website",
-    images: [
-      {
-        url: "https://athenatec.com/og-image.webp",
-        width: 1200,
-        height: 630,
-        alt: "Oracle On-Premise Solutions",
-      },
-    ],
-  },
-};
+  path: "/solutions/oracle-on-prem",
+  image: "/assets/images/oracle.webp",
+});
 
 const implementationData = [
   {
@@ -206,7 +190,7 @@ export default function OracleOnPrem() {
        <CTASection
         title={
           <>
-            Let's Build
+            Let&apos;s Build
              Something Exceptional
           </>
         }

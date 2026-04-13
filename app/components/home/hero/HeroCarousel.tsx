@@ -58,7 +58,7 @@ const slides = [
   {
     title: "Critical Manufacturing Premier Implementation Partner",
     desc: "Athena specializes in the implementation, upgrade, and customization of CM MES, along with seamless integrations with PLM, ERP, LIMS, and Camline.",
-    cta: "CM",
+    cta: "Critical Manufacturing",
     link: "/critical-manufacturing",
     image: "/assets/images/CMC.webp",
   },

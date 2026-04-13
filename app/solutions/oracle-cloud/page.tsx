@@ -1,32 +1,17 @@
 import HeroSection from "@/app/components/HeroSection";
 import PracticeSection from "@/app/components/PracticeSection";
 import CTASection from "@/app/components/CTASection";
-import type { Metadata } from "next";
 import "./cloud.scss";
 import Image from "next/image";
-export const metadata: Metadata = {
+import { buildMetadata } from "@/lib/seo";
+
+export const metadata = buildMetadata({
   title: "Oracle Cloud Implementation & Migration | Athenatec",
   description:
     "Athenatec implements Oracle Cloud ERP, SCM, and HCM. Certified consultants manage net new implementations and cloud migrations for enterprise growth.",
-  alternates: {
-    canonical: "https://athenatec.com/solutions/oracle-cloud",
-  },
-  openGraph: {
-    title: "Oracle Cloud Implementation & Migration | Athenatec",
-    description:
-      "Athenatec implements Oracle Cloud ERP, SCM, and HCM. Certified consultants manage net new implementations and cloud migrations for enterprise growth.",
-    url: "https://athenatec.com/solutions/oracle-cloud",
-    type: "website",
-    images: [
-      {
-        url: "https://athenatec.com/og-image.webp",
-        width: 1200,
-        height: 630,
-        alt: "Oracle Cloud Solutions",
-      },
-    ],
-  },
-};
+  path: "/solutions/oracle-cloud",
+  image: "/assets/images/oracle-cloud.webp",
+});
 
 const practiceData = [
   {
@@ -123,7 +108,7 @@ export default function OracleCloud() {
             innovation delivered through quarterly release cycles, Oracle Cloud
             enables businesses to simplify operations, gain better visibility,
             and support sustainable growth. Oracle embeds Modern Best Practices
-            across Oracle Cloud applications helping the organization's business
+            across Oracle Cloud applications helping the organization&apos;s business
             processes to automatically align with industry-leading standards.
           </p>
         </div>
@@ -133,10 +118,10 @@ export default function OracleCloud() {
       <section className="oracle-expertise">
         <div className="oracle-expertise__container">
           <h2 className="oracle-expertise__title">
-            Athenatec's Oracle Cloud Expertise
+            Athenatec&apos;s Oracle Cloud Expertise
           </h2>
           <p className="oracle-expertise__subtitle">
-            Athenatec's team of Oracle Certified Consultants delivers premier
+            Athenatec&apos;s team of Oracle Certified Consultants delivers premier
             implementation and managed services for cloud-based environments. We
             leverage deep domain expertise to help organizations transition to
             the Cloud with confidence, offering comprehensive support across the

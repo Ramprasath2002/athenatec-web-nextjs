@@ -8,14 +8,53 @@ import Image from "next/image";
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+function NavLink({
+  href,
+  children,
+  ...props
+}: React.AnchorHTMLAttributes<HTMLAnchorElement> & {
+  href: string;
+  children: React.ReactNode;
+}) {
+  const isExternal = href.startsWith("http");
 
-   useEffect(() => {
+  if (isExternal) {
+    return (
+      <a
+        href={href}
+        {...props}
+        className={`relative whitespace-nowrap px-2 min-[1180px]:px-3 py-2 rounded-lg text-gray-700 transition-colors duration-150
+        hover:text-[#1c4584] hover:bg-[#1c4584]/5
+        after:absolute after:bottom-1 after:left-2 after:right-2 after:h-[2px]
+        after:rounded-full after:bg-[#17ace4] after:scale-x-0 after:origin-left
+        after:transition-transform after:duration-200
+        hover:after:scale-x-100 ${props.className || ""}`}
+      >
+        {children}
+      </a>
+    );
+  }
+
+  return (
+    <Link
+      href={href}
+      className={`relative whitespace-nowrap px-2 min-[1180px]:px-3 py-2 rounded-lg text-gray-700 transition-colors duration-150
+      hover:text-[#1c4584] hover:bg-[#1c4584]/5
+      after:absolute after:bottom-1 after:left-2 after:right-2 after:h-[2px]
+      after:rounded-full after:bg-[#17ace4] after:scale-x-0 after:origin-left
+      after:transition-transform after:duration-200
+      hover:after:scale-x-100 ${props.className || ""}`}
+    >
+      {children}
+    </Link>
+  );
+}
+  useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
- 
   useEffect(() => {
     const isDesktop = () => window.innerWidth >= 900;
     const apply = () => {
@@ -56,10 +95,15 @@ export default function Header() {
         </Link>
 
         <nav className="hidden min-[900px]:flex items-center gap-0 min-[1180px]:gap-1 text-[13px] min-[1180px]:text-[14.5px] font-medium text-gray-700">
+        <NavLink href="https://243988893.hs-sites-na2.com/faborchestratorai" target="_blank">
+            FabOrchestrator AI
+          </NavLink>
           <NavLink href="/about">About</NavLink>
           <NavLink href="/accelerators">
             <span className="min-[1180px]:hidden">Accelerators</span>
-            <span className="hidden min-[1180px]:inline">Athena Accelerators</span>
+            <span className="hidden min-[1180px]:inline">
+              Athena Accelerators
+            </span>
           </NavLink>
 
           <HeaderMenu variant="desktop" />
