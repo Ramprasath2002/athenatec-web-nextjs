@@ -7,34 +7,15 @@ import CaseStudiesSection from "@/app/components/CaseStudiesSection";
 import GallerySection from "@/app/components/events/GallerySection";
 import PracticeSection from "@/app/components/PracticeSection";
 import Link from "next/link";
-import type { Metadata } from "next";
+import { buildMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = buildMetadata({
   title: "Siemens Opcenter MES Implementation Partner | Athenatec",
-
   description:
     "Athenatec, a Siemens Alliance Partner, implements and upgrades Opcenter MES for semiconductor, medical device, and electronics manufacturers worldwide.",
-
-  alternates: {
-    canonical: "https://athenatec.com/siemens-opcenter-mes",
-  },
-
-  openGraph: {
-    title: "Siemens Opcenter MES Implementation Partner | Athenatec",
-    description:
-      "Athenatec, a Siemens Alliance Partner, implements and upgrades Opcenter MES for semiconductor, medical device, and electronics manufacturers worldwide.",
-    url: "https://athenatec.com/siemens-opcenter-mes",
-    type: "website",
-    images: [
-      {
-        url: "https://athenatec.com/og-image.webp",
-        width: 1200,
-        height: 630,
-        alt: "Siemens Opcenter MES by Athenatec",
-      },
-    ],
-  },
-};
+  path: "/siemens-opcenter-mes",
+  image: "/assets/images/siemens.webp",
+});
 
 const practiceData = [
   {

@@ -41,7 +41,7 @@ const resourceLinks = [
   { label: "News Room", href: "/newsroom" },
   { label: "Webinars", href: "/webinars" },
 ];
-
+  
 const itemCls =
   "flex items-center gap-2 w-full px-3.5 py-2.5 rounded-lg text-[13.5px] font-medium text-gray-700 \
    hover:text-[#1c4584] hover:bg-[#1c4584]/6 transition-colors duration-150 group";

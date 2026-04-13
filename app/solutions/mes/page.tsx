@@ -3,32 +3,16 @@ import Image from "next/image";
 import "./mes.scss";
 import CTASection from "@/app/components/CTASection";
 import PracticeSection from "@/app/components/PracticeSection";
-import type { Metadata } from "next";
 import Link from "next/link";
+import { buildMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = buildMetadata({
   title: "MES Implementation & Integration Services | Athenatec",
   description:
     "Athenatec integrates MES with ERP, PLM, and factory equipment. Gain real-time visibility, traceability, and control across your manufacturing process.",
-  alternates: {
-    canonical: "https://athenatec.com/solutions/mes",
-  },
-  openGraph: {
-    title: "MES Implementation & Integration Services | Athenatec",
-    description:
-      "Athenatec integrates MES with ERP, PLM, and factory equipment. Gain real-time visibility, traceability, and control across your manufacturing process.",
-    url: "https://athenatec.com/mes-solutions",
-    type: "website",
-    images: [
-      {
-        url: "https://athenatec.com/og-image.webp",
-        width: 1200,
-        height: 630,
-        alt: "MES Implementation Services",
-      },
-    ],
-  },
-};
+  path: "/solutions/mes",
+  image: "/assets/images/Mes-solution.webp",
+});
 
 const practiceData = [
   {
@@ -96,7 +80,7 @@ export default function MESPage() {
       <HeroSection
         title="MES Solutions"
         description="Leave us a little info, and we’ll be in touch."
-        image="/assets/images/MES.webp"
+        image="/assets/images/Mes-solution.webp"
         align="center"
         buttonText="Contact Us"
         buttonLink="/contact"

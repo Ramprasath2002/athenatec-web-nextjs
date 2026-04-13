@@ -3,31 +3,15 @@ import Image from "next/image";
 import "./plm.scss";
 import PracticeSection from "@/app/components/PracticeSection";
 import CTASection from "@/app/components/CTASection";
-import type { Metadata } from "next";
+import { buildMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = buildMetadata({
   title: "Oracle Agile PLM Implementation Services | Athenatec",
   description:
     "Athenatec implements Oracle Agile PLM with seamless ERP and MES integration. Manage product lifecycles with centralized change control and automation.",
-  alternates: {
-    canonical: "https://athenatec.com/solutions/plm-solutions",
-  },
-  openGraph: {
-    title: "Oracle Agile PLM Implementation Services | Athenatec",
-    description:
-      "Athenatec implements Oracle Agile PLM with seamless ERP and MES integration. Manage product lifecycles with centralized change control and automation.",
-    url: "https://athenatec.com/solutions/plm-solutions",
-    type: "website",
-    images: [
-      {
-        url: "https://athenatec.com/og-image.webp",
-        width: 1200,
-        height: 630,
-        alt: "Agile PLM Implementation Services",
-      },
-    ],
-  },
-};
+  path: "/solutions/plm",
+  image: "/assets/images/PLM.webp",
+});
 const practiceData = [
   {
     title: "Solutions / Modules",

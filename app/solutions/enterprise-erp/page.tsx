@@ -1,33 +1,16 @@
 import HeroSection from "@/app/components/HeroSection";
-import Image from "next/image";
 import "./erp.scss";
 import PracticeSection from "@/app/components/PracticeSection";
 import CTASection from "@/app/components/CTASection";
-import type { Metadata } from "next";
+import { buildMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = buildMetadata({
   title: "ERP Implementation & Integration Services",
   description:
     "Expert ERP implementation and integration services connecting Oracle EBS with MES, PLM, CRM, and SCM to enable digital transformation in manufacturing.",
-  alternates: {
-    canonical: "https://athenatec.com/solutions/enterprise-erp",
-  },
-  openGraph: {
-    title: "ERP Implementation & Integration Services",
-    description:
-      "Oracle ERP and enterprise system integration services for manufacturing digital transformation.",
-    url: "https://athenatec.com/solutions/enterprise-erp",
-    type: "website",
-    images: [
-      {
-        url: "https://athenatec.com/og-image.webp",
-        width: 1200,
-        height: 630,
-        alt: "ERP Implementation & Integration Services",
-      },
-    ],
-  },
-};
+  path: "/solutions/enterprise-erp",
+  image: "/assets/images/ERP.webp",
+});
 const practiceData = [
   {
     title: "Process / Modules",
