@@ -11,18 +11,22 @@ import "swiper/css/pagination";
 import { HeroProps } from "./types";
 import HeroSlide from "./HeroSlide";
 import BottomCarousel from "./BottomCarousel";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 export default function Hero({ slides, bottomStats, bottomDescription }: HeroProps) {
   const [activeIndex, setActiveIndex] = useState(0);
 
   return (
-    <section className="relative h-[100vh] min-h-[600px] w-full overflow-hidden bg-[#1e2a37]">
+    <section className="relative h-[100vh] min-h-[680px] w-full overflow-hidden bg-[#1e2a37]">
       <Swiper
         modules={[Autoplay, EffectFade, Navigation, Pagination]}
         effect="fade"
         speed={1000}
         autoplay={{ delay: 6000, disableOnInteraction: false }}
-        navigation
+        navigation={{
+          nextEl: '.hero-btn-next',
+          prevEl: '.hero-btn-prev',
+        }}
         pagination={{ clickable: true }}
         onSlideChange={(swiper) => setActiveIndex(swiper.activeIndex)}
         className="hero-swiper h-full w-full"
@@ -32,9 +36,39 @@ export default function Hero({ slides, bottomStats, bottomDescription }: HeroPro
             <HeroSlide slide={slide} isActive={activeIndex === index} />
           </SwiperSlide>
         ))}
+
+        <button
+          aria-label="Previous slide"
+          className="hero-btn-prev absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-40 hidden md:flex
+                     items-center justify-center
+                     w-9 h-9 sm:w-11 sm:h-11
+                     rounded-full cursor-pointer
+                     bg-black/50 hover:bg-black/70
+                     border border-white/20 hover:border-white/40
+                     text-white shadow-lg
+                     backdrop-blur-sm
+                     transition-all duration-200 hover:scale-110"
+        >
+          <ChevronLeft size={20} strokeWidth={2.2} />
+        </button>
+
+        <button
+          aria-label="Next slide"
+          className="hero-btn-next absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-40 hidden md:flex
+                     items-center justify-center
+                     w-9 h-9 sm:w-11 sm:h-11
+                     rounded-full cursor-pointer
+                     bg-black/50 hover:bg-black/70
+                     border border-white/20 hover:border-white/40
+                     text-white shadow-lg
+                     backdrop-blur-sm
+                     transition-all duration-200 hover:scale-110"
+        >
+          <ChevronRight size={20} strokeWidth={2.2} />
+        </button>
       </Swiper>
 
-      <div className="absolute bottom-0 left-0 right-0 z-20">
+      <div className="absolute bottom-0 left-0 right-0 z-20 bg-gradient-to-t from-[#1e2a37]/90 via-[#1e2a37]/60 to-transparent pt-12">
         <BottomCarousel stats={bottomStats} description={bottomDescription} />
       </div>
 
@@ -46,24 +80,20 @@ export default function Hero({ slides, bottomStats, bottomDescription }: HeroPro
           border-radius: 4px;
         }
         .hero-swiper .swiper-pagination-bullet-active {
-          background-color: #8b3fc8;   /* ✅ purple to match accent */
+          background-color: #17ace4;
           width: 32px;
         }
-        .hero-swiper .swiper-button-next,
-        .hero-swiper .swiper-button-prev {
-          color: white; opacity: 0;
-          transition: opacity 0.3s ease, transform 0.2s ease;
-          transform: scale(0.8);
+        /* Custom Nav arrows — hidden if swiper uses disabled class (i.e. if loop relies on arrows) but we just hide them on mobile via Tailwind as well */
+        .hero-swiper .swiper-button-disabled {
+          opacity: 0.3 !important;
+          cursor: not-allowed;
+          pointer-events: none;
         }
-        .hero-swiper:hover .swiper-button-next,
-        .hero-swiper:hover .swiper-button-prev {
-          opacity: 0.6; transform: scale(1);
-        }
-        /* Ensure pagination is above the bottom carousel */
-        .hero-swiper .swiper-pagination { bottom: 200px !important; }
-        @media (max-width: 640px) {
-          .hero-swiper .swiper-pagination { bottom: 180px !important; }
-        }
+        /* Pagination sits above the bottom carousel at each breakpoint */
+        .hero-swiper .swiper-pagination { bottom: 175px !important; }
+        @media (min-width: 640px)  { .hero-swiper .swiper-pagination { bottom: 160px !important; } }
+        @media (min-width: 768px)  { .hero-swiper .swiper-pagination { bottom: 168px !important; } }
+        @media (min-width: 1024px) { .hero-swiper .swiper-pagination { bottom: 155px !important; } }
       `}</style>
     </section>
   );
