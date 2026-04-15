@@ -1,9 +1,12 @@
-const WP_SITE_URL =
-  process.env.NEXT_PUBLIC_WP_SITE_URL || "https://cms.athenatec.com";
+export const DEFAULT_WP_SITE_URL = "https://athenatec.com";
 
-export function getWpApiUrl(path: string) {
+const WP_SITE_URL = (
+  process.env.NEXT_PUBLIC_WP_SITE_URL || DEFAULT_WP_SITE_URL
+).replace(/\/+$/, "");
+
+export function getWpApiUrl(path: string, baseUrl = WP_SITE_URL) {
   const normalizedPath = path.startsWith("/") ? path : `/${path}`;
-  return `${WP_SITE_URL}${normalizedPath}`;
+  return `${baseUrl.replace(/\/+$/, "")}${normalizedPath}`;
 }
 
 export const getCf7Endpoint = (id: string) =>

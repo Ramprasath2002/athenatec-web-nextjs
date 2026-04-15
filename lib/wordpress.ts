@@ -1,6 +1,9 @@
-import { getWpApiUrl } from "@/lib/wp";
-
-const API_URL = getWpApiUrl("/wp-json/wp/v2");
+import {
+  getFallbackBlogPosts,
+  getFallbackPost,
+  mergePostsWithFallback,
+} from "@/lib/blog-fallback";
+import { fetchWpJson } from "@/lib/wp-server";
 
 export type WPPost = {
   id: number;
@@ -34,17 +37,9 @@ export type WPPost = {
 };
 
 async function fetchWp<T>(path: string, revalidate: number): Promise<T | null> {
-  try {
-    const res = await fetch(`${API_URL}${path}`, {
-      next: { revalidate },
-    });
-
-    if (!res.ok) return null;
-    return (await res.json()) as T;
-  } catch (error) {
-    console.error("WordPress fetch failed:", error);
-    return null;
-  }
+  return fetchWpJson<T>(`/wp-json/wp/v2${path}`, {
+    next: { revalidate },
+  });
 }
 
 export async function getPosts(): Promise<WPPost[]> {
@@ -52,7 +47,7 @@ export async function getPosts(): Promise<WPPost[]> {
     "/posts?_embed&orderby=date&order=desc",
     60,
   );
-  return posts ?? [];
+  return mergePostsWithFallback(posts, getFallbackBlogPosts());
 }
 
 export async function getPost(slug: string): Promise<WPPost | null> {
@@ -61,7 +56,7 @@ export async function getPost(slug: string): Promise<WPPost | null> {
     `/posts?slug=${encodedSlug}&_embed`,
     300,
   );
-  return data?.length ? data[0] : null;
+  return data?.length ? data[0] : getFallbackPost(slug);
 }
 
 export async function getAllPosts(): Promise<WPPost[]> {
@@ -69,5 +64,5 @@ export async function getAllPosts(): Promise<WPPost[]> {
     "/posts?_embed&per_page=100&orderby=date&order=desc",
     300,
   );
-  return posts ?? [];
+  return mergePostsWithFallback(posts, getFallbackBlogPosts());
 }

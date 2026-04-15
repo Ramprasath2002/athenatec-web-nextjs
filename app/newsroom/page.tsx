@@ -2,7 +2,11 @@ import Image from "next/image";
 import Link from "next/link";
 import HeroSection from "@/app/components/HeroSection";
 import type { Metadata } from "next";
-import { getWpApiUrl } from "@/lib/wp";
+import {
+  getFallbackNewsroomPosts,
+  mergePostsWithFallback,
+} from "@/lib/blog-fallback";
+import { fetchWpJson } from "@/lib/wp-server";
 import { LOGO_PATH, absoluteUrl, buildMetadata, stripHtml, truncate } from "@/lib/seo";
 
 export const metadata: Metadata = buildMetadata({
@@ -21,9 +25,8 @@ export const metadata: Metadata = buildMetadata({
 
 export const revalidate = 3600;
 
-const NEWSROOM_POSTS_URL = getWpApiUrl(
-  "/wp-json/wp/v2/posts?_embed&slug=athena-and-tech-mahindra-announce-partnership,authorised-reseller-partnership-with-twinzo",
-);
+const NEWSROOM_POSTS_PATH =
+  "/wp-json/wp/v2/posts?_embed&orderby=date&order=desc&slug=athena-launches-faborchestrator-agentic-ai-for-manufacturing,athena-and-tech-mahindra-announce-partnership,authorised-reseller-partnership-with-twinzo";
 
 type WPPost = {
   id: number;
@@ -37,27 +40,12 @@ type WPPost = {
 };
 
 async function getPosts(): Promise<WPPost[]> {
-  try {
-    const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), 5000);
+  const posts = await fetchWpJson<WPPost[]>(NEWSROOM_POSTS_PATH, {
+    next: { revalidate: 3600 },
+    timeoutMs: 5000,
+  });
 
-    const res = await fetch(NEWSROOM_POSTS_URL, {
-      next: { revalidate: 3600 },
-      signal: controller.signal,
-    });
-
-    clearTimeout(timeoutId);
-
-    if (!res.ok) {
-      console.warn(`Newsroom fetch failed: ${res.status} ${res.statusText}`);
-      return [];
-    }
-
-    return res.json();
-  } catch (error) {
-    console.warn("Newsroom fetch error; returning empty list:", error);
-    return [];
-  }
+  return mergePostsWithFallback(posts, getFallbackNewsroomPosts());
 }
 
 export default async function NewsRoom() {
