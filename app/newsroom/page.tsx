@@ -105,53 +105,57 @@ export default async function NewsRoom() {
             </div>
           ) : (
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
-              {posts.map((post: WPPost) => {
-                const featuredImage =
-                  post._embedded?.["wp:featuredmedia"]?.[0]?.source_url;
+           {posts.map((post: WPPost) => {
+  const featuredImage =
+    post._embedded?.["wp:featuredmedia"]?.[0]?.source_url;
 
-                return (
-                  <article
-                    key={post.id}
-                    className="bg-white rounded-xl shadow-md hover:shadow-xl transition overflow-hidden"
-                  >
-                    {featuredImage && (
-                      <div className="relative h-60">
-                        <Image
-                          src={featuredImage}
-                          alt={stripHtml(post.title.rendered)}
-                          fill
-                          className="object-cover"
-                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                        />
-                      </div>
-                    )}
+  // FINAL IMAGE SOURCE (no ambiguity)
+  const imageSrc =
+    featuredImage && featuredImage !== ""
+      ? featuredImage
+      : `/assets/images/news/${post.slug}.jpg`; // unique fallback per post
 
-                    <div className="p-6">
-                      <h2
-                        className="text-xl font-semibold mb-3"
-                        dangerouslySetInnerHTML={{
-                          __html: post.title.rendered,
-                        }}
-                      />
+  return (
+    <article
+      key={post.id}
+      className="bg-white rounded-xl shadow-md hover:shadow-xl transition overflow-hidden"
+    >
+      <div className="relative h-60">
+        <Image
+          src={imageSrc}
+          alt={stripHtml(post.title.rendered)}
+          fill
+          className="object-cover"
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+        />
+      </div>
 
-                      <p className="text-gray-600 text-sm mb-4">
-                        {truncate(stripHtml(post.excerpt.rendered), 140)}
-                      </p>
+      <div className="p-6">
+        <h2
+          className="text-xl font-semibold mb-3"
+          dangerouslySetInnerHTML={{
+            __html: post.title.rendered,
+          }}
+        />
 
-                      <p className="text-xs text-gray-400 mb-4">
-                        {new Date(post.date).toLocaleDateString("en-US")}
-                      </p>
+        <p className="text-gray-600 text-sm mb-4">
+          {truncate(stripHtml(post.excerpt.rendered), 140)}
+        </p>
 
-                      <Link
-                        href={`/blog/${post.slug}`}
-                        className="text-[#1c4584] font-medium hover:underline"
-                      >
-                        Read More
-                      </Link>
-                    </div>
-                  </article>
-                );
-              })}
+        <p className="text-xs text-gray-400 mb-4">
+          {new Date(post.date).toLocaleDateString("en-US")}
+        </p>
+
+        <Link
+          href={`/blog/${post.slug}`}
+          className="text-[#1c4584] font-medium hover:underline"
+        >
+          Read More
+        </Link>
+      </div>
+    </article>
+  );
+})}
             </div>
           )}
         </div>
