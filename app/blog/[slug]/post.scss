@@ -435,8 +435,11 @@
 
 .related-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
+  grid-template-columns: repeat(2, 1fr);
+  justify-content: center;
+  max-width: 800px;
+  margin: 0 auto;
+    gap: 24px;
 
   @media (max-width: 900px) {
     grid-template-columns: repeat(2, 1fr);

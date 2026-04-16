@@ -10,7 +10,11 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import "./post.scss";
-
+const NEWSROOM_SLUGS = new Set([
+  "athena-and-tech-mahindra-announce-partnership",
+  "authorised-reseller-partnership-with-twinzo",
+  "athena-launches-faborchestrator-agentic-ai-for-manufacturing",
+]);
 function getPostImage(post) {
   return (
     post._embedded?.["wp:featuredmedia"]?.[0]?.media_details?.sizes?.full
@@ -73,8 +77,27 @@ export default async function PostPage({ params }) {
   const nextPost = allPosts[currentIndex - 1];
   const prevPost = allPosts[currentIndex + 1];
 
-  const relatedPosts = allPosts.filter((p) => p.slug !== slug).slice(0, 3);
+const isNewsroomPost = NEWSROOM_SLUGS.has(post.slug);
 
+let relatedPosts = [];
+
+if (isNewsroomPost) {
+  // 👉 ONLY those 3 posts
+  relatedPosts = allPosts.filter(
+    (p) =>
+      NEWSROOM_SLUGS.has(p.slug) &&
+      p.slug !== post.slug
+  );
+} else {
+  // 👉 Normal blogs → show other normal blogs
+  relatedPosts = allPosts
+    .filter(
+      (p) =>
+        !NEWSROOM_SLUGS.has(p.slug) &&
+        p.slug !== post.slug
+    )
+    .slice(0, 3); // limit to 3
+}
   const heroImage = getPostImage(post);
 
   const formattedDate = new Date(post.date).toLocaleDateString("en-US", {
@@ -184,12 +207,12 @@ export default async function PostPage({ params }) {
         </article>
       </div>
 
-      {relatedPosts.length > 0 && (
+{relatedPosts.length > 0 && (
         <section className="related-section">
           <div className="related-header">
             <span className="related-eyebrow">
               <span className="eyebrow-line" />
-              Continue Reading
+      Continue Reading
               <span className="eyebrow-line" />
             </span>
           </div>
@@ -216,37 +239,37 @@ export default async function PostPage({ params }) {
                 >
                   <div className="related-card__img-wrap">
                     {img ? (
-                      <Image
+              <Image
                         src={img}
                         alt={item.title.rendered.replace(/<[^>]+>/g, "")}
-                        fill
+                fill
                         sizes="(max-width: 768px) 100vw, 33vw"
                         className="related-card__img"
-                      />
+              />
                     ) : (
                       <div className="related-card__no-img" />
                     )}
                     <div className="related-card__shine" />
-                  </div>
+            </div>
                   <div className="related-card__body">
                     <time className="related-card__date">{itemDate}</time>
-                    <h3
+              <h3
                       className="related-card__title"
                       dangerouslySetInnerHTML={{ __html: item.title.rendered }}
-                    />
+              />
                     <span className="related-card__cta">
                       Read Article
                       <svg width="13" height="13" viewBox="0 0 16 16" fill="none">
                         <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                       </svg>
                     </span>
-                  </div>
-                </Link>
+            </div>
+        </Link>
               );
             })}
-          </div>
-        </section>
-      )}
+    </div>
+  </section>
+)}
     </div>
   );
 }

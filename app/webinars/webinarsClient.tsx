@@ -24,7 +24,7 @@ const webinarData: Webinar[] = [
     slug: "medical-device-visibility",
     image: "/assets/images/Gain-End-to-End-Visibility-in-Medical-Device.webp",
     type: "ondemand",
-    date: "12 March 2026",
+    date: "",
     time: "4:00 PM IST",
     description:
       "Explore how real-time data visibility transforms quality control and compliance across the entire production lifecycle.",
@@ -34,7 +34,7 @@ const webinarData: Webinar[] = [
     slug: "medtech-mes-accelerator",
     image: "/assets/images/MedTech-img.webp",
     type: "live",
-    date: "25 March 2026",
+    date: "",
     time: "3:00 PM IST",
     description:
       "Learn how digital transformation streamlines production systems and accelerates time-to-market for medical devices.",

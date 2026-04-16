@@ -35,6 +35,16 @@ type PostLike = {
 };
 
 const BLOG_IMAGE = "/assets/images/blog.webp";
+const BLOG_IMAGE01 = "/assets/images/blog1.jpeg";
+const BLOG_IMAGE02 = "/assets/images/blog2.jpeg";
+const BLOG_IMAGE03 = "/assets/images/blog3.jpeg";
+const BLOG_IMAGE04 = "/assets/images/blog4.jpeg";
+const BLOG_IMAGE05 = "/assets/images/blog5.png";
+const BLOG_IMAGE06 = "/assets/images/blog6.jpeg";
+const BLOG_IMAGE07 = "/assets/images/blog7.png";
+
+
+
 const NEWSROOM_IMAGE = "/assets/images/newsroom.webp";
 const FABORCHESTRATOR_IMAGE ="/assets/images/PR.png";
 function createFeaturedMedia(sourceUrl: string) {
@@ -199,7 +209,7 @@ export const FALLBACK_BLOG_POSTS: FallbackPost[] = [
       "Beyond the Software: Why Your MES Selection Needs a Blueprint, Not Just a Demo",
     excerpt:
       "MES selection works best when manufacturers align vision, process design, architecture, and change readiness before falling in love with a demo.",
-    image: BLOG_IMAGE,
+    image: BLOG_IMAGE01,
     content: `
       <p>Selecting an MES is rarely a software-only decision. The platform matters, but the outcome depends just as much on process clarity, integration strategy, governance, and adoption across the business. A polished demo can create excitement, yet it can also hide the harder questions that determine whether an MES program will actually deliver value on the shop floor.</p>
       <h2>Start with the operating model</h2>
@@ -220,7 +230,7 @@ export const FALLBACK_BLOG_POSTS: FallbackPost[] = [
       "The AI-Powered MES: From System of Record to System of Intelligence",
     excerpt:
       "AI is helping MES move from passive reporting toward guided decisions, faster responses, and more resilient manufacturing operations.",
-    image: BLOG_IMAGE,
+    image: BLOG_IMAGE07,
     content: `
       <p>For years, MES platforms have been trusted systems of record. They capture transactions, enforce workflows, and provide the traceability manufacturers need to run compliant, repeatable operations. The next shift is already underway: AI is turning MES into a system of intelligence that can interpret signals, recommend actions, and help teams respond faster to change.</p>
       <h2>Turning data into direction</h2>
@@ -240,7 +250,7 @@ export const FALLBACK_BLOG_POSTS: FallbackPost[] = [
     title: "Minimize idle time, streamline ordering with a Digital Twin",
     excerpt:
       "Digital twin experiences can help manufacturers see bottlenecks sooner, coordinate decisions faster, and reduce the delays that quietly erode throughput.",
-    image: BLOG_IMAGE,
+    image: BLOG_IMAGE06,
     content: `
       <p>Idle time often hides in the spaces between systems. A production planner sees one view of the operation, the warehouse team sees another, and leadership receives updates only after delays have already affected output. Digital twin technology helps bridge that gap by providing a shared visual model of the factory and its current operating conditions.</p>
       <h2>Visibility that supports action</h2>
@@ -258,7 +268,7 @@ export const FALLBACK_BLOG_POSTS: FallbackPost[] = [
     title: "The AI-Driven Evolution of MES: Athena’s Viewpoint",
     excerpt:
       "AI gives MES the ability to predict, guide, and adapt, helping manufacturers move from reactive execution to more intelligent operations.",
-    image: BLOG_IMAGE,
+    image: BLOG_IMAGE05,
     content: `
       <p>Manufacturing Execution Systems have always been essential for connecting the shop floor with the business. They capture production activity, maintain traceability, and support compliance. In a fast-changing manufacturing environment, however, visibility alone is no longer enough. Teams also need systems that help them interpret signals quickly and act with confidence.</p>
       <h2>From record keeping to real-time guidance</h2>
@@ -322,7 +332,7 @@ export const FALLBACK_BLOG_POSTS: FallbackPost[] = [
     title: "Solving the Integration Puzzle in SMT Manufacturing",
     excerpt:
       "SMT manufacturers need tighter integration across machines, planning, quality, and business systems if they want faster decisions and more stable execution.",
-    image: BLOG_IMAGE,
+    image: BLOG_IMAGE04,
     content: `
       <p>Surface Mount Technology manufacturing depends on precision, speed, and coordination across a tightly connected set of processes. When equipment data, quality events, planning signals, and enterprise transactions are scattered across disconnected systems, even small delays can create significant operational drag.</p>
       <h2>Why integration is the real differentiator</h2>
@@ -341,7 +351,7 @@ export const FALLBACK_BLOG_POSTS: FallbackPost[] = [
       "Chips Making Chips: How Virtualization, Digital Twins and Machine Learning are Accelerating the Spiral of Innovation",
     excerpt:
       "Semiconductor leaders are combining virtualization, digital twins, and machine learning to increase speed, reduce risk, and improve decision quality across innovation cycles.",
-    image: BLOG_IMAGE,
+    image: BLOG_IMAGE03,
     content: `
       <p>The semiconductor industry has always operated at the edge of complexity. Each technology cycle increases the pressure to innovate faster while controlling yield risk, cost, and time to market. That is why the next wave of innovation is being powered not just by better hardware, but by better digital capabilities behind the hardware.</p>
       <h2>Accelerating decisions with digital models</h2>
@@ -360,7 +370,7 @@ export const FALLBACK_BLOG_POSTS: FallbackPost[] = [
       "Transforming Manufacturing: Key Focus Areas, Trends, and Challenges in Digital Transformation",
     excerpt:
       "Manufacturers are investing in digital transformation to improve agility, traceability, and performance, but success still depends on execution, integration, and change management.",
-    image: BLOG_IMAGE,
+    image: BLOG_IMAGE02,
     content: `
       <p>Digital transformation in manufacturing is no longer an optional future-state discussion. It is a present operational priority driven by cost pressure, customer expectations, supply chain volatility, and the need for more resilient execution. The challenge is that transformation is rarely about one system. It is about creating a connected operating model that supports better decisions across the business.</p>
       <h2>Where manufacturers are focusing first</h2>
@@ -380,7 +390,7 @@ export const FALLBACK_BLOG_POSTS: FallbackPost[] = [
       "Empowering manufacturers for digital transformation: Leveraging Opcenter for enhanced efficiency and productivity",
     excerpt:
       "Athenatec highlights how Opcenter supports more sustainable, scalable, and connected manufacturing by reducing cost, improving visibility, and enabling modern deployment models.",
-    image: BLOG_IMAGE,
+    image: BLOG_IMAGE01,
     content: `
       <p>Digital transformation in manufacturing requires more than incremental software upgrades. It requires an operating platform that can connect design, planning, execution, and continuous improvement while still supporting real-world production constraints. That is the value proposition behind the Opcenter portfolio and the reason it continues to be central to many modernization programs.</p>
       <h2>Connecting impact to operations</h2>

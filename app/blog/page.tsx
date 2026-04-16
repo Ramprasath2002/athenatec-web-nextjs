@@ -5,6 +5,7 @@ import "./blog.scss";
 import HeroSection from "@/app/components/HeroSection";
 import type { Metadata } from "next";
 
+
  export const metadata: Metadata = {
   title: "Athenatec Blog | MES & Industry 4.0 Insights",
   description:
@@ -73,6 +74,8 @@ const EXCLUDED_BLOG_SLUGS = new Set([
   "authorised-reseller-partnership-with-twinzo",
   "athena-launches-faborchestrator-agentic-ai-for-manufacturing",
 ]);
+
+
 
 export default async function BlogPage() {
 const allPosts = await getPosts();
