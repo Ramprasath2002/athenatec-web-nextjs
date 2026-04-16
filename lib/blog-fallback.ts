@@ -36,9 +36,7 @@ type PostLike = {
 
 const BLOG_IMAGE = "/assets/images/blog.webp";
 const NEWSROOM_IMAGE = "/assets/images/newsroom.webp";
-const FABORCHESTRATOR_IMAGE =
-  "https://athenatec.com/wp-content/uploads/2026/04/ChatGPT-Image-Apr-15-2026-01_43_47-PM-768x512.png";
-
+const FABORCHESTRATOR_IMAGE ="/assets/images/PR.png";
 function createFeaturedMedia(sourceUrl: string) {
   return {
     "wp:featuredmedia": [
@@ -82,6 +80,13 @@ function createPost({
     _embedded: createFeaturedMedia(image),
   };
 }
+const NEWSROOM_IMAGE_MAP: Record<string, string> = {
+  "athena-and-tech-mahindra-announce-partnership":
+    "/assets/images/Tech-Mahindra-pr.jpeg",
+
+  "authorised-reseller-partnership-with-twinzo":
+    "/assets/images/twnzo-pr.png",
+};
 
 export const FALLBACK_BLOG_POSTS: FallbackPost[] = [
   createPost({
@@ -91,19 +96,100 @@ export const FALLBACK_BLOG_POSTS: FallbackPost[] = [
     title: "Athena Launches FabOrchestrator: Agentic AI for Manufacturing",
     excerpt:
       "Athena introduces FabOrchestrator, an agentic AI experience designed to help manufacturers connect information faster, coordinate work more effectively, and turn operational signals into action.",
-    image: FABORCHESTRATOR_IMAGE,
-    content: `
-      <p>Athena has launched FabOrchestrator, an agentic AI offering built for manufacturing environments that need faster coordination, clearer context, and more responsive decision-making. The launch reflects Athena's focus on helping manufacturers move beyond disconnected dashboards and toward more practical, action-oriented intelligence across the business.</p>
-      <h2>Designed for operational coordination</h2>
-      <p>Manufacturing teams often work across MES, ERP, quality systems, engineering records, and plant-level events that are spread across multiple tools. FabOrchestrator is designed to help bring those signals together so teams can understand what is happening, identify what matters most, and respond with greater speed and confidence.</p>
-      <p>Rather than treating AI as a separate analytics layer, the goal is to place intelligence closer to the workflows where planners, supervisors, engineers, and operations leaders already make decisions. That makes AI more useful in day-to-day execution, where timing, context, and coordination have a direct impact on business outcomes.</p>
-      <h2>From visibility to guided action</h2>
-      <p>FabOrchestrator is positioned to support use cases such as surfacing critical events, summarizing operational context, guiding next-best actions, and helping teams navigate cross-functional dependencies more efficiently. In practice, that means less time spent gathering information manually and more time focused on resolving constraints, protecting delivery, and improving plant performance.</p>
-      <p>For manufacturers pursuing digital transformation, this kind of capability can strengthen the connection between data, decision-making, and execution. It also supports a more scalable operating model by making expertise easier to access and operational knowledge easier to reuse.</p>
-      <h2>Advancing Athena's manufacturing AI vision</h2>
-      <p>The introduction of FabOrchestrator extends Athena's broader strategy around smart manufacturing, digital transformation, and AI-enabled execution. By combining manufacturing domain expertise with practical implementation experience, Athena aims to help customers adopt agentic AI in ways that are grounded in real operational needs rather than experimental use alone.</p>
-      <p>As manufacturers continue to look for ways to increase agility, reduce response time, and improve decision quality, FabOrchestrator represents Athena's next step toward more connected and intelligent manufacturing operations.</p>
-    `,
+    image: "/assets/images/fog.png",
+ content: `
+  <h1>Athena Launches FabOrchestrator™ — Agentic AI for Manufacturing</h1>
+
+  <p><strong>FREMONT, CA – April 15, 2026</strong> — Athena Technology Solutions, a premier provider of advanced MES solutions, today announced FabOrchestrator™, the manufacturing industry's first Agentic AI Foundry designed to transform factory operations.</p>
+
+  <h2>The Challenge</h2>
+
+  <p>Manufacturing teams face relentless pressure to do more with less—spending countless hours on manual reporting, chasing data across disconnected systems, handling repetitive support tickets, and navigating complex configurations. These inefficiencies slow production, increase costs, and drain engineering resources.</p>
+
+  <!-- ✅ IMAGE INSERT -->
+  <p>
+    <img 
+      src="${FABORCHESTRATOR_IMAGE}" 
+      alt="FabOrchestrator AI Manufacturing"
+      style="width:100%; height:auto; border-radius:12px; margin:20px 0;"
+    />
+  </p>
+
+  <p><strong>FabOrchestrator™ puts AI agents to work—so your team can focus on what matters most.</strong></p>
+
+  <h2>What is FabOrchestrator™?</h2>
+
+  <p>FabOrchestrator™ serves as the Agentic AI Nucleus of your factory—a central intelligence platform with four powerful capabilities:</p>
+
+  <ul>
+    <li><strong>FabInsight™</strong> — Ask questions in plain English and get instant reports and insights from your factory data</li>
+    <li><strong>AI Support Engineer</strong> — Automatically handles routine support tickets and escalates complex issues when needed</li>
+    <li><strong>Modeling Agent</strong> — Answers MES modeling questions and guides teams through system upgrades</li>
+    <li><strong>Back-end Agent</strong> — Generates code snippets to accelerate MES implementations</li>
+  </ul>
+
+  <h2>Partnership</h2>
+
+  <p>FabOrchestrator™ is built in partnership with LLM at Scale.AI, an enterprise agentic AI platform specializing in factory automation, multi-agent orchestration, and large language models.</p>
+
+  <h2>Executive Quotes</h2>
+
+  <p><strong>"This is a major advancement for the MES ecosystem,"</strong> said Senthil Ranganathan, Athena Founder and CEO. "FabOrchestrator™ streamlines everyday tasks like reporting and support, delivering real value to our customers and their supply chain partners."</p>
+
+  <p><strong>"We're partnering with Athena to bring agentic AI directly to the factory floor,"</strong> said Jothi, Chief Agentic AI Architect at LLM at Scale.AI. "FabOrchestrator™ proves intelligent agents can transform complex manufacturing operations—helping teams work faster with far less effort."</p>
+
+  <h2>About Athena</h2>
+
+  <p>Athena Technology Solutions is an Industry 4.0 solutions provider specializing in MES, PLM, and ERP implementations. Since 2011, Athena has served semiconductor, electronics, medical devices, and clean energy industries. As a trusted partner of Siemens and Critical Manufacturing, Athena drives digital transformation for manufacturers worldwide. Learn more at athenatec.com.</p>
+
+  <h2>About LLM at Scale.AI</h2>
+
+  <p>LLM at Scale.AI is an enterprise-grade Agentic AI platform purpose-built for multi-agent orchestration, LLM integration, and autonomous enterprise automation. Trusted by industry leaders including JTC, CBRE, JLL, Cushman & Wakefield, Johnson Controls, and the State of California — delivering measurable business transformation at scale. Learn more at llmatscale.ai</p>
+
+  <h2>Media Contact</h2>
+    <p>
+    Senthil Ranganathan<br/>
+    
+
+      <a 
+    href="mailto:rsenthil@athenatec.com" 
+    target="_blank" 
+    rel="noopener noreferrer"
+    style="color:#1c4584; text-decoration:underline;"
+  >
+    rsenthil@athenatec.com
+  </a>
+  </p>
+
+<p>
+  <strong>Connect:</strong><br/>
+
+  <a 
+    href="https://www.linkedin.com/company/athena-technology-solutions" 
+    target="_blank" 
+    rel="noopener noreferrer"
+    style="color:#1c4584; text-decoration:underline;"
+  >
+    LinkedIn: Athena Technology Solutions
+  </a>
+  <br/>
+
+  <a 
+    href="https://x.com/athena_tec" 
+    target="_blank" 
+    rel="noopener noreferrer"
+    style="color:#1c4584; text-decoration:underline;"
+  >
+    X: @athena_tec
+  </a>
+</p>
+
+
+
+  <p><strong>Tags:</strong> Agentic AI | Manufacturing AI | Digital Transformation | Industry 4.0 | MES Solutions</p>
+
+  
+`
   }),
   createPost({
     id: 20260313,
@@ -192,8 +278,12 @@ export const FALLBACK_BLOG_POSTS: FallbackPost[] = [
     title: "Athena and Tech Mahindra Announce Partnership",
     excerpt:
       "Athena and Tech Mahindra are partnering to help manufacturers accelerate digital transformation with stronger execution, integration, and AI-enabled operations.",
-    image: NEWSROOM_IMAGE,
+   image:
+    NEWSROOM_IMAGE_MAP[
+      "athena-and-tech-mahindra-announce-partnership"
+    ],
     content: `
+
       <p>Athena and Tech Mahindra have announced a strategic partnership focused on accelerating digital transformation in manufacturing. The collaboration brings together Athena’s execution-focused manufacturing expertise and Tech Mahindra’s global delivery scale to help customers modernize operations with greater speed and consistency.</p>
       <h2>Focused on smarter manufacturing programs</h2>
       <p>The partnership is designed to support manufacturers that need stronger alignment across MES, enterprise systems, plant operations, and emerging AI initiatives. By combining consulting, domain knowledge, implementation capability, and scalable delivery support, the two organizations aim to help customers move from strategy to execution with less friction.</p>
@@ -209,8 +299,14 @@ export const FALLBACK_BLOG_POSTS: FallbackPost[] = [
     title: "Authorised Reseller Partnership with Twinzo",
     excerpt:
       "Athena’s authorised reseller partnership with twinzo expands access to immersive digital twin experiences for manufacturers looking to improve visibility and decision-making.",
-    image: NEWSROOM_IMAGE,
+    image:
+    NEWSROOM_IMAGE_MAP[
+      "authorised-reseller-partnership-with-twinzo"
+    ],
     content: `
+     <p>
+    
+  </p>
       <p>Athena has entered into an authorised reseller partnership with twinzo, expanding the ability to bring immersive digital twin capabilities to manufacturers that want a clearer, more connected view of their operations. The collaboration is aimed at helping customers improve visibility, planning, and communication across the factory.</p>
       <h2>Making complex operations easier to understand</h2>
       <p>Digital twins can turn fragmented operational data into a shared visual environment that teams can explore together. That makes it easier to spot bottlenecks, understand equipment relationships, and coordinate decisions across production, maintenance, planning, and leadership. For manufacturers, that means faster conversations and better-informed action.</p>
