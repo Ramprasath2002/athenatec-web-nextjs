@@ -108,13 +108,20 @@ export const FALLBACK_BLOG_POSTS: FallbackPost[] = [
       "Athena introduces FabOrchestrator, an agentic AI experience designed to help manufacturers connect information faster, coordinate work more effectively, and turn operational signals into action.",
     image: "/assets/images/fog.png",
  content: `
-  <h1>Athena Launches FabOrchestrator™ — Agentic AI for Manufacturing</h1>
+  <h1>Athena Launches FabOrchestrator™ - Agentic AI for Manufacturing</h1>
 
-  <p><strong>FREMONT, CA – April 15, 2026</strong> — Athena Technology Solutions, a premier provider of advanced MES solutions, today announced FabOrchestrator™, the manufacturing industry's first Agentic AI Foundry designed to transform factory operations.</p>
+  <p><strong>FREMONT, CA – April 15, 2026</strong> -<a 
+    href="https://www.athenatec.com/" 
+    target="_blank" 
+    rel="noopener noreferrer"
+    style="color:#1c4584; text-decoration:underline;"
+  >
+   Athena Technology Solutions
+  </a>, a premier provider of advanced MES solutions, today announced FabOrchestrator™, the manufacturing industry's first Agentic AI Foundry designed to transform factory operations.</p>
 
   <h2>The Challenge</h2>
 
-  <p>Manufacturing teams face relentless pressure to do more with less—spending countless hours on manual reporting, chasing data across disconnected systems, handling repetitive support tickets, and navigating complex configurations. These inefficiencies slow production, increase costs, and drain engineering resources.</p>
+  <p>Manufacturing teams face relentless pressure to do more with less-spending countless hours on manual reporting, chasing data across disconnected systems, handling repetitive support tickets, and navigating complex configurations. These inefficiencies slow production, increase costs, and drain engineering resources.</p>
 
   <!-- ✅ IMAGE INSERT -->
   <p>
@@ -125,17 +132,17 @@ export const FALLBACK_BLOG_POSTS: FallbackPost[] = [
     />
   </p>
 
-  <p><strong>FabOrchestrator™ puts AI agents to work—so your team can focus on what matters most.</strong></p>
+  <p><strong>FabOrchestrator™ puts AI agents to work-so your team can focus on what matters most.</strong></p>
 
   <h2>What is FabOrchestrator™?</h2>
 
-  <p>FabOrchestrator™ serves as the Agentic AI Nucleus of your factory—a central intelligence platform with four powerful capabilities:</p>
+  <p>FabOrchestrator™ serves as the Agentic AI Nucleus of your factory-a central intelligence platform with four powerful capabilities:</p>
 
   <ul>
-    <li><strong>FabInsight™</strong> — Ask questions in plain English and get instant reports and insights from your factory data</li>
-    <li><strong>AI Support Engineer</strong> — Automatically handles routine support tickets and escalates complex issues when needed</li>
-    <li><strong>Modeling Agent</strong> — Answers MES modeling questions and guides teams through system upgrades</li>
-    <li><strong>Back-end Agent</strong> — Generates code snippets to accelerate MES implementations</li>
+    <li><strong>FabInsight™</strong> - Ask questions in plain English and get instant reports and insights from your factory data</li>
+    <li><strong>AI Support Engineer</strong> - Automatically handles routine support tickets and escalates complex issues when needed</li>
+    <li><strong>Modeling Agent</strong> - Answers MES modeling questions and guides teams through system upgrades</li>
+    <li><strong>Back-end Agent</strong> - Generates code snippets to accelerate MES implementations</li>
   </ul>
 
   <h2>Partnership</h2>
@@ -144,9 +151,9 @@ export const FALLBACK_BLOG_POSTS: FallbackPost[] = [
 
   <h2>Executive Quotes</h2>
 
-  <p><strong>"This is a major advancement for the MES ecosystem,"</strong> said Senthil Ranganathan, Athena Founder and CEO. "FabOrchestrator™ streamlines everyday tasks like reporting and support, delivering real value to our customers and their supply chain partners."</p>
+  <p><strong>"This is a major advancement for the MES ecosystem,"</strong> said <strong>Senthil Ranganathan, Athena Founder and CEO.</strong> "FabOrchestrator™ streamlines everyday tasks like reporting and support, delivering real value to our customers and their supply chain partners."</p>
 
-  <p><strong>"We're partnering with Athena to bring agentic AI directly to the factory floor,"</strong> said Jothi, Chief Agentic AI Architect at LLM at Scale.AI. "FabOrchestrator™ proves intelligent agents can transform complex manufacturing operations—helping teams work faster with far less effort."</p>
+  <p><strong>"We're partnering with Athena to bring agentic AI directly to the factory floor,"</strong> said <strong>Jothi, Chief Agentic AI Architect at LLM at Scale.AI</strong>. "FabOrchestrator™ proves intelligent agents can transform complex manufacturing operations-helping teams work faster with far less effort."</p>
 
   <h2>About Athena</h2>
 
@@ -154,7 +161,7 @@ export const FALLBACK_BLOG_POSTS: FallbackPost[] = [
 
   <h2>About LLM at Scale.AI</h2>
 
-  <p>LLM at Scale.AI is an enterprise-grade Agentic AI platform purpose-built for multi-agent orchestration, LLM integration, and autonomous enterprise automation. Trusted by industry leaders including JTC, CBRE, JLL, Cushman & Wakefield, Johnson Controls, and the State of California — delivering measurable business transformation at scale. Learn more at llmatscale.ai</p>
+  <p>LLM at Scale.AI is an enterprise-grade Agentic AI platform purpose-built for multi-agent orchestration, LLM integration, and autonomous enterprise automation. Trusted by industry leaders including JTC, CBRE, JLL, Cushman & Wakefield, Johnson Controls, and the State of California - delivering measurable business transformation at scale. Learn more at llmatscale.ai</p>
 
   <h2>Media Contact</h2>
     <p>
