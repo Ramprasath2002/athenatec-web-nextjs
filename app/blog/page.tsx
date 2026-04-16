@@ -68,10 +68,18 @@ function formatDate(date: string) {
     day: "numeric",
   });
 }
+const EXCLUDED_BLOG_SLUGS = new Set([
+  "athena-and-tech-mahindra-announce-partnership",
+  "authorised-reseller-partnership-with-twinzo",
+  "athena-launches-faborchestrator-agentic-ai-for-manufacturing",
+]);
 
 export default async function BlogPage() {
-  const posts = await getPosts();
+const allPosts = await getPosts();
 
+const posts = allPosts.filter(
+  (post) => !EXCLUDED_BLOG_SLUGS.has(post.slug)
+);
   const featuredPost = posts[0] ?? null;
   const remainingPosts = posts.slice(1);
 
