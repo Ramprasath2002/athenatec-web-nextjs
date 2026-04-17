@@ -12,7 +12,7 @@ export default function BottomCarousel({ stats, description }: BottomCarouselPro
 
   return (
      
-    <div className="w-full   border-white/10 py-4 sm:py-5">
+    <div className="pointer-events-none w-full border-white/10 py-4 sm:py-5">
       <div className="mx-auto max-w-6xl px-4 text-center sm:px-6 lg:px-8">
 
         {/* Optional description text — matches "Achieve a fast time to value..." */}
