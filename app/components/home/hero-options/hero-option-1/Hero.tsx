@@ -68,7 +68,7 @@ export default function Hero({ slides, bottomStats, bottomDescription }: HeroPro
         </button>
       </Swiper>
 
-      <div className="absolute bottom-0 left-0 right-0 z-20 bg-gradient-to-t from-[#1e2a37]/90 via-[#1e2a37]/60 to-transparent pt-12">
+      <div className="pointer-events-none absolute bottom-0 left-0 right-0 z-20 bg-gradient-to-t from-[#1e2a37]/90 via-[#1e2a37]/60 to-transparent pt-12">
         <BottomCarousel stats={bottomStats} description={bottomDescription} />
       </div>
 
@@ -89,11 +89,15 @@ export default function Hero({ slides, bottomStats, bottomDescription }: HeroPro
           cursor: not-allowed;
           pointer-events: none;
         }
-        /* Pagination sits above the bottom carousel at each breakpoint */
-        .hero-swiper .swiper-pagination { bottom: 175px !important; }
+        /* Keep pagination above the bottom overlay so the bullets stay clickable */
+        .hero-swiper .swiper-pagination {
+          bottom: 175px !important;
+          z-index: 30 !important;
+          pointer-events: auto;
+        }
         @media (min-width: 640px)  { .hero-swiper .swiper-pagination { bottom: 160px !important; } }
         @media (min-width: 768px)  { .hero-swiper .swiper-pagination { bottom: 168px !important; } }
-        @media (min-width: 1024px) { .hero-swiper .swiper-pagination { bottom: 155px !important; } }
+        @media (min-width: 1024px) { .hero-swiper .swiper-pagination { bottom: 150px !important; } }
       `}</style>
     </section>
   );
