@@ -3,47 +3,83 @@ import Link from "next/link";
 import "./privacy-policy.scss";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy | Athena Technology Solutions",
-  description: "Privacy Policy of Athena Technology Solutions. Learn how we collect, use, and protect your information.",
+  title: "Privacy Policy | Athena Technology Solutions – Data Protection & Security",
+  description:
+    "Athena Technology Solutions' Privacy Policy explains how we collect, use, and protect your personal data across our MES, PLM, ERP, CMMS, and Smart Factory Analytics services. ISO 9001 certified data security.",
+  keywords: [
+    "Athena Technology Solutions privacy policy",
+    "manufacturing software data privacy",
+    "MES data protection",
+    "PLM ERP data security",
+    "Industry 4.0 privacy",
+    "smart factory data policy",
+    "ISO 9001 data security",
+    "enterprise manufacturing solutions privacy",
+    "athenatec.com privacy",
+    "GDPR manufacturing software",
+  ],
+  alternates: {
+    canonical: "https://athenatec.com/privacy-policy",
+  },
+  openGraph: {
+    title: "Privacy Policy | Athena Technology Solutions",
+    description:
+      "Learn how Athena Technology Solutions collects, uses, and safeguards your information across our Industry 4.0 manufacturing software and services.",
+    url: "https://athenatec.com/privacy-policy",
+    siteName: "Athena Technology Solutions",
+    type: "website",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function PrivacyPolicyPage() {
   return (
-    <div className="legal-page">
+    <div className="legal-page" itemScope itemType="https://schema.org/WebPage">
       <div className="legal-hero">
         <div className="container">
-          <h1>Privacy Policy</h1>
+          <h1 itemProp="name">Privacy Policy</h1>
           <div className="effective-date">
-            Effective Date: January 1, 2025 | Last Updated: March 2025
+            <time dateTime="2025-01-01">Effective Date: January 1, 2025</time>
+            {" | "}
+            <time dateTime="2025-03">Last Updated: March 2025</time>
           </div>
         </div>
       </div>
 
-      <div className="legal-content-wrapper">
-        <section className="legal-section">
-          <h2>1. Overview</h2>
+      <div className="legal-content-wrapper" itemProp="description">
+
+        {/* ── 1. Overview ─────────────────────────────────────────────── */}
+        <section className="legal-section" aria-labelledby="section-overview">
+          <h2 id="section-overview">1. Overview</h2>
           <p>
-            Athena Technology Solutions, Inc. ("Athena," "we," "our," or "us")
-            is an Industry 4.0 Enterprise Manufacturing Solutions Provider
-            delivering specialized services including Manufacturing Execution
-            Systems (MES), Product Lifecycle Management (PLM), Enterprise
-            Resource Planning (ERP), Computerized Maintenance Management Systems
-            (CMMS), and Smart Factory Analytics to clients across the
+            Athena Technology Solutions, Inc.
+            is an{" "}
+            <strong>Industry 4.0 Enterprise Manufacturing Solutions Provider</strong>{" "}
+            delivering specialized services including{" "}
+            <strong>Manufacturing Execution Systems (MES)</strong>,{" "}
+            <strong>Product Lifecycle Management (PLM)</strong>,{" "}
+            <strong>Enterprise Resource Planning (ERP)</strong>,{" "}
+            <strong>Computerized Maintenance Management Systems (CMMS)</strong>,
+            and <strong>Smart Factory Analytics</strong> to clients across the
             semiconductor, electronics, medical device, and clean energy
             industries.
           </p>
           <p>
             This Privacy Policy describes how we collect, use, disclose, and
-            protect information about you when you visit our website at
-            athenatec.com, engage with our services, or communicate with our
-            team. By accessing our website or engaging with our services, you
-            agree to the collection and use of information in accordance with
-            this Privacy Policy.
+            protect information about you when you visit our website at{" "}
+            <Link href="/">athenatec.com</Link>, engage with our services, or
+            communicate with our team. By accessing our website or engaging with
+            our services, you agree to the collection and use of information in
+            accordance with this Privacy Policy.
           </p>
         </section>
 
-        <section className="legal-section">
-          <h2>2. Information We Collect</h2>
+        {/* ── 2. Information We Collect ────────────────────────────────── */}
+        <section className="legal-section" aria-labelledby="section-collect">
+          <h2 id="section-collect">2. Information We Collect</h2>
           <p>
             We collect information to provide better services to our clients
             and fulfill our contractual obligations. The types of information we
@@ -56,19 +92,19 @@ export default function PrivacyPolicyPage() {
               mailing address.
             </li>
             <li>
-              <strong>Professional Information:</strong> Industry, company
-              size, manufacturing environment details, project scope, and
-              technology infrastructure specifics shared during engagements.
+              <strong>Professional Information:</strong> Industry, company size,
+              manufacturing environment details, project scope, and technology
+              infrastructure specifics shared during engagements.
             </li>
             <li>
-              <strong>Technical & Usage Data:</strong> IP address, browser
+              <strong>Technical &amp; Usage Data:</strong> IP address, browser
               type, pages visited, time spent on site, referring URLs, device
               type, and operating system.
             </li>
             <li>
               <strong>Communication Data:</strong> Messages sent via contact
-              forms, emails, support tickets, chat interactions, and records
-              of consultations or demo requests.
+              forms, emails, support tickets, chat interactions, and records of
+              consultations or demo requests.
             </li>
           </ul>
           <p>
@@ -79,18 +115,19 @@ export default function PrivacyPolicyPage() {
           </p>
         </section>
 
-        <section className="legal-section">
-          <h2>3. How We Use Your Information</h2>
+        {/* ── 3. How We Use Your Information ──────────────────────────── */}
+        <section className="legal-section" aria-labelledby="section-use">
+          <h2 id="section-use">3. How We Use Your Information</h2>
           <p>
             Athena uses collected information solely for legitimate business
-            purposes. We do not sell personal data to third parties. Your
-            information may be used to:
+            purposes. <strong>We do not sell personal data to third parties.</strong>{" "}
+            Your information may be used to:
           </p>
           <ul>
             <li>
               <strong>Deliver services:</strong> Fulfill project engagements
-              including MES implementation, PLM configuration, ERP
-              integration, and managed services support.
+              including MES implementation, PLM configuration, ERP integration,
+              and managed services support.
             </li>
             <li>
               <strong>Client communication:</strong> Respond to inquiries,
@@ -119,8 +156,9 @@ export default function PrivacyPolicyPage() {
           </ul>
         </section>
 
-        <section className="legal-section">
-          <h2>4. Information Sharing & Disclosure</h2>
+        {/* ── 4. Information Sharing & Disclosure ─────────────────────── */}
+        <section className="legal-section" aria-labelledby="section-sharing">
+          <h2 id="section-sharing">4. Information Sharing &amp; Disclosure</h2>
           <p>
             Athena does not sell, trade, or rent your personal information. We
             may share your information only in the following limited
@@ -148,8 +186,8 @@ export default function PrivacyPolicyPage() {
             <li>
               <strong>Business Transfers:</strong> In connection with a merger,
               acquisition, or sale of substantially all assets, where data may
-              be transferred as part of the transaction (with advance notice
-              to affected parties).
+              be transferred as part of the transaction (with advance notice to
+              affected parties).
             </li>
             <li>
               <strong>With Your Consent:</strong> In any other case, only with
@@ -158,15 +196,17 @@ export default function PrivacyPolicyPage() {
           </ul>
         </section>
 
-        <section className="legal-section">
-          <h2>5. Data Security</h2>
+        {/* ── 5. Data Security ────────────────────────────────────────── */}
+        <section className="legal-section" aria-labelledby="section-security">
+          <h2 id="section-security">5. Data Security</h2>
           <p>
-            As an ISO 9001 certified organization since 2017, Athena applies
-            rigorous quality management standards to data security. We implement
-            industry-standard technical and organizational measures including
-            SSL/TLS encryption, role-based access controls, secure data storage,
-            regular security audits, staff confidentiality agreements, incident
-            response procedures, and data minimization practices.
+            As an <strong>ISO 9001 certified organization since 2017</strong>,
+            Athena applies rigorous quality management standards to data
+            security. We implement industry-standard technical and
+            organizational measures including SSL/TLS encryption, role-based
+            access controls, secure data storage, regular security audits, staff
+            confidentiality agreements, incident response procedures, and data
+            minimization practices.
           </p>
           <p>
             While no system is completely impenetrable, we continuously evaluate
@@ -176,8 +216,9 @@ export default function PrivacyPolicyPage() {
           </p>
         </section>
 
-        <section className="legal-section">
-          <h2>6. Data Retention</h2>
+        {/* ── 6. Data Retention ───────────────────────────────────────── */}
+        <section className="legal-section" aria-labelledby="section-retention">
+          <h2 id="section-retention">6. Data Retention</h2>
           <p>
             We retain personal information for as long as necessary to fulfill
             the purposes outlined in this policy, or as required by law:
@@ -185,17 +226,17 @@ export default function PrivacyPolicyPage() {
           <ul>
             <li>
               Client project data is retained for the duration of the project
-              engagement plus a minimum of 7 years post-project, to comply with
-              audit, warranty, and regulatory obligations.
+              engagement plus a minimum of <strong>7 years post-project</strong>,
+              to comply with audit, warranty, and regulatory obligations.
             </li>
             <li>
-              Contact and inquiry data is retained for up to 3 years from the
-              date of last contact, after which it is securely deleted or
-              anonymized.
+              Contact and inquiry data is retained for up to{" "}
+              <strong>3 years</strong> from the date of last contact, after
+              which it is securely deleted or anonymized.
             </li>
             <li>
               Website analytics data is retained in aggregate, anonymized form
-              for no more than 26 months.
+              for no more than <strong>26 months</strong>.
             </li>
             <li>
               Employee and contractor records are maintained as required by
@@ -204,8 +245,9 @@ export default function PrivacyPolicyPage() {
           </ul>
         </section>
 
-        <section className="legal-section">
-          <h2>7. Your Rights</h2>
+        {/* ── 7. Your Rights ──────────────────────────────────────────── */}
+        <section className="legal-section" aria-labelledby="section-rights">
+          <h2 id="section-rights">7. Your Rights</h2>
           <p>
             Depending on your jurisdiction, you may have the following rights
             regarding your personal information:
@@ -238,13 +280,17 @@ export default function PrivacyPolicyPage() {
           </ul>
           <p>
             To exercise any of these rights, please contact us at{" "}
-            <a href="mailto:info@athenatec.com">info@athenatec.com</a>. We will
-            respond within 30 days of receiving your request.
+            <a href="mailto:info@athenatec.com" aria-label="Email Athena Technology Solutions privacy team">
+              info@athenatec.com
+            </a>
+            . We will respond within <strong>30 days</strong> of receiving your
+            request.
           </p>
         </section>
 
-        <section className="legal-section">
-          <h2>8. Cookies & Tracking Technologies</h2>
+        {/* ── 8. Cookies & Tracking Technologies ──────────────────────── */}
+        <section className="legal-section" aria-labelledby="section-cookies">
+          <h2 id="section-cookies">8. Cookies &amp; Tracking Technologies</h2>
           <p>
             Our website uses cookies and similar technologies to enhance your
             browsing experience and analyze site performance:
@@ -275,8 +321,9 @@ export default function PrivacyPolicyPage() {
           </p>
         </section>
 
-        <section className="legal-section">
-          <h2>9. Third-Party Services</h2>
+        {/* ── 9. Third-Party Services ──────────────────────────────────── */}
+        <section className="legal-section" aria-labelledby="section-third-party">
+          <h2 id="section-third-party">9. Third-Party Services</h2>
           <p>
             Our website and services may contain links to third-party websites,
             including technology partners such as Siemens, Oracle, Critical
@@ -288,32 +335,35 @@ export default function PrivacyPolicyPage() {
           </p>
         </section>
 
-        <section className="legal-section">
-          <h2>10. International Data Transfers</h2>
+        {/* ── 10. International Data Transfers ─────────────────────────── */}
+        <section className="legal-section" aria-labelledby="section-international">
+          <h2 id="section-international">10. International Data Transfers</h2>
           <p>
-            Athena operates from offices in the United States and
-            internationally, including India (Chennai and Bengaluru). Data
-            collected from users in different regions may be transferred to and
-            processed in countries that may not have equivalent data protection
-            laws to your home jurisdiction. When transferring data
+            Athena operates from offices in the <strong>United States</strong>{" "}
+            and internationally, including <strong>India (Chennai and Bengaluru)</strong>.
+            Data collected from users in different regions may be transferred to
+            and processed in countries that may not have equivalent data
+            protection laws to your home jurisdiction. When transferring data
             internationally, we use appropriate safeguards including contractual
             clauses and data processing agreements.
           </p>
         </section>
 
-        <section className="legal-section">
-          <h2>11. Children's Privacy</h2>
+        {/* ── 11. Children's Privacy ───────────────────────────────────── */}
+        <section className="legal-section" aria-labelledby="section-children">
+          <h2 id="section-children">11. Children's Privacy</h2>
           <p>
             Our website and services are directed exclusively at business
-            professionals and are not intended for individuals under the age of
-            16. We do not knowingly collect personal information from children.
-            If you believe we have inadvertently collected information from a
-            child, please contact us immediately.
+            professionals and are not intended for individuals under the age of{" "}
+            <strong>16</strong>. We do not knowingly collect personal information
+            from children. If you believe we have inadvertently collected
+            information from a child, please contact us immediately.
           </p>
         </section>
 
-        <section className="legal-section">
-          <h2>12. Policy Updates</h2>
+        {/* ── 12. Policy Updates ───────────────────────────────────────── */}
+        <section className="legal-section" aria-labelledby="section-updates">
+          <h2 id="section-updates">12. Policy Updates</h2>
           <p>
             We may update this Privacy Policy from time to time. When we make
             material changes, we will post the updated policy on this page with
@@ -324,21 +374,40 @@ export default function PrivacyPolicyPage() {
           </p>
         </section>
 
-        <section className="legal-section">
-          <h2>13. Contact Us</h2>
+        {/* ── 13. Contact Us ───────────────────────────────────────────── */}
+        <section
+          className="legal-section"
+          aria-labelledby="section-contact"
+          itemScope
+          itemType="https://schema.org/Organization"
+        >
+          <h2 id="section-contact">13. Contact Us</h2>
           <p>
             For questions, concerns, or requests relating to this Privacy
             Policy:
-            <br />
-            <strong>Email:</strong> <a href="mailto:info@athenatec.com">info@athenatec.com</a>
-            <br />
-            <strong>Athena Technology Solutions, Inc.</strong>
-            <br />
-            Fremont, California, USA
-            <br />
-            <Link href="/">athenatec.com</Link>
           </p>
+          <address>
+            <strong itemProp="name">Athena Technology Solutions, Inc.</strong>
+            <br />
+            <strong>Email:</strong>{" "}
+            <a
+              href="mailto:info@athenatec.com"
+              itemProp="email"
+              aria-label="Email Athena Technology Solutions"
+            >
+              info@athenatec.com
+            </a>
+            <br />
+            <span itemProp="addressLocality">Fremont</span>,{" "}
+            <span itemProp="addressRegion">California</span>,{" "}
+            <span itemProp="addressCountry">USA</span>
+            <br />
+            <Link href="/" itemProp="url">
+              athenatec.com
+            </Link>
+          </address>
         </section>
+
       </div>
     </div>
   );
