@@ -84,11 +84,11 @@ const slides = [
     image: "/assets/images/eco-accelerators.webp",
   },
     {
-    title: "Smarter Manufacturing Through AI",
+    title: "Athena Unveils Faborchestrator",
     desc: "The manufacturing industry's first Agentic AI Foundry designed to eliminate operational inefficiencies and unlock unprecedented productivity. Stop chasing data across disconnected systems and start commanding your factory with intelligent AI agents that work alongside your team.",
     cta: "FabOrchestrator AI",
     link: "https://243988893.hs-sites-na2.com/faborchestratorai",
-    image: "/assets/images/FabOrchestrator-ai.webp",
+    image: "/assets/images/FabOrchestratorAI.webp",
   },
   
   // {
@@ -213,7 +213,15 @@ export default function HeroCarousel() {
       >
         <div className={contentShellClassName}>
           <h1 className={titleClassName}>
-            {activeSlide.title}
+            {activeSlide.title.split(/(Faborchestrator)/gi).map((part, i) =>
+              part.toLowerCase() === "faborchestrator" ? (
+                <span key={i} style={{ color: "#f5c718" }}>
+                  {part}
+                </span>
+              ) : (
+                part
+              )
+            )}
           </h1>
 
           <p className="hero-carousel__desc mb-5 sm:mb-7">

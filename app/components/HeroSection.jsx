@@ -17,14 +17,21 @@ export default function HeroSection({
 
   return (
     <section className="relative w-full min-h-[70vh] flex items-center overflow-hidden text-white">
+      {image ? (
         <Image
-        src={image}
-        alt={title}
-        fill
-        priority
-        sizes="100vw"
-        className="object-cover"
-      />
+          src={image}
+          alt={title}
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover"
+        />
+      ) : (
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 bg-[linear-gradient(135deg,#163a6b_0%,#1c4584_45%,#17ACE4_100%)]"
+        />
+      )}
        <div className="absolute inset-0 z-10" />
        <div
         className={`relative z-20 w-full max-w-5xl px-6 sm:px-10 lg:px-16 py-16 flex flex-col gap-4

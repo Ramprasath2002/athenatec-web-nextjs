@@ -1,66 +1,10 @@
-import { getPosts } from "@/lib/wordpress";
+import { getPostImage, getPosts, type WPPost } from "@/lib/wordpress";
 import Link from "next/link";
 import Image from "next/image";
 import "./blog.scss";
 import HeroSection from "@/app/components/HeroSection";
 import type { Metadata } from "next";
-
-
- export const metadata: Metadata = {
-  title: "Athenatec Blog | MES & Industry 4.0 Insights",
-  description:
-    "Explore expert insights on MES implementation, Industry 4.0 trends, digital transformation challenges, and smart manufacturing best practices.",
-  openGraph: {
-    title: "Athenatec Blog | MES & Industry 4.0 Insights",
-    description:
-      "Explore expert insights on MES implementation, Industry 4.0 trends, digital transformation challenges, and smart manufacturing best practices.",
-    url: "https://www.athenatec.com/blog",
-    siteName: "Athenatec",
-    type: "website",
-    images: [
-      {
-        url: "/assets/images/blog.webp",
-        width: 1200,
-        height: 630,
-        alt: "Athenatec Blog",
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Athenatec Blog | MES & Digital Transformation Insights",
-    description:
-      "Explore the Athenatec blog for expert insights on MES, Industry 4.0 trends, digital transformation challenges, and smart manufacturing best practices.",
-    images: ["/assets/images/blog.webp"],
-  },
-  alternates: {
-    canonical: "https://www.athenatec.com/blog",
-  },
-};
-
-type WPPost = {
-  id: number;
-  slug: string;
-  date: string;
-  title: {
-    rendered: string;
-  };
-  excerpt: {
-    rendered: string;
-  };
-  _embedded?: {
-    "wp:featuredmedia"?: {
-      source_url?: string;
-      media_details?: {
-        sizes?: {
-          medium_large?: {
-            source_url: string;
-          };
-        };
-      };
-    }[];
-  };
-};
+import { buildMetadata, stripHtml, truncate } from "@/lib/seo";
 
 function formatDate(date: string) {
   return new Date(date).toLocaleDateString("en-US", {
@@ -75,35 +19,44 @@ const EXCLUDED_BLOG_SLUGS = new Set([
   "athena-launches-faborchestrator-agentic-ai-for-manufacturing",
 ]);
 
+function filterBlogPosts(posts: WPPost[]) {
+  return posts.filter((post) => !EXCLUDED_BLOG_SLUGS.has(post.slug));
+}
 
+function getFirstAvailableImage(posts: WPPost[]) {
+  return posts.map(getPostImage).find((image): image is string => Boolean(image)) ?? null;
+}
+
+export async function generateMetadata(): Promise<Metadata> {
+  const posts = filterBlogPosts(await getPosts());
+  const heroImage = getFirstAvailableImage(posts);
+
+  return buildMetadata({
+    title: "Athenatec Blog | MES & Industry 4.0 Insights",
+    description:
+      "Explore expert insights on MES implementation, Industry 4.0 trends, digital transformation challenges, and smart manufacturing best practices.",
+    path: "/blog",
+    ...(heroImage ? { image: heroImage } : {}),
+  });
+}
 
 export default async function BlogPage() {
-const allPosts = await getPosts();
+  const allPosts = await getPosts();
 
-const posts = allPosts.filter(
-  (post) => !EXCLUDED_BLOG_SLUGS.has(post.slug)
-);
+  const posts = filterBlogPosts(allPosts);
   const featuredPost = posts[0] ?? null;
   const remainingPosts = posts.slice(1);
-
-  const getImage = (post: WPPost) =>
-    post._embedded?.["wp:featuredmedia"]?.[0]?.media_details?.sizes
-      ?.medium_large?.source_url ||
-    post._embedded?.["wp:featuredmedia"]?.[0]?.source_url ||
-    null;
+  const heroImage = getFirstAvailableImage(posts);
 
   const getExcerpt = (post: WPPost, length = 160) =>
-    post.excerpt?.rendered
-      ?.replace(/<[^>]+>/g, "")
-      ?.replace(/&#8230;/g, "...")
-      ?.slice(0, length) + "...";
+    truncate(stripHtml(post.excerpt?.rendered ?? ""), length);
 
   return (
     <>
       <HeroSection
         title="Blog"
         description="Leave us a little info, and we'll be in touch."
-        image="/assets/images/blog.webp"
+        image={heroImage}
         align="center"
         buttonText="Contact Us"
         buttonLink="/contact"
@@ -125,10 +78,10 @@ const posts = allPosts.filter(
           {featuredPost && (
             <Link href={`/blog/${featuredPost.slug}`} className="featured-post">
               <div className="featured-post__image-wrap">
-                {getImage(featuredPost) && (
+                {getPostImage(featuredPost) && (
                   <Image
-                    src={getImage(featuredPost)!}
-                    alt={featuredPost.title.rendered.replace(/<[^>]+>/g, "")}
+                    src={getPostImage(featuredPost)!}
+                    alt={stripHtml(featuredPost.title.rendered)}
                     fill
                     sizes="(max-width: 768px) 100vw, 60vw"
                     className="featured-post__image"
@@ -170,7 +123,7 @@ const posts = allPosts.filter(
 
           <div className="blog-grid">
             {remainingPosts.map((post, i) => {
-              const image = getImage(post);
+              const image = getPostImage(post);
               const excerpt = getExcerpt(post, 120);
 
               return (
@@ -184,7 +137,7 @@ const posts = allPosts.filter(
                     {image && (
                       <Image
                         src={image}
-                        alt={post.title.rendered.replace(/<[^>]+>/g, "")}
+                        alt={stripHtml(post.title.rendered)}
                         fill
                         sizes="(max-width: 768px) 100vw, 33vw"
                         className="blog-card__image"

@@ -24,14 +24,75 @@ type SEOInput = {
   modifiedTime?: string;
 };
 
+const HTML_ENTITY_MAP: Record<string, string> = {
+  amp: "&",
+  apos: "'",
+  bull: "\u2022",
+  copy: "\u00a9",
+  emsp: " ",
+  ensp: " ",
+  gt: ">",
+  hellip: "\u2026",
+  ldquo: "\u201c",
+  lsquo: "\u2018",
+  lt: "<",
+  mdash: "\u2014",
+  nbsp: " ",
+  ndash: "\u2013",
+  quot: '"',
+  rdquo: "\u201d",
+  reg: "\u00ae",
+  rsquo: "\u2019",
+  thinsp: " ",
+  trade: "\u2122",
+};
+
 export function absoluteUrl(path = "/") {
   if (!path) return SITE_URL;
   if (path.startsWith("http://") || path.startsWith("https://")) return path;
   return new URL(path, SITE_URL).toString();
 }
 
+export function decodeHtmlEntities(input: string) {
+  let output = input;
+
+  for (let pass = 0; pass < 2; pass += 1) {
+    const decoded = output.replace(
+      /&(#x?[0-9a-fA-F]+|[a-zA-Z][a-zA-Z0-9]+);/g,
+      (entity, token: string) => {
+        if (token.startsWith("#")) {
+          const isHex = token[1]?.toLowerCase() === "x";
+          const value = Number.parseInt(token.slice(isHex ? 2 : 1), isHex ? 16 : 10);
+
+          if (!Number.isFinite(value)) {
+            return entity;
+          }
+
+          try {
+            return String.fromCodePoint(value);
+          } catch {
+            return entity;
+          }
+        }
+
+        return HTML_ENTITY_MAP[token] ?? entity;
+      }
+    );
+
+    if (decoded === output) {
+      break;
+    }
+
+    output = decoded;
+  }
+
+  return output;
+}
+
 export function stripHtml(input: string) {
-  return input.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
+  return decodeHtmlEntities(input.replace(/<[^>]+>/g, " "))
+    .replace(/\s+/g, " ")
+    .trim();
 }
 
 export function truncate(input: string, max: number) {

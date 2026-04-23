@@ -2,42 +2,18 @@ import Image from "next/image";
 import Link from "next/link";
 import HeroSection from "@/app/components/HeroSection";
 import type { Metadata } from "next";
-import {
-  getFallbackNewsroomPosts,
-  mergePostsWithFallback,
-} from "@/lib/blog-fallback";
 import { fetchWpJson } from "@/lib/wp-server";
 import { LOGO_PATH, absoluteUrl, buildMetadata, stripHtml, truncate } from "@/lib/seo";
-
-export const metadata: Metadata = buildMetadata({
-  title: "Athenatec Newsroom | Partnerships & Updates",
-  description:
-    "Stay updated with Athenatec's latest news, strategic partnerships, and smart manufacturing announcements.",
-  path: "/newsroom",
-  image: "/assets/images/newsroom.webp",
-  keywords: [
-    "Athenatec newsroom",
-    "Athenatec updates",
-    "manufacturing news",
-    "industry partnerships",
-  ],
-});
+import { getPostImage, type WPPost } from "@/lib/wordpress";
 
 export const revalidate = 3600;
 
 const NEWSROOM_POSTS_PATH =
   "/wp-json/wp/v2/posts?_embed&orderby=date&order=desc&slug=athena-launches-faborchestrator-agentic-ai-for-manufacturing,athena-and-tech-mahindra-announce-partnership,authorised-reseller-partnership-with-twinzo";
 
-type WPPost = {
-  id: number;
-  slug: string;
-  title: { rendered: string };
-  excerpt: { rendered: string };
-  date: string;
-  _embedded?: {
-    "wp:featuredmedia"?: Array<{ source_url: string }>;
-  };
-};
+function getFirstAvailableImage(posts: WPPost[]) {
+  return posts.map(getPostImage).find((image): image is string => Boolean(image)) ?? null;
+}
 
 async function getPosts(): Promise<WPPost[]> {
   const posts = await fetchWpJson<WPPost[]>(NEWSROOM_POSTS_PATH, {
@@ -45,11 +21,31 @@ async function getPosts(): Promise<WPPost[]> {
     timeoutMs: 5000,
   });
 
-  return mergePostsWithFallback(posts, getFallbackNewsroomPosts());
+  return posts ?? [];
+}
+
+export async function generateMetadata(): Promise<Metadata> {
+  const posts = await getPosts();
+  const heroImage = getFirstAvailableImage(posts);
+
+  return buildMetadata({
+    title: "Athenatec Newsroom | Partnerships & Updates",
+    description:
+      "Stay updated with Athenatec's latest news, strategic partnerships, and smart manufacturing announcements.",
+    path: "/newsroom",
+    keywords: [
+      "Athenatec newsroom",
+      "Athenatec updates",
+      "manufacturing news",
+      "industry partnerships",
+    ],
+    ...(heroImage ? { image: heroImage } : {}),
+  });
 }
 
 export default async function NewsRoom() {
   const posts = await getPosts();
+  const heroImage = getFirstAvailableImage(posts);
 
   const collectionSchema = {
     "@context": "https://schema.org",
@@ -88,7 +84,7 @@ export default async function NewsRoom() {
       <HeroSection
         title="News Room"
         description="Latest announcements, partnerships and digital manufacturing updates from Athenatec"
-        image="/assets/images/newsroom.webp"
+        image={heroImage}
         align="center"
         buttonText="Contact Us"
         buttonLink="/contact"
@@ -105,57 +101,57 @@ export default async function NewsRoom() {
             </div>
           ) : (
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
-           {posts.map((post: WPPost) => {
-  const featuredImage =
-    post._embedded?.["wp:featuredmedia"]?.[0]?.source_url;
+              {posts.map((post: WPPost) => {
+                const imageSrc = getPostImage(post);
 
-  // FINAL IMAGE SOURCE (no ambiguity)
-  const imageSrc =
-    featuredImage && featuredImage !== ""
-      ? featuredImage
-      : `/assets/images/news/${post.slug}.jpg`; // unique fallback per post
+                return (
+                  <article
+                    key={post.id}
+                    className="bg-white rounded-xl shadow-md hover:shadow-xl transition overflow-hidden"
+                  >
+                    <div className="relative h-60">
+                      {imageSrc ? (
+                        <Image
+                          src={imageSrc}
+                          alt={stripHtml(post.title.rendered)}
+                          fill
+                          className="object-cover"
+                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                        />
+                      ) : (
+                        <div
+                          aria-hidden="true"
+                          className="absolute inset-0 bg-gradient-to-br from-slate-100 to-slate-200"
+                        />
+                      )}
+                    </div>
 
-  return (
-    <article
-      key={post.id}
-      className="bg-white rounded-xl shadow-md hover:shadow-xl transition overflow-hidden"
-    >
-      <div className="relative h-60">
-        <Image
-          src={imageSrc}
-          alt={stripHtml(post.title.rendered)}
-          fill
-          className="object-cover"
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-        />
-      </div>
+                    <div className="p-6">
+                      <h2
+                        className="text-xl font-semibold mb-3"
+                        dangerouslySetInnerHTML={{
+                          __html: post.title.rendered,
+                        }}
+                      />
 
-      <div className="p-6">
-        <h2
-          className="text-xl font-semibold mb-3"
-          dangerouslySetInnerHTML={{
-            __html: post.title.rendered,
-          }}
-        />
+                      <p className="text-gray-600 text-sm mb-4">
+                        {truncate(stripHtml(post.excerpt.rendered), 140)}
+                      </p>
 
-        <p className="text-gray-600 text-sm mb-4">
-          {truncate(stripHtml(post.excerpt.rendered), 140)}
-        </p>
+                      <p className="text-xs text-gray-400 mb-4">
+                        {new Date(post.date).toLocaleDateString("en-US")}
+                      </p>
 
-        <p className="text-xs text-gray-400 mb-4">
-          {new Date(post.date).toLocaleDateString("en-US")}
-        </p>
-
-        <Link
-          href={`/blog/${post.slug}`}
-          className="text-[#1c4584] font-medium hover:underline"
-        >
-          Read More
-        </Link>
-      </div>
-    </article>
-  );
-})}
+                      <Link
+                        href={`/blog/${post.slug}`}
+                        className="text-[#1c4584] font-medium hover:underline"
+                      >
+                        Read More
+                      </Link>
+                    </div>
+                  </article>
+                );
+              })}
             </div>
           )}
         </div>

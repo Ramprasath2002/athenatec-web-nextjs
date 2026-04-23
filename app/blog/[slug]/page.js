@@ -1,6 +1,5 @@
-import { getPost, getAllPosts } from "@/lib/wordpress";
+import { getPost, getAllPosts, getPostImage } from "@/lib/wordpress";
 import {
-  DEFAULT_OG_IMAGE,
   buildArticleSchema,
   buildMetadata,
   stripHtml,
@@ -15,16 +14,6 @@ const NEWSROOM_SLUGS = new Set([
   "authorised-reseller-partnership-with-twinzo",
   "athena-launches-faborchestrator-agentic-ai-for-manufacturing",
 ]);
-function getPostImage(post) {
-  return (
-    post._embedded?.["wp:featuredmedia"]?.[0]?.media_details?.sizes?.full
-      ?.source_url ||
-    post._embedded?.["wp:featuredmedia"]?.[0]?.media_details?.sizes
-      ?.medium_large?.source_url ||
-    post._embedded?.["wp:featuredmedia"]?.[0]?.source_url ||
-    DEFAULT_OG_IMAGE
-  );
-}
 
 function getPostDescription(post) {
   const excerpt = stripHtml(post.excerpt?.rendered || "");
@@ -130,7 +119,7 @@ if (isNewsroomPost) {
           <div className="post-hero__bg">
             <Image
               src={heroImage}
-              alt={post.title.rendered.replace(/<[^>]+>/g, "")}
+              alt={stripHtml(post.title.rendered)}
               fill
               sizes="100vw"
               className="post-hero__img"
@@ -219,10 +208,7 @@ if (isNewsroomPost) {
 
           <div className="related-grid">
             {relatedPosts.map((item, i) => {
-              const img =
-                item._embedded?.["wp:featuredmedia"]?.[0]?.media_details
-                  ?.sizes?.medium_large?.source_url ||
-                item._embedded?.["wp:featuredmedia"]?.[0]?.source_url;
+              const img = getPostImage(item);
 
               const itemDate = new Date(item.date).toLocaleDateString("en-US", {
                 month: "short",
@@ -241,7 +227,7 @@ if (isNewsroomPost) {
                     {img ? (
               <Image
                         src={img}
-                        alt={item.title.rendered.replace(/<[^>]+>/g, "")}
+                        alt={stripHtml(item.title.rendered)}
                 fill
                         sizes="(max-width: 768px) 100vw, 33vw"
                         className="related-card__img"
