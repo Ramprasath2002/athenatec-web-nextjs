@@ -1,9 +1,7 @@
-import {
-  getFallbackBlogPosts,
-  getFallbackPost,
-  mergePostsWithFallback,
-} from "@/lib/blog-fallback";
 import { fetchWpJson } from "@/lib/wp-server";
+
+const WP_MEDIA_FALLBACK_HOST = "cms.athenatec.com";
+const WP_MEDIA_BLOCKED_HOSTS = new Set(["athenatec.com", "www.athenatec.com"]);
 
 export type WPPost = {
   id: number;
@@ -42,12 +40,44 @@ async function fetchWp<T>(path: string, revalidate: number): Promise<T | null> {
   });
 }
 
+function normalizeWpMediaUrl(url?: string | null): string | null {
+  if (!url) return null;
+
+  try {
+    const parsed = new URL(url);
+
+    if (
+      WP_MEDIA_BLOCKED_HOSTS.has(parsed.hostname) &&
+      parsed.pathname.startsWith("/wp-content/")
+    ) {
+      parsed.hostname = WP_MEDIA_FALLBACK_HOST;
+      parsed.protocol = "https:";
+      parsed.port = "";
+    }
+
+    return parsed.toString();
+  } catch {
+    return url;
+  }
+}
+
+export function getPostImage(post: WPPost): string | null {
+  return normalizeWpMediaUrl(
+    post._embedded?.["wp:featuredmedia"]?.[0]?.media_details?.sizes?.full
+      ?.source_url ||
+    post._embedded?.["wp:featuredmedia"]?.[0]?.media_details?.sizes
+      ?.medium_large?.source_url ||
+    post._embedded?.["wp:featuredmedia"]?.[0]?.source_url ||
+    null,
+  );
+}
+
 export async function getPosts(): Promise<WPPost[]> {
   const posts = await fetchWp<WPPost[]>(
     "/posts?_embed&orderby=date&order=desc",
     60,
   );
-  return mergePostsWithFallback(posts, getFallbackBlogPosts());
+  return posts ?? [];
 }
 
 export async function getPost(slug: string): Promise<WPPost | null> {
@@ -56,7 +86,7 @@ export async function getPost(slug: string): Promise<WPPost | null> {
     `/posts?slug=${encodedSlug}&_embed`,
     300,
   );
-  return data?.length ? data[0] : getFallbackPost(slug);
+  return data?.length ? data[0] : null;
 }
 
 export async function getAllPosts(): Promise<WPPost[]> {
@@ -64,5 +94,5 @@ export async function getAllPosts(): Promise<WPPost[]> {
     "/posts?_embed&per_page=100&orderby=date&order=desc",
     300,
   );
-  return mergePostsWithFallback(posts, getFallbackBlogPosts());
+  return posts ?? [];
 }
