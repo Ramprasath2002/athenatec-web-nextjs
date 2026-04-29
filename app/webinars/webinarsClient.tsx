@@ -20,6 +20,17 @@ interface Webinar {
 
 const webinarData: Webinar[] = [
   {
+    title:
+      "Building the Future of Manufacturing: Achieving Scalability and Compliance with Siemens and Athena",
+    slug: "building-future-manufacturing-siemens-athena",
+    image: "/assets/images/webiner.webp",
+    type: "live",
+    date: "Thursday, April 30, 2026",
+    time: "9:00 AM PDT",
+    description:
+      "How top manufacturers are closing the gap between PLM, MES, and shop floor execution.",
+  },
+  {
     title: "Gain End-to-End Visibility in Medical Device Manufacturing",
     slug: "medical-device-visibility",
     image: "/assets/images/Gain-End-to-End-Visibility-in-Medical-Device.webp",
@@ -33,7 +44,7 @@ const webinarData: Webinar[] = [
     title: "Accelerate MedTech Manufacturing with a Modern MES Accelerator",
     slug: "medtech-mes-accelerator",
     image: "/assets/images/MedTech-img.webp",
-    type: "live",
+    type: "ondemand",
     date: "",
     time: "3:00 PM IST",
     description:

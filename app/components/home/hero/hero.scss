@@ -91,7 +91,7 @@
 }
 
 .hero-carousel__content-shell--very-wide {
-  max-width: min(100%, 780px);
+  max-width: min(100%, 980px);
 }
 
 .hero-carousel__title {
@@ -105,13 +105,13 @@
 }
 
 .hero-carousel__title--long {
-  max-width: 15ch;
+  max-width: 22ch;
   font-size: clamp(1.95rem, 1.18rem + 1.45vw, 3.35rem);
   line-height: 1.05;
 }
 
 .hero-carousel__title--very-long {
-  max-width: 18ch;
+  max-width: 28ch;
   font-size: clamp(1.75rem, 1.02rem + 1.12vw, 2.95rem);
   line-height: 1.08;
   letter-spacing: -0.025em;
@@ -174,7 +174,7 @@
   .hero-carousel__content-shell,
   .hero-carousel__content-shell--wide,
   .hero-carousel__content-shell--very-wide {
-    max-width: min(100%, 680px);
+    max-width: min(100%, 820px);
   }
 
   .hero-carousel__scrim {
@@ -211,11 +211,11 @@
   }
 
   .hero-carousel__title--long {
-    max-width: 16ch;
+    max-width: 22ch;
   }
 
   .hero-carousel__title--very-long {
-    max-width: 18.5ch;
+    max-width: 26ch;
   }
 }
 

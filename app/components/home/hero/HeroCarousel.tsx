@@ -21,6 +21,14 @@ function getTitleVariant(title: string) {
 }
 
 const slides = [
+  {
+    title:
+      "Join us for our upcoming webinar Building the Future of Manufacturing: Achieving Scalability and Compliance with Siemens and Athena.",
+    // desc: "Register now!",
+    cta: "Register Now",
+    link: "/webinars/building-future-manufacturing-siemens-athena",
+    image: "/assets/images/webiner.webp",
+  },
   // {
   //   title: "Gain End-to-End Visibility in Medical Device Manufacturing",
   //   desc: "Watch the on-demand webinar to learn how manufacturers achieve visibility, compliance, and operational excellence.",
