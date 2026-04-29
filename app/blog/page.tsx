@@ -19,24 +19,21 @@ const EXCLUDED_BLOG_SLUGS = new Set([
   "athena-launches-faborchestrator-agentic-ai-for-manufacturing",
 ]);
 
+const BLOG_HERO_IMAGE = "/assets/images/Blog-banner.webp";
+
 function filterBlogPosts(posts: WPPost[]) {
   return posts.filter((post) => !EXCLUDED_BLOG_SLUGS.has(post.slug));
 }
 
-function getFirstAvailableImage(posts: WPPost[]) {
-  return posts.map(getPostImage).find((image): image is string => Boolean(image)) ?? null;
-}
-
 export async function generateMetadata(): Promise<Metadata> {
   const posts = filterBlogPosts(await getPosts());
-  const heroImage = getFirstAvailableImage(posts);
 
   return buildMetadata({
     title: "Athenatec Blog | MES & Industry 4.0 Insights",
     description:
       "Explore expert insights on MES implementation, Industry 4.0 trends, digital transformation challenges, and smart manufacturing best practices.",
     path: "/blog",
-    ...(heroImage ? { image: heroImage } : {}),
+    image: BLOG_HERO_IMAGE,
   });
 }
 
@@ -46,7 +43,6 @@ export default async function BlogPage() {
   const posts = filterBlogPosts(allPosts);
   const featuredPost = posts[0] ?? null;
   const remainingPosts = posts.slice(1);
-  const heroImage = getFirstAvailableImage(posts);
 
   const getExcerpt = (post: WPPost, length = 160) =>
     truncate(stripHtml(post.excerpt?.rendered ?? ""), length);
@@ -56,7 +52,7 @@ export default async function BlogPage() {
       <HeroSection
         title="Blog"
         description="Leave us a little info, and we'll be in touch."
-        image={heroImage}
+        image={BLOG_HERO_IMAGE}
         align="center"
         buttonText="Contact Us"
         buttonLink="/contact"

@@ -11,9 +11,7 @@ export const revalidate = 3600;
 const NEWSROOM_POSTS_PATH =
   "/wp-json/wp/v2/posts?_embed&orderby=date&order=desc&slug=athena-launches-faborchestrator-agentic-ai-for-manufacturing,athena-and-tech-mahindra-announce-partnership,authorised-reseller-partnership-with-twinzo";
 
-function getFirstAvailableImage(posts: WPPost[]) {
-  return posts.map(getPostImage).find((image): image is string => Boolean(image)) ?? null;
-}
+const NEWSROOM_HERO_IMAGE = "/assets/images/newsroom-banner.webp";
 
 async function getPosts(): Promise<WPPost[]> {
   const posts = await fetchWpJson<WPPost[]>(NEWSROOM_POSTS_PATH, {
@@ -26,7 +24,6 @@ async function getPosts(): Promise<WPPost[]> {
 
 export async function generateMetadata(): Promise<Metadata> {
   const posts = await getPosts();
-  const heroImage = getFirstAvailableImage(posts);
 
   return buildMetadata({
     title: "Athenatec Newsroom | Partnerships & Updates",
@@ -39,13 +36,12 @@ export async function generateMetadata(): Promise<Metadata> {
       "manufacturing news",
       "industry partnerships",
     ],
-    ...(heroImage ? { image: heroImage } : {}),
+    image: NEWSROOM_HERO_IMAGE,
   });
 }
 
 export default async function NewsRoom() {
   const posts = await getPosts();
-  const heroImage = getFirstAvailableImage(posts);
 
   const collectionSchema = {
     "@context": "https://schema.org",
@@ -84,7 +80,7 @@ export default async function NewsRoom() {
       <HeroSection
         title="News Room"
         description="Latest announcements, partnerships and digital manufacturing updates from Athenatec"
-        image={heroImage}
+        image={NEWSROOM_HERO_IMAGE}
         align="center"
         buttonText="Contact Us"
         buttonLink="/contact"

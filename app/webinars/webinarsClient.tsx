@@ -43,7 +43,7 @@ const webinarData: Webinar[] = [
   {
     title: "Accelerate MedTech Manufacturing with a Modern MES Accelerator",
     slug: "medtech-mes-accelerator",
-    image: "/assets/images/MedTech-img.webp",
+    image: "/assets/images/Med-Mes.webp",
     type: "ondemand",
     date: "",
     time: "3:00 PM IST",
