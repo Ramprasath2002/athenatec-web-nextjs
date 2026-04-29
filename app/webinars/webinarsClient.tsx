@@ -23,7 +23,7 @@ const webinarData: Webinar[] = [
     title:
       "Building the Future of Manufacturing: Achieving Scalability and Compliance with Siemens and Athena",
     slug: "building-future-manufacturing-siemens-athena",
-    image: "/assets/images/webiner.webp",
+    image: "/assets/images/webiner-banner.webp",
     type: "live",
     date: "Thursday, April 30, 2026",
     time: "9:00 AM PDT",
@@ -35,7 +35,7 @@ const webinarData: Webinar[] = [
     slug: "medical-device-visibility",
     image: "/assets/images/Gain-End-to-End-Visibility-in-Medical-Device.webp",
     type: "ondemand",
-    date: "",
+    date: "Jan 29, 2026",
     time: "4:00 PM IST",
     description:
       "Explore how real-time data visibility transforms quality control and compliance across the entire production lifecycle.",

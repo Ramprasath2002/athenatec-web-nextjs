@@ -31,6 +31,10 @@
   transform: scale(1.015);
 }
 
+.hero-carousel__image--webinar {
+  object-position: 62% center;
+}
+
 .hero-carousel__scrim {
   background: linear-gradient(
     180deg,
@@ -171,6 +175,10 @@
 }
 
 @media (max-width: 1023px) {
+  .hero-carousel__image--webinar {
+    object-position: 70% center;
+  }
+
   .hero-carousel__content-shell,
   .hero-carousel__content-shell--wide,
   .hero-carousel__content-shell--very-wide {

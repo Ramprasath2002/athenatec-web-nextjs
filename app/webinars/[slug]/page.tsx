@@ -308,7 +308,7 @@ function FutureManufacturingLayout() {
     <>
       <section className="single-hero webinar-siemens-hero">
         <Image
-          src="/assets/images/webiner.webp"
+          src="/assets/images/webiner-banner.webp"
           alt="Smart manufacturing operations"
           fill
           priority
@@ -758,7 +758,7 @@ function MedtechMESLayout() {
               </ul>
             </div>
             <div className="solution-image">
-              <Image src="/assets/images/MedTech-img.webp" alt="Modern MES Solution"
+              <Image src="/assets/images/Med-Mes.webp" alt="Modern MES Solution"
                 width={700} height={550} />
             </div>
           </div>

@@ -206,7 +206,9 @@ export default function HeroCarousel() {
             priority={i === 0}
             sizes="100vw"
             quality={75}
-            className={`hero-carousel__image object-cover transition-opacity duration-700 ease-in-out ${
+            className={`hero-carousel__image ${
+              i === 0 ? "hero-carousel__image--webinar" : ""
+            } object-cover transition-opacity duration-700 ease-in-out ${
               i === index ? "opacity-100 z-10" : "opacity-0 z-0"
             }`}
           />
