@@ -27,7 +27,7 @@ const slides = [
     // desc: "Register now!",
     cta: "Register Now",
     link: "/webinars/building-future-manufacturing-siemens-athena",
-    image: "/assets/images/webiner.webp",
+    image: "/assets/images/webiner-banner.webp",
   },
   // {
   //   title: "Gain End-to-End Visibility in Medical Device Manufacturing",
