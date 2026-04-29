@@ -37,7 +37,7 @@ const INDUSTRIES = [
 
  
 
-function WebinarForm({ webinarTitle = "MedTech MES Accelerator" }: { webinarTitle?: string }) {
+function WebinarForm() {
   const [formData, setFormData] = useState<FormData>({
     name: "",
     email: "",
@@ -130,9 +130,9 @@ function WebinarForm({ webinarTitle = "MedTech MES Accelerator" }: { webinarTitl
             <polyline points="20 6 9 17 4 12" />
           </svg>
         </div>
-        <h3>You're registered!</h3>
+        <h3>You&apos;re registered!</h3>
         <p>
-          We've sent the webinar link to <strong>{formData.email}</strong>.<br />
+          We&apos;ve sent the webinar link to <strong>{formData.email}</strong>.<br />
           Check your inbox — it should arrive within a few minutes.
         </p>
         <a
@@ -235,7 +235,7 @@ function WebinarForm({ webinarTitle = "MedTech MES Accelerator" }: { webinarTitl
           checked={formData.receiveUpdates} onChange={handleChange} />
         <span className="wf-checkbox__box" />
         <span className="wf-checkbox__label">
-          I'd like to receive relevant updates and resources from Athena Technology Solutions.
+          I&apos;d like to receive relevant updates and resources from Athena Technology Solutions.
         </span>
       </label>
 
@@ -289,6 +289,7 @@ export default function WebinarSinglePage() {
   const params = useParams();
   const slug   = Array.isArray(params.slug) ? params.slug[0] : params.slug;
 
+  if (slug === "building-future-manufacturing-siemens-athena") return <FutureManufacturingLayout />;
   if (slug === "medical-device-visibility") return <MedicalVisibilityLayout />;
   if (slug === "medtech-mes-accelerator")   return <MedtechMESLayout />;
 
@@ -296,6 +297,224 @@ export default function WebinarSinglePage() {
     <div style={{ padding: "140px 20px", textAlign: "center" }}>
       <h1 style={{ fontSize: 32 }}>404 — Page not found</h1>
     </div>
+  );
+}
+
+function FutureManufacturingLayout() {
+  const registrationUrl =
+    "https://zoom.us/webinar/register/WN_ExA9BjSpRQ2RtjbCz37TOw";
+
+  return (
+    <>
+      <section className="single-hero webinar-siemens-hero">
+        <Image
+          src="/assets/images/webiner.webp"
+          alt="Smart manufacturing operations"
+          fill
+          priority
+          className="hero-img"
+        />
+        <div className="overlay" />
+        <div className="hero-content">
+          {/* <span className="webinar-kicker">Live webinar</span> */}
+          <h1>
+            Building the Future of Manufacturing: Achieving Scalability and
+            Compliance with Siemens and Athena
+          </h1>
+          <p className="webinar-hero-summary">
+            How top manufacturers are closing the gap between PLM, MES, and
+            shop floor execution.
+          </p>
+          <div className="webinar-event-meta">
+            <span>April 30th</span>
+            <span>9:00 a.m. PDT</span>
+            <span>45 minutes + Live Q&amp;A</span>
+          </div>
+          <a
+            href={registrationUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="solution-btn"
+          >
+            Register Now
+          </a>
+        </div>
+      </section>
+
+      <section className="webinar-detail-page">
+        <div className="webinar-detail-layout">
+          <article className="webinar-detail-content">
+            <p className="webinar-detail-lead">
+              How top manufacturers are closing the gap between PLM, MES, and
+              shop floor execution.
+            </p>
+
+            <h2>Webinar Topic</h2>
+            <p>
+              Building the Future of Manufacturing: Achieving Scalability and
+              Compliance with Siemens and Athena.
+            </p>
+
+            <p>
+              Balancing rapid scaling with strict regulatory and quality
+              mandates is the #1 challenge in MedTech and Semiconductor
+              manufacturing today.
+            </p>
+
+            <div className="webinar-industry-grid">
+              <div>
+                <h3>For MedTech</h3>
+                <p>
+                  You need full traceability from design (PLM) to production
+                  (MES) for FDA/MDR submissions.
+                </p>
+              </div>
+              <div>
+                <h3>For Semi</h3>
+                <p>
+                  You require SECS/GEM compliance, real-time SPC, and the
+                  agility to handle complex BOMs.
+                </p>
+              </div>
+            </div>
+
+            <p>
+              Most legacy systems force you to choose: speed OR compliance. But
+              there&apos;s a new approach.
+            </p>
+
+            <p>
+              Join us for an exclusive expert-led live webinar. We&apos;re
+              bringing together experts from Siemens and Athena Technology
+              Solutions to show how manufacturers are scaling without
+              compromising control using Opcenter and deep domain integration.
+            </p>
+
+            <h2>In This Session, You&apos;ll Learn</h2>
+            <ul className="webinar-bullet-list">
+              <li>
+                How to unify Siemens&apos; digital thread with Athena&apos;s
+                shop-floor execution for real-time compliance.
+              </li>
+              <li>
+                The exact playbook for achieving Part 11/Annex 11 ready
+                electronic signatures and audit trails.
+              </li>
+              <li>
+                How top Semi fabs are using this stack to reduce changeover time
+                by 35% while maintaining 6-sigma quality.
+              </li>
+            </ul>
+
+            <h2>The Blueprint for Integration</h2>
+            <p>
+              Learn how to bridge core operational systems with real-time
+              visualization for a single source of truth.
+            </p>
+            <p>
+              You&apos;ll see how a modern MES acts as the central nervous
+              system, capturing real-time quality data on the shop floor, while
+              integrated ERP, PLM, Quality, and LIMS ensure that quality
+              insights drive decisions across design, procurement, production,
+              and distribution.
+            </p>
+
+            <h2>What To Expect</h2>
+            <ul className="webinar-bullet-list">
+              <li>Opcenter Execution roadmap insights.</li>
+              <li>
+                Real-world scalability and compliance outcomes driven by
+                Athena&apos;s unmatched SI capabilities.
+              </li>
+              <li>A live MedTech/Semiconductor use case.</li>
+            </ul>
+
+            <p>
+              If you&apos;re still choosing between growth and governance,
+              you&apos;re solving the wrong problem. Join us and see what&apos;s
+              actually possible.
+            </p>
+
+            <h2>Designed For Professionals Tackling Industry Challenges</h2>
+            <ul className="webinar-bullet-list">
+              <li>
+                <strong>Operations &amp; Quality Directors:</strong> Needing
+                perfect traceability and audit-ready compliance.
+              </li>
+              <li>
+                <strong>Manufacturing &amp; Process Engineers:</strong> Tasked
+                with optimizing yield and eliminating bottlenecks.
+              </li>
+              <li>
+                <strong>Digital Transformation Leads:</strong> Building the
+                roadmap for a connected, intelligent factory.
+              </li>
+            </ul>
+
+            <p>
+              Join us to learn about proven solutions to your most challenging
+              manufacturing challenges.
+            </p>
+            <p>
+              <strong>Drive Forward!</strong>
+              <br />
+              Athena Technology Solutions
+            </p>
+          </article>
+
+          <aside className="webinar-detail-card">
+            <h2>Webinar Details</h2>
+            <dl>
+              <div>
+                <dt>Date</dt>
+                <dd>April 30th</dd>
+              </div>
+              <div>
+                <dt>Time</dt>
+                <dd>9:00 a.m. PDT</dd>
+              </div>
+              <div>
+                <dt>Duration</dt>
+                <dd>45 minutes + Live Q&amp;A</dd>
+              </div>
+              <div>
+                <dt>Presented by</dt>
+                <dd>Siemens and Athena Technology Solutions</dd>
+              </div>
+            </dl>
+            <a
+              href={registrationUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="webinar-register-card-btn"
+            >
+              Register Here
+            </a>
+          </aside>
+        </div>
+      </section>
+
+      <section className="webinar-final-cta">
+        <div className="webinar-final-cta__inner">
+          <div>
+            <span className="solution-tag">Reserve your spot</span>
+            <h2>Join us and see what&apos;s actually possible.</h2>
+            <p>
+              Register for Building the Future of Manufacturing: Achieving
+              Scalability and Compliance with Siemens and Athena.
+            </p>
+          </div>
+          <a
+            href={registrationUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="solution-btn"
+          >
+            Register Now
+          </a>
+        </div>
+      </section>
+    </>
   );
 }
 
@@ -337,8 +556,8 @@ function MedicalVisibilityLayout() {
         <div className="challenge-container">
           <div className="challenge-header">
             <h2>How Do We Solve Our Biggest Operational Challenges?</h2>
-            <p>If you're navigating the relentless pressures of speed, quality, and compliance,
-              you're not alone. This webinar was created for leaders facing:</p>
+            <p>If you&apos;re navigating the relentless pressures of speed, quality, and compliance,
+              you&apos;re not alone. This webinar was created for leaders facing:</p>
           </div>
           <div className="challenge-list">
             {[
@@ -378,7 +597,7 @@ function MedicalVisibilityLayout() {
       <section className="learn-section">
         <div className="learn-container">
           <div className="learn-header">
-            <h2>What You'll Learn in This Webinar Recording</h2>
+            <h2>What You&apos;ll Learn in This Webinar Recording</h2>
             <p>Watch the recording to get a detailed breakdown of:</p>
           </div>
           <div className="learn-grid">
@@ -442,7 +661,7 @@ function MedicalVisibilityLayout() {
       <section className="takeaways-section">
         <div className="takeaways-container">
           <div className="takeaways-header">
-            <h2>Key Takeaways You'll Gain</h2>
+            <h2>Key Takeaways You&apos;ll Gain</h2>
             <p>By watching, you will understand how to:</p>
           </div>
           <div className="takeaways-grid">
@@ -539,7 +758,7 @@ function MedtechMESLayout() {
               </ul>
             </div>
             <div className="solution-image">
-              <Image src="/assets/images/Medtech-img.webp" alt="Modern MES Solution"
+              <Image src="/assets/images/MedTech-img.webp" alt="Modern MES Solution"
                 width={700} height={550} />
             </div>
           </div>
@@ -563,7 +782,7 @@ function MedtechMESLayout() {
 
               <h2>Fill out the form below to view the webinar</h2>
              
-              <WebinarForm webinarTitle="Accelerate MedTech Manufacturing with a Modern MES Accelerator" />
+              <WebinarForm />
             </div>
           </div>
         </div>
