@@ -270,6 +270,18 @@ $radius-lg:   20px;
   font-weight: 700;
 }
 
+.webinar-text-link {
+  color: $brand;
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-color: rgba($accent, 0.45);
+  text-underline-offset: 4px;
+
+  &:hover {
+    color: $accent;
+  }
+}
+
 .webinar-industry-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);

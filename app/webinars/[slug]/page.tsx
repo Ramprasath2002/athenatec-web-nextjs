@@ -385,8 +385,16 @@ function FutureManufacturingLayout() {
 
             <p>
               Join us for an exclusive expert-led live webinar. We&apos;re
-              bringing together experts from Siemens and Athena Technology
-              Solutions to show how manufacturers are scaling without
+              bringing together experts from{" "}
+              <a
+                href="https://www.siemens.com/en-us/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="webinar-text-link"
+              >
+                Siemens
+              </a>{" "}
+              and Athena Technology Solutions to show how manufacturers are scaling without
               compromising control using Opcenter and deep domain integration.
             </p>
 
