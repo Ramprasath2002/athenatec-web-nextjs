@@ -3,10 +3,9 @@
 import { useState, useRef, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import "./download.scss";
-import { getCf7Endpoint } from "@/lib/wp";
 
 const CF7_FORM_ID = "231155";
-const CF7_URL = getCf7Endpoint(CF7_FORM_ID);
+const CF7_URL = `/api/cf7/${CF7_FORM_ID}`;
 
 type FormData = {
   name: string;
@@ -89,6 +88,7 @@ export default function DownloadForm({ onSuccess, caseStudyTitle = "Case Study" 
       fd.append("industries",   data.industry);
       fd.append("country",      data.country.trim());
       fd.append("checkbox-649", data.consent ? "I agree*" : "");
+      fd.append("page-url",     window.location.href);
 
       const res  = await fetch(CF7_URL, { method: "POST", body: fd });
       const json = await res.json();

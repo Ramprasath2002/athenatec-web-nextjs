@@ -3,7 +3,6 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { getCf7Endpoint } from "@/lib/wp";
 
 type Study = {
   slug: string;
@@ -69,7 +68,7 @@ const FORM_CONFIG: Record<Study["formType"], FormConfig> = {
 
 export default function PartnersForm({ study }: Props) {
   const config = FORM_CONFIG[study.formType];
-  const wpCf7Url = getCf7Endpoint(config.formId);
+  const wpCf7Url = `/api/cf7/${config.formId}`;
 
   const [formData, setFormData] = useState<FormData>({
     fullName: "",
@@ -167,6 +166,7 @@ export default function PartnersForm({ study }: Props) {
       fd.append("company-name", formData.companyName.trim());
       fd.append("industries", formData.industry);
       fd.append("country", formData.country.trim());
+      fd.append("page-url", window.location.href);
 
       if (formData.supportNeeded.trim()) {
         fd.append("support-needed", formData.supportNeeded.trim());

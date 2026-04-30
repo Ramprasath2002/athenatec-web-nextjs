@@ -3,7 +3,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import "./demo.scss";
-import { getCf7Endpoint } from "@/lib/wp";
 
 interface FormData {
   name: string; email: string; companyName: string;
@@ -15,7 +14,7 @@ type FormErrors = Partial<Record<keyof FormData, string>>;
 const INDUSTRY_OPTIONS = ["Semiconductor","Electronics","Medical Devices","Discrete Manufacturing","Solar"];
 const DEMO_SUBJECT_OPTIONS = ["ECO Redliner","Master Data Migrator","Automation Scripting Tool"];
 const CF7_FORM_ID = "230890";
-const CF7_URL = getCf7Endpoint(CF7_FORM_ID);
+const CF7_URL = `/api/cf7/${CF7_FORM_ID}`;
 const EMPTY_FORM: FormData = {
   name:"", email:"", companyName:"", industry:"",
   country:"", demoSubject:"", comments:"", agreeToPolicy: false,
@@ -331,6 +330,7 @@ export default function GetADemoPage() {
       fd.append("industries", formData.industry);
       fd.append("country", formData.country.trim());
       fd.append("topic", formData.demoSubject);
+      fd.append("page-url", window.location.href);
 
       if (formData.comments.trim()) {
         fd.append("textarea-11", formData.comments.trim());

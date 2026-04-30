@@ -5,7 +5,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import "./webinar.scss";
-import { getCf7Endpoint } from "@/lib/wp";
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Types
@@ -75,7 +74,7 @@ function WebinarForm() {
 
   try {
     const CF7_FORM_ID = "231536";
-    const CF7_URL = getCf7Endpoint(CF7_FORM_ID);
+    const CF7_URL = `/api/cf7/${CF7_FORM_ID}`;
 
     const fd = new FormData();
     fd.append("_wpcf7",                CF7_FORM_ID);
@@ -89,6 +88,7 @@ function WebinarForm() {
     fd.append("company-name", formData.companyName.trim());
     fd.append("job",          formData.jobTitle.trim());
     fd.append("industries",   formData.industry);
+    fd.append("page-url",     window.location.href);
 
     if (formData.receiveUpdates) {
       fd.append("receive", "I would like to receive relevant updates and resources from Athena Technology Solutions.");

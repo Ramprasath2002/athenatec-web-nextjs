@@ -3,9 +3,8 @@
 import { useState, useRef } from "react";
 import { useRouter } from "next/navigation";
 import "./job-details.scss";
-import { getWpApiUrl } from "@/lib/wp";
 
-const API_URL = getWpApiUrl("/wp-json/athenatec/v1/apply");
+const API_URL = "/api/apply";
 
 interface FormData {
   fullName:    string;

@@ -1,6 +1,7 @@
-import { getCf7Endpoint } from "@/lib/wp";
+import { getWpApiUrl } from "@/lib/wp";
 
 const CF7_FORM_ID = "224297";
+const CF7_SITE_URL = process.env.WP_SITE_URL || "https://cms.athenatec.com";
 
 export async function POST(req: Request) {
   try {
@@ -40,7 +41,10 @@ Time:     ${new Date().toLocaleString("en-US", {
 ${transcript}
     `.trim();
 
-    const CF7_URL = getCf7Endpoint(CF7_FORM_ID);
+    const CF7_URL = getWpApiUrl(
+      `/wp-json/contact-form-7/v1/contact-forms/${CF7_FORM_ID}/feedback`,
+      CF7_SITE_URL
+    );
 
     const fd = new FormData();
 
@@ -62,6 +66,11 @@ ${transcript}
     const response = await fetch(CF7_URL, {
       method: "POST",
       body: fd,
+      headers: {
+        Accept: "application/json",
+      },
+      cache: "no-store",
+      redirect: "follow",
     });
 
     const text = await response.text();

@@ -1,7 +1,6 @@
 "use client";
 
-import { useState } from "react";
-import { getCf7Endpoint } from "@/lib/wp";
+import { useEffect, useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -10,10 +9,6 @@ import {
   MessageSquare, Send, AlertCircle,
 } from "lucide-react";
 import { useRouter } from "next/navigation";
-
-// ── CF7 config ────────────────────────────────────────────────────────────────
-const CF7_FORM_ID = "17";
-const CF7_ENDPOINT = getCf7Endpoint(CF7_FORM_ID);
 
 // ── Validation ────────────────────────────────────────────────────────────────
 const schema = z.object({
@@ -61,12 +56,17 @@ export default function ContactForm({ inquiryOptions, pageName }: ContactFormPro
   const [selectedInquiry, setSelectedInquiry] = useState("");
   const [isSubmitting,    setIsSubmitting]    = useState(false);
   const [submitError,     setSubmitError]     = useState("");
+  const [pageUrl,          setPageUrl]         = useState("");
   const router = useRouter();
 
   const {
     register, handleSubmit, setValue, trigger,
     formState: { errors },
   } = useForm<ContactFormData>({ resolver: zodResolver(schema) });
+
+  useEffect(() => {
+    setPageUrl(window.location.href);
+  }, []);
 
   const onSubmit: SubmitHandler<ContactFormData> = async (data) => {
     setIsSubmitting(true);
@@ -75,14 +75,6 @@ export default function ContactForm({ inquiryOptions, pageName }: ContactFormPro
     try {
       const fd = new FormData();
 
-      // ── Required CF7 hidden fields ──────────────────────────────────────────
-      // CF7 validates these even on REST API calls from external frontends
-      fd.append("_wpcf7",                CF7_FORM_ID);
-      fd.append("_wpcf7_version",        "5.9");
-      fd.append("_wpcf7_locale",         "en_US");
-      fd.append("_wpcf7_unit_tag",       `wpcf7-f${CF7_FORM_ID}-o1`);
-      fd.append("_wpcf7_container_post", "0");
-
       // ── Your form fields (must match CF7 form body exactly) ─────────────────
       fd.append("your-name",    data.full_name);
       fd.append("your-email",   data.email);
@@ -90,8 +82,9 @@ export default function ContactForm({ inquiryOptions, pageName }: ContactFormPro
       fd.append("your-subject", data.inquiryType);
       fd.append("your-message", data.message);
       fd.append("your-page",    pageName);
+      fd.append("page-url",     pageUrl);
 
-      const res  = await fetch(CF7_ENDPOINT, { method: "POST", body: fd });
+      const res  = await fetch("/api/contact", { method: "POST", body: fd });
       const json = await res.json();
 
       if (json.status === "mail_sent") {
@@ -114,6 +107,7 @@ export default function ContactForm({ inquiryOptions, pageName }: ContactFormPro
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-4" noValidate>
+      <input type="hidden" name="page-url" value={pageUrl} readOnly />
 
       {/* Full Name */}
       <div>
@@ -197,7 +191,6 @@ export default function ContactForm({ inquiryOptions, pageName }: ContactFormPro
             className="flex-1 bg-transparent text-gray-800 placeholder-gray-400 text-sm focus:outline-none resize-none leading-relaxed" />
         </InputWrapper>
       </div>
-
       {/* Global error */}
       {submitError && (
         <div className="flex items-center gap-2 p-3 bg-red-50 border border-red-200 rounded-xl text-sm text-red-600">
