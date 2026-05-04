@@ -19,15 +19,13 @@ const EXCLUDED_BLOG_SLUGS = new Set([
   "athena-launches-faborchestrator-agentic-ai-for-manufacturing",
 ]);
 
-const BLOG_HERO_IMAGE = "/assets/images/Blog-banner.webp";
+const BLOG_HERO_IMAGE = "/assets/images/blog-banner.webp";
 
 function filterBlogPosts(posts: WPPost[]) {
   return posts.filter((post) => !EXCLUDED_BLOG_SLUGS.has(post.slug));
 }
 
 export async function generateMetadata(): Promise<Metadata> {
-  const posts = filterBlogPosts(await getPosts());
-
   return buildMetadata({
     title: "Athenatec Blog | MES & Industry 4.0 Insights",
     description:

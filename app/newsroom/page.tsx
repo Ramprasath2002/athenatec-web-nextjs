@@ -2,29 +2,33 @@ import Image from "next/image";
 import Link from "next/link";
 import HeroSection from "@/app/components/HeroSection";
 import type { Metadata } from "next";
-import { fetchWpJson } from "@/lib/wp-server";
 import { LOGO_PATH, absoluteUrl, buildMetadata, stripHtml, truncate } from "@/lib/seo";
-import { getPostImage, type WPPost } from "@/lib/wordpress";
+import { getAllPosts, getPostImage, type WPPost } from "@/lib/wordpress";
 
-export const revalidate = 3600;
+export const revalidate = 300;
 
-const NEWSROOM_POSTS_PATH =
-  "/wp-json/wp/v2/posts?_embed&orderby=date&order=desc&slug=athena-launches-faborchestrator-agentic-ai-for-manufacturing,athena-and-tech-mahindra-announce-partnership,authorised-reseller-partnership-with-twinzo";
+const NEWSROOM_SLUGS = [
+  "athena-launches-faborchestrator-agentic-ai-for-manufacturing",
+  "athena-and-tech-mahindra-announce-partnership",
+  "authorised-reseller-partnership-with-twinzo",
+];
+
+const NEWSROOM_SLUG_SET = new Set(NEWSROOM_SLUGS);
 
 const NEWSROOM_HERO_IMAGE = "/assets/images/newsroom-banner.webp";
 
 async function getPosts(): Promise<WPPost[]> {
-  const posts = await fetchWpJson<WPPost[]>(NEWSROOM_POSTS_PATH, {
-    next: { revalidate: 3600 },
-    timeoutMs: 5000,
-  });
+  const posts = await getAllPosts();
 
-  return posts ?? [];
+  return posts
+    .filter((post) => NEWSROOM_SLUG_SET.has(post.slug))
+    .sort(
+      (a, b) =>
+        NEWSROOM_SLUGS.indexOf(a.slug) - NEWSROOM_SLUGS.indexOf(b.slug),
+    );
 }
 
 export async function generateMetadata(): Promise<Metadata> {
-  const posts = await getPosts();
-
   return buildMetadata({
     title: "Athenatec Newsroom | Partnerships & Updates",
     description:
