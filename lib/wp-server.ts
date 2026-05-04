@@ -5,13 +5,14 @@ import { DEFAULT_WP_SITE_URL, getWpApiUrl } from "@/lib/wp";
 const LEGACY_WP_SITE_URL = "https://cms.athenatec.com";
 
 function normalizeWpSiteUrl(url: string) {
-  return url.replace(/\/+$/, "");
+  return url.replace(/\/wp-json(?:\/.*)?$/i, "").replace(/\/+$/, "");
 }
 
 function getWpSiteUrls() {
   const urls = [
     process.env.WP_SITE_URL,
     process.env.NEXT_PUBLIC_WP_SITE_URL,
+    process.env.NEXT_PUBLIC_WP_API_URL,
     DEFAULT_WP_SITE_URL,
     LEGACY_WP_SITE_URL,
   ]
