@@ -8,6 +8,7 @@ import { getAllPosts, getPostImage, type WPPost } from "@/lib/wordpress";
 export const revalidate = 300;
 
 const NEWSROOM_SLUGS = [
+  "athena-featured-in-digital-it-news-national-it-service-provider-day",
   "athena-launches-faborchestrator-agentic-ai-for-manufacturing",
   "athena-and-tech-mahindra-announce-partnership",
   "authorised-reseller-partnership-with-twinzo",
