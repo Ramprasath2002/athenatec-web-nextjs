@@ -20,7 +20,7 @@ const EXCLUDED_BLOG_SLUGS = new Set([
   "athena-launches-faborchestrator-agentic-ai-for-manufacturing",
 ]);
 
-const BLOG_HERO_IMAGE = "/assets/images/blog-banner.webp";
+const BLOG_HERO_IMAGE = "/assets/images/Blog-banner.webp";
 
 function filterBlogPosts(posts: WPPost[]) {
   return posts.filter((post) => !EXCLUDED_BLOG_SLUGS.has(post.slug));
