@@ -469,7 +469,7 @@ function FutureManufacturingLayout() {
         <div className="webinar-detail-layout">
           <article className="webinar-detail-content">
             <p className="webinar-detail-lead">
-              Thank you for joining Building the Future of Manufacturing: Achieving Scalability and Compliance with Siemens and Athena.
+              Thank you for joining our webinar: Building the Future of Manufacturing: Achieving Scalability and Compliance with Siemens and Athena.
             </p>
 
             <p>
@@ -510,7 +510,7 @@ function FutureManufacturingLayout() {
         </div>
       </section>
 
-      <section className="webinar-final-cta">
+      {/* <section className="webinar-final-cta">
         <div className="webinar-final-cta__inner">
           <div>
             <span className="solution-tag">Webinar replay</span>
@@ -524,7 +524,7 @@ function FutureManufacturingLayout() {
             Download Now
           </a>
         </div>
-      </section>
+      </section> */}
 
       <section id="watch-webinar" className="webinar-form-split">
         <div className="split-container">
