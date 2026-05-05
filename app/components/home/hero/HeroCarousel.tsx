@@ -23,9 +23,8 @@ function getTitleVariant(title: string) {
 const slides = [
   {
     title:
-      "Join us for our upcoming webinar Building the Future of Manufacturing: Achieving Scalability and Compliance with Siemens and Athena.",
-    // desc: "Register now!",
-    cta: "Register Now",
+      "Building the Future of Manufacturing: Achieving Scalability and Compliance with Siemens and Athena.",
+    cta: "Download Now",
     link: "/webinars/building-future-manufacturing-siemens-athena",
     image: "/assets/images/webiner-banner.webp",
   },

@@ -24,9 +24,9 @@ const webinarData: Webinar[] = [
       "Building the Future of Manufacturing: Achieving Scalability and Compliance with Siemens and Athena",
     slug: "building-future-manufacturing-siemens-athena",
     image: "/assets/images/webiner-banner.webp",
-    type: "live",
-    date: "Thursday, April 30, 2026",
-    time: "9:00 AM PDT",
+    type: "ondemand",
+    date: "",
+    time: "",
     description:
       "How top manufacturers are closing the gap between PLM, MES, and shop floor execution.",
   },
@@ -35,8 +35,8 @@ const webinarData: Webinar[] = [
     slug: "medical-device-visibility",
     image: "/assets/images/Gain-End-to-End-Visibility-in-Medical-Device.webp",
     type: "ondemand",
-    date: "Jan 29, 2026",
-    time: "4:00 PM IST",
+    date: "",
+    time: "",
     description:
       "Explore how real-time data visibility transforms quality control and compliance across the entire production lifecycle.",
   },
@@ -46,7 +46,7 @@ const webinarData: Webinar[] = [
     image: "/assets/images/Med-Mes.webp",
     type: "ondemand",
     date: "",
-    time: "3:00 PM IST",
+    time: "",
     description:
       "Learn how digital transformation streamlines production systems and accelerates time-to-market for medical devices.",
   },
@@ -76,14 +76,13 @@ export default function Webinars() {
           <div className="filter-inner">
             <p className="filter-label">Browse by:</p>
             <div className="filter-tabs">
-              {["all", "live", "ondemand"].map((tab) => (
+              {["all", "ondemand"].map((tab) => (
                 <button
                   key={tab}
                   className={`filter-btn ${filter === tab ? "active" : ""}`}
                   onClick={() => setFilter(tab as "all" | WebinarType)}
                 >
-                  {tab === "all" ? "All Sessions" : tab === "live" ? "Upcoming" : "On‑Demand"}
-                  {tab === "live" && <span className="live-dot" />}
+                  {tab === "all" ? "All Sessions" : "On-Demand"}
                 </button>
               ))}
             </div>
@@ -119,27 +118,33 @@ export default function Webinars() {
               </div>
 
               <div className="card-body">
-                <div className="card-meta">
-                  <span className="meta-item">
-                    <Image
-                      src="/assets/icons/calendar.svg"
-                      width={14}
-                      height={14}
-                      alt="date"
-                    />
-                    {webinar.date}
-                  </span>
-                  <span className="meta-divider" />
-                  <span className="meta-item">
-                    <Image
-                      src="/assets/icons/clock.svg"
-                      width={14}
-                      height={14}
-                      alt="time"
-                    />
-                    {webinar.time}
-                  </span>
-                </div>
+                {(webinar.date || webinar.time) && (
+                  <div className="card-meta">
+                    {webinar.date && (
+                      <span className="meta-item">
+                        <Image
+                          src="/assets/icons/calendar.svg"
+                          width={14}
+                          height={14}
+                          alt="date"
+                        />
+                        {webinar.date}
+                      </span>
+                    )}
+                    {webinar.date && webinar.time && <span className="meta-divider" />}
+                    {webinar.time && (
+                      <span className="meta-item">
+                        <Image
+                          src="/assets/icons/clock.svg"
+                          width={14}
+                          height={14}
+                          alt="time"
+                        />
+                        {webinar.time}
+                      </span>
+                    )}
+                  </div>
+                )}
 
                 <h3 className="card-title">{webinar.title}</h3>
                 <p className="card-description">{webinar.description}</p>
@@ -150,7 +155,7 @@ export default function Webinars() {
                     className="card-btn"
                   >
                     <span>
-                      {webinar.type === "live" ? "Register Now" : "Watch Now"}
+                      Download Now
                     </span>
                     <svg
                       width="16"
