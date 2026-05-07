@@ -9,6 +9,9 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import "./post.scss";
+
+export const dynamic = "force-dynamic";
+
 const NEWSROOM_SLUGS = new Set([
   "athena-and-tech-mahindra-announce-partnership",
   "authorised-reseller-partnership-with-twinzo",
