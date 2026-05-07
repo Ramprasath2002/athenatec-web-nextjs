@@ -19,7 +19,8 @@ const otherSolutions = [
 const partners = [
   { name: "Siemens", href: "/siemens-opcenter-mes" },
   { name: "Critical Manufacturing", href: "/critical-manufacturing" },
-  { name: "Eyelit Technologies", href: "/eyelit" },
+  // Eyelit route is disabled for now; keep this entry commented for future reuse.
+  // { name: "Eyelit Technologies", href: "/eyelit" },
   { name: "Twinzo", href: "/blog/authorised-reseller-partnership-with-twinzo" },
 ];
 
@@ -39,6 +40,7 @@ const XIcon = () => (
 const socials = [
   {
     label: "Facebook",
+    ariaLabel: "Follow us on Facebook",
     href: "https://www.facebook.com/athenatecindia/",
     icon: <Facebook size={16} strokeWidth={1.8} />,
     style:
@@ -46,6 +48,7 @@ const socials = [
   },
   {
     label: "Instagram",
+    ariaLabel: "Follow us on Instagram",
     href: "https://www.instagram.com/athenatecofficial?igsh=MTN6eXFwYmdhNjdvNw==",
     icon: <Instagram size={16} strokeWidth={1.8} />,
     style:
@@ -53,6 +56,7 @@ const socials = [
   },
   {
     label: "X",
+    ariaLabel: "Follow us on X",
     href: "https://x.com/athena_tec",
     icon: <XIcon />,
     style:
@@ -60,6 +64,7 @@ const socials = [
   },
   {
     label: "LinkedIn",
+    ariaLabel: "Follow us on LinkedIn",
     href: "https://www.linkedin.com/company/athena-technology-solutions/",
     icon: <Linkedin size={16} strokeWidth={1.8} />,
     style:
@@ -67,6 +72,7 @@ const socials = [
   },
   {
     label: "YouTube",
+    ariaLabel: "Follow us on YouTube",
     href: "https://www.youtube.com/@AthenaTechnologySolutions/",
     icon: <Youtube size={16} strokeWidth={1.8} />,
     style:
@@ -88,7 +94,7 @@ export default function Footer() {
           <div className="space-y-6 lg:col-span-2">
             <div className="relative h-12 w-[180px]">
               <Image
-                src="/assets/logo/footer-logo.png"
+                src="/assets/logo/footer-logo.webp"
                 alt="Athena"
                 fill
                 sizes="180px"
@@ -120,7 +126,7 @@ export default function Footer() {
                 <Link
                   key={s.label}
                   href={s.href}
-                  aria-label={s.label}
+                  aria-label={s.ariaLabel}
                   className={[
                     "group relative flex h-9 w-9 items-center justify-center",
                     "rounded-xl border border-white/15 bg-white/5",

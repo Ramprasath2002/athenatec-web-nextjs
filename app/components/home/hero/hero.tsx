@@ -5,6 +5,37 @@ import { useEffect, useState, useRef } from "react";
 import { logos } from "@/app/components/ClientLogos";
 import Image from "next/image";
 export default function HeroSection() {
+  const [cloneMarquee, setCloneMarquee] = useState(false);
+
+  useEffect(() => {
+    const scheduleClone = () => {
+      const requestIdle =
+        window.requestIdleCallback ?? ((callback) => window.setTimeout(callback, 1));
+      const cancelIdle =
+        window.cancelIdleCallback ?? ((id) => window.clearTimeout(id));
+      const idleId = requestIdle(() => setCloneMarquee(true));
+
+      return () => cancelIdle(idleId);
+    };
+
+    if (document.readyState === "complete") {
+      return scheduleClone();
+    }
+
+    let cleanup: void | (() => void);
+    const onLoad = () => {
+      cleanup = scheduleClone();
+    };
+
+    window.addEventListener("load", onLoad, { once: true });
+    return () => {
+      window.removeEventListener("load", onLoad);
+      cleanup?.();
+    };
+  }, []);
+
+  const marqueeLogos = cloneMarquee ? [...logos, ...logos] : logos;
+
   return (
     <>
       <section className="relative flex flex-col overflow-hidden pt-[62px]">
@@ -51,15 +82,21 @@ export default function HeroSection() {
         </div>
 
         <div className="relative overflow-hidden w-full">
-          <div className="marquee-track">
-            {[...logos, ...logos].map((logo, i) => (
-              <div key={i} className="relative h-[88px] w-[160px] shrink-0">
+          <div className={`marquee-track ${cloneMarquee ? "is-animated" : ""}`}>
+            {marqueeLogos.map((logo, i) => (
+              <div
+                key={`${logo.src}-${i}`}
+                className="relative h-[88px] w-[160px] shrink-0"
+                aria-hidden={i >= logos.length}
+              >
                 <Image
-                  src={logo}
-                  alt="Client logo"
-                  fill
+                  src={logo.src}
+                  alt={i >= logos.length ? "" : logo.name}
+                  width={160}
+                  height={88}
                   sizes="160px"
-                  className="object-contain opacity-80"
+                  className="h-full w-full object-contain opacity-80"
+                  loading="lazy"
                   quality={75}
                 />
               </div>

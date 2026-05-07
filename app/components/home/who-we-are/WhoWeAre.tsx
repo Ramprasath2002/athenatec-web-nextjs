@@ -4,6 +4,8 @@ import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 export default function WhoWeAre() {
+  const [isVideoLoaded, setIsVideoLoaded] = useState(false);
+
   return (
     <>
       <section className="who-we-are">
@@ -98,6 +100,7 @@ export default function WhoWeAre() {
               </Link>
             </div>
 
+            {/* Eyelit route is disabled for now; keep this partner card commented for future reuse.
             <div className="partner-card">
               <Image
                 src="/assets/images/00.webp"
@@ -122,6 +125,7 @@ export default function WhoWeAre() {
                 Know More
               </Link>
             </div>
+            */}
             <div className="partner-card">
               <Image
                 src="/assets/Clients/twinzo-img.webp"
@@ -155,16 +159,43 @@ export default function WhoWeAre() {
         <div className="what-container">
           <div className="what-media">
             <div className="what-image-wrapper">
-              <video
-                autoPlay
-                muted
-                loop
-                playsInline
-                className="w-full h-full object-cover rounded-md"
-              >
-                <source src="/assets/videos/aps.mp4" type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
+              {isVideoLoaded ? (
+                <video
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  controls
+                  preload="none"
+                  poster="/assets/images/application-support.webp"
+                  className="w-full h-full object-cover rounded-md"
+                  {...{ loading: "lazy" }}
+                >
+                  <source src="/assets/videos/aps.mp4" type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+              ) : (
+                <button
+                  type="button"
+                  className="relative block h-full w-full overflow-hidden rounded-md"
+                  aria-label="Play Athena professional services video"
+                  onClick={() => setIsVideoLoaded(true)}
+                >
+                  <Image
+                    src="/assets/images/video_banner.webp"
+                    alt="Athena application support"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    className="object-cover"
+                    loading="lazy"
+                    quality={75}
+                  />
+                  <span className="absolute inset-0 bg-black/25" />
+                  <span className="absolute left-1/2 top-1/2 flex h-16 w-16 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-[#1c4584] shadow-lg">
+                    <span className="ml-1 h-0 w-0 border-y-[12px] border-l-[18px] border-y-transparent border-l-current" />
+                  </span>
+                </button>
+              )}
             </div>
           </div>
 

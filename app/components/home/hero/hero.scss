@@ -3,6 +3,9 @@
   align-items: center;
   gap: 50px;
   width: max-content;
+}
+
+.marquee-track.is-animated {
   animation: marquee 55s linear infinite;
 }
 

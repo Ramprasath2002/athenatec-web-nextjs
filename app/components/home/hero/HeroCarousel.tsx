@@ -23,9 +23,8 @@ function getTitleVariant(title: string) {
 const slides = [
   {
     title:
-      "Join us for our upcoming webinar Building the Future of Manufacturing: Achieving Scalability and Compliance with Siemens and Athena.",
-    // desc: "Register now!",
-    cta: "Register Now",
+      "Building the Future of Manufacturing: Achieving Scalability and Compliance with Siemens and Athena.",
+    cta: "Download Now",
     link: "/webinars/building-future-manufacturing-siemens-athena",
     image: "/assets/images/webiner-banner.webp",
   },
@@ -77,13 +76,14 @@ const slides = [
     link: "/critical-manufacturing",
     image: "/assets/images/twinzobanners.webp",
   },
-  {
-    title: "Eyelit Implementation Partner",
-    desc: "As an official Eyelit Technologies partner, Athena delivers expertise in deploying Eyelit MES and Equipment Connect across semiconductor, solar, LED/laser diode, and medical device industries.",
-    cta: "Eyelit",
-    link: "/eyelit",
-    image: "/assets/images/eyelitsbanner.webp",
-  },
+  // Eyelit route is disabled for now; keep this slide commented for future reuse.
+  // {
+  //   title: "Eyelit Implementation Partner",
+  //   desc: "As an official Eyelit Technologies partner, Athena delivers expertise in deploying Eyelit MES and Equipment Connect across semiconductor, solar, LED/laser diode, and medical device industries.",
+  //   cta: "Eyelit",
+  //   link: "/eyelit",
+  //   image: "/assets/images/eyelitsbanner.webp",
+  // },
   {
     title: "ECO Accelerators",
     desc: "Speed up engineering change workflows with intelligent automation. ECO Accelerators handle tracking, approvals, execution, and traceability while ensuring compliance.",
@@ -112,6 +112,7 @@ const slides = [
 export default function HeroCarousel() {
   const [index, setIndex] = useState(0);
   const [fade, setFade] = useState(true);
+  const [renderDeferredSlides, setRenderDeferredSlides] = useState(false);
   const total = slides.length;
   const activeSlide = slides[index];
   const titleVariant = getTitleVariant(activeSlide.title);
@@ -188,6 +189,33 @@ export default function HeroCarousel() {
     return () => clearInterval(timer);
   }, [index, total]);
 
+  useEffect(() => {
+    const scheduleDeferredImages = () => {
+      const requestIdle =
+        window.requestIdleCallback ?? ((callback) => window.setTimeout(callback, 1));
+      const cancelIdle =
+        window.cancelIdleCallback ?? ((id) => window.clearTimeout(id));
+      const idleId = requestIdle(() => setRenderDeferredSlides(true));
+
+      return () => cancelIdle(idleId);
+    };
+
+    if (document.readyState === "complete") {
+      return scheduleDeferredImages();
+    }
+
+    let cleanup: void | (() => void);
+    const onLoad = () => {
+      cleanup = scheduleDeferredImages();
+    };
+
+    window.addEventListener("load", onLoad, { once: true });
+    return () => {
+      window.removeEventListener("load", onLoad);
+      cleanup?.();
+    };
+  }, []);
+
   return (
     <section
       className="hero-carousel relative flex min-h-[55vh] w-full items-center overflow-hidden sm:min-h-[60vh] md:min-h-[65vh] lg:min-h-[60vh]"
@@ -197,22 +225,30 @@ export default function HeroCarousel() {
        style={{ touchAction: "pan-y" }}
     >
       <div className="absolute inset-0">
-        {slides.map((slide, i) => (
-          <Image
-            key={i}
-            src={slide.image}
-            alt={slide.title}
-            fill
-            priority={i === 0}
-            sizes="100vw"
-            quality={75}
-            className={`hero-carousel__image ${
-              i === 0 ? "hero-carousel__image--webinar" : ""
-            } object-cover transition-opacity duration-700 ease-in-out ${
-              i === index ? "opacity-100 z-10" : "opacity-0 z-0"
-            }`}
-          />
-        ))}
+        {slides.map((slide, i) => {
+          const shouldRender = i === 0 || i === index || renderDeferredSlides;
+
+          if (!shouldRender) return null;
+
+          return (
+            <Image
+              key={i}
+              src={slide.image}
+              alt={slide.title}
+              fill
+              priority={i === 0}
+              loading={i === 0 ? "eager" : "lazy"}
+              fetchPriority={i === 0 ? "high" : "low"}
+              sizes="100vw"
+              quality={75}
+              className={`hero-carousel__image ${
+                i === 0 ? "hero-carousel__image--webinar" : ""
+              } object-cover transition-opacity duration-700 ease-in-out ${
+                i === index ? "opacity-100 z-10" : "opacity-0 z-0"
+              }`}
+            />
+          );
+        })}
         <div className="hero-carousel__scrim absolute inset-0 z-20" />
       </div>
 
